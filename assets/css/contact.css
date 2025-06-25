@@ -1,0 +1,52 @@
+/* Contact Section Styles */
+.contact-section {
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+}
+
+.contact-section h2 {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.contact-section .bg-white {
+  border: 1px solid #e5e7eb;
+  transition: all 0.3s ease;
+}
+
+.contact-section .bg-white:hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  transform: translateY(-2px);
+}
+
+/* Tally Form Styling */
+.contact-section iframe {
+  border-radius: 8px;
+  min-height: 276px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .contact-section {
+    padding: 3rem 1rem;
+  }
+  
+  .contact-section h2 {
+    font-size: 2rem;
+  }
+  
+  .contact-section .bg-white {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-section h2 {
+    font-size: 1.75rem;
+  }
+  
+  .contact-section .bg-white {
+    padding: 1rem;
+  }
+} 
