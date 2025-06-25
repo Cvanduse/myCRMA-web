@@ -1,20 +1,20 @@
 ---
 # Banner
 banner:
-  title: "A Multidisciplinary Agency"
-  subtitle: "Imagine having"
-  content: "a digital product"
-  content2: "a landing page"
-  content3: "a digital product"
-  content4: "visual identity"
-  content5: "mobile application"
-  content6: "uniquely crafted."
-  image: "/images/banner.png"
+  title: "Transform Your Business with Expert CRM Solutions"
+  subtitle: "We craft memorable brands, design stunning websites, and amplify your impact with results-driven digital marketing."
+  content: "Partner with our experienced team to build scalable, efficient CRM systems that drive growth and streamline your operations."
+  background_image: "/images/banner.png"
+  overlay_image: "/images/service-1.png"
   buttons:
     - enable: true
-      label: "Book a schedule"
-      link: "#contact-form"
+      label: "Get Started For Free"
+      link: "/contact"
       style: "primary"
+    - enable: true
+      label: "View Our Work"
+      link: "/services"
+      style: "secondary"
 
 # Features
 features:
