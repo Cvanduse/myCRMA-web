@@ -11,17 +11,39 @@
             <p class="mb-8">
               {{ .content | markdownify }}
             </p>
-            {{ with .button }}
-              {{ if .enable }}
-                <a
-                  class="btn btn-primary"
-                  href="{{ .link | absURL }}"
-                  {{ if strings.HasPrefix .link `http` }}
-                    target="_blank" rel="noopener"
-                  {{ end }}>
-                  {{ .label }}
-                  <i class="fa fa-arrow-right pl-2"></i>
-                </a>
+            {{ if .buttons }}
+              <div class="flex flex-wrap justify-center gap-4">
+                {{ range .buttons }}
+                  {{ if .enable }}
+                    {{ $btnClass := "btn btn-primary" }}
+                    {{ if ne .style "primary" }}
+                      {{ $btnClass = "btn btn-outline-primary" }}
+                    {{ end }}
+                    <a
+                      class="{{ $btnClass }}"
+                      href="{{ .link | absURL }}"
+                      {{ if strings.HasPrefix .link `http` }}
+                        target="_blank" rel="noopener"
+                      {{ end }}>
+                      {{ .label }}
+                      <i class="fa fa-arrow-right pl-2"></i>
+                    </a>
+                  {{ end }}
+                {{ end }}
+              </div>
+            {{ else if .button }}
+              {{ with .button }}
+                {{ if .enable }}
+                  <a
+                    class="btn btn-primary"
+                    href="{{ .link | absURL }}"
+                    {{ if strings.HasPrefix .link `http` }}
+                      target="_blank" rel="noopener"
+                    {{ end }}>
+                    {{ .label }}
+                    <i class="fa fa-arrow-right pl-2"></i>
+                  </a>
+                {{ end }}
               {{ end }}
             {{ end }}
           </div>
@@ -33,6 +55,10 @@
     </section>
   {{ end }}
   <!-- /Banner -->
+
+  <!-- Services -->
+  {{ partial "services" . }}
+  <!-- /Services -->
 
   <!-- Features -->
   {{ range $i, $e:= .Params.features }}
@@ -77,6 +103,10 @@
     </section>
   {{ end }}
   <!-- /Features -->
+
+  <!-- Why Choose Us -->
+  {{ partial "why-choose-us" . }}
+  <!-- /Why Choose Us -->
 
   <!-- Testimonials -->
   {{ with site.GetPage "sections/testimonial" }}
@@ -141,4 +171,12 @@
     {{ end }}
   {{ end }}
   <!-- /Testimonials -->
+
+  <!-- Project CTA -->
+  {{ partial "project-cta" . }}
+  <!-- /Project CTA -->
+
+  <!-- FAQ -->
+  {{ partial "faq" . }}
+  <!-- /FAQ -->
 {{ end }}

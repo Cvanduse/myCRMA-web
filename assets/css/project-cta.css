@@ -1,0 +1,140 @@
+/* Project CTA Section Styles */
+.project-cta-section {
+  background: #F5F5F5;
+  padding: 128px 0;
+}
+
+.dark .project-cta-section {
+  background: #1A1A1A;
+}
+
+.project-cta-title {
+  font-size: 5rem;
+  font-weight: 300;
+  line-height: 1.2;
+  color: #1A1A1A;
+}
+
+.dark .project-cta-title {
+  color: white;
+}
+
+.project-cta-button {
+  display: inline-flex;
+  align-items: center;
+  padding: 16px 32px;
+  font-size: 18px;
+  border: 1px solid #1A1A1A;
+  color: #1A1A1A;
+  border-radius: 9999px;
+  transition: all 0.3s ease;
+}
+
+.dark .project-cta-button {
+  border-color: white;
+  color: white;
+}
+
+.project-cta-button:hover {
+  background: #1A1A1A;
+  color: white;
+}
+
+.dark .project-cta-button:hover {
+  background: white;
+  color: #1A1A1A;
+}
+
+.project-cta-arrow {
+  margin-left: 16px;
+}
+
+.project-step-card {
+  padding: 24px;
+  background: white;
+  border-radius: 8px;
+  text-align: center;
+  height: 100%;
+  transition: all 0.3s ease;
+}
+
+.dark .project-step-card {
+  background: #242424;
+}
+
+.project-step-card:hover {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  transform: translateY(-4px);
+}
+
+.project-step-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 24px;
+}
+
+.project-step-number {
+  font-size: 2.25rem;
+  font-weight: 300;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.project-step-title {
+  font-size: 1.25rem;
+  margin-bottom: 16px;
+  color: #1A1A1A;
+}
+
+.dark .project-step-title {
+  color: white;
+}
+
+.project-step-description {
+  color: #6B7280;
+  line-height: 1.6;
+}
+
+.dark .project-step-description {
+  color: #D1D5DB;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .project-cta-title {
+    font-size: 3.75rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .project-cta-section {
+    padding: 80px 0;
+  }
+  
+  .project-cta-title {
+    font-size: 3rem;
+  }
+  
+  .project-cta-button {
+    padding: 12px 24px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 640px) {
+  .project-cta-title {
+    font-size: 2.5rem;
+  }
+  
+  .project-step-card {
+    padding: 20px;
+  }
+  
+  .project-step-number {
+    font-size: 2rem;
+  }
+  
+  .project-step-title {
+    font-size: 1.125rem;
+  }
+} 

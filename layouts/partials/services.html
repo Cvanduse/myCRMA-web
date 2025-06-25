@@ -1,0 +1,47 @@
+{{ with site.GetPage "sections/services" }}
+  {{ if .Params.enable }}
+    <section id="services" class="services-section">
+      <div class="container">
+        <div class="services-header">
+          <h3 class="services-label">{{ .Params.label | default "Services" }}</h3>
+          <h2 class="services-title">{{ .Title | markdownify }}</h2>
+          <p class="services-description">{{ .Params.description | markdownify }}</p>
+        </div>
+        <div class="services-grid">
+          {{ range .Params.services }}
+            <div class="service-item">
+              <a href="{{ .link | default '#' }}" class="service-link">
+                <div class="service-content">
+                  <h3 class="service-title">{{ .title | markdownify }} <span class="arrow">→</span></h3>
+                  <p class="service-description">{{ .description | markdownify }}</p>
+                </div>
+                <div class="service-media">
+                  <div class="service-image-container">
+                    <img class="service-image" src="{{ .image }}" alt="{{ .title }}">
+                  </div>
+                </div>
+              </a>
+            </div>
+          {{ end }}
+        </div>
+      </div>
+    </section>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        const serviceItems = document.querySelectorAll(".service-item");
+        serviceItems.forEach(item => {
+          const link = item.querySelector(".service-link");
+          const media = item.querySelector(".service-media");
+          
+          link.addEventListener("mouseenter", () => {
+            media.classList.add("is-visible");
+          });
+          
+          link.addEventListener("mouseleave", () => {
+            media.classList.remove("is-visible");
+          });
+        });
+      });
+    </script>
+  {{ end }}
+{{ end }} 

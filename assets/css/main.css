@@ -29,6 +29,10 @@
 @import "accordion.css";
 @import "modal.css";
 @import "notice.css";
+@import "services.css";
+@import "project-cta.css";
+@import "why-choose-us.css";
+@import "faq.css";
 
 @import "module-overrides.css";
 @import "custom.css";

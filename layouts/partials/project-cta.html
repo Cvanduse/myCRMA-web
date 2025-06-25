@@ -1,0 +1,53 @@
+{{ with site.GetPage "sections/project-cta" }}
+  {{ if .Params.enable }}
+    <section class="section bg-[#F5F5F5] dark:bg-[#1A1A1A] py-32">
+      <div class="container">
+        <div class="row items-center justify-between mb-20">
+          <div class="lg:col-6">
+            <h2 class="text-[5rem] font-light leading-tight text-[#1A1A1A] dark:text-white">
+              {{ .Params.title | markdownify }}
+            </h2>
+          </div>
+          <div class="lg:col-4 text-right">
+            {{ $link := .Params.button.link | default "/contact" }}
+            <a href="{{ $link }}" 
+               class="inline-flex items-center px-8 py-4 text-lg border border-[#1A1A1A] dark:border-white text-[#1A1A1A] dark:text-white rounded-full hover:bg-[#1A1A1A] hover:text-white dark:hover:bg-white dark:hover:text-[#1A1A1A] transition-colors">
+              {{ .Params.button.text | default "Let's Talk" }}
+              <span class="ml-4">→</span>
+            </a>
+          </div>
+        </div>
+        <div class="mt-16">
+          <div class="row justify-center">
+            {{ range .Params.steps }}
+              <div class="md:col-3 mb-8">
+                <div class="p-6 bg-white dark:bg-[#242424] rounded-lg text-center h-full hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                  <svg class="w-16 h-16 mx-auto mb-6" viewBox="0 0 60 60" fill="none">
+                    <circle cx="30" cy="30" r="30" fill="#f0f0f0" class="dark:fill-[#2A2A2A]"/>
+                    <path d="{{ .icon }}" fill="#333" class="dark:fill-white"/>
+                  </svg>
+                  <span class="text-4xl font-light mb-4 block">{{ .number }}</span>
+                  <h4 class="text-xl mb-4">{{ .title }}</h4>
+                  <p class="text-gray-600 dark:text-gray-300">{{ .description }}</p>
+                </div>
+              </div>
+            {{ end }}
+          </div>
+        </div>
+      </div>
+    </section>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        const hoverElements = document.querySelectorAll(".hover\\:shadow-lg");
+        hoverElements.forEach(element => {
+          element.addEventListener("mouseenter", function() {
+            this.classList.add("shadow-lg", "-translate-y-1");
+          });
+          element.addEventListener("mouseleave", function() {
+            this.classList.remove("shadow-lg", "-translate-y-1");
+          });
+        });
+      });
+    </script>
+  {{ end }}
+{{ end }} 

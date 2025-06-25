@@ -1,0 +1,23 @@
+{{ with site.GetPage "sections/faq" }}
+  {{ if .Params.enable }}
+    <section class="faq-section section">
+      <div class="container">
+        <h2 class="faq-title">{{ .Title | markdownify }}</h2>
+        {{ with .Params.description }}<p class="faq-description">{{ . }}</p>{{ end }}
+        <div class="faq-list">
+          {{ range .Params.faqs }}
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                {{ .question }}
+                <span class="faq-toggle">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>{{ .answer }}</p>
+              </div>
+            </div>
+          {{ end }}
+        </div>
+      </div>
+    </section>
+  {{ end }}
+{{ end }} 
