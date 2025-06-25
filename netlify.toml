@@ -5,6 +5,26 @@
 [build.environment]
   HUGO_VERSION = "0.145.0"
 
+# Force HTTPS redirects
+[[redirects]]
+  from = "http://mycrmadvisors.com/*"
+  to = "https://mycrmadvisors.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.mycrmadvisors.com/*"
+  to = "https://mycrmadvisors.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.mycrmadvisors.com/*"
+  to = "https://mycrmadvisors.com/:splat"
+  status = 301
+  force = true
+
+# Handle SPA routing
 [[redirects]]
   from = "/*"
   to = "/index.html"
