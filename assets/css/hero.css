@@ -2,6 +2,9 @@
 .hero-section {
   background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #1e40af 100%);
   position: relative;
+  border-radius: 0 0 2rem 2rem;
+  margin-bottom: 2rem;
+  overflow: hidden;
 }
 
 .hero-section::before {
@@ -14,6 +17,7 @@
   background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
   opacity: 0.3;
   z-index: 1;
+  border-radius: 0 0 2rem 2rem;
 }
 
 .hero-section h1 {
@@ -32,12 +36,48 @@
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
+/* Side CTA Styles */
+.hero-section .side-cta {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.hero-section .side-cta:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 35px 60px -12px rgba(0, 0, 0, 0.35);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.hero-section .side-cta h3 {
+  background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-section .side-cta .btn-primary {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  border: none;
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+  transition: all 0.3s ease;
+  border-radius: 1rem;
+}
+
+.hero-section .side-cta .btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 35px rgba(59, 130, 246, 0.4);
+}
+
 /* Button Styles */
 .hero-section .btn-primary {
   background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
   border: none;
   box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
   transition: all 0.3s ease;
+  border-radius: 1rem;
 }
 
 .hero-section .btn-primary:hover {
@@ -49,6 +89,7 @@
   backdrop-filter: blur(10px);
   background: rgba(255, 255, 255, 0.1);
   transition: all 0.3s ease;
+  border-radius: 1rem;
 }
 
 .hero-section .btn-outline-primary:hover {
@@ -60,6 +101,7 @@
 /* Overlay Image Animation */
 .hero-section img[alt="Hero overlay"] {
   animation: float 6s ease-in-out infinite;
+  border-radius: 1.5rem;
 }
 
 @keyframes float {
@@ -80,11 +122,48 @@
   animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
+/* Background Image Container */
+.hero-section .absolute.inset-0.z-0 {
+  border-radius: 0 0 2rem 2rem;
+  overflow: hidden;
+}
+
+.hero-section .absolute.inset-0.z-0 img {
+  border-radius: 0 0 2rem 2rem;
+}
+
+.hero-section .absolute.inset-0.z-0 .absolute.inset-0 {
+  border-radius: 0 0 2rem 2rem;
+}
+
 /* Responsive Design */
+@media (max-width: 1024px) {
+  .hero-section .side-cta {
+    margin-top: 2rem;
+  }
+}
+
 @media (max-width: 768px) {
   .hero-section {
     min-height: 80vh;
     padding: 2rem 0;
+    border-radius: 0 0 1.5rem 1.5rem;
+  }
+  
+  .hero-section::before {
+    border-radius: 0 0 1.5rem 1.5rem;
+  }
+  
+  .hero-section .absolute.inset-0.z-0 {
+    border-radius: 0 0 1.5rem 1.5rem;
+  }
+  
+  .hero-section .absolute.inset-0.z-0 img {
+    border-radius: 0 0 1.5rem 1.5rem;
+  }
+  
+  .hero-section .absolute.inset-0.z-0 .absolute.inset-0 {
+    border-radius: 0 0 1.5rem 1.5rem;
   }
   
   .hero-section h1 {
@@ -99,9 +178,38 @@
   .hero-section .text-lg {
     font-size: 1rem;
   }
+  
+  .hero-section .side-cta {
+    margin-top: 2rem;
+    padding: 1.5rem;
+  }
+  
+  .hero-section .side-cta h3 {
+    font-size: 1.5rem;
+  }
 }
 
 @media (max-width: 480px) {
+  .hero-section {
+    border-radius: 0 0 1rem 1rem;
+  }
+  
+  .hero-section::before {
+    border-radius: 0 0 1rem 1rem;
+  }
+  
+  .hero-section .absolute.inset-0.z-0 {
+    border-radius: 0 0 1rem 1rem;
+  }
+  
+  .hero-section .absolute.inset-0.z-0 img {
+    border-radius: 0 0 1rem 1rem;
+  }
+  
+  .hero-section .absolute.inset-0.z-0 .absolute.inset-0 {
+    border-radius: 0 0 1rem 1rem;
+  }
+  
   .hero-section h1 {
     font-size: 2rem;
   }
@@ -109,6 +217,14 @@
   .hero-section .btn {
     padding: 0.75rem 1.5rem;
     font-size: 1rem;
+  }
+  
+  .hero-section .side-cta {
+    padding: 1rem;
+  }
+  
+  .hero-section .side-cta h3 {
+    font-size: 1.25rem;
   }
 }
 
