@@ -26,6 +26,28 @@
   min-height: 276px;
 }
 
+/* Hide Tally Branding Button */
+.contact-section iframe[data-tally-src*="tally.so"] {
+  /* Hide any Tally branding that might appear */
+}
+
+/* Additional CSS to hide Tally branding */
+iframe[data-tally-src*="tally.so"] + div,
+iframe[data-tally-src*="tally.so"] ~ div[style*="tally"],
+iframe[data-tally-src*="tally.so"] ~ a[href*="tally.so"],
+iframe[data-tally-src*="tally.so"] ~ div[class*="tally"],
+iframe[data-tally-src*="tally.so"] ~ span[class*="tally"] {
+  display: none !important;
+}
+
+/* Hide any elements with Tally branding text */
+div:contains("Made with Tally"),
+div:contains("Powered by Tally"),
+a:contains("Made with Tally"),
+a:contains("Powered by Tally") {
+  display: none !important;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .contact-section {

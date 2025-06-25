@@ -13,7 +13,7 @@
         <div id="contact-form">
           <!-- Tally Form Embed -->
           <iframe 
-            data-tally-src="https://tally.so/embed/w5YBJ6?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1&hideBranding=1" 
+            data-tally-src="https://tally.so/embed/w5YBJ6?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1&hideBranding=1&prefillEmail=&prefillName=&prefillCompany=" 
             loading="lazy" 
             width="100%" 
             height="276" 
@@ -37,5 +37,16 @@
     if (typeof Tally !== 'undefined') {
       Tally.loadEmbeds();
     }
+    
+    // Additional script to hide Tally branding
+    setTimeout(function() {
+      // Hide any Tally branding elements
+      const tallyElements = document.querySelectorAll('a[href*="tally.so"], div[style*="tally"], span[style*="tally"]');
+      tallyElements.forEach(function(element) {
+        if (element.textContent.includes('Tally') || element.textContent.includes('tally')) {
+          element.style.display = 'none';
+        }
+      });
+    }, 2000);
   });
 </script> 
