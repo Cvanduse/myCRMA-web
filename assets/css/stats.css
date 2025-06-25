@@ -1,0 +1,80 @@
+/* Stats Section Styles */
+.stats-section {
+  background: #f8f9fa;
+}
+.stats-section .font-bold {
+  font-weight: 700;
+}
+.stats-section .text-4xl, .stats-section .text-5xl {
+  letter-spacing: -0.02em;
+}
+.stats-section .text-lg {
+  font-size: 1.125rem;
+}
+.stats-section .stat-item {
+  min-width: 120px;
+  margin-right: 2rem;
+}
+.stats-section .stats-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 2rem;
+}
+.stats-section .no-wrap-metrics {
+  flex-wrap: nowrap !important;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.stats-section .stat-item:last-child {
+  margin-right: 0;
+}
+.stats-section .stats-description {
+  max-width: 320px;
+  min-width: 200px;
+  padding-left: 2rem;
+  flex-shrink: 0;
+}
+.stats-section .desc-text {
+  font-size: 1rem;
+  color: #6b7280;
+  line-height: 1.5;
+}
+@media (max-width: 1024px) {
+  .stats-section .stats-description {
+    max-width: 220px;
+    padding-left: 1rem;
+  }
+  .stats-section .desc-text {
+    font-size: 0.95rem;
+  }
+}
+@media (max-width: 768px) {
+  .stats-section {
+    padding: 2.5rem 1rem;
+  }
+  .stats-section .text-lg {
+    font-size: 1rem;
+  }
+  .stats-section .text-4xl {
+    font-size: 2rem;
+  }
+  .stats-section .stats-description {
+    max-width: 100%;
+    padding-left: 0;
+    margin-top: 1.5rem;
+    text-align: center;
+    order: 2;
+  }
+  .stats-section .desc-text {
+    font-size: 0.95rem;
+  }
+}
+@media (max-width: 480px) {
+  .stats-section .text-4xl {
+    font-size: 1.5rem;
+  }
+  .stats-section .desc-text {
+    font-size: 0.9rem;
+  }
+} 

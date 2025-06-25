@@ -1,0 +1,62 @@
+{{ $stats := site.GetPage "sections/stats" }}
+<section class="stats-section py-12 bg-gray-50">
+  <div class="container mx-auto px-4 flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+    <div class="flex flex-1 flex-row overflow-x-auto stats-row no-wrap-metrics gap-8 md:gap-12 justify-center md:justify-start">
+      {{ range $stats.Params.stats }}
+        <div class="text-center stat-item">
+          <div class="text-4xl md:text-5xl font-bold text-gray-900 countup" data-target="{{ .number }}">0</div>
+          <div class="text-lg text-gray-600 mt-2">{{ .label }}</div>
+        </div>
+      {{ end }}
+    </div>
+    <div class="stats-description flex-1 text-center md:text-left md:pl-12">
+      <div class="desc-text text-lg text-gray-700 max-w-xl mx-auto md:mx-0" style="line-height:1.6">{{ $stats.Params.description | safeHTML }}</div>
+    </div>
+  </div>
+</section>
+<script>
+// Count up animation for stats
+function animateCountUp(el, target) {
+  let start = 0;
+  let end = parseInt(target.replace(/[^\d]/g, ''));
+  let isPercent = target.includes('%');
+  let isPlus = target.includes('+');
+  let duration = 1500;
+  let startTime = null;
+  function step(timestamp) {
+    if (!startTime) startTime = timestamp;
+    let progress = Math.min((timestamp - startTime) / duration, 1);
+    let value = Math.floor(progress * (end - start) + start);
+    el.textContent = value + (isPercent ? '%' : '') + (isPlus ? '+' : '');
+    if (progress < 1) {
+      requestAnimationFrame(step);
+    } else {
+      el.textContent = target;
+    }
+  }
+  requestAnimationFrame(step);
+}
+function runCountUps() {
+  document.querySelectorAll('.countup').forEach(function(el) {
+    animateCountUp(el, el.getAttribute('data-target'));
+  });
+}
+// Only run when section is in viewport
+function onVisible(element, callback) {
+  function checkVisibility() {
+    const rect = element.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      callback();
+      window.removeEventListener('scroll', checkVisibility);
+    }
+  }
+  window.addEventListener('scroll', checkVisibility);
+  checkVisibility();
+}
+document.addEventListener('DOMContentLoaded', function() {
+  var statsSection = document.querySelector('.stats-section');
+  if (statsSection) {
+    onVisible(statsSection, runCountUps);
+  }
+});
+</script> 

@@ -1,60 +1,65 @@
 {{ define "main" }}
   <!-- Banner -->
   {{ with .Params.banner }}
-    <section class="section pt-14">
-      <div class="container">
-        <div class="row justify-center">
-          <div class="lg:col-7 md:col-9 mb-8 text-center">
-            <h1 class="mb-4 text-h3 lg:text-h1">
-              {{ .title | markdownify }}
-            </h1>
-            <p class="mb-8">
+    <section class="hero-section min-h-screen flex items-center justify-center py-20">
+      <div class="container mx-auto px-4">
+        <div class="max-w-6xl mx-auto text-center">
+          <!-- Main Title -->
+          <h1 class="hero-title text-6xl md:text-8xl lg:text-9xl font-bold text-gray-900 mb-8 leading-none">
+            {{ .title | markdownify }}
+          </h1>
+          
+          <!-- Staggered Content -->
+          <div class="hero-content space-y-4 mb-12">
+            <h2 class="hero-subtitle text-4xl md:text-6xl lg:text-7xl font-bold text-gray-800">
+              {{ .subtitle | markdownify }}
+            </h2>
+            <h3 class="hero-line text-3xl md:text-5xl lg:text-6xl font-medium text-gray-700">
               {{ .content | markdownify }}
-            </p>
-            {{ if .buttons }}
-              <div class="flex flex-wrap justify-center gap-4">
-                {{ range .buttons }}
-                  {{ if .enable }}
-                    {{ $btnClass := "btn btn-primary" }}
-                    {{ if ne .style "primary" }}
-                      {{ $btnClass = "btn btn-outline-primary" }}
-                    {{ end }}
-                    <a
-                      class="{{ $btnClass }}"
-                      href="{{ .link | absURL }}"
-                      {{ if strings.HasPrefix .link `http` }}
-                        target="_blank" rel="noopener"
-                      {{ end }}>
-                      {{ .label }}
-                      <i class="fa fa-arrow-right pl-2"></i>
-                    </a>
-                  {{ end }}
-                {{ end }}
-              </div>
-            {{ else if .button }}
-              {{ with .button }}
+            </h3>
+            <h3 class="hero-line text-3xl md:text-5xl lg:text-6xl font-medium text-gray-700">
+              {{ .content2 | markdownify }}
+            </h3>
+            <h3 class="hero-line text-3xl md:text-5xl lg:text-6xl font-medium text-gray-700">
+              {{ .content3 | markdownify }}
+            </h3>
+            <h3 class="hero-line text-3xl md:text-5xl lg:text-6xl font-medium text-gray-700">
+              {{ .content4 | markdownify }}
+            </h3>
+            <h3 class="hero-line text-3xl md:text-5xl lg:text-6xl font-medium text-gray-700">
+              {{ .content5 | markdownify }}
+            </h3>
+            <h3 class="hero-line text-3xl md:text-5xl lg:text-6xl font-medium text-gray-700">
+              {{ .content6 | markdownify }}
+            </h3>
+          </div>
+          
+          <!-- CTA Button -->
+          {{ if .buttons }}
+            <div class="flex justify-center">
+              {{ range .buttons }}
                 {{ if .enable }}
                   <a
-                    class="btn btn-primary"
+                    class="hero-cta bg-black text-white px-8 py-4 text-lg font-semibold rounded-lg hover:bg-gray-800 transition-colors duration-300"
                     href="{{ .link | absURL }}"
                     {{ if strings.HasPrefix .link `http` }}
                       target="_blank" rel="noopener"
                     {{ end }}>
                     {{ .label }}
-                    <i class="fa fa-arrow-right pl-2"></i>
                   </a>
                 {{ end }}
               {{ end }}
-            {{ end }}
-          </div>
-          <div class="col-12">
-            {{ partial "image" (dict "Src" .image "Alt" "Banner image" "Loading" "eager" "Class" "mx-auto lg:!max-w-[800px]" "DisplayXL" "800x" ) }}
-          </div>
+            </div>
+          {{ end }}
         </div>
       </div>
     </section>
   {{ end }}
   <!-- /Banner -->
+
+  <!-- Stats -->
+  {{ partial "stats" . }}
+  <!-- /Stats -->
 
   <!-- Services -->
   {{ partial "services" . }}
