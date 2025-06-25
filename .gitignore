@@ -1,0 +1,28 @@
+# Hugo build output
+/public/
+/resources/
+
+# Node modules
+node_modules/
+
+# OS files
+.DS_Store
+
+# Hugo build locks
+.hugo_build.lock
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# VSCode
+.vscode/
+
+# Netlify
+.netlify/
+
+# Env files
+.env
+.env.*
+
