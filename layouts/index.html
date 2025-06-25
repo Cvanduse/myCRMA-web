@@ -1,46 +1,46 @@
 {{ define "main" }}
   <!-- Banner -->
   {{ with .Params.banner }}
-    <section class="hero-section min-h-screen flex items-center justify-center py-20">
+    <section class="hero-section min-h-screen flex items-center py-20">
       <div class="container mx-auto px-4">
-        <div class="max-w-6xl mx-auto text-center">
+        <div class="max-w-7xl mx-auto">
           <!-- Main Title -->
-          <h1 class="hero-title text-6xl md:text-8xl lg:text-9xl font-bold text-gray-900 mb-8 leading-none">
+          <h1 class="hero-main-title text-8xl md:text-9xl lg:text-[12rem] font-black text-gray-900 mb-8 leading-[0.8]">
             {{ .title | markdownify }}
           </h1>
           
           <!-- Staggered Content -->
-          <div class="hero-content space-y-4 mb-12">
-            <h2 class="hero-subtitle text-4xl md:text-6xl lg:text-7xl font-bold text-gray-800">
+          <div class="hero-content space-y-2 mb-16">
+            <h2 class="hero-subtitle text-6xl md:text-7xl lg:text-8xl font-bold text-gray-800 leading-[0.85]">
               {{ .subtitle | markdownify }}
             </h2>
-            <h3 class="hero-line text-3xl md:text-5xl lg:text-6xl font-medium text-gray-700">
+            <h3 class="hero-line text-5xl md:text-6xl lg:text-7xl font-semibold text-gray-700 leading-[0.9]">
               {{ .content | markdownify }}
             </h3>
-            <h3 class="hero-line text-3xl md:text-5xl lg:text-6xl font-medium text-gray-700">
+            <h3 class="hero-line text-5xl md:text-6xl lg:text-7xl font-semibold text-gray-700 leading-[0.9]">
               {{ .content2 | markdownify }}
             </h3>
-            <h3 class="hero-line text-3xl md:text-5xl lg:text-6xl font-medium text-gray-700">
+            <h3 class="hero-line text-5xl md:text-6xl lg:text-7xl font-semibold text-gray-700 leading-[0.9]">
               {{ .content3 | markdownify }}
             </h3>
-            <h3 class="hero-line text-3xl md:text-5xl lg:text-6xl font-medium text-gray-700">
+            <h3 class="hero-line text-5xl md:text-6xl lg:text-7xl font-semibold text-gray-700 leading-[0.9]">
               {{ .content4 | markdownify }}
             </h3>
-            <h3 class="hero-line text-3xl md:text-5xl lg:text-6xl font-medium text-gray-700">
+            <h3 class="hero-line text-5xl md:text-6xl lg:text-7xl font-semibold text-gray-700 leading-[0.9]">
               {{ .content5 | markdownify }}
             </h3>
-            <h3 class="hero-line text-3xl md:text-5xl lg:text-6xl font-medium text-gray-700">
+            <h3 class="hero-line text-5xl md:text-6xl lg:text-7xl font-semibold text-gray-700 leading-[0.9]">
               {{ .content6 | markdownify }}
             </h3>
           </div>
           
           <!-- CTA Button -->
           {{ if .buttons }}
-            <div class="flex justify-center">
+            <div class="flex">
               {{ range .buttons }}
                 {{ if .enable }}
                   <a
-                    class="hero-cta bg-black text-white px-8 py-4 text-lg font-semibold rounded-lg hover:bg-gray-800 transition-colors duration-300"
+                    class="hero-cta bg-black text-white px-8 py-4 text-xl font-semibold rounded-lg hover:bg-gray-800 transition-colors duration-300"
                     href="{{ .link | absURL }}"
                     {{ if strings.HasPrefix .link `http` }}
                       target="_blank" rel="noopener"
