@@ -144,6 +144,37 @@
   transform: scale(0.97);
 }
 
+/* Enhanced Nova Solutions Why Choose Us Section Hover Effect */
+.why-choose-us-card-grid.enhanced-hover {
+  position: relative;
+}
+.why-choose-us-card-grid.enhanced-hover .why-choose-us-card {
+  transition: transform 0.35s cubic-bezier(.4,0,.2,1), box-shadow 0.35s cubic-bezier(.4,0,.2,1), opacity 0.35s cubic-bezier(.4,0,.2,1), z-index 0.35s;
+  will-change: transform, opacity, z-index;
+}
+.why-choose-us-card-grid.enhanced-hover .why-choose-us-card.is-hovered {
+  transform: scale(1.10);
+  z-index: 3;
+  opacity: 1;
+  box-shadow: 0 12px 40px 0 rgba(91,61,246,0.22);
+}
+.why-choose-us-card-grid.enhanced-hover .why-choose-us-card.is-dimmed {
+  transform: scale(0.93);
+  opacity: 0.55;
+  z-index: 1;
+  box-shadow: none;
+}
+.why-choose-us-card-grid.enhanced-hover .why-choose-us-card {
+  cursor: pointer;
+}
+.why-choose-us-card-grid.enhanced-hover .why-choose-us-card.is-hovered .why-choose-us-card-icon {
+  transform: scale(1.35) translateY(-10px);
+  transition: transform 0.35s cubic-bezier(.4,0,.2,1);
+}
+.why-choose-us-card-grid.enhanced-hover .why-choose-us-card .why-choose-us-card-icon {
+  transition: transform 0.35s cubic-bezier(.4,0,.2,1);
+}
+
 /* Responsive */
 @media (max-width: 1024px) {
   .why-choose-us-flex {

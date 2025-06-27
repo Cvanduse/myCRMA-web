@@ -47,6 +47,50 @@
     </div>
   </section>
 
+  <!-- Tally Form Section -->
+  <section class="section-sm">
+    <div class="container">
+      <div class="row">
+        <div class="md:col-10 lg:col-6 mx-auto">
+          <div class="bg-white rounded-lg shadow-lg p-8">
+            <h3 class="text-2xl font-bold mb-4 text-center">Or use our quick contact form</h3>
+            <div id="contact-form">
+              <!-- Tally Form Embed -->
+              <iframe 
+                data-tally-src="https://tally.so/embed/w5YBJ6?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1&hideBranding=1&prefillEmail=&prefillName=&prefillCompany=" 
+                loading="lazy" 
+                width="100%" 
+                height="276" 
+                frameborder="0" 
+                marginheight="0" 
+                marginwidth="0" 
+                title="Contact form"
+                class="w-full"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Tally Widget Script -->
+  <script src="https://tally.so/widgets/embed.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      if (typeof Tally !== 'undefined') {
+        Tally.loadEmbeds();
+      }
+      setTimeout(function() {
+        const tallyElements = document.querySelectorAll('a[href*="tally.so"], div[style*="tally"], span[style*="tally"]');
+        tallyElements.forEach(function(element) {
+          if (element.textContent.includes('Tally') || element.textContent.includes('tally')) {
+            element.style.display = 'none';
+          }
+        });
+      }, 2000);
+    });
+  </script>
+
   <!-- google map -->
   {{ with site.Params.google_map }}
     {{ if .enable }}
@@ -116,5 +160,8 @@
     <script defer src="{{ $gmap.RelPermalink }}"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key={{ site.Params.google_map.map_api_key }}&libraries=places"></script>
   {{ end }}
+
+  <!-- FAQ Section (copied from homepage) -->
+  {{ partial "faq.html" . }}
 
 {{ end }}

@@ -11,6 +11,16 @@ name = "Services"
 url = "/#services"
 weight = 2
 
+[[main]]
+name = "About"
+url = "/about/"
+weight = 3
+
+[[main]]
+name = "Contact"
+url = "/contact/"
+weight = 4
+
 
 # footer menu
 [[footer]]

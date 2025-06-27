@@ -1,0 +1,4 @@
+{{ $src := .Src }}
+{{ $alt := .Alt | default "Image" }}
+{{ $class := .Class | default "w-full h-auto rounded-xl shadow" }}
+<img src="{{$src}}" alt="{{$alt}}" class="{{$class}}" loading="lazy" /> 

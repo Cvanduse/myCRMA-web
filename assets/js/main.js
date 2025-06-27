@@ -57,22 +57,70 @@
     });
   }
 
-  // FAQ Accordion
-  // ----------------------------------------
-  document.querySelectorAll('.faq-question').forEach(btn => {
-    btn.addEventListener('click', function() {
-      const item = this.closest('.faq-item');
-      const expanded = this.getAttribute('aria-expanded') === 'true';
-      // Close all
-      document.querySelectorAll('.faq-item').forEach(i => {
-        i.classList.remove('open');
-        i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+  // Modern FAQ Expand/Collapse
+  (function() {
+    var faqList = document.querySelector('.modern-faq');
+    if (!faqList) return;
+    faqList.querySelectorAll('.faq-item').forEach(function(item) {
+      var btn = item.querySelector('.faq-question');
+      btn.addEventListener('click', function() {
+        var isOpen = item.classList.contains('open');
+        // Close all
+        faqList.querySelectorAll('.faq-item').forEach(function(i) {
+          i.classList.remove('open');
+          i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+        });
+        // Open this one if it was not open
+        if (!isOpen) {
+          item.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
       });
-      // Open this one if not already open
-      if (!expanded) {
-        item.classList.add('open');
-        this.setAttribute('aria-expanded', 'true');
-      }
     });
-  });
+  })();
+
+  // Dynamic Hero Title Rotator
+  const animatedTitles = [
+    "Expert CRM Solutions",
+    "Trusted Advisors",
+    "a Salesforce Partner"
+  ];
+  let idx = 0;
+  const el = document.getElementById('dynamic-hero-animated');
+  if (!el) return;
+  function setTitle(idx) {
+    el.classList.remove('dynamic-hero-animate');
+    void el.offsetWidth;
+    el.textContent = animatedTitles[idx];
+    el.classList.add('dynamic-hero-animate');
+  }
+  setTitle(idx);
+  setInterval(() => {
+    idx = (idx + 1) % animatedTitles.length;
+    setTitle(idx);
+  }, 3000);
+
+  // Enhanced Why Choose Us Card Hover Effect
+  (function() {
+    var grid = document.getElementById('whyChooseUsGrid');
+    if (!grid) return;
+    var cards = grid.querySelectorAll('.why-choose-us-card');
+    cards.forEach(function(card) {
+      card.addEventListener('mouseenter', function() {
+        cards.forEach(function(c) {
+          c.classList.remove('is-hovered', 'is-dimmed');
+          if (c === card) {
+            c.classList.add('is-hovered');
+          } else {
+            c.classList.add('is-dimmed');
+          }
+        });
+      });
+      card.addEventListener('mouseleave', function() {
+        cards.forEach(function(c) {
+          c.classList.remove('is-hovered', 'is-dimmed');
+        });
+      });
+    });
+  })();
 })();

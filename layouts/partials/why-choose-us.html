@@ -10,7 +10,7 @@
         </div>
         <!-- Right: 2x2 Card Grid -->
         <div class="why-choose-us-right">
-          <div class="why-choose-us-card-grid">
+          <div class="why-choose-us-card-grid enhanced-hover" id="whyChooseUsGrid">
             {{ range $i, $f := first 4 .Params.features }}
               <div class="why-choose-us-card {{ if modBool $i 2 }}card-purple{{ else }}card-gray{{ end }}" data-index="{{ $i }}">
                 <div class="why-choose-us-card-content">
