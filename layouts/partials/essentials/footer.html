@@ -1,58 +1,47 @@
-<footer class="bg-light dark:bg-darkmode-light">
-  <div class="container">
-    <div class="row items-center py-10">
-      <div class="lg:col-3 mb-8 text-center lg:mb-0 lg:text-left">
-        <!-- navbar brand/logo -->
-        <a
-          class="navbar-brand inline-block"
-          href="{{ site.Home.RelPermalink }}">
-          {{ partial "logo" }}
+<footer class="footer-modern">
+  <div class="footer-grid">
+    <div class="footer-col">
+      <div class="footer-card">
+        <div class="footer-card-title">Connect With Us</div>
+        <div class="footer-card-text">
+          Have questions or need expert CRM/Salesforce assistance? We're here to help.
+        </div>
+        <a href="/contact" class="footer-btn">Get in Touch</a>
+      </div>
+      <div class="footer-card">
+        <div class="footer-card-title">Let's Stay In Touch</div>
+        <div class="footer-card-text">
+          Follow us on LinkedIn for updates, tips, and insights into the world of CRM.
+        </div>
+        <a href="https://linkedin.com/company/yourcompany" class="footer-btn linkedin-btn" target="_blank">
+          <!-- Official LinkedIn SVG icon -->
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-right:12px;">
+            <rect width="32" height="32" rx="6" fill="#0077B5"/>
+            <path d="M12.074 13.667h-2.667v8h2.667v-8zm-1.333-1.333c.853 0 1.333-.567 1.333-1.267-.015-.72-.48-1.267-1.317-1.267-.837 0-1.333.547-1.333 1.267 0 .7.48 1.267 1.3 1.267h.017zm2.96 1.333v8h2.667v-4.467c0-1.187.427-1.997 1.493-1.997.814 0 1.297.547 1.297 1.997v4.467h2.667v-4.8c0-2.56-1.36-3.747-3.173-3.747-1.467 0-2.12.813-2.487 1.387h.02v-1.187h-2.667c.034.78 0 8 0 8h2.667z" fill="#fff"/>
+          </svg>
+          Follow us on LinkedIn
         </a>
       </div>
-      <div class="lg:col-6 mb-8 text-center lg:mb-0">
-        <ul>
-          {{ range site.Menus.footer }}
-            <li class="m-3 inline-block">
-              <a
-                {{ if findRE `^http` .URL }}
-                  target="_blank" rel="noopener"
-                {{ end }}
-                href="{{ if findRE `^#` .URL }}
-                  {{ if not $.IsHome }}
-                    {{ site.Home.RelPermalink }}
-                  {{ end }}{{ .URL }}
-                {{ else }}
-                  {{ .URL | relLangURL }}
-                {{ end }}"
-                >{{ .Name }}</a
-              >
-            </li>
-          {{ end }}
-        </ul>
       </div>
-      <div class="lg:col-3 mb-8 text-center lg:mb-0 lg:mt-0 lg:text-right">
-        <ul class="social-icons">
-          {{ range site.Data.social.main }}
-            <li>
-              <a
-                target="_blank"
-                aria-label="{{ .name }}"
-                rel="nofollow noopener"
-                href="{{ .link | safeURL }}">
-                <i class="{{ .icon }}"></i>
-              </a>
-            </li>
+    <div class="footer-col">
+      <div class="footer-menu-title">Menu</div>
+      <ul class="footer-menu">
+        {{ range site.Menus.main }}
+          <li><a href="{{ .URL | relLangURL }}">{{ .Name }}</a></li>
           {{ end }}
         </ul>
+      <div class="footer-copyright">
+        © {{ now.Year }} Your Company. All Rights Reserved.
       </div>
     </div>
-  </div>
-  <div class="border-border dark:border-darkmode-border border-t py-7">
-    <div
-      class="text-text-light dark:text-darkmode-text-light container text-center">
-      <p>
-        {{ site.Params.copyright | markdownify }}
-      </p>
+    <div class="footer-col">
+      <ul class="footer-social">
+        <li><a href="https://instagram.com/yourcompany" target="_blank">Instagram</a></li>
+        <li><a href="https://linkedin.com/company/yourcompany" target="_blank">LinkedIn</a></li>
+        <li><a href="https://facebook.com/yourcompany" target="_blank">Facebook</a></li>
+        <li><a href="https://twitter.com/yourcompany" target="_blank">Twitter</a></li>
+      </ul>
+      <div class="footer-designed">Designed by YourAgency.</div>
     </div>
   </div>
 </footer>

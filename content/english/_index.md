@@ -10,22 +10,22 @@ banner:
       link: "/contact"
       style: "primary"
     - enable: true
-      label: "View Our Work"
-      link: "/services"
+      label: "Contact Us"
+      link: "/contact"
       style: "secondary"
 
 # Features
 features:
-  - title: "What's Included in Hugoplate"
+  - title: "Your Experts Across Salesforce Sales, Service, and More"
     image: "/images/whats-included.png"
-    content: "Hugoplate is a comprehensive starter template that includes everything you need to get started with your Hugo project. What's Included in Hugoplate"
+    content: "We are certified Salesforce experts specializing in Sales Cloud, Service Cloud, and custom CRM solutions. Our team delivers comprehensive implementation, optimization, and training services to transform your business operations."
     bulletpoints:
-      - "10+ Pre-build pages"
-      - "95+ Google Pagespeed Score"
-      - "Build with Hugo and TailwindCSS for easy and customizable styling"
-      - "Fully responsive on all devices"
-      - "SEO-optimized for better search engine rankings"
-      - "**Open-source and free** for personal and commercial use"
+      - "Salesforce Sales Cloud Implementation & Optimization"
+      - "Service Cloud Setup & Customization"
+      - "Custom CRM Development & Integration"
+      - "User Training & Adoption Programs"
+      - "Ongoing Support & Maintenance"
+      - "**Certified Salesforce Consultants** with proven track record"
     button:
       enable: false
       label: "Get Started Now"

@@ -43,10 +43,15 @@
 /* Logo Marquee Styles */
 .logo-marquee {
   background: #fff;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  overflow: hidden;
+  position: relative;
 }
 .logo-marquee .marquee {
   scrollbar-width: none;
   -ms-overflow-style: none;
+  width: 100%;
 }
 .logo-marquee .marquee::-webkit-scrollbar {
   display: none;
@@ -55,6 +60,7 @@
   opacity: 0.7;
   transition: all 0.3s ease;
   border: 1px solid transparent;
+  flex-shrink: 0;
 }
 .logo-placeholder:hover {
   opacity: 1;
@@ -64,12 +70,51 @@
 }
 @media (min-width: 768px) {
   .logo-marquee .animate-marquee {
-    animation: marquee 30s linear infinite;
+    display: flex;
+    width: max-content;
+    transform: translateX(0);
+    transition: transform 0.1s linear;
+  }
+  .logo-marquee .animate-marquee.paused {
+    transition: none;
   }
 }
 @keyframes marquee {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
+}
+
+/* Pause/Play Button */
+.marquee-control {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid #e5e7eb;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+.marquee-control:hover {
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-50%) scale(1.05);
+}
+.marquee-control i {
+  color: #6b7280;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+.marquee-control:hover i {
+  color: #374151;
 }
 
 /* Scroll Indicator - make mouse icon white */

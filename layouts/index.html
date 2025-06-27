@@ -19,30 +19,30 @@
             
             {{ if .content }}
               <p class="mb-10 text-lg md:text-xl text-gray-700 max-w-2xl leading-relaxed">
-                {{ .content | markdownify }}
-              </p>
+              {{ .content | markdownify }}
+            </p>
             {{ end }}
             
             {{ if .buttons }}
               <div class="flex flex-wrap gap-4">
                 {{ range .buttons }}
-                  {{ if .enable }}
+              {{ if .enable }}
                     {{ $btnClass := "btn btn-primary text-lg px-8 py-4 shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2" }}
                     {{ if ne .style "primary" }}
                       {{ $btnClass = "btn btn-outline-primary text-lg px-8 py-4 shadow focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2" }}
                     {{ end }}
-                    <a
+                <a
                       class="{{ $btnClass }}"
-                      href="{{ .link | absURL }}"
-                      {{ if strings.HasPrefix .link `http` }}
-                        target="_blank" rel="noopener"
-                      {{ end }}>
-                      {{ .label }}
-                      <i class="fa fa-arrow-right pl-2"></i>
-                    </a>
-                  {{ end }}
-                {{ end }}
-              </div>
+                  href="{{ .link | absURL }}"
+                  {{ if strings.HasPrefix .link `http` }}
+                    target="_blank" rel="noopener"
+                  {{ end }}>
+                  {{ .label }}
+                  <i class="fa fa-arrow-right pl-2"></i>
+                </a>
+              {{ end }}
+            {{ end }}
+          </div>
             {{ else if .button }}
               {{ with .button }}
                 {{ if .enable }}
@@ -103,21 +103,32 @@
   <!-- /Hero Banner -->
 
   <!-- Logo Marquee -->
-  <section class="logo-marquee py-8 bg-white">
-    <div class="container">
-      <div class="marquee overflow-x-auto whitespace-nowrap flex items-center py-2" aria-label="Client logos">
-        <div class="flex items-center animate-marquee gap-12 min-w-max">
-          <div class="logo-placeholder h-12 flex items-center justify-center px-4 bg-blue-100 text-blue-700 font-bold rounded-lg text-sm">TechCorp</div>
-          <div class="logo-placeholder h-12 flex items-center justify-center px-4 bg-green-100 text-green-700 font-bold rounded-lg text-sm">InnovateLab</div>
-          <div class="logo-placeholder h-12 flex items-center justify-center px-4 bg-purple-100 text-purple-700 font-bold rounded-lg text-sm">DataFlow</div>
-          <div class="logo-placeholder h-12 flex items-center justify-center px-4 bg-orange-100 text-orange-700 font-bold rounded-lg text-sm">CloudSync</div>
-          <div class="logo-placeholder h-12 flex items-center justify-center px-4 bg-red-100 text-red-700 font-bold rounded-lg text-sm">SmartBiz</div>
-          <div class="logo-placeholder h-12 flex items-center justify-center px-4 bg-indigo-100 text-indigo-700 font-bold rounded-lg text-sm">FutureTech</div>
-          <div class="logo-placeholder h-12 flex items-center justify-center px-4 bg-teal-100 text-teal-700 font-bold rounded-lg text-sm">DigitalEdge</div>
-          <div class="logo-placeholder h-12 flex items-center justify-center px-4 bg-pink-100 text-pink-700 font-bold rounded-lg text-sm">NextGen</div>
-        </div>
+  <section class="logo-marquee py-8 bg-white w-full">
+    <div class="marquee overflow-x-auto whitespace-nowrap flex items-center py-2" aria-label="Client logos">
+      <div class="flex items-center animate-marquee gap-12 min-w-max" id="marquee-content">
+        <div class="logo-placeholder h-12 flex items-center justify-center px-4 bg-blue-100 text-blue-700 font-bold rounded-lg text-sm">TechCorp</div>
+        <div class="logo-placeholder h-12 flex items-center justify-center px-4 bg-green-100 text-green-700 font-bold rounded-lg text-sm">InnovateLab</div>
+        <div class="logo-placeholder h-12 flex items-center justify-center px-4 bg-purple-100 text-purple-700 font-bold rounded-lg text-sm">DataFlow</div>
+        <div class="logo-placeholder h-12 flex items-center justify-center px-4 bg-orange-100 text-orange-700 font-bold rounded-lg text-sm">CloudSync</div>
+        <div class="logo-placeholder h-12 flex items-center justify-center px-4 bg-red-100 text-red-700 font-bold rounded-lg text-sm">SmartBiz</div>
+        <div class="logo-placeholder h-12 flex items-center justify-center px-4 bg-indigo-100 text-indigo-700 font-bold rounded-lg text-sm">FutureTech</div>
+        <div class="logo-placeholder h-12 flex items-center justify-center px-4 bg-teal-100 text-teal-700 font-bold rounded-lg text-sm">DigitalEdge</div>
+        <div class="logo-placeholder h-12 flex items-center justify-center px-4 bg-pink-100 text-pink-700 font-bold rounded-lg text-sm">NextGen</div>
+        <!-- Duplicate logos for seamless loop -->
+        <div class="logo-placeholder h-12 flex items-center justify-center px-4 bg-blue-100 text-blue-700 font-bold rounded-lg text-sm">TechCorp</div>
+        <div class="logo-placeholder h-12 flex items-center justify-center px-4 bg-green-100 text-green-700 font-bold rounded-lg text-sm">InnovateLab</div>
+        <div class="logo-placeholder h-12 flex items-center justify-center px-4 bg-purple-100 text-purple-700 font-bold rounded-lg text-sm">DataFlow</div>
+        <div class="logo-placeholder h-12 flex items-center justify-center px-4 bg-orange-100 text-orange-700 font-bold rounded-lg text-sm">CloudSync</div>
+        <div class="logo-placeholder h-12 flex items-center justify-center px-4 bg-red-100 text-red-700 font-bold rounded-lg text-sm">SmartBiz</div>
+        <div class="logo-placeholder h-12 flex items-center justify-center px-4 bg-indigo-100 text-indigo-700 font-bold rounded-lg text-sm">FutureTech</div>
+        <div class="logo-placeholder h-12 flex items-center justify-center px-4 bg-teal-100 text-teal-700 font-bold rounded-lg text-sm">DigitalEdge</div>
+        <div class="logo-placeholder h-12 flex items-center justify-center px-4 bg-pink-100 text-pink-700 font-bold rounded-lg text-sm">NextGen</div>
       </div>
     </div>
+    <!-- Pause/Play Button -->
+    <button class="marquee-control" id="marquee-control" aria-label="Pause marquee">
+      <i class="fa fa-pause" id="marquee-icon"></i>
+    </button>
   </section>
   <!-- /Logo Marquee -->
 

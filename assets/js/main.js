@@ -123,4 +123,64 @@
       });
     });
   })();
+
+  // Marquee Pause/Play Control
+  (function() {
+    const marqueeContent = document.getElementById('marquee-content');
+    const marqueeControl = document.getElementById('marquee-control');
+    const marqueeIcon = document.getElementById('marquee-icon');
+    
+    if (!marqueeContent || !marqueeControl || !marqueeIcon) return;
+    
+    let isPaused = false;
+    let animationId = null;
+    let startTime = null;
+    let currentPosition = 0;
+    const animationDuration = 60000; // 60 seconds
+    const totalDistance = marqueeContent.scrollWidth / 2; // Half the width for seamless loop
+    
+    function animate(currentTime) {
+      if (!startTime) startTime = currentTime;
+      
+      if (!isPaused) {
+        const elapsed = currentTime - startTime;
+        const progress = (elapsed % animationDuration) / animationDuration;
+        currentPosition = -progress * totalDistance;
+        
+        marqueeContent.style.transform = `translateX(${currentPosition}px)`;
+        animationId = requestAnimationFrame(animate);
+      }
+    }
+    
+    function startAnimation() {
+      if (!isPaused) {
+        startTime = null;
+        animationId = requestAnimationFrame(animate);
+      }
+    }
+    
+    function stopAnimation() {
+      if (animationId) {
+        cancelAnimationFrame(animationId);
+        animationId = null;
+      }
+    }
+    
+    marqueeControl.addEventListener('click', function() {
+      isPaused = !isPaused;
+      
+      if (isPaused) {
+        stopAnimation();
+        marqueeIcon.className = 'fa fa-play';
+        marqueeControl.setAttribute('aria-label', 'Play marquee');
+      } else {
+        startAnimation();
+        marqueeIcon.className = 'fa fa-pause';
+        marqueeControl.setAttribute('aria-label', 'Pause marquee');
+      }
+    });
+    
+    // Start the animation initially
+    startAnimation();
+  })();
 })();

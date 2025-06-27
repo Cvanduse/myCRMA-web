@@ -1,12 +1,89 @@
 {{ define "main" }}
-  <section class="section-sm">
-    <div class="container">
-      <div class="row justify-center">
-        <div class="md:col-10 lg:col-7 text-center">
-          {{ partial "image" (dict "Src" .Params.image "Context" .Page "Alt" .Title "Class" "mx-auto mb-6" "Size" "200x200") }}
-          <h2 class="h3 mb-6">{{ .Title }}</h2>
-          <div class="content">{{ .Content }}</div>
+<section class="about-hero">
+  <h1 class="about-title">About Us</h1>
+  <p class="about-subtitle">Your Interests Come First</p>
+  <p class="about-intro">
+    We use the latest technology and software to ensure accurate and efficient record-keeping.<br>
+    Our certified experts provide high-quality CRM and Salesforce consulting for businesses of all sizes.
+  </p>
+</section>
+
+<section class="about-stats">
+  <div class="stat">
+    <div class="stat-value">25</div>
+    <div class="stat-label">Professional Experts</div>
+  </div>
+  <div class="stat">
+    <div class="stat-value">20+</div>
+    <div class="stat-label">Years Experience</div>
+  </div>
+  <div class="stat">
+    <div class="stat-value">5k+</div>
+    <div class="stat-label">Satisfied Clients</div>
+  </div>
+  <div class="stat">
+    <div class="stat-value">10y+</div>
+    <div class="stat-label">Affiliate Experience</div>
+  </div>
+</section>
+
+<section class="about-skills">
+  <h2>Our Skills</h2>
+  <div class="skills-grid">
+    <div class="skill">
+      <div class="skill-icon">🌟</div>
+      <div class="skill-title">Business Acumen</div>
+      <div class="skill-desc">We take pride in our highly detail-oriented approach and exceptional customer service.</div>
+    </div>
+    <div class="skill">
+      <div class="skill-icon">💻</div>
+      <div class="skill-title">Technological Savvy</div>
+      <div class="skill-desc">We leverage the latest CRM and Salesforce tools for your success.</div>
+    </div>
+    <div class="skill">
+      <div class="skill-icon">📊</div>
+      <div class="skill-title">Analytical Ability</div>
+      <div class="skill-desc">We use data-driven insights to optimize your business processes.</div>
+    </div>
+    <div class="skill">
+      <div class="skill-icon">🤝</div>
+      <div class="skill-title">Customer Service</div>
+      <div class="skill-desc">We are committed to your satisfaction and long-term success.</div>
+    </div>
+  </div>
+</section>
+
+<section class="about-testimonials">
+  <h2>What Our Clients Say</h2>
+  <div class="testimonials-grid">
+    <div class="testimonial">
+      <div class="testimonial-quote">“The team is incredibly knowledgeable and always goes above and beyond to help me with my CRM needs.”</div>
+      <div class="testimonial-client">Landon Mason, CEO of Proximity</div>
+    </div>
+    <div class="testimonial">
+      <div class="testimonial-quote">“They've helped us save time and money by streamlining our Salesforce implementation.”</div>
+      <div class="testimonial-client">Ava Smith, Operations Director</div>
         </div>
+  </div>
+</section>
+
+<section class="about-team">
+  <h2>Our Amazing Team</h2>
+  <div class="team-grid">
+    <div class="team-member">
+      <img src="/images/avatar.png" alt="Esther Howard" class="team-photo">
+      <div class="team-name">Esther Howard</div>
+      <div class="team-role">Founder</div>
+    </div>
+    <div class="team-member">
+      <img src="/images/avatar-sm.png" alt="Boyce Cowan" class="team-photo">
+      <div class="team-name">Boyce Cowan</div>
+      <div class="team-role">Office Director</div>
+    </div>
+    <div class="team-member">
+      <img src="/images/avatar-sm.png" alt="Jenny Wilson" class="team-photo">
+      <div class="team-name">Jenny Wilson</div>
+      <div class="team-role">Sales Manager</div>
       </div>
     </div>
   </section>

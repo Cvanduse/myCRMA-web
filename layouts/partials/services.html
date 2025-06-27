@@ -12,8 +12,14 @@
             <div class="service-item">
               <a href="{{ .link | default '#' }}" class="service-link">
                 <div class="service-content">
+                  <span class="service-icon">{{ .icon | default "🚀" }}</span>
                   <h3 class="service-title">{{ .title | markdownify }} <span class="arrow">→</span></h3>
                   <p class="service-description">{{ .description | markdownify }}</p>
+                  <div class="service-keywords">
+                    {{ range .keywords }}
+                      <span class="service-keyword">{{ . }}</span>
+                    {{ end }}
+                  </div>
                 </div>
                 <div class="service-media">
                   <div class="service-image-container">
@@ -23,6 +29,15 @@
               </a>
             </div>
           {{ end }}
+        </div>
+        
+        <!-- Bold Full-Width CTA Bar -->
+        <div class="services-cta-bar">
+          <div class="cta-bar-title">Ready to Start?</div>
+          <a href="/contact" class="cta-bar-action">
+            <span class="cta-bar-dot"></span>
+            Get in Touch
+          </a>
         </div>
       </div>
     </section>
