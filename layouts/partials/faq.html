@@ -16,11 +16,11 @@
               <span class="faq-badge-text">Questions Answered</span>
             </div>
             <h2 class="faq-title big">Frequently asked<br>questions</h2>
-            <div class="faq-list modern-faq">
-              {{ range .Params.faqs }}
-                <div class="faq-item">
-                  <button class="faq-question" aria-expanded="false">
-                    <span class="faq-q-text">{{ .question }}</span>
+            <div class="faq-list modern-faq" id="faq-accordion">
+              {{ range $i, $faq := .Params.faqs }}
+                <div class="faq-item" id="faq-item-{{ $i }}">
+                  <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-{{ $i }}" id="faq-question-{{ $i }}">
+                    <span class="faq-q-text">{{ $faq.question }}</span>
                     <span class="faq-toggle-icon" aria-hidden="true">
                       <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect x="14" y="6" width="4" height="20" rx="2" fill="#5b3df6"/>
@@ -28,8 +28,8 @@
                       </svg>
                     </span>
                   </button>
-                  <div class="faq-answer">
-                    <p>{{ .answer }}</p>
+                  <div class="faq-answer" id="faq-answer-{{ $i }}" role="region" aria-labelledby="faq-question-{{ $i }}">
+                    <p>{{ $faq.answer }}</p>
                   </div>
                 </div>
               {{ end }}

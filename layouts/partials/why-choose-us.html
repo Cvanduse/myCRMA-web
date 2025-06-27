@@ -1,41 +1,28 @@
 {{ with site.GetPage "sections/why-choose-us" }}
   {{ if .Params.enable }}
-    <section class="why-choose-us-section section">
-      <div class="container why-choose-us-flex">
-        <!-- Left: Heading/Description -->
-        <div class="why-choose-us-left">
-          <h3 class="why-choose-us-label">{{ .Params.label | default "Why Choose Us" }}</h3>
-          <h2 class="why-choose-us-title">{{ .Params.title | default "The Nova Difference" }}</h2>
-          <p class="why-choose-us-description">{{ .Params.description }}</p>
-        </div>
-        <!-- Right: 2x2 Card Grid -->
-        <div class="why-choose-us-right">
-          <div class="why-choose-us-card-grid enhanced-hover" id="whyChooseUsGrid">
-            {{ range $i, $f := first 4 .Params.features }}
-              <div class="why-choose-us-card {{ if modBool $i 2 }}card-purple{{ else }}card-gray{{ end }}" data-index="{{ $i }}">
-                <div class="why-choose-us-card-content">
-                  <h4 class="why-choose-us-feature-title">{{ $f.title }}</h4>
-                  <p class="why-choose-us-feature-description">{{ $f.description }}</p>
-                </div>
-                <div class="why-choose-us-card-icon">
-                  {{/* SVG Placeholder Icon */}}
-                  {{ if eq $i 0 }}
-                    <!-- Lightning -->
-                    <svg width="56" height="56" viewBox="0 0 56 56" fill="none"><rect width="56" height="56" rx="12" fill="#fff" fill-opacity="0"/><path d="M32 6L14 32H26L24 50L42 24H30L32 6Z" fill="#fff" fill-opacity="0.7" stroke="#D1D5DB" stroke-width="3"/></svg>
-                  {{ else if eq $i 1 }}
-                    <!-- Books -->
-                    <svg width="56" height="56" viewBox="0 0 56 56" fill="none"><rect width="56" height="56" rx="12" fill="#fff" fill-opacity="0"/><rect x="12" y="36" width="32" height="8" rx="2" fill="#A5B4FC"/><rect x="16" y="28" width="24" height="8" rx="2" fill="#6366F1"/><rect x="20" y="20" width="16" height="8" rx="2" fill="#3730A3"/></svg>
-                  {{ else if eq $i 2 }}
-                    <!-- Dollar Coin -->
-                    <svg width="56" height="56" viewBox="0 0 56 56" fill="none"><circle cx="28" cy="28" r="24" fill="#E0E7FF"/><text x="50%" y="58%" text-anchor="middle" fill="#6366F1" font-size="28" font-family="Arial" dy=".3em">$</text></svg>
-                  {{ else }}
-                    <!-- Arrow -->
-                    <svg width="56" height="56" viewBox="0 0 56 56" fill="none"><rect width="56" height="56" rx="12" fill="#fff" fill-opacity="0"/><path d="M16 40L40 16M40 16H22M40 16V34" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  {{ end }}
-                </div>
+    <section class="why-choose-us-section section dreamx-advantages" style="padding-top: 64px; padding-bottom: 64px; background: #fff;">
+      <div class="dreamx-whychooseus-flex" style="display: flex; align-items: flex-start; gap: 48px; max-width: 1400px; margin: 0 auto;">
+        <!-- Left: Cards -->
+        <div class="dreamx-whychooseus-left" style="flex: 1 1 60%; min-width: 340px;">
+          <h2 class="dreamx-advantages-title" style="font-size:2.5rem; font-weight:800; margin-bottom:0.7rem;">{{ .Params.title | default "Why Choose Us" }}</h2>
+          <p class="dreamx-advantages-desc" style="font-size:1.25rem; color:#444; max-width:600px; margin:0 0 2.5rem 0;">{{ .Params.description }}</p>
+          <div class="dreamx-advantages-grid dreamx-whychooseus-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(2, 1fr); gap: 32px;">
+            {{ range $i, $f := first 6 .Params.features }}
+              <div class="dreamx-adv-card dreamx-whychooseus-card{{ if or (eq $i 0) (eq $i 2) (eq $i 4) }} dreamx-purple{{ else }} dreamx-gray{{ end }}">
+                <div class="dreamx-adv-title">{{ $f.title }}</div>
+                {{ if $f.description }}<div class="dreamx-adv-desc">{{ $f.description }}</div>{{ end }}
+                <div class="dreamx-adv-num-circle">{{ printf "%02d" (add $i 1) }}</div>
               </div>
             {{ end }}
           </div>
+        </div>
+        <!-- Right: Illustration -->
+        <div class="dreamx-whychooseus-right" style="flex: 1 1 40%; min-width: 320px; display: flex; align-items: center; justify-content: center;">
+          {{ if .Params.image }}
+            <img src="{{ .Params.image }}" alt="Why Choose Us Illustration" style="max-width: 100%; height: auto;">
+          {{ else }}
+            <img src="/images/why-choose-us.svg" alt="Why Choose Us Illustration" style="max-width: 100%; height: auto;">
+          {{ end }}
         </div>
       </div>
     </section>

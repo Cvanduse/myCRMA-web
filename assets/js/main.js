@@ -57,48 +57,28 @@
     });
   }
 
-  // Modern FAQ Expand/Collapse
-  (function() {
-    var faqList = document.querySelector('.modern-faq');
-    if (!faqList) return;
-    faqList.querySelectorAll('.faq-item').forEach(function(item) {
-      var btn = item.querySelector('.faq-question');
-      btn.addEventListener('click', function() {
-        var isOpen = item.classList.contains('open');
-        // Close all
-        faqList.querySelectorAll('.faq-item').forEach(function(i) {
-          i.classList.remove('open');
-          i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
-        });
-        // Open this one if it was not open
-        if (!isOpen) {
-          item.classList.add('open');
-          btn.setAttribute('aria-expanded', 'true');
-        }
-      });
-    });
-  })();
-
   // Dynamic Hero Title Rotator
-  const animatedTitles = [
-    "Expert CRM Solutions",
-    "Trusted Advisors",
-    "a Salesforce Partner"
-  ];
-  let idx = 0;
-  const el = document.getElementById('dynamic-hero-animated');
-  if (!el) return;
-  function setTitle(idx) {
-    el.classList.remove('dynamic-hero-animate');
-    void el.offsetWidth;
-    el.textContent = animatedTitles[idx];
-    el.classList.add('dynamic-hero-animate');
-  }
-  setTitle(idx);
-  setInterval(() => {
-    idx = (idx + 1) % animatedTitles.length;
+  (function() {
+    const animatedTitles = [
+      "Expert CRM Solutions",
+      "Trusted Advisors",
+      "a Salesforce Partner"
+    ];
+    let idx = 0;
+    const el = document.getElementById('dynamic-hero-animated');
+    if (!el) return;
+    function setTitle(idx) {
+      el.classList.remove('dynamic-hero-animate');
+      void el.offsetWidth;
+      el.textContent = animatedTitles[idx];
+      el.classList.add('dynamic-hero-animate');
+    }
     setTitle(idx);
-  }, 3000);
+    setInterval(() => {
+      idx = (idx + 1) % animatedTitles.length;
+      setTitle(idx);
+    }, 3000);
+  })();
 
   // Enhanced Why Choose Us Card Hover Effect
   (function() {
@@ -183,4 +163,66 @@
     // Start the animation initially
     startAnimation();
   })();
+
+  // DreamX Why Choose Us Card Mobile Toggle
+  (function() {
+    function isMobile() {
+      return window.innerWidth <= 900;
+    }
+    var grid = document.querySelector('.dreamx-advantages-grid');
+    if (!grid) return;
+    var cards = grid.querySelectorAll('.dreamx-adv-card');
+    cards.forEach(function(card) {
+      card.addEventListener('click', function(e) {
+        if (!isMobile()) return;
+        var isOpen = card.classList.contains('open');
+        cards.forEach(function(c) { c.classList.remove('open'); });
+        if (!isOpen) {
+          card.classList.add('open');
+        }
+      });
+    });
+    // Optional: close all cards on resize to desktop
+    window.addEventListener('resize', function() {
+      if (!isMobile()) {
+        cards.forEach(function(c) { c.classList.remove('open'); });
+      }
+    });
+  })();
+
+  // Robust FAQ Accordion (dynamic height, one open at a time)
+  document.addEventListener('DOMContentLoaded', function() {
+    var faqAccordion = document.getElementById('faq-accordion');
+    if (!faqAccordion) return;
+    faqAccordion.addEventListener('click', function(e) {
+      var btn = e.target.closest('.faq-question');
+      if (!btn) return;
+      var item = btn.closest('.faq-item');
+      var answer = item.querySelector('.faq-answer');
+      var open = item.classList.contains('open');
+      // Close all
+      faqAccordion.querySelectorAll('.faq-item').forEach(function(i) {
+        i.classList.remove('open');
+        var a = i.querySelector('.faq-answer');
+        var q = i.querySelector('.faq-question');
+        if (a) a.style.height = '0px';
+        if (q) q.setAttribute('aria-expanded', 'false');
+      });
+      // Open this one if it was not open
+      if (!open) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+        if (answer) {
+          answer.style.height = answer.scrollHeight + 'px';
+        }
+      }
+    });
+    // On window resize, recalculate open answer height
+    window.addEventListener('resize', function() {
+      var openItem = faqAccordion.querySelector('.faq-item.open .faq-answer');
+      if (openItem) {
+        openItem.style.height = openItem.scrollHeight + 'px';
+      }
+    });
+  });
 })();

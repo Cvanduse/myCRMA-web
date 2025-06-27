@@ -1,7 +1,8 @@
 {{ with site.GetPage "sections/project-cta" }}
   {{ if .Params.enable }}
-    <section class="section bg-[#F5F5F5] dark:bg-[#1A1A1A] py-32">
+    <section class="section bg-[#F5F5F5] dark:bg-[#1A1A1A] py-8">
       <div class="container">
+        {{ partial "mind-marquee" . }}
         <div class="row items-center justify-between mb-20">
           <div class="lg:col-6">
             <h2 class="text-[5rem] font-light leading-tight text-[#1A1A1A] dark:text-white">

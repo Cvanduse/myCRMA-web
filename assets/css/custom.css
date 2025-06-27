@@ -673,7 +673,7 @@
   max-width: 700px;
   background: #f8fafd;
   border-radius: 16px;
-  padding: 32px 24px;
+  padding: 32px 24px 48px 24px;
   box-shadow: 0 2px 12px rgba(0,0,0,0.03);
 }
 .faq-accordion {
@@ -693,33 +693,20 @@
   font-size: 1.08rem;
   font-weight: 500;
   cursor: pointer;
-  transition: background 0.2s;
 }
-.faq-question:hover {
-  background: #d1d9e6;
-}
-.faq-answer {
-  display: none;
-  background: #fff;
-  color: #444;
-  border-radius: 0 0 8px 8px;
-  padding: 14px 18px;
-  font-size: 1rem;
-  margin-top: -4px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.02);
-}
-.faq-answer.open {
-  display: block;
-}
+/* Removed conflicting legacy FAQ answer CSS that was overriding modern FAQ */
 
 /* Mind Marquee Styles */
 .mind-marquee-wrapper {
+  position: relative;
+  left: 50%;
   width: 100vw;
-  background: #f6f6f1;
+  margin-left: -50vw;
+  background: #F5F5F5;
   overflow: hidden;
   padding: 0;
-  margin: 0 0 32px 0;
-  position: relative;
+  margin-right: 0;
+  right: 0;
 }
 .mind-marquee {
   display: flex;
@@ -774,5 +761,192 @@
   .marquee-sep {
     font-size: 1.1rem;
     margin: 0 0.7rem;
+  }
+}
+
+/* DreamX-style Why Choose Us Section */
+.dreamx-advantages-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  margin: 0 auto;
+  max-width: 1100px;
+}
+.dreamx-adv-card {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px 0 rgba(91,61,246,0.07);
+  padding: 48px 32px 36px 32px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: box-shadow 0.25s, transform 0.25s;
+  cursor: pointer;
+  position: relative;
+}
+.dreamx-adv-card:hover {
+  box-shadow: 0 12px 36px 0 rgba(91,61,246,0.13);
+  transform: translateY(-8px) scale(1.03);
+}
+.dreamx-adv-icon {
+  font-size: 3.5rem;
+  color: #5b7bb2;
+  margin-bottom: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 72px;
+  width: 72px;
+}
+.dreamx-adv-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #18181b;
+  margin-bottom: 0.7rem;
+  letter-spacing: -0.5px;
+}
+.dreamx-adv-desc {
+  opacity: 0;
+  max-height: 0;
+  pointer-events: none;
+  transition: opacity 0.25s, max-height 0.25s;
+}
+.dreamx-adv-card:hover .dreamx-adv-desc {
+  opacity: 1;
+  max-height: 200px;
+  pointer-events: auto;
+}
+@media (max-width: 900px) {
+  .dreamx-advantages-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .dreamx-adv-card {
+    padding: 36px 18px 28px 18px;
+  }
+  .dreamx-adv-icon {
+    font-size: 2.2rem;
+    height: 48px;
+    width: 48px;
+  }
+  .dreamx-adv-desc {
+    opacity: 0;
+    max-height: 0;
+    pointer-events: none;
+    transition: opacity 0.25s, max-height 0.25s;
+  }
+  .dreamx-adv-card.open .dreamx-adv-desc {
+    opacity: 1;
+    max-height: 200px;
+    pointer-events: auto;
+  }
+  .dreamx-adv-card:hover .dreamx-adv-desc {
+    opacity: 0;
+    max-height: 0;
+    pointer-events: none;
+  }
+}
+/* Only hovered card scales */
+.dreamx-whychooseus-grid .dreamx-adv-card {
+  transition: transform 0.15s ease, box-shadow 0.15s ease, z-index 0.15s;
+}
+.dreamx-whychooseus-grid .dreamx-adv-card:hover {
+  transform: scale(1.10);
+  box-shadow: 0 12px 36px 0 rgba(91,61,246,0.13);
+}
+/* Top row: grow downward */
+.dreamx-whychooseus-grid .dreamx-adv-card:nth-child(-n+3) {
+  transform-origin: top center;
+}
+/* Bottom row: grow upward */
+.dreamx-whychooseus-grid .dreamx-adv-card:nth-child(n+4) {
+  transform-origin: bottom center;
+}
+.dreamx-whychooseus-card.dreamx-purple {
+  background: #3252fc;
+  color: #fff;
+}
+.dreamx-whychooseus-card.dreamx-gray {
+  background: #f5f6fa;
+  color: #18181b;
+}
+.dreamx-whychooseus-grid {
+  grid-template-columns: repeat(3, 1fr) !important;
+  grid-template-rows: repeat(2, 1fr) !important;
+  gap: 32px !important;
+}
+.dreamx-whychooseus-flex {
+  display: flex;
+  align-items: flex-start;
+  gap: 48px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.dreamx-whychooseus-left {
+  flex: 1 1 60%;
+  min-width: 340px;
+}
+.dreamx-whychooseus-right {
+  flex: 1 1 40%;
+  min-width: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.dreamx-adv-num-circle {
+  position: absolute;
+  right: 22px;
+  bottom: 22px;
+  width: 44px;
+  height: 44px;
+  background: transparent;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.18rem;
+  font-weight: 600;
+  color: inherit;
+  border: 2px solid #3252fc;
+  box-shadow: none;
+  z-index: 3;
+  background: #fff;
+}
+.dreamx-whychooseus-card.dreamx-purple .dreamx-adv-num-circle {
+  border: 2px solid #fff;
+  color: #fff;
+  background: #3252fc;
+}
+@media (max-width: 900px) {
+  .dreamx-whychooseus-flex {
+    flex-direction: column;
+    gap: 32px;
+  }
+  .dreamx-whychooseus-left, .dreamx-whychooseus-right {
+    max-width: 100%;
+    min-width: 0;
+  }
+  .dreamx-whychooseus-grid {
+    grid-template-columns: 1fr !important;
+    grid-template-rows: none !important;
+    gap: 18px !important;
+  }
+  .dreamx-adv-num-circle {
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
+    right: 12px;
+    bottom: 12px;
+  }
+}
+.dreamx-adv-card:hover .dreamx-adv-num-circle {
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+@media (max-width: 900px) {
+  .dreamx-adv-card.open .dreamx-adv-num-circle {
+    opacity: 0;
+    transition: opacity 0.12s ease;
   }
 }
