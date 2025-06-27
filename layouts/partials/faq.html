@@ -2,8 +2,9 @@
   {{ if .Params.enable }}
     <section class="faq-section section">
       <div class="container">
-        <div class="faq-header-row">
-          <div class="faq-header-left">
+        <div class="faq-2col-grid" style="display: flex; flex-wrap: wrap; gap: 48px; align-items: flex-start;">
+          <!-- Left: FAQ Accordion -->
+          <div class="faq-col-left" style="flex: 2 1 400px; min-width: 320px;">
             <div class="faq-badge">
               <span class="faq-badge-icon">
                 <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -15,29 +16,47 @@
               <span class="faq-badge-text">Questions Answered</span>
             </div>
             <h2 class="faq-title big">Frequently asked<br>questions</h2>
-          </div>
-          <div class="faq-header-right">
-            <div class="faq-desc-text">{{ .Params.description }}</div>
-            <a href="/contact" class="faq-contact-btn">Contact Us</a>
-          </div>
-        </div>
-        <div class="faq-list modern-faq">
-          {{ range .Params.faqs }}
-            <div class="faq-item">
-              <button class="faq-question" aria-expanded="false">
-                <span class="faq-q-text">{{ .question }}</span>
-                <span class="faq-toggle-icon" aria-hidden="true">
-                  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="14" y="6" width="4" height="20" rx="2" fill="#5b3df6"/>
-                    <rect x="6" y="14" width="20" height="4" rx="2" fill="#5b3df6"/>
-                  </svg>
-                </span>
-              </button>
-              <div class="faq-answer">
-                <p>{{ .answer }}</p>
-              </div>
+            <div class="faq-list modern-faq">
+              {{ range .Params.faqs }}
+                <div class="faq-item">
+                  <button class="faq-question" aria-expanded="false">
+                    <span class="faq-q-text">{{ .question }}</span>
+                    <span class="faq-toggle-icon" aria-hidden="true">
+                      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="14" y="6" width="4" height="20" rx="2" fill="#5b3df6"/>
+                        <rect x="6" y="14" width="20" height="4" rx="2" fill="#5b3df6"/>
+                      </svg>
+                    </span>
+                  </button>
+                  <div class="faq-answer">
+                    <p>{{ .answer }}</p>
+                  </div>
+                </div>
+              {{ end }}
             </div>
-          {{ end }}
+          </div>
+
+          <!-- Right: Cards -->
+          <div class="faq-col-right" style="flex: 1 1 320px; min-width: 260px; display: flex; flex-direction: column; gap: 24px;">
+            <!-- Book a Quick Intro Call Card -->
+            <div class="footer-card" style="align-items: center; text-align: center; display: flex; flex-direction: column;">
+              <img src="/images/avatar.png" alt="Intro Call" style="width: 56px; height: 56px; border-radius: 50%; object-fit: cover; margin-bottom: 0.8rem; border: 3px solid #fff; box-shadow: 0 1px 4px rgba(0,0,0,0.08);">
+              <div class="footer-card-title" style="margin-bottom: 0.5rem;">Book a Quick Intro Call</div>
+              <div class="footer-card-text" style="font-size: 1.05rem; margin-bottom: 0.7rem;">Let's talk about your project or questions—no pressure, just a quick intro call.</div>
+              <a href="/contact" class="footer-btn linkedin-btn" style="width: 100%; max-width: 220px; margin: 0 auto 0.7rem auto;">Book a Call</a>
+              <div style="font-size: 0.95rem; margin-bottom: 0.1rem;">Prefer email?</div>
+              <a href="mailto:hello@wdesigna.com" style="color: #0077b5; font-weight: 500; text-decoration: underline; font-size: 0.98rem;">hello@wdesigna.com</a>
+            </div>
+            <!-- Insights in Your Inbox Card -->
+            <div class="footer-card" style="text-align: left;">
+              <div class="footer-card-title" style="margin-bottom: 0.4rem;">Insights in Your Inbox</div>
+              <div class="footer-card-text" style="font-size: 1.05rem; margin-bottom: 0.7rem;">Join our newsletter for smarter business moves.</div>
+              <form action="#" method="post" style="display: flex; gap: 0.3rem; align-items: center;">
+                <input type="email" name="email" placeholder="me@company.com" required style="flex: 1 1 auto; border-radius: 1.2rem; border: 1.5px solid #5b7bb2; padding: 0.6rem 1rem; font-size: 0.98rem; margin-right: 0.2rem; background: #fff; color: #1a2233;">
+                <button type="submit" class="footer-btn linkedin-btn" style="padding: 0.6rem 1.1rem; min-width: 0; min-height: 0; font-size: 1rem; border-radius: 1.2rem;">→</button>
+              </form>
+            </div>
+          </div>
         </div>
       </div>
     </section>

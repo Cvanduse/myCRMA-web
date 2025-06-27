@@ -711,3 +711,68 @@
 .faq-answer.open {
   display: block;
 }
+
+/* Mind Marquee Styles */
+.mind-marquee-wrapper {
+  width: 100vw;
+  background: #f6f6f1;
+  overflow: hidden;
+  padding: 0;
+  margin: 0 0 32px 0;
+  position: relative;
+}
+.mind-marquee {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  font-size: 2.4rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+  animation: mind-marquee-scroll 22s linear infinite;
+  gap: 2.5rem;
+  padding: 32px 0;
+}
+.marquee-item {
+  color: #18181b;
+  font-weight: 800;
+  margin: 0 1.5rem;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.marquee-sep {
+  font-size: 2.2rem;
+  color: #bdbdbd;
+  margin: 0 1.5rem;
+  font-weight: 400;
+}
+.marquee-color {
+  color: #18181b;
+  transition: color 0.2s;
+}
+.marquee-item:hover .marquee-ai {
+  color: #f7b500;
+}
+.marquee-item:hover .marquee-salesforce {
+  color: #0077b5;
+}
+.marquee-item:hover .marquee-data {
+  color: #4ade80;
+}
+.marquee-item:hover .marquee-design {
+  color: #ff6f3c;
+}
+@keyframes mind-marquee-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@media (max-width: 900px) {
+  .mind-marquee {
+    font-size: 1.3rem;
+    gap: 1.2rem;
+    padding: 18px 0;
+  }
+  .marquee-sep {
+    font-size: 1.1rem;
+    margin: 0 0.7rem;
+  }
+}
