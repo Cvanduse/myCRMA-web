@@ -190,39 +190,118 @@
     });
   })();
 
-  // Robust FAQ Accordion (dynamic height, one open at a time)
+  // Enhanced FAQ Accordion with reliable height calculation
   document.addEventListener('DOMContentLoaded', function() {
     var faqAccordion = document.getElementById('faq-accordion');
     if (!faqAccordion) return;
-    faqAccordion.addEventListener('click', function(e) {
-      var btn = e.target.closest('.faq-question');
-      if (!btn) return;
-      var item = btn.closest('.faq-item');
-      var answer = item.querySelector('.faq-answer');
-      var open = item.classList.contains('open');
-      // Close all
-      faqAccordion.querySelectorAll('.faq-item').forEach(function(i) {
-        i.classList.remove('open');
-        var a = i.querySelector('.faq-answer');
-        var q = i.querySelector('.faq-question');
-        if (a) a.style.height = '0px';
-        if (q) q.setAttribute('aria-expanded', 'false');
-      });
-      // Open this one if it was not open
-      if (!open) {
-        item.classList.add('open');
-        btn.setAttribute('aria-expanded', 'true');
-        if (answer) {
-          answer.style.height = answer.scrollHeight + 'px';
+
+    // Helper function to get the natural height of an element
+    function getNaturalHeight(element) {
+      // Create a clone to measure without affecting the original
+      var clone = element.cloneNode(true);
+      clone.style.position = 'absolute';
+      clone.style.visibility = 'hidden';
+      clone.style.height = 'auto';
+      clone.style.maxHeight = 'none';
+      clone.style.overflow = 'visible';
+      clone.style.padding = window.getComputedStyle(element).padding;
+      
+      // Append to body to measure
+      document.body.appendChild(clone);
+      var height = clone.offsetHeight;
+      document.body.removeChild(clone);
+      
+      return height;
+    }
+
+    // Helper function to smoothly expand an answer
+    function expandAnswer(answer, item, button) {
+      var targetHeight = getNaturalHeight(answer);
+      
+      // Set initial state
+      answer.style.height = '0px';
+      answer.style.overflow = 'hidden';
+      
+      // Add open class and set aria
+      item.classList.add('open');
+      button.setAttribute('aria-expanded', 'true');
+      
+      // Trigger reflow
+      answer.offsetHeight;
+      
+      // Animate to target height
+      answer.style.height = targetHeight + 'px';
+      
+      // After animation, set to auto for responsive behavior
+      setTimeout(function() {
+        if (item.classList.contains('open')) {
+          answer.style.height = 'auto';
+          answer.style.overflow = 'visible';
         }
+      }, 350); // Match CSS transition duration
+    }
+
+    // Helper function to collapse an answer
+    function collapseAnswer(answer, item, button) {
+      // Get current height and set it explicitly
+      var currentHeight = answer.offsetHeight;
+      answer.style.height = currentHeight + 'px';
+      answer.style.overflow = 'hidden';
+      
+      // Remove open class and set aria
+      item.classList.remove('open');
+      button.setAttribute('aria-expanded', 'false');
+      
+      // Trigger reflow
+      answer.offsetHeight;
+      
+      // Animate to 0
+      answer.style.height = '0px';
+    }
+
+    // Main click handler
+    faqAccordion.addEventListener('click', function(e) {
+      var button = e.target.closest('.faq-question');
+      if (!button) return;
+      
+      var item = button.closest('.faq-item');
+      var answer = item.querySelector('.faq-answer');
+      var isCurrentlyOpen = item.classList.contains('open');
+      
+      // Close all other items first
+      faqAccordion.querySelectorAll('.faq-item').forEach(function(otherItem) {
+        if (otherItem !== item && otherItem.classList.contains('open')) {
+          var otherAnswer = otherItem.querySelector('.faq-answer');
+          var otherButton = otherItem.querySelector('.faq-question');
+          if (otherAnswer && otherButton) {
+            collapseAnswer(otherAnswer, otherItem, otherButton);
+          }
+        }
+      });
+      
+      // Toggle current item
+      if (!isCurrentlyOpen) {
+        expandAnswer(answer, item, button);
+      } else {
+        collapseAnswer(answer, item, button);
       }
     });
-    // On window resize, recalculate open answer height
+
+    // Handle window resize
+    var resizeTimeout;
     window.addEventListener('resize', function() {
-      var openItem = faqAccordion.querySelector('.faq-item.open .faq-answer');
-      if (openItem) {
-        openItem.style.height = openItem.scrollHeight + 'px';
-      }
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(function() {
+        var openItems = faqAccordion.querySelectorAll('.faq-item.open');
+        openItems.forEach(function(item) {
+          var answer = item.querySelector('.faq-answer');
+          if (answer) {
+            // Temporarily set to auto to recalculate
+            answer.style.height = 'auto';
+            answer.style.overflow = 'visible';
+          }
+        });
+      }, 250);
     });
   });
 })();
