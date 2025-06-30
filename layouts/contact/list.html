@@ -1,95 +1,196 @@
 {{ define "main" }}
-<section class="contact-hero upgraded-hero">
-  <div class="hero-content">
-    <h1>Contact Us</h1>
-    <p class="hero-value-prop">Let's transform your business with Salesforce expertise.</p>
-    <p class="hero-intro">Book a free consultation or reach out to our team. We respond within 1 business day!</p>
-  </div>
-  <img src="/images/hero-illustration.svg" alt="CRM Team" class="hero-illustration" />
-</section>
-
-<section class="contact-locations-grid">
-  <div class="contact-location-card">
-    <div class="contact-location-title">London</div>
-    <div class="contact-location-detail"><span class="contact-icon-svg">🏢</span>14 Tottenham Road, London, England <button class="copy-btn" onclick="navigator.clipboard.writeText('14 Tottenham Road, London, England')">Copy</button> <a href="https://maps.google.com/?q=14+Tottenham+Road+London" target="_blank" class="directions-link">Get Directions</a></div>
-    <div class="contact-location-detail"><span class="contact-icon-svg">📞</span>+1 212 425 8617 <button class="copy-btn" onclick="navigator.clipboard.writeText('+1 212 425 8617')">Copy</button></div>
-    <div class="contact-location-detail"><span class="contact-icon-svg">✉️</span>information@office.com <button class="copy-btn" onclick="navigator.clipboard.writeText('information@office.com')">Copy</button></div>
-  </div>
-  <div class="contact-location-card">
-    <div class="contact-location-title">Paris</div>
-    <div class="contact-location-detail"><span class="contact-icon-svg">🏢</span>27 Rue de Berri, Paris, France <button class="copy-btn" onclick="navigator.clipboard.writeText('27 Rue de Berri, Paris, France')">Copy</button> <a href="https://maps.google.com/?q=27+Rue+de+Berri+Paris" target="_blank" class="directions-link">Get Directions</a></div>
-    <div class="contact-location-detail"><span class="contact-icon-svg">📞</span>+1 212 425 8617 <button class="copy-btn" onclick="navigator.clipboard.writeText('+1 212 425 8617')">Copy</button></div>
-    <div class="contact-location-detail"><span class="contact-icon-svg">✉️</span>information@office.com <button class="copy-btn" onclick="navigator.clipboard.writeText('information@office.com')">Copy</button></div>
-            </div>
-  <div class="contact-location-card">
-    <div class="contact-location-title">New York</div>
-    <div class="contact-location-detail"><span class="contact-icon-svg">🏢</span>5 Washington Square, New York, USA <button class="copy-btn" onclick="navigator.clipboard.writeText('5 Washington Square, New York, USA')">Copy</button> <a href="https://maps.google.com/?q=5+Washington+Square+New+York" target="_blank" class="directions-link">Get Directions</a></div>
-    <div class="contact-location-detail"><span class="contact-icon-svg">📞</span>+1 212 425 8617 <button class="copy-btn" onclick="navigator.clipboard.writeText('+1 212 425 8617')">Copy</button></div>
-    <div class="contact-location-detail"><span class="contact-icon-svg">✉️</span>information@office.com <button class="copy-btn" onclick="navigator.clipboard.writeText('information@office.com')">Copy</button></div>
-            </div>
-</section>
-
-<section class="capabilities-section">
-  <div class="capabilities-header-row">
-    <h2 class="capabilities-title">Our Capabilities</h2>
-    <a href="/services/" class="capabilities-learn-btn">Learn more</a>
-            </div>
-  <div class="capabilities-cards-grid">
-    <div class="capability-card">
-      <div class="capability-card-icon">⚡️</div>
-      <div class="capability-card-title">Salesforce Consulting</div>
-      <div class="capability-card-desc">We provide solutions designed to help you achieve your business objectives with Salesforce and CRM best practices.</div>
-      <a href="/services/consulting/" class="capability-card-link">Discover more &rarr;</a>
-        </div>
-    <div class="capability-card">
-      <div class="capability-card-icon">🔗</div>
-      <div class="capability-card-title">CRM Integration</div>
-      <div class="capability-card-desc">Our team specializes in seamless CRM integrations tailored to your unique business needs.</div>
-      <a href="/services/integration/" class="capability-card-link">Discover more &rarr;</a>
+<!-- Hero Section with Animated Header -->
+<section class="terra-hero">
+  <div class="container">
+    <div class="terra-hero-content">
+      <div class="terra-animated-header">
+        <img src="/images/why-choose-us.svg" alt="Let's Talk Animation" class="terra-hero-animation">
       </div>
-    <div class="capability-card">
-      <div class="capability-card-icon">🎓</div>
-      <div class="capability-card-title">Support & Training</div>
-      <div class="capability-card-desc">We offer ongoing support and user training to ensure your team gets the most from your CRM investment.</div>
-      <a href="/services/support/" class="capability-card-link">Discover more &rarr;</a>
+      <h1 class="terra-hero-title">Let's talk!</h1>
+      <p class="terra-hero-subtitle">Ready to transform your business with expert CRM solutions? We'd love to hear about your project.</p>
+      
+      <!-- Quick Contact Options -->
+      <div class="terra-quick-contact">
+        <a href="mailto:hello@mycrmadvisors.com" class="terra-contact-method">
+          <span class="terra-contact-icon">✉️</span>
+          <span class="terra-contact-text">hello@mycrmadvisors.com</span>
+        </a>
+        <a href="tel:+12124258617" class="terra-contact-method">
+          <span class="terra-contact-icon">📞</span>
+          <span class="terra-contact-text">+1 212 425 8617</span>
+        </a>
+      </div>
     </div>
-  </div>
-  <div class="capabilities-testimonial">
-    <blockquote>"The team at Your Company made our Salesforce migration seamless and stress-free!"</blockquote>
-    <cite>— Happy Client</cite>
-    </div>
-  </section>
-
-<section class="contact-form-section">
-  <h2>Book a Free Consultation</h2>
-  <p>Fill out the form and our team will get back to you within 1 business day.</p>
-  <div class="contact-form-container">
-    <!-- Tally form embed -->
-    <iframe data-tally-src="https://tally.so/r/your-tally-form-id" loading="lazy" width="100%" height="500" frameborder="0" marginheight="0" marginwidth="0" title="Contact Form"></iframe>
-  </div>
-  <div class="contact-trust-logos">
-    <img src="/images/logo.png" alt="Client 1" class="trust-logo" />
-    <img src="/images/logo-darkmode.png" alt="Client 2" class="trust-logo" />
-    <img src="/images/logo.png" alt="Client 3" class="trust-logo" />
   </div>
 </section>
 
-<section class="contact-faq">
-  <h3>Frequently Asked Questions</h3>
-  <div class="faq-accordion">
-    <div class="faq-item">
-      <button class="faq-question" onclick="this.nextElementSibling.classList.toggle('open')">How soon will I get a response?</button>
-      <div class="faq-answer">We respond to all inquiries within 1 business day.</div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-question" onclick="this.nextElementSibling.classList.toggle('open')">Do you offer virtual appointments?</button>
-      <div class="faq-answer">Yes! We offer both in-person and virtual consultations to fit your needs.</div>
+<!-- Main Contact Form Section -->
+<section class="terra-form-section">
+  <div class="container">
+    <div class="terra-form-container">
+      <div class="terra-form-header">
+        <h2>Tell us about your project</h2>
+        <p>We'll get back to you within 24 hours with a tailored proposal.</p>
+      </div>
+      
+      <form class="terra-contact-form" action="#" method="POST">
+        <!-- Project Type Selection -->
+        <div class="terra-form-group">
+          <label class="terra-form-label">What type of project are you looking for?</label>
+          <div class="terra-select-grid">
+            <label class="terra-select-option">
+              <input type="radio" name="project_type" value="new_implementation">
+              <span class="terra-option-content">
+                <span class="terra-option-icon">🚀</span>
+                <span class="terra-option-text">New CRM Implementation</span>
+              </span>
+            </label>
+            <label class="terra-select-option">
+              <input type="radio" name="project_type" value="optimization">
+              <span class="terra-option-content">
+                <span class="terra-option-icon">⚡</span>
+                <span class="terra-option-text">CRM Optimization</span>
+              </span>
+            </label>
+            <label class="terra-select-option">
+              <input type="radio" name="project_type" value="integration">
+              <span class="terra-option-content">
+                <span class="terra-option-icon">🔗</span>
+                <span class="terra-option-text">System Integration</span>
+              </span>
+            </label>
+            <label class="terra-select-option">
+              <input type="radio" name="project_type" value="training">
+              <span class="terra-option-content">
+                <span class="terra-option-icon">🎓</span>
+                <span class="terra-option-text">Training & Support</span>
+              </span>
+            </label>
+            <label class="terra-select-option">
+              <input type="radio" name="project_type" value="migration">
+              <span class="terra-option-content">
+                <span class="terra-option-icon">📈</span>
+                <span class="terra-option-text">Data Migration</span>
+              </span>
+            </label>
+            <label class="terra-select-option">
+              <input type="radio" name="project_type" value="other">
+              <span class="terra-option-content">
+                <span class="terra-option-icon">💭</span>
+                <span class="terra-option-text">Something else</span>
+              </span>
+            </label>
+          </div>
         </div>
-    <div class="faq-item">
-      <button class="faq-question" onclick="this.nextElementSibling.classList.toggle('open')">What industries do you serve?</button>
-      <div class="faq-answer">We work with clients across a wide range of industries, including technology, finance, healthcare, and more.</div>
+
+        <!-- Budget Range -->
+        <div class="terra-form-group">
+          <label class="terra-form-label">What's your budget range?</label>
+          <select class="terra-form-select" name="budget" required>
+            <option value="">Select your budget range</option>
+            <option value="under_10k">Under $10,000</option>
+            <option value="10k_25k">$10,000 - $25,000</option>
+            <option value="25k_50k">$25,000 - $50,000</option>
+            <option value="50k_100k">$50,000 - $100,000</option>
+            <option value="over_100k">$100,000+</option>
+            <option value="not_sure">Not sure yet</option>
+          </select>
+        </div>
+
+        <!-- Company Information -->
+        <div class="terra-form-row">
+          <div class="terra-form-group">
+            <label class="terra-form-label">Your name *</label>
+            <input type="text" class="terra-form-input" name="name" required>
+          </div>
+          <div class="terra-form-group">
+            <label class="terra-form-label">Company name *</label>
+            <input type="text" class="terra-form-input" name="company" required>
+          </div>
+        </div>
+
+        <div class="terra-form-row">
+          <div class="terra-form-group">
+            <label class="terra-form-label">Email address *</label>
+            <input type="email" class="terra-form-input" name="email" required>
+          </div>
+          <div class="terra-form-group">
+            <label class="terra-form-label">Phone number</label>
+            <input type="tel" class="terra-form-input" name="phone">
+          </div>
+        </div>
+
+        <!-- Project Details -->
+        <div class="terra-form-group">
+          <label class="terra-form-label">Tell us about your project</label>
+          <textarea class="terra-form-textarea" name="project_details" rows="5" placeholder="What challenges are you facing? What are your goals? Any specific requirements?"></textarea>
+        </div>
+
+        <!-- Timeline -->
+        <div class="terra-form-group">
+          <label class="terra-form-label">When would you like to start?</label>
+          <select class="terra-form-select" name="timeline">
+            <option value="">Select timeline</option>
+            <option value="asap">As soon as possible</option>
+            <option value="1_month">Within 1 month</option>
+            <option value="2_3_months">2-3 months</option>
+            <option value="6_months">3-6 months</option>
+            <option value="later">Later this year</option>
+            <option value="exploring">Just exploring options</option>
+          </select>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="terra-form-submit">
+          <button type="submit" class="terra-submit-btn">
+            Send my project details
+            <span class="terra-btn-arrow">→</span>
+          </button>
+          <p class="terra-form-note">We'll respond within 24 hours with a tailored proposal.</p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- Alternative Contact Methods -->
+<section class="terra-alternatives">
+  <div class="container">
+    <div class="terra-alt-content">
+      <h3>Prefer a different approach?</h3>
+      <div class="terra-alt-methods">
+        <div class="terra-alt-method">
+          <h4>Schedule a Call</h4>
+          <p>Book a 15-minute discovery call to discuss your needs.</p>
+          <a href="#" class="terra-alt-link">Book a call →</a>
+        </div>
+        <div class="terra-alt-method">
+          <h4>Send an RFP</h4>
+          <p>Have a detailed RFP? Send it directly to our team.</p>
+          <a href="mailto:rfp@mycrmadvisors.com" class="terra-alt-link">rfp@mycrmadvisors.com →</a>
+        </div>
+        <div class="terra-alt-method">
+          <h4>Quick Questions</h4>
+          <p>Need a quick answer? Reach out directly.</p>
+          <a href="mailto:hello@mycrmadvisors.com" class="terra-alt-link">hello@mycrmadvisors.com →</a>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- Social Proof / Awards -->
+<section class="terra-social-proof">
+  <div class="container">
+    <div class="terra-awards">
+      <h4>Trusted by industry leaders</h4>
+      <div class="terra-award-badges">
+        <div class="terra-badge">Salesforce Partner</div>
+        <div class="terra-badge">Certified Consultants</div>
+        <div class="terra-badge">ISO 27001</div>
+      </div>
+    </div>
+  </div>
 </section>
 
 {{ end }}

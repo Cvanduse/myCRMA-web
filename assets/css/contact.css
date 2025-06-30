@@ -1,74 +1,433 @@
-/* Contact Section Styles */
-.contact-section {
-  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+/* TerraHQ-Style Contact Page */
+
+/* Hero Section */
+.terra-hero {
+  background: #ffffff;
+  padding: 80px 0 60px 0;
+  text-align: center;
+  border-bottom: 1px solid #f0f0f0;
 }
 
-.contact-section h2 {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+.terra-hero-content {
+  max-width: 800px;
+  margin: 0 auto;
 }
 
-.contact-section .bg-white {
-  border: 1px solid #e5e7eb;
+.terra-animated-header {
+  margin-bottom: 2rem;
+}
+
+.terra-hero-animation {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto;
+  animation: terra-float 3s ease-in-out infinite;
+  filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1));
+}
+
+@keyframes terra-float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.terra-hero-title {
+  font-size: 4rem;
+  font-weight: 800;
+  color: #1a1a1a;
+  margin-bottom: 1rem;
+  letter-spacing: -2px;
+}
+
+.terra-hero-subtitle {
+  font-size: 1.5rem;
+  color: #666666;
+  margin-bottom: 2.5rem;
+  line-height: 1.4;
+}
+
+.terra-quick-contact {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.terra-contact-method {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 1.5rem;
+  background: #f8f9fa;
+  border-radius: 12px;
+  text-decoration: none;
+  color: #1a1a1a;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.terra-contact-method:hover {
+  background: #e9ecef;
+  border-color: #6c757d;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.terra-contact-icon {
+  font-size: 1.2rem;
+}
+
+/* Form Section */
+.terra-form-section {
+  background: #fafbfc;
+  padding: 80px 0;
+}
+
+.terra-form-container {
+  max-width: 800px;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 3rem;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  border: 1px solid #e9ecef;
+}
+
+.terra-form-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.terra-form-header h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 0.5rem;
+  letter-spacing: -1px;
+}
+
+.terra-form-header p {
+  font-size: 1.2rem;
+  color: #666666;
+}
+
+/* Form Groups */
+.terra-form-group {
+  margin-bottom: 2rem;
+}
+
+.terra-form-label {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 0.75rem;
+}
+
+.terra-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+/* Project Type Selection Grid */
+.terra-select-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.terra-select-option {
+  position: relative;
+  cursor: pointer;
+  display: block;
+}
+
+.terra-select-option input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.terra-option-content {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.25rem;
+  background: #f8f9fa;
+  border: 2px solid #e9ecef;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  min-height: 80px;
+}
+
+.terra-select-option:hover .terra-option-content {
+  border-color: #6c757d;
+  background: #e9ecef;
+}
+
+.terra-select-option input[type="radio"]:checked + .terra-option-content {
+  background: #e3f2fd;
+  border-color: #2196f3;
+  box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);
+}
+
+.terra-option-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.terra-option-text {
+  font-weight: 500;
+  color: #2c3e50;
+}
+
+/* Form Inputs */
+.terra-form-input,
+.terra-form-select,
+.terra-form-textarea {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  border: 2px solid #e9ecef;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-family: inherit;
+  background: #ffffff;
+  color: #2c3e50;
   transition: all 0.3s ease;
 }
 
-.contact-section .bg-white:hover {
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+.terra-form-input:focus,
+.terra-form-select:focus,
+.terra-form-textarea:focus {
+  outline: none;
+  border-color: #2196f3;
+  box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);
+}
+
+.terra-form-textarea {
+  resize: vertical;
+  min-height: 120px;
+  line-height: 1.6;
+}
+
+.terra-form-textarea::placeholder {
+  color: #9ca3af;
+  font-style: italic;
+}
+
+/* Submit Section */
+.terra-form-submit {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.terra-submit-btn {
+  background: #2196f3;
+  color: #ffffff;
+  border: none;
+  border-radius: 16px;
+  padding: 1.25rem 2.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  box-shadow: 0 4px 16px rgba(33, 150, 243, 0.3);
+}
+
+.terra-submit-btn:hover {
+  background: #1976d2;
   transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(33, 150, 243, 0.4);
 }
 
-/* Tally Form Styling */
-.contact-section iframe {
+.terra-btn-arrow {
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.terra-submit-btn:hover .terra-btn-arrow {
+  transform: translateX(4px);
+}
+
+.terra-form-note {
+  margin-top: 1rem;
+  color: #666666;
+  font-size: 0.95rem;
+}
+
+/* Alternative Contact Methods */
+.terra-alternatives {
+  background: #ffffff;
+  padding: 80px 0;
+}
+
+.terra-alt-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.terra-alt-content h3 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 3rem;
+  letter-spacing: -1px;
+}
+
+.terra-alt-methods {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.terra-alt-method {
+  background: #f8f9fa;
+  padding: 2rem;
+  border-radius: 16px;
+  border: 2px solid #e9ecef;
+  transition: all 0.3s ease;
+}
+
+.terra-alt-method:hover {
+  border-color: #2196f3;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+}
+
+.terra-alt-method h4 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 0.75rem;
+}
+
+.terra-alt-method p {
+  color: #666666;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.terra-alt-link {
+  color: #2196f3;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.terra-alt-link:hover {
+  color: #1976d2;
+}
+
+/* Social Proof Section */
+.terra-social-proof {
+  background: #f8f9fa;
+  padding: 60px 0;
+  border-top: 1px solid #e9ecef;
+}
+
+.terra-awards {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.terra-awards h4 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+}
+
+.terra-award-badges {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.terra-badge {
+  background: #ffffff;
+  border: 2px solid #e9ecef;
   border-radius: 8px;
-  min-height: 276px;
-}
-
-/* Hide Tally Branding Button */
-.contact-section iframe[data-tally-src*="tally.so"] {
-  /* Hide any Tally branding that might appear */
-}
-
-/* Additional CSS to hide Tally branding */
-iframe[data-tally-src*="tally.so"] + div,
-iframe[data-tally-src*="tally.so"] ~ div[style*="tally"],
-iframe[data-tally-src*="tally.so"] ~ a[href*="tally.so"],
-iframe[data-tally-src*="tally.so"] ~ div[class*="tally"],
-iframe[data-tally-src*="tally.so"] ~ span[class*="tally"] {
-  display: none !important;
-}
-
-/* Hide any elements with Tally branding text */
-div:contains("Made with Tally"),
-div:contains("Powered by Tally"),
-a:contains("Made with Tally"),
-a:contains("Powered by Tally") {
-  display: none !important;
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+  color: #2c3e50;
+  font-size: 0.95rem;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .contact-section {
-    padding: 3rem 1rem;
+  .terra-hero-title {
+    font-size: 2.5rem;
   }
   
-  .contact-section h2 {
+  .terra-hero-subtitle {
+    font-size: 1.2rem;
+  }
+  
+  .terra-quick-contact {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .terra-form-container {
+    padding: 2rem 1.5rem;
+    margin: 0 1rem;
+    border-radius: 16px;
+  }
+  
+  .terra-form-header h2 {
     font-size: 2rem;
   }
   
-  .contact-section .bg-white {
-    padding: 1.5rem;
+  .terra-form-row {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .terra-select-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .terra-alt-methods {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .terra-alt-content h3 {
+    font-size: 2rem;
+  }
+  
+  .terra-award-badges {
+    flex-direction: column;
+    align-items: center;
   }
 }
 
 @media (max-width: 480px) {
-  .contact-section h2 {
-    font-size: 1.75rem;
+  .terra-hero {
+    padding: 60px 0 40px 0;
   }
   
-  .contact-section .bg-white {
-    padding: 1rem;
+  .terra-form-section {
+    padding: 60px 0;
   }
-} 
+  
+  .terra-alternatives {
+    padding: 60px 0;
+  }
+  
+  .terra-submit-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

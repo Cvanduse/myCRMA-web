@@ -1,0 +1,95 @@
+{{ define "main" }}
+<section class="contact-hero upgraded-hero">
+  <div class="hero-content">
+    <h1>Contact Us</h1>
+    <p class="hero-value-prop">Let's transform your business with Salesforce expertise.</p>
+    <p class="hero-intro">Book a free consultation or reach out to our team. We respond within 1 business day!</p>
+  </div>
+  <img src="/images/hero-illustration.svg" alt="CRM Team" class="hero-illustration" />
+</section>
+
+<section class="contact-locations-grid">
+  <div class="contact-location-card">
+    <div class="contact-location-title">London</div>
+    <div class="contact-location-detail"><span class="contact-icon-svg">🏢</span>14 Tottenham Road, London, England <button class="copy-btn" onclick="navigator.clipboard.writeText('14 Tottenham Road, London, England')">Copy</button> <a href="https://maps.google.com/?q=14+Tottenham+Road+London" target="_blank" class="directions-link">Get Directions</a></div>
+    <div class="contact-location-detail"><span class="contact-icon-svg">📞</span>+1 212 425 8617 <button class="copy-btn" onclick="navigator.clipboard.writeText('+1 212 425 8617')">Copy</button></div>
+    <div class="contact-location-detail"><span class="contact-icon-svg">✉️</span>information@office.com <button class="copy-btn" onclick="navigator.clipboard.writeText('information@office.com')">Copy</button></div>
+  </div>
+  <div class="contact-location-card">
+    <div class="contact-location-title">Paris</div>
+    <div class="contact-location-detail"><span class="contact-icon-svg">🏢</span>27 Rue de Berri, Paris, France <button class="copy-btn" onclick="navigator.clipboard.writeText('27 Rue de Berri, Paris, France')">Copy</button> <a href="https://maps.google.com/?q=27+Rue+de+Berri+Paris" target="_blank" class="directions-link">Get Directions</a></div>
+    <div class="contact-location-detail"><span class="contact-icon-svg">📞</span>+1 212 425 8617 <button class="copy-btn" onclick="navigator.clipboard.writeText('+1 212 425 8617')">Copy</button></div>
+    <div class="contact-location-detail"><span class="contact-icon-svg">✉️</span>information@office.com <button class="copy-btn" onclick="navigator.clipboard.writeText('information@office.com')">Copy</button></div>
+            </div>
+  <div class="contact-location-card">
+    <div class="contact-location-title">New York</div>
+    <div class="contact-location-detail"><span class="contact-icon-svg">🏢</span>5 Washington Square, New York, USA <button class="copy-btn" onclick="navigator.clipboard.writeText('5 Washington Square, New York, USA')">Copy</button> <a href="https://maps.google.com/?q=5+Washington+Square+New+York" target="_blank" class="directions-link">Get Directions</a></div>
+    <div class="contact-location-detail"><span class="contact-icon-svg">📞</span>+1 212 425 8617 <button class="copy-btn" onclick="navigator.clipboard.writeText('+1 212 425 8617')">Copy</button></div>
+    <div class="contact-location-detail"><span class="contact-icon-svg">✉️</span>information@office.com <button class="copy-btn" onclick="navigator.clipboard.writeText('information@office.com')">Copy</button></div>
+            </div>
+</section>
+
+<section class="capabilities-section">
+  <div class="capabilities-header-row">
+    <h2 class="capabilities-title">Our Capabilities</h2>
+    <a href="/services/" class="capabilities-learn-btn">Learn more</a>
+            </div>
+  <div class="capabilities-cards-grid">
+    <div class="capability-card">
+      <div class="capability-card-icon">⚡️</div>
+      <div class="capability-card-title">Salesforce Consulting</div>
+      <div class="capability-card-desc">We provide solutions designed to help you achieve your business objectives with Salesforce and CRM best practices.</div>
+      <a href="/services/consulting/" class="capability-card-link">Discover more &rarr;</a>
+        </div>
+    <div class="capability-card">
+      <div class="capability-card-icon">🔗</div>
+      <div class="capability-card-title">CRM Integration</div>
+      <div class="capability-card-desc">Our team specializes in seamless CRM integrations tailored to your unique business needs.</div>
+      <a href="/services/integration/" class="capability-card-link">Discover more &rarr;</a>
+      </div>
+    <div class="capability-card">
+      <div class="capability-card-icon">🎓</div>
+      <div class="capability-card-title">Support & Training</div>
+      <div class="capability-card-desc">We offer ongoing support and user training to ensure your team gets the most from your CRM investment.</div>
+      <a href="/services/support/" class="capability-card-link">Discover more &rarr;</a>
+    </div>
+  </div>
+  <div class="capabilities-testimonial">
+    <blockquote>"The team at Your Company made our Salesforce migration seamless and stress-free!"</blockquote>
+    <cite>— Happy Client</cite>
+    </div>
+  </section>
+
+<section class="contact-form-section">
+  <h2>Book a Free Consultation</h2>
+  <p>Fill out the form and our team will get back to you within 1 business day.</p>
+  <div class="contact-form-container">
+    <!-- Tally form embed -->
+    <iframe data-tally-src="https://tally.so/r/your-tally-form-id" loading="lazy" width="100%" height="500" frameborder="0" marginheight="0" marginwidth="0" title="Contact Form"></iframe>
+  </div>
+  <div class="contact-trust-logos">
+    <img src="/images/logo.png" alt="Client 1" class="trust-logo" />
+    <img src="/images/logo-darkmode.png" alt="Client 2" class="trust-logo" />
+    <img src="/images/logo.png" alt="Client 3" class="trust-logo" />
+  </div>
+</section>
+
+<section class="contact-faq">
+  <h3>Frequently Asked Questions</h3>
+  <div class="faq-accordion">
+    <div class="faq-item">
+      <button class="faq-question" onclick="this.nextElementSibling.classList.toggle('open')">How soon will I get a response?</button>
+      <div class="faq-answer">We respond to all inquiries within 1 business day.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="this.nextElementSibling.classList.toggle('open')">Do you offer virtual appointments?</button>
+      <div class="faq-answer">Yes! We offer both in-person and virtual consultations to fit your needs.</div>
+        </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="this.nextElementSibling.classList.toggle('open')">What industries do you serve?</button>
+      <div class="faq-answer">We work with clients across a wide range of industries, including technology, finance, healthcare, and more.</div>
+        </div>
+      </div>
+</section>
+
+{{ end }}

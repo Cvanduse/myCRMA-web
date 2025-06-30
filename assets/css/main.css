@@ -42,7 +42,7 @@
 
 /* Logo Marquee Styles */
 .logo-marquee {
-  background: #fff;
+  background: #f8f9fa;
   width: 100vw;
   margin-left: calc(-50vw + 50%);
   overflow: hidden;

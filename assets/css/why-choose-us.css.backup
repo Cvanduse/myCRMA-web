@@ -1,0 +1,220 @@
+/* Nova Solutions Why Choose Us Section */
+.why-choose-us-section {
+  padding: 80px 0 60px 0;
+  background: #fff;
+}
+
+.why-choose-us-flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+}
+
+.why-choose-us-left {
+  flex: 1 1 40%;
+  min-width: 320px;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.why-choose-us-label {
+  color: #5b3df6;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.5px;
+}
+
+.why-choose-us-title {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  color: #18181b;
+  line-height: 1.1;
+}
+
+.why-choose-us-description {
+  color: #888;
+  font-size: 1.25rem;
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+.why-choose-us-right {
+  flex: 1 1 60%;
+  min-width: 340px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.why-choose-us-card-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 24px;
+  width: 480px;
+  max-width: 100vw;
+}
+
+.why-choose-us-card {
+  position: relative;
+  border-radius: 18px;
+  min-height: 200px;
+  padding: 2.2rem 1.6rem 1.6rem 1.6rem;
+  box-shadow: 0 2px 8px 0 rgba(24,24,27,0.04);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.25s cubic-bezier(.4,0,.2,1), box-shadow 0.25s cubic-bezier(.4,0,.2,1), opacity 0.25s cubic-bezier(.4,0,.2,1), z-index 0.25s;
+  z-index: 1;
+}
+
+.card-purple {
+  background: #5b3df6;
+  color: #fff;
+}
+.card-gray {
+  background: #f5f5f7;
+  color: #18181b;
+}
+
+.why-choose-us-card-content {
+  z-index: 2;
+}
+
+.why-choose-us-feature-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 0.7rem;
+  color: inherit;
+}
+
+.why-choose-us-feature-description {
+  font-size: 1rem;
+  color: inherit;
+  opacity: 0.92;
+  margin-bottom: 0;
+}
+
+.why-choose-us-card-icon {
+  position: absolute;
+  right: 1.2rem;
+  bottom: 1.2rem;
+  width: 56px;
+  height: 56px;
+  z-index: 1;
+  pointer-events: none;
+  transition: transform 0.25s cubic-bezier(.4,0,.2,1);
+}
+
+.why-choose-us-card svg {
+  width: 56px;
+  height: 56px;
+  display: block;
+}
+
+/* Hover/Active Effects */
+.why-choose-us-card:hover,
+.why-choose-us-card:focus {
+  transform: scale(1.07);
+  z-index: 2;
+  box-shadow: 0 8px 32px 0 rgba(91,61,246,0.18);
+}
+.why-choose-us-card:hover .why-choose-us-card-icon,
+.why-choose-us-card:focus .why-choose-us-card-icon {
+  transform: scale(1.18) translateY(-6px);
+}
+.why-choose-us-card:hover.card-purple,
+.why-choose-us-card:focus.card-purple {
+  box-shadow: 0 8px 32px 0 rgba(91,61,246,0.28);
+}
+.why-choose-us-card:not(:hover):not(:focus) {
+  opacity: 0.85;
+  transform: scale(0.97);
+}
+.why-choose-us-card:hover ~ .why-choose-us-card,
+.why-choose-us-card:focus ~ .why-choose-us-card {
+  opacity: 0.85;
+  transform: scale(0.97);
+}
+
+/* Enhanced Nova Solutions Why Choose Us Section Hover Effect */
+.why-choose-us-card-grid.enhanced-hover {
+  position: relative;
+}
+.why-choose-us-card-grid.enhanced-hover .why-choose-us-card {
+  transition: transform 0.35s cubic-bezier(.4,0,.2,1), box-shadow 0.35s cubic-bezier(.4,0,.2,1), opacity 0.35s cubic-bezier(.4,0,.2,1), z-index 0.35s;
+  will-change: transform, opacity, z-index;
+}
+.why-choose-us-card-grid.enhanced-hover .why-choose-us-card.is-hovered {
+  transform: scale(1.10);
+  z-index: 3;
+  opacity: 1;
+  box-shadow: 0 12px 40px 0 rgba(91,61,246,0.22);
+}
+.why-choose-us-card-grid.enhanced-hover .why-choose-us-card.is-dimmed {
+  transform: scale(0.93);
+  opacity: 0.55;
+  z-index: 1;
+  box-shadow: none;
+}
+.why-choose-us-card-grid.enhanced-hover .why-choose-us-card {
+  cursor: pointer;
+}
+.why-choose-us-card-grid.enhanced-hover .why-choose-us-card.is-hovered .why-choose-us-card-icon {
+  transform: scale(1.35) translateY(-10px);
+  transition: transform 0.35s cubic-bezier(.4,0,.2,1);
+}
+.why-choose-us-card-grid.enhanced-hover .why-choose-us-card .why-choose-us-card-icon {
+  transition: transform 0.35s cubic-bezier(.4,0,.2,1);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .why-choose-us-flex {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 32px;
+  }
+  .why-choose-us-left, .why-choose-us-right {
+    max-width: 100%;
+    min-width: 0;
+  }
+  .why-choose-us-card-grid {
+    width: 100%;
+    max-width: 100vw;
+  }
+}
+@media (max-width: 700px) {
+  .why-choose-us-section {
+    padding: 40px 0 24px 0;
+  }
+  .why-choose-us-title {
+    font-size: 2.1rem;
+  }
+  .why-choose-us-card-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+    gap: 18px;
+  }
+  .why-choose-us-card {
+    min-height: 140px;
+    padding: 1.3rem 1rem 1rem 1rem;
+  }
+  .why-choose-us-card-icon {
+    width: 40px;
+    height: 40px;
+    right: 0.7rem;
+    bottom: 0.7rem;
+  }
+  .why-choose-us-card svg {
+    width: 40px;
+    height: 40px;
+  }
+} 

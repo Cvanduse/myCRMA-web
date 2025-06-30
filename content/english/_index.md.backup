@@ -31,18 +31,15 @@ features:
       label: "Get Started Now"
       link: "#"
 
-  - title: "Proven ROI & Results You Can Measure"
+  - title: "Discover the Key Features Of Hugo"
     image: "/images/service-2.png"
-    content: "Our data-driven approach ensures measurable results from your CRM investment. We track key performance indicators and provide regular reporting to demonstrate your return on investment."
+    content: "Hugo is an all-in-one web framework for building fast, content-focused websites. It offers a range of exciting features for developers and website creators. Some of the key features are:"
     bulletpoints:
-      - "**300% Average ROI** achieved by our clients within 12 months"
-      - "**40% Increase in Sales Efficiency** through process optimization"
-      - "**60% Reduction in Data Entry Time** with automated workflows"
-      - "**98% User Adoption Rate** with our comprehensive training programs"
-      - "**24/7 Support** ensuring your systems run smoothly"
-      - "**Ongoing Performance Monitoring** with monthly KPI reports"
+      - "Zero JS, by default: No JavaScript runtime overhead to slow you down."
+      - "Customizable: Tailwind, MDX, and 100+ other integrations to choose from."
+      - "UI-agnostic: Supports React, Preact, Svelte, Vue, Solid, Lit and more."
     button:
       enable: true
-      label: "See Case Studies"
-      link: "/contact"
+      label: "Get Started Now"
+      link: "https://github.com/zeon-studio/hugoplate"
 ---

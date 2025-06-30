@@ -57,51 +57,155 @@
     });
   }
 
-  // Dynamic Hero Title Rotator
+  // Enhanced Dynamic Hero Title Rotator (Gynger-style)
   (function() {
     const animatedTitles = [
       "Expert CRM Solutions",
-      "Trusted Advisors",
-      "a Salesforce Partner"
+      "Salesforce Certified Partners",
+      "Your Growth Partner",
+      "ROI-Driven Results"
     ];
     let idx = 0;
     const el = document.getElementById('dynamic-hero-animated');
     if (!el) return;
+    
     function setTitle(idx) {
       el.classList.remove('dynamic-hero-animate');
-      void el.offsetWidth;
-      el.textContent = animatedTitles[idx];
-      el.classList.add('dynamic-hero-animate');
+      // Add a slight delay before changing text for smoother transition
+      setTimeout(() => {
+        el.textContent = animatedTitles[idx];
+        void el.offsetWidth;
+        el.classList.add('dynamic-hero-animate');
+      }, 100);
     }
+    
     setTitle(idx);
     setInterval(() => {
       idx = (idx + 1) % animatedTitles.length;
       setTitle(idx);
-    }, 3000);
+    }, 4000); // Slightly slower for better readability
   })();
 
-  // Enhanced Why Choose Us Card Hover Effect
+  // Gynger-Style Scroll-Triggered Reveals
   (function() {
-    var grid = document.getElementById('whyChooseUsGrid');
-    if (!grid) return;
-    var cards = grid.querySelectorAll('.why-choose-us-card');
-    cards.forEach(function(card) {
-      card.addEventListener('mouseenter', function() {
-        cards.forEach(function(c) {
-          c.classList.remove('is-hovered', 'is-dimmed');
-          if (c === card) {
-            c.classList.add('is-hovered');
-          } else {
-            c.classList.add('is-dimmed');
-          }
-        });
+    const revealElements = document.querySelectorAll('.hero-content-reveal');
+    
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Add a small delay for staggered effect
+          setTimeout(() => {
+            entry.target.classList.add('revealed');
+          }, 100);
+        }
       });
-      card.addEventListener('mouseleave', function() {
-        cards.forEach(function(c) {
-          c.classList.remove('is-hovered', 'is-dimmed');
-        });
+    }, { 
+      threshold: 0.1,
+      rootMargin: '50px'
+    });
+    
+    revealElements.forEach((el, index) => {
+      // Add initial delay based on element order
+      el.style.transitionDelay = `${0.1 + (index * 0.1)}s`;
+      revealObserver.observe(el);
+    });
+  })();
+
+  // Enhanced Button Interactions (Gynger-style)
+  (function() {
+    const buttons = document.querySelectorAll('.btn-primary');
+    
+    buttons.forEach(button => {
+      button.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-3px) scale(1.05)';
+      });
+      
+      button.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0) scale(1)';
+      });
+      
+      // Add click ripple effect
+      button.addEventListener('click', function(e) {
+        const ripple = document.createElement('span');
+        const rect = this.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+        const x = e.clientX - rect.left - size / 2;
+        const y = e.clientY - rect.top - size / 2;
+        
+        ripple.style.cssText = `
+          position: absolute;
+          width: ${size}px;
+          height: ${size}px;
+          left: ${x}px;
+          top: ${y}px;
+          background: rgba(255, 255, 255, 0.3);
+          border-radius: 50%;
+          transform: scale(0);
+          animation: ripple 0.6s ease-out;
+          pointer-events: none;
+        `;
+        
+        this.appendChild(ripple);
+        setTimeout(() => ripple.remove(), 600);
       });
     });
+    
+    // Add ripple keyframes
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes ripple {
+        to {
+          transform: scale(2);
+          opacity: 0;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+  })();
+
+  // Floating Brands Interaction
+  (function() {
+    const floatingBrands = document.querySelectorAll('.floating-brand');
+    
+    floatingBrands.forEach(brand => {
+      brand.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-5px) scale(1.1)';
+        this.style.opacity = '0.2';
+      });
+      
+      brand.addEventListener('mouseleave', function() {
+        this.style.transform = '';
+        this.style.opacity = '';
+      });
+    });
+  })();
+
+  // Individual Why Choose Us Card Animation - DreamX Style
+  (function() {
+    var grid = document.querySelector('.dreamx-whychooseus-grid');
+    if (!grid) return;
+    var cards = grid.querySelectorAll('.dreamx-adv-card');
+    
+    // Add entrance animation with staggered timing
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.2 });
+    
+    // Initialize cards for entrance animation
+    cards.forEach(function(card, index) {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(30px)';
+      card.style.transition = 'opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) ' + (index * 0.1) + 's, transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) ' + (index * 0.1) + 's';
+      observer.observe(card);
+    });
+    
+    // Individual card hover effects only
+    // CSS handles the directional growth - no JavaScript group logic needed
   })();
 
   // Marquee Pause/Play Control
@@ -304,4 +408,116 @@
       }, 250);
     });
   });
+
+  // Performance Monitoring & Core Web Vitals Optimization
+  (function() {
+    // Optimize animations based on device capabilities
+    function optimizePerformance() {
+      const isLowEndDevice = navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 2;
+      const isSlowConnection = navigator.connection && 
+        (navigator.connection.effectiveType === 'slow-2g' || 
+         navigator.connection.effectiveType === '2g' || 
+         navigator.connection.effectiveType === '3g');
+      
+      if (isLowEndDevice || isSlowConnection) {
+        // Reduce particle count for low-end devices
+        document.querySelectorAll('.particle:nth-child(n+4)').forEach(particle => {
+          particle.style.display = 'none';
+        });
+        
+        // Simplify animations
+        document.documentElement.style.setProperty('--animation-duration-multiplier', '0.5');
+      }
+    }
+    
+    // Web Vitals monitoring (simplified version)
+    function measureWebVitals() {
+      // Largest Contentful Paint (LCP)
+      const lcpObserver = new PerformanceObserver((entryList) => {
+        const entries = entryList.getEntries();
+        const lastEntry = entries[entries.length - 1];
+        console.log('LCP:', lastEntry.startTime);
+      });
+      lcpObserver.observe({ entryTypes: ['largest-contentful-paint'] });
+      
+      // Cumulative Layout Shift (CLS)
+      let clsValue = 0;
+      const clsObserver = new PerformanceObserver((entryList) => {
+        for (const entry of entryList.getEntries()) {
+          if (!entry.hadRecentInput) {
+            clsValue += entry.value;
+          }
+        }
+        console.log('CLS:', clsValue);
+      });
+      clsObserver.observe({ entryTypes: ['layout-shift'] });
+      
+      // First Input Delay (FID) - via event timing
+      const fidObserver = new PerformanceObserver((entryList) => {
+        for (const entry of entryList.getEntries()) {
+          const fid = entry.processingStart - entry.startTime;
+          console.log('FID:', fid);
+        }
+      });
+      fidObserver.observe({ entryTypes: ['first-input'] });
+    }
+    
+    // Intersection Observer for performance-conscious animations
+    function setupIntersectionObserver() {
+      const heroSection = document.querySelector('.hero-section');
+      if (!heroSection) return;
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            // Start resource-intensive animations only when hero is visible
+            entry.target.classList.add('hero-visible');
+          } else {
+            // Pause animations when not visible to save resources
+            entry.target.classList.remove('hero-visible');
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      observer.observe(heroSection);
+    }
+    
+    // Preload critical resources
+    function preloadCriticalResources() {
+      // Preload hero background patterns
+      const link1 = document.createElement('link');
+      link1.rel = 'preload';
+      link1.as = 'image';
+      link1.href = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">...</svg>';
+      document.head.appendChild(link1);
+    }
+    
+    // Initialize performance optimizations
+    document.addEventListener('DOMContentLoaded', function() {
+      optimizePerformance();
+      setupIntersectionObserver();
+      preloadCriticalResources();
+      
+      // Only measure Web Vitals in production or when flag is set
+      if (window.location.hostname !== 'localhost' || window.measureWebVitals) {
+        measureWebVitals();
+      }
+    });
+    
+    // CSS containment for better performance
+    const style = document.createElement('style');
+    style.textContent = `
+      .hero-section {
+        contain: layout style paint;
+      }
+      .hero-particles {
+        contain: strict;
+      }
+      .hero-parallax-element {
+        contain: layout style paint;
+      }
+    `;
+    document.head.appendChild(style);
+  })();
+
 })();
