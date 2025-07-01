@@ -1,39 +1,9 @@
 [build]
+  command = "hugo --gc --minify"
   publish = "public"
-  command = "hugo --gc --minify --verbose"
 
 [build.environment]
   HUGO_VERSION = "0.145.0"
-  HUGO_ENV = "production"
-  HUGO_BASEURL = "https://mycrmadvisor.com/"
-  GO_VERSION = "1.21"
-  NODE_VERSION = "22"
-
-[[plugins]]
-  package = "@netlify/plugin-debug-info"
-
-[context.production.environment]
-  HUGO_ENV = "production"
-  HUGO_ENABLEGITINFO = "true"
-
-[context.deploy-preview.environment]
-  HUGO_ENV = "development"
-
-# Print environment variables at build time for debugging
-[build.processing]
-  skip_processing = false
-
-[[headers]]
-  for = "/.netlify/functions/*"
-  [headers.values]
-    Access-Control-Allow-Origin = "*"
-
-# Add a post-build command to print env vars (for debugging)
-[build.lifecycle]
-  onPostBuild = "printenv | sort"
-
-[context.branch-deploy.environment]
-  HUGO_ENV = "production"
 
 # Force HTTPS redirects
 [[redirects]]
@@ -58,4 +28,14 @@
 [[redirects]]
   from = "/*"
   to = "/index.html"
-  status = 200 
+  status = 200
+
+[context.production.environment]
+  HUGO_ENV = "production"
+  HUGO_ENABLEGITINFO = "true"
+
+[context.deploy-preview.environment]
+  HUGO_ENV = "production"
+
+[context.branch-deploy.environment]
+  HUGO_ENV = "production" 
