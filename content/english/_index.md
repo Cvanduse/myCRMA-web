@@ -45,4 +45,5 @@ features:
       enable: true
       label: "See Case Studies"
       link: "/contact"
+    enable: false
 ---

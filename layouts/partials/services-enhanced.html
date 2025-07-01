@@ -1,0 +1,485 @@
+{{ with site.GetPage "sections/services" }}
+  {{ if .Params.enable }}
+    <section id="services" class="services-section-enhanced">
+      <!-- Animated Background -->
+      <div class="animated-bg"></div>
+      
+      <div class="container">
+        <div class="section-header">
+          <h2>{{ .Title | markdownify }}</h2>
+          <p>{{ .Params.description | markdownify }}</p>
+        </div>
+
+        <div class="services-grid">
+          {{ range .Params.services }}
+            <div class="service-card" data-service="{{ .title | urlize }}">
+              <div class="service-icon-container">
+                <div class="icon-bg-animation"></div>
+                {{ if .icon_svg }}
+                  {{ .icon_svg | safeHTML }}
+                {{ else }}
+                  <svg class="service-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2L2 7L12 12L22 7L12 2Z"/>
+                    <path d="M2 17L12 22L22 17"/>
+                    <path d="M2 12L12 17L22 12"/>
+                  </svg>
+                {{ end }}
+              </div>
+              
+              <h3 class="service-title">{{ .title | markdownify }}</h3>
+              {{ if .pricing }}
+                <div class="pricing-badge">
+                  <span class="price">{{ .pricing.price }}</span>
+                  <span>{{ .pricing.duration }}</span>
+                </div>
+              {{ end }}
+              <p class="service-description">{{ .description | markdownify }}</p>
+              
+              {{ if .metrics }}
+                <div class="success-metrics">
+                  {{ range .metrics }}
+                    <div class="metric">
+                      <span class="metric-value">{{ .value }}</span>
+                      <span class="metric-label">{{ .label }}</span>
+                    </div>
+                  {{ end }}
+                </div>
+              {{ end }}
+
+              <div class="learn-more">
+                <div class="learn-more-toggle" onclick="toggleLearnMore(this)">
+                  <span>Learn More</span>
+                  <svg class="arrow" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M7 10l5 5 5-5z"/>
+                  </svg>
+                </div>
+                <div class="learn-more-content">
+                  {{ if .features }}
+                    <ul class="feature-list">
+                      {{ range .features }}
+                        <li>{{ . }}</li>
+                      {{ end }}
+                    </ul>
+                  {{ end }}
+                  <a href="{{ .link | default '#' }}" class="service-cta">Get Started →</a>
+                </div>
+              </div>
+            </div>
+          {{ end }}
+        </div>
+      </div>
+
+      <style>
+        /* Enhanced Services Section Styles */
+        .services-section-enhanced {
+          position: relative;
+          background: #ffffff;
+          color: #1f2937;
+          overflow: hidden;
+          padding: 80px 0;
+        }
+
+        /* Background Animation */
+        .animated-bg {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+          z-index: -2;
+        }
+
+        .animated-bg::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-image: 
+            radial-gradient(circle at 20% 50%, rgba(120, 80, 255, 0.05) 0%, transparent 50%),
+            radial-gradient(circle at 80% 80%, rgba(80, 120, 255, 0.05) 0%, transparent 50%),
+            radial-gradient(circle at 40% 20%, rgba(255, 80, 120, 0.03) 0%, transparent 50%);
+          animation: bgPulse 20s ease-in-out infinite;
+        }
+
+        @keyframes bgPulse {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.8; }
+        }
+
+        /* Container */
+        .container {
+          max-width: 1400px;
+          margin: 0 auto;
+          padding: 0 20px;
+          position: relative;
+          z-index: 1;
+        }
+
+        /* Section Header */
+        .section-header {
+          text-align: center;
+          margin-bottom: 80px;
+          animation: fadeInUp 0.8s ease-out;
+        }
+
+        .section-header h2 {
+          font-size: 3.5rem;
+          font-weight: 700;
+          margin-bottom: 20px;
+          background: linear-gradient(135deg, #7850ff 0%, #50c8ff 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+        }
+
+        .section-header p {
+          font-size: 1.25rem;
+          color: #64748b;
+          max-width: 600px;
+          margin: 0 auto;
+        }
+
+        /* Service Cards Grid */
+        .services-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+          gap: 30px;
+          margin-bottom: 60px;
+        }
+
+        /* Service Card */
+        .service-card {
+          background: #f8fafc;
+          border: 1px solid #e2e8f0;
+          border-radius: 24px;
+          padding: 40px;
+          position: relative;
+          overflow: hidden;
+          transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+          cursor: pointer;
+          animation: fadeInUp 0.8s ease-out forwards;
+          opacity: 0;
+          box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        .service-card:nth-child(1) { animation-delay: 0.1s; --service-color: #7850ff; }
+        .service-card:nth-child(2) { animation-delay: 0.2s; --service-color: #ff5080; }
+        .service-card:nth-child(3) { animation-delay: 0.3s; --service-color: #50c8ff; }
+        .service-card:nth-child(4) { animation-delay: 0.4s; --service-color: #50ff80; }
+        .service-card:nth-child(5) { animation-delay: 0.5s; --service-color: #ff8050; }
+        .service-card:nth-child(6) { animation-delay: 0.6s; --service-color: #c850ff; }
+
+        .service-card::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(135deg, var(--service-color) 0%, transparent 60%);
+          opacity: 0;
+          transition: opacity 0.4s ease;
+          z-index: -1;
+        }
+
+        .service-card:hover {
+          transform: translateY(-10px) scale(1.02);
+          border-color: var(--service-color);
+          background: #ffffff;
+          box-shadow: 
+            0 20px 40px rgba(0, 0, 0, 0.15),
+            0 0 60px rgba(120, 80, 255, 0.1);
+        }
+
+        .service-card:hover::before {
+          opacity: 0.1;
+        }
+
+        /* Service Icon Container */
+        .service-icon-container {
+          width: 80px;
+          height: 80px;
+          background: linear-gradient(135deg, var(--service-color) 0%, transparent 100%);
+          border-radius: 20px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-bottom: 30px;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .service-icon {
+          width: 40px;
+          height: 40px;
+          filter: brightness(0) invert(1);
+          z-index: 1;
+          transition: transform 0.3s ease;
+        }
+
+        .service-card:hover .service-icon {
+          transform: scale(1.1) rotate(5deg);
+        }
+
+        /* Animated Icon Background */
+        .icon-bg-animation {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          background: radial-gradient(circle, var(--service-color) 0%, transparent 70%);
+          opacity: 0.3;
+          animation: iconPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes iconPulse {
+          0%, 100% { transform: scale(1); opacity: 0.3; }
+          50% { transform: scale(1.2); opacity: 0.1; }
+        }
+
+        /* Service Content */
+        .service-title {
+          font-size: 1.75rem;
+          font-weight: 600;
+          margin-bottom: 15px;
+          color: #1f2937;
+        }
+
+        .service-description {
+          color: #64748b;
+          margin-bottom: 25px;
+          line-height: 1.7;
+          transition: color 0.3s ease;
+        }
+
+        .service-card:hover .service-description {
+          color: #475569;
+        }
+
+        /* Pricing Badge */
+        .pricing-badge {
+          display: inline-flex;
+          align-items: center;
+          background: #f1f5f9;
+          border: 1px solid #e2e8f0;
+          border-radius: 12px;
+          padding: 8px 16px;
+          margin-bottom: 20px;
+          font-size: 0.875rem;
+          transition: all 0.3s ease;
+          color: #64748b;
+        }
+
+        .pricing-badge .price {
+          color: var(--service-color);
+          font-weight: 600;
+          margin-right: 5px;
+        }
+
+        .service-card:hover .pricing-badge {
+          background: #ffffff;
+          border-color: var(--service-color);
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Success Metrics */
+        .success-metrics {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 15px;
+          margin: 25px 0;
+          opacity: 0;
+          max-height: 0;
+          overflow: hidden;
+          transition: all 0.4s ease;
+        }
+
+        .service-card:hover .success-metrics {
+          opacity: 1;
+          max-height: 100px;
+        }
+
+        .metric {
+          background: #ffffff;
+          border: 1px solid #e2e8f0;
+          border-radius: 12px;
+          padding: 12px;
+          text-align: center;
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .metric-value {
+          font-size: 1.5rem;
+          font-weight: 700;
+          color: var(--service-color);
+          display: block;
+        }
+
+        .metric-label {
+          font-size: 0.75rem;
+          color: #64748b;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+        }
+
+        /* Learn More Section */
+        .learn-more {
+          margin-top: 30px;
+          padding-top: 25px;
+          border-top: 1px solid #e2e8f0;
+        }
+
+        .learn-more-toggle {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          cursor: pointer;
+          color: var(--service-color);
+          font-weight: 500;
+          transition: all 0.3s ease;
+        }
+
+        .learn-more-toggle:hover {
+          color: #1f2937;
+        }
+
+        .arrow {
+          width: 24px;
+          height: 24px;
+          transition: transform 0.3s ease;
+        }
+
+        .learn-more-toggle.active .arrow {
+          transform: rotate(180deg);
+        }
+
+        .learn-more-content {
+          max-height: 0;
+          overflow: hidden;
+          transition: max-height 0.4s ease;
+          margin-top: 0;
+        }
+
+        .learn-more-content.active {
+          max-height: 300px;
+          margin-top: 20px;
+        }
+
+        .feature-list {
+          list-style: none;
+          padding: 0;
+        }
+
+        .feature-list li {
+          padding: 8px 0;
+          padding-left: 30px;
+          position: relative;
+          color: #475569;
+        }
+
+        .feature-list li::before {
+          content: "✓ ";
+          position: absolute;
+          left: 0;
+          color: var(--service-color);
+          font-weight: bold;
+        }
+
+        /* CTA Button */
+        .service-cta {
+          display: inline-flex;
+          align-items: center;
+          background: linear-gradient(135deg, var(--service-color) 0%, var(--service-color) 100%);
+          color: #ffffff;
+          padding: 12px 24px;
+          border-radius: 12px;
+          text-decoration: none;
+          font-weight: 500;
+          margin-top: 20px;
+          transition: all 0.3s ease;
+          position: relative;
+          overflow: hidden;
+          box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-cta::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: rgba(255, 255, 255, 0.2);
+          transition: left 0.3s ease;
+        }
+
+        .service-cta:hover::before {
+          left: 100%;
+        }
+
+        .service-cta:hover {
+          transform: translateX(5px);
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(40px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+          .services-grid {
+            grid-template-columns: 1fr;
+          }
+          
+          .section-header h2 {
+            font-size: 2.5rem;
+          }
+          
+          .service-card {
+            padding: 30px;
+          }
+        }
+      </style>
+
+      <script>
+        function toggleLearnMore(element) {
+          element.classList.toggle('active');
+          const content = element.nextElementSibling;
+          content.classList.toggle('active');
+        }
+
+        // Add intersection observer for scroll animations
+        const observerOptions = {
+          threshold: 0.1,
+          rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.style.animationPlayState = 'running';
+            }
+          });
+        }, observerOptions);
+
+        document.addEventListener('DOMContentLoaded', function() {
+          document.querySelectorAll('.service-card').forEach(card => {
+            card.style.animationPlayState = 'paused';
+            observer.observe(card);
+          });
+        });
+      </script>
+    </section>
+  {{ end }}
+{{ end }} 

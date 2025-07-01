@@ -1,87 +1,165 @@
 <header
-  class="header {{ if site.Params.navbar_fixed }}sticky top-0{{ end }} z-30">
-  <nav class="navbar container">
+  class="header sticky top-0 z-50 transition-all duration-300 ease-in-out" id="main-header">
+  <nav class="navbar container" role="navigation" aria-label="Main navigation">
     <!-- logo -->
     <div class="order-0">
       <!-- navbar brand/logo -->
-      <a class="navbar-brand block" href="{{ site.Home.RelPermalink }}">
+      <a class="navbar-brand block" href="{{ site.Home.RelPermalink }}" aria-label="MyCRMA Home">
         {{ partial "logo" }}
       </a>
     </div>
-    <!-- navbar toggler -->
-    <input id="nav-toggle" type="checkbox" class="hidden" />
-    <label
-      for="nav-toggle"
-      class="order-3 cursor-pointer flex items-center lg:hidden text-text-dark dark:text-white lg:order-1">
-      <svg id="show-button" class="h-6 fill-current block" viewBox="0 0 20 20">
-        <title>Menu Open</title>
-        <path d="M0 3h20v2H0V3z m0 6h20v2H0V9z m0 6h20v2H0V0z"></path>
-      </svg>
-      <svg id="hide-button" class="h-6 fill-current hidden" viewBox="0 0 20 20">
-        <title>Menu Close</title>
-        <polygon
-          points="11 9 22 9 22 11 11 11 11 22 9 22 9 11 -2 11 -2 9 9 9 9 -2 11 -2"
-          transform="rotate(45 10 10)"></polygon>
-      </svg>
-    </label>
+    
+    <!-- Enhanced mobile navigation toggle -->
+    <button
+      id="mobile-nav-toggle"
+      class="mobile-nav-toggle order-3 lg:hidden"
+      aria-expanded="false"
+      aria-controls="nav-menu"
+      aria-label="Toggle navigation menu"
+      type="button">
+      <span class="hamburger-box">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </span>
+      <span class="sr-only">Menu</span>
+    </button>
     <!-- /navbar toggler -->
 
     <!-- main navbar -->
     <ul
       id="nav-menu"
-      class="navbar-nav order-3 hidden lg:flex w-full pb-6 lg:order-1 lg:w-auto lg:space-x-2 lg:pb-0 xl:space-x-8">
+      class="navbar-nav order-3 hidden lg:flex w-full pb-6 lg:order-1 lg:w-auto lg:space-x-2 lg:pb-0 xl:space-x-8"
+      role="menubar"
+      aria-label="Main menu">
       {{ $currentPage := . }}
       {{ range site.Menus.main }}
         {{ $menuURL := .URL | absLangURL }}
         {{ $pageURL:= $currentPage.Permalink | absLangURL }}
         {{ $active := eq $menuURL $pageURL }}
         {{ if .HasChildren }}
-          <li class="nav-item nav-dropdown group relative">
-            <span
-              class="nav-link {{ range .Children }}
-                {{ $childURL := .URL | absLangURL }}
-                {{ $active := eq $childURL $pageURL }}
-                {{ if $active }}active{{ end }}
-              {{ end }} inline-flex items-center">
-              {{ .Name }}
-              <svg class="h-4 w-4 fill-current" viewBox="0 0 20 20">
-                <path
-                  d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-              </svg>
-            </span>
-            <ul
-              class="nav-dropdown-list lg:group-hover:visible lg:group-hover:opacity-100">
-              {{ range .Children }}
-                {{ $childURL := .URL | absLangURL }}
-                {{ $active := eq $childURL $pageURL }}
-                <li class="nav-dropdown-item">
-                  <a
-                    class="nav-dropdown-link {{ if $active }}
-                      active
-                    {{- end -}}"
-                    {{ if findRE `^http` .URL }}
-                      target="_blank" rel="noopener"
+          {{ if eq .Identifier "services" }}
+            <!-- Services Mega Menu -->
+            <li class="nav-item nav-mega-menu relative" role="menuitem">
+              <button
+                class="nav-link {{ range .Children }}
+                  {{ $childURL := .URL | absLangURL }}
+                  {{ $active := eq $childURL $pageURL }}
+                  {{ if $active }}active{{ end }}
+                {{ end }} inline-flex items-center cursor-pointer"
+                aria-expanded="false"
+                aria-haspopup="true"
+                aria-controls="services-mega-menu"
+                id="services-menu-button">
+                {{ .Name }}
+                <svg class="h-4 w-4 fill-current ml-1 transition-transform duration-200" viewBox="0 0 20 20" aria-hidden="true">
+                  <path
+                    d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                </svg>
+              </button>
+              <div class="mega-menu lg:hover:visible lg:hover:opacity-100" 
+                   id="services-mega-menu" 
+                   role="menu" 
+                   aria-labelledby="services-menu-button">
+                <div class="mega-menu-content">
+                  <div class="mega-menu-header">
+                    <h3 class="mega-menu-title" id="services-menu-title">Our Services</h3>
+                    <p class="mega-menu-subtitle">Expert CRM solutions tailored to your business needs</p>
+                  </div>
+                  <div class="mega-menu-grid" role="group" aria-labelledby="services-menu-title">
+                    {{ $services := site.GetPage "sections/services" }}
+                    {{ range $index, $service := $services.Params.services }}
+                      {{ $child := index .Children $index }}
+                      {{ if $child }}
+                        <a
+                          href="{{ $child.URL | relLangURL }}"
+                          class="mega-menu-item"
+                          role="menuitem"
+                          aria-describedby="service-{{ $index }}-desc">
+                          <div class="mega-menu-icon" aria-hidden="true">
+                            <i class="fas fa-{{ if eq $service.title "Salesforce Implementation" }}cloud{{ else if eq $service.title "Custom Development" }}code{{ else if eq $service.title "Integration Services" }}plug{{ else if eq $service.title "Training & Support" }}graduation-cap{{ else if eq $service.title "Data Migration" }}database{{ else }}cog{{ end }}"></i>
+                          </div>
+                          <div class="mega-menu-content-text">
+                            <h4 class="mega-menu-item-title">{{ $child.Name }}</h4>
+                            <p class="mega-menu-item-desc" id="service-{{ $index }}-desc">{{ $service.description }}</p>
+                            <div class="mega-menu-keywords" aria-label="Service keywords">
+                              {{ range $service.keywords }}
+                                <span class="mega-menu-keyword">{{ . }}</span>
+                              {{ end }}
+                            </div>
+                          </div>
+                        </a>
+                      {{ end }}
                     {{ end }}
-                    href="{{- if findRE `^#` .URL -}}
-                      {{- if not $.IsHome -}}
-                        {{- site.Home.RelPermalink -}}
-                      {{- end }}
-                      {{- .URL -}}
-                    {{- else -}}
-                      {{- .URL | relLangURL -}}
-                    {{- end -}}">
-                    {{ .Name }}
-                  </a>
-                </li>
-              {{ end }}
-            </ul>
-          </li>
+                  </div>
+                  <div class="mega-menu-footer">
+                    <a href="/#services" class="mega-menu-cta">
+                      View All Services
+                      <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </li>
+          {{ else }}
+            <!-- Regular Dropdown -->
+            <li class="nav-item nav-dropdown relative" role="menuitem">
+              <button
+                class="nav-link {{ range .Children }}
+                  {{ $childURL := .URL | absLangURL }}
+                  {{ $active := eq $childURL $pageURL }}
+                  {{ if $active }}active{{ end }}
+                {{ end }} inline-flex items-center"
+                aria-expanded="false"
+                aria-haspopup="true"
+                aria-controls="dropdown-{{ .Identifier }}">
+                {{ .Name }}
+                <svg class="h-4 w-4 fill-current transition-transform duration-200" viewBox="0 0 20 20" aria-hidden="true">
+                  <path
+                    d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                </svg>
+              </button>
+              <ul
+                class="nav-dropdown-list lg:hover:visible lg:hover:opacity-100"
+                id="dropdown-{{ .Identifier }}"
+                role="menu"
+                aria-label="{{ .Name }} submenu">
+                {{ range .Children }}
+                  {{ $childURL := .URL | absLangURL }}
+                  {{ $active := eq $childURL $pageURL }}
+                  <li class="nav-dropdown-item" role="none">
+                    <a
+                      class="nav-dropdown-link {{ if $active }}
+                        active
+                      {{- end -}}"
+                      role="menuitem"
+                      {{ if $active }}aria-current="page"{{ end }}
+                      {{ if findRE `^http` .URL }}
+                        target="_blank" rel="noopener" aria-label="{{ .Name }} (opens in new tab)"
+                      {{ end }}
+                      href="{{- if findRE `^#` .URL -}}
+                        {{- if not $.IsHome -}}
+                          {{- site.Home.RelPermalink -}}
+                        {{- end }}
+                        {{- .URL -}}
+                      {{- else -}}
+                        {{- .URL | relLangURL -}}
+                      {{- end -}}">
+                      {{ .Name }}
+                    </a>
+                  </li>
+                {{ end }}
+              </ul>
+            </li>
+          {{ end }}
         {{ else }}
-          <li class="nav-item">
+          <li class="nav-item" role="none">
             <a
               class="nav-link {{ if $active }}active{{- end -}}"
+              role="menuitem"
+              {{ if $active }}aria-current="page"{{ end }}
               {{ if findRE `^http` .URL }}
-                target="_blank" rel="noopener"
+                target="_blank" rel="noopener" aria-label="{{ .Name }} (opens in new tab)"
               {{ end }}
               href="{{- if findRE `^#` .URL -}}
                 {{- if not $.IsHome -}}
@@ -96,10 +174,12 @@
         {{ end }}
       {{ end }}
       {{ if site.Params.navigation_button.enable }}
-        <li class="mt-4 inline-block lg:hidden">
+        <li class="mt-4 inline-block lg:hidden" role="none">
           <a
             class="btn btn-outline-primary btn-sm"
-            href="{{ site.Params.navigation_button.link | relLangURL }}">
+            href="{{ site.Params.navigation_button.link | relLangURL }}"
+            role="menuitem"
+            aria-label="{{ site.Params.navigation_button.label }} - Contact us">
             {{ site.Params.navigation_button.label }}
           </a>
         </li>
@@ -138,3 +218,186 @@
     </div>
   </nav>
 </header>
+
+<script>
+// Enhanced navigation with accessibility and mobile support
+document.addEventListener('DOMContentLoaded', function() {
+  const header = document.getElementById('main-header');
+  const mobileToggle = document.getElementById('mobile-nav-toggle');
+  const navMenu = document.getElementById('nav-menu');
+  const servicesButton = document.getElementById('services-menu-button');
+  const servicesMegaMenu = document.getElementById('services-mega-menu');
+  
+  let isScrolled = false;
+  let lastScrollY = 0;
+  let scrollDirection = 'down';
+  let mobileMenuOpen = false;
+  
+  // Enhanced header scroll effect with smooth transitions
+  function updateHeaderOnScroll() {
+    const scrollY = window.scrollY;
+    const threshold = 80;
+    
+    // Determine scroll direction
+    if (scrollY > lastScrollY) {
+      scrollDirection = 'down';
+    } else if (scrollY < lastScrollY) {
+      scrollDirection = 'up';
+    }
+    lastScrollY = scrollY;
+    
+    // Update header state based on scroll position and direction
+    const shouldBeScrolled = scrollY > threshold;
+    
+    if (shouldBeScrolled && !isScrolled) {
+      header.classList.add('header-scrolled');
+      header.classList.remove('header-transitioning');
+      isScrolled = true;
+    } else if (!shouldBeScrolled && isScrolled) {
+      // Add transitioning class for smooth effect when scrolling back to top
+      header.classList.add('header-transitioning');
+      header.classList.remove('header-scrolled');
+      isScrolled = false;
+      
+      // Remove transitioning class after animation
+      setTimeout(() => {
+        header.classList.remove('header-transitioning');
+      }, 400);
+    }
+    
+    // Add scroll direction class for additional styling
+    header.classList.toggle('scrolling-up', scrollDirection === 'up');
+    header.classList.toggle('scrolling-down', scrollDirection === 'down');
+  }
+  
+  // Mobile navigation toggle
+  function toggleMobileMenu() {
+    mobileMenuOpen = !mobileMenuOpen;
+    mobileToggle.setAttribute('aria-expanded', mobileMenuOpen);
+    mobileToggle.classList.toggle('is-active', mobileMenuOpen);
+    navMenu.classList.toggle('mobile-menu-open', mobileMenuOpen);
+    document.body.classList.toggle('mobile-menu-open', mobileMenuOpen);
+    
+    // Focus management
+    if (mobileMenuOpen) {
+      trapFocus(navMenu);
+      // Focus first menu item
+      const firstMenuItem = navMenu.querySelector('a, button');
+      if (firstMenuItem) firstMenuItem.focus();
+    } else {
+      mobileToggle.focus();
+    }
+  }
+  
+  // Services mega menu toggle
+  function toggleServicesMenu(show) {
+    if (!servicesButton || !servicesMegaMenu) return;
+    
+    const isOpen = show !== undefined ? show : servicesButton.getAttribute('aria-expanded') === 'false';
+    servicesButton.setAttribute('aria-expanded', isOpen);
+    servicesMegaMenu.classList.toggle('mega-menu-visible', isOpen);
+    
+    // Rotate arrow
+    const arrow = servicesButton.querySelector('svg');
+    if (arrow) {
+      arrow.style.transform = isOpen ? 'rotate(180deg)' : 'rotate(0deg)';
+    }
+  }
+  
+  // Focus trap for mobile menu
+  function trapFocus(container) {
+    const focusableElements = container.querySelectorAll(
+      'a[href], button, textarea, input, select, [tabindex]:not([tabindex="-1"])'
+    );
+    const firstElement = focusableElements[0];
+    const lastElement = focusableElements[focusableElements.length - 1];
+
+    container.addEventListener('keydown', function(e) {
+      if (e.key === 'Tab') {
+        if (e.shiftKey && document.activeElement === firstElement) {
+          e.preventDefault();
+          lastElement.focus();
+        } else if (!e.shiftKey && document.activeElement === lastElement) {
+          e.preventDefault();
+          firstElement.focus();
+        }
+      }
+    });
+  }
+  
+  // Event listeners
+  if (mobileToggle) {
+    mobileToggle.addEventListener('click', toggleMobileMenu);
+  }
+  
+  if (servicesButton) {
+    // Desktop hover
+    servicesButton.parentElement.addEventListener('mouseenter', () => {
+      if (window.innerWidth >= 1024) toggleServicesMenu(true);
+    });
+    
+    servicesButton.parentElement.addEventListener('mouseleave', () => {
+      if (window.innerWidth >= 1024) toggleServicesMenu(false);
+    });
+    
+    // Keyboard navigation
+    servicesButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      toggleServicesMenu();
+    });
+    
+    servicesButton.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggleServicesMenu();
+      } else if (e.key === 'Escape') {
+        toggleServicesMenu(false);
+      }
+    });
+  }
+  
+  // Close mobile menu on escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      if (mobileMenuOpen) {
+        toggleMobileMenu();
+      }
+      if (servicesButton && servicesButton.getAttribute('aria-expanded') === 'true') {
+        toggleServicesMenu(false);
+        servicesButton.focus();
+      }
+    }
+  });
+  
+  // Close mobile menu when clicking outside
+  document.addEventListener('click', (e) => {
+    if (mobileMenuOpen && !navMenu.contains(e.target) && !mobileToggle.contains(e.target)) {
+      toggleMobileMenu();
+    }
+  });
+  
+  // Handle window resize
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 1024 && mobileMenuOpen) {
+      toggleMobileMenu();
+    }
+  });
+  
+  // Throttle scroll events for performance
+  let ticking = false;
+  function handleScroll() {
+    if (!ticking) {
+      requestAnimationFrame(function() {
+        updateHeaderOnScroll();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }
+  
+  window.addEventListener('scroll', handleScroll, { passive: true });
+  
+  // Check initial state
+  updateHeaderOnScroll();
+});
+</script>

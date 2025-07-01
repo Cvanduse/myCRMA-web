@@ -1,16 +1,66 @@
+/* Header Base Styles - Enhanced for readability at top */
 .header {
-  @apply bg-body dark:bg-darkmode-body py-6;
+  @apply bg-black/40 dark:bg-gray-900/50 py-4 backdrop-blur-md;
+  @apply border-b border-white/20 dark:border-gray-800/30;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+}
+
+/* Header when scrolled - Enhanced solid background */
+.header.header-scrolled {
+  @apply bg-white/98 dark:bg-gray-900/98 py-3 shadow-xl;
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Header transitioning state for smooth scroll-up effect */
+.header.header-transitioning {
+  @apply bg-black/30 dark:bg-gray-900/40 py-4;
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Scroll direction states */
+.header.scrolling-up {
+  transform: translateY(0);
+}
+
+.header.scrolling-down {
+  /* Optionally hide header when scrolling down rapidly */
+}
+
+/* Header backdrop support for older browsers */
+@supports not (backdrop-filter: blur(20px)) {
+  .header {
+    @apply bg-black/60 dark:bg-gray-900/70;
+  }
+  
+  .header.header-scrolled {
+    @apply bg-white dark:bg-gray-900;
+  }
+  
+  .header.header-transitioning {
+    @apply bg-black/50 dark:bg-gray-900/60;
+  }
 }
 
 /* navbar items */
 .navbar {
   @apply relative flex flex-wrap items-center justify-between;
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
 }
 
 .navbar-brand {
-  @apply text-text-dark dark:text-darkmode-text-dark text-xl font-semibold;
+  @apply text-white dark:text-white text-xl font-bold;
+  @apply drop-shadow-xl;
+  transition: all 0.3s ease;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+  font-weight: 800;
+  letter-spacing: 0.025em;
   image {
-    @apply max-h-full max-w-full;
+    @apply max-h-full max-w-full drop-shadow-xl;
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.8));
   }
 }
 
@@ -19,7 +69,17 @@
 }
 
 .nav-link {
-  @apply text-text-dark hover:text-primary dark:text-darkmode-text-dark dark:hover:text-darkmode-primary block p-3 cursor-pointer font-semibold transition lg:px-2 lg:py-3;
+  @apply text-white dark:text-white block p-3 cursor-pointer font-semibold;
+  @apply transition-all duration-300 ease-in-out;
+  @apply lg:px-4 lg:py-3 lg:mx-1;
+  @apply rounded-lg lg:rounded-md;
+  @apply drop-shadow-lg;
+  @apply hover:bg-white/40 dark:hover:bg-gray-800/40;
+  @apply hover:text-white dark:hover:text-white;
+  @apply focus:outline-none focus:ring-2 focus:ring-white/50;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+  font-weight: 700;
+  letter-spacing: 0.025em;
 }
 
 .nav-dropdown {
@@ -35,7 +95,17 @@
 }
 
 .nav-dropdown-list {
-  @apply bg-body dark:bg-darkmode-body z-10 min-w-[180px] rounded p-4 shadow-sm hidden lg:invisible lg:absolute lg:block lg:opacity-0;
+  @apply bg-white/95 dark:bg-gray-900/95 z-20 min-w-[200px] rounded-lg p-3;
+  @apply shadow-2xl border border-gray-200/50 dark:border-gray-700/50;
+  @apply hidden lg:invisible lg:absolute lg:block lg:opacity-0;
+  @apply backdrop-blur-md;
+  @apply mt-2;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-dropdown:hover .nav-dropdown-list {
+  @apply visible opacity-100;
+  transform: translateY(0);
 }
 
 .nav-dropdown-item {
@@ -43,7 +113,10 @@
 }
 
 .nav-dropdown-link {
-  @apply text-text-dark hover:text-primary dark:text-darkmode-text dark:hover:text-darkmode-primary block py-1 font-semibold transition;
+  @apply text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400;
+  @apply block py-2 px-3 font-medium transition-all duration-200;
+  @apply rounded-md hover:bg-gray-100 dark:hover:bg-gray-800;
+  @apply focus:outline-none focus:ring-2 focus:ring-blue-500/50;
 }
 
 /* theme-switcher */
@@ -66,5 +139,383 @@
     span {
       @apply lg:left-4;
     }
+  }
+}
+
+/* Mega Menu Styles */
+.nav-mega-menu {
+  @apply relative;
+}
+
+.mega-menu {
+  @apply bg-white/98 dark:bg-gray-900/98 border border-gray-200/50 dark:border-gray-700/50;
+  @apply rounded-xl shadow-2xl p-8 z-50;
+  @apply invisible opacity-0 transition-all duration-300 ease-in-out;
+  @apply lg:block hidden;
+  @apply backdrop-blur-md;
+  
+  /* Center the mega menu relative to viewport */
+  position: fixed;
+  left: 50%;
+  top: 5rem; /* Adjust based on header height */
+  transform: translateX(-50%) translateY(-10px);
+  width: 90vw;
+  max-width: 72rem;
+}
+
+.nav-mega-menu:hover .mega-menu {
+  @apply visible opacity-100;
+  transform: translateX(-50%) translateY(0);
+}
+
+.mega-menu-content {
+  @apply w-full;
+}
+
+.mega-menu-header {
+  @apply mb-6 text-center;
+}
+
+.mega-menu-title {
+  @apply text-2xl font-bold text-gray-900 dark:text-white mb-2;
+}
+
+.mega-menu-subtitle {
+  @apply text-gray-600 dark:text-gray-400 text-sm;
+}
+
+.mega-menu-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8;
+  @apply auto-rows-fr; /* Ensure equal height rows */
+}
+
+.mega-menu-item {
+  @apply flex items-start p-5 rounded-xl border border-gray-200/50 dark:border-gray-700/50;
+  @apply hover:border-blue-300 hover:bg-blue-50/50 dark:hover:bg-blue-900/20;
+  @apply transition-all duration-300 ease-in-out;
+  @apply hover:shadow-lg hover:-translate-y-1;
+}
+
+.mega-menu-item:hover .mega-menu-icon {
+  @apply bg-blue-600 text-white shadow-lg;
+  @apply transform scale-110;
+}
+
+.mega-menu-icon {
+  @apply flex-shrink-0 w-14 h-14 rounded-xl bg-blue-100 dark:bg-blue-900/30;
+  @apply flex items-center justify-center mr-4;
+  @apply transition-all duration-300 ease-in-out;
+}
+
+.mega-menu-item:hover .mega-menu-icon i {
+  @apply text-white;
+}
+
+.mega-menu-icon i {
+  @apply text-blue-600 dark:text-blue-400 text-xl;
+}
+
+.mega-menu-content-text {
+  @apply flex-1;
+}
+
+.mega-menu-item:hover .mega-menu-item-title {
+  @apply text-blue-700 dark:text-blue-300;
+}
+
+.mega-menu-item-title {
+  @apply font-semibold text-gray-900 dark:text-white mb-1 text-sm;
+}
+
+.mega-menu-item-desc {
+  @apply text-gray-600 dark:text-gray-400 text-xs mb-3 leading-relaxed;
+}
+
+.mega-menu-keywords {
+  @apply flex flex-wrap gap-1;
+}
+
+.mega-menu-keyword {
+  @apply text-xs px-2 py-1 bg-gray-100 dark:bg-darkmode-light text-gray-600 dark:text-gray-400 rounded-full;
+}
+
+.mega-menu-footer {
+  @apply text-center pt-6 border-t border-gray-200 dark:border-darkmode-border;
+}
+
+.mega-menu-cta {
+  @apply inline-flex items-center text-primary hover:text-primary/80 font-semibold text-sm;
+  @apply transition-all duration-200;
+}
+
+.mega-menu-cta:hover {
+  @apply transform translate-x-1;
+}
+
+/* Mobile mega menu adjustments */
+@media (max-width: 1023px) {
+  .nav-mega-menu .mega-menu {
+    @apply hidden;
+  }
+  
+  .nav-mega-menu .nav-dropdown-list {
+    @apply block bg-transparent border-none shadow-none;
+    @apply mt-0 ml-4;
+  }
+  
+  .nav-dropdown-link {
+    @apply text-white dark:text-white;
+    @apply hover:bg-white/20 dark:hover:bg-gray-800/20;
+  }
+}
+
+/* Mobile menu toggle enhancement */
+#nav-toggle:checked ~ #nav-menu {
+  @apply block bg-white/95 dark:bg-gray-900/95;
+  @apply backdrop-blur-md shadow-2xl;
+  @apply border-t border-white/20 dark:border-gray-800/20;
+}
+
+/* Enhanced mobile menu items */
+#nav-toggle:checked ~ #nav-menu .nav-link {
+  @apply text-gray-900 dark:text-white;
+  @apply hover:bg-gray-100 dark:hover:bg-gray-800;
+  @apply drop-shadow-none;
+  text-shadow: none;
+}
+
+/* Ensure mega menu doesn't interfere with regular dropdowns */
+.nav-dropdown:not(.nav-mega-menu) .mega-menu {
+  @apply hidden;
+}
+
+/* Smooth transitions for all interactive elements */
+.nav-link,
+.nav-dropdown-link,
+.mega-menu-item,
+.btn-outline-primary {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Focus states for accessibility */
+.nav-link:focus,
+.nav-dropdown-link:focus,
+.mega-menu-item:focus,
+.btn-outline-primary:focus {
+  @apply outline-none ring-2 ring-blue-500/50 ring-offset-2;
+}
+
+/* Enhanced scroll indicator */
+.header {
+  scroll-behavior: smooth;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .header {
+    @apply py-3;
+  }
+  
+  .navbar {
+    @apply px-3;
+  }
+  
+  .mega-menu {
+    @apply w-[95vw] left-1/2 -translate-x-1/2;
+  }
+}
+
+/* Logo adjustments for transparent header */
+.header:not(.header-scrolled) .navbar-brand {
+  @apply text-white drop-shadow-lg;
+}
+
+.header.header-scrolled .navbar-brand {
+  @apply text-gray-900 dark:text-white;
+  @apply drop-shadow-none;
+}
+
+/* Navigation link adjustments for transparent header */
+.header:not(.header-scrolled) .nav-link {
+  @apply text-white hover:text-white drop-shadow-sm;
+}
+
+.header.header-scrolled .nav-link {
+  @apply text-gray-700 dark:text-gray-300;
+  @apply hover:text-gray-900 dark:hover:text-white;
+  @apply hover:bg-gray-100 dark:hover:bg-gray-800;
+  @apply drop-shadow-none;
+  text-shadow: none;
+}
+
+/* Navigation button adjustments - Enhanced visibility at top */
+.header:not(.header-scrolled) .btn-outline-primary {
+  @apply border-2 border-white text-white bg-white/30;
+  @apply hover:bg-white hover:text-gray-900;
+  @apply backdrop-blur-sm font-bold;
+  @apply shadow-xl transition-all duration-300;
+  @apply drop-shadow-xl;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.header.header-scrolled .btn-outline-primary {
+  @apply border-2 border-blue-600 text-blue-600 bg-transparent;
+  @apply hover:bg-blue-600 hover:text-white;
+  @apply shadow-md font-semibold;
+  @apply transition-all duration-300;
+}
+
+/* Enhanced Mobile Navigation */
+.mobile-nav-toggle {
+  @apply relative z-10 flex h-12 w-12 cursor-pointer items-center justify-center;
+  @apply rounded-lg border-2 border-white/30 bg-white/20;
+  @apply backdrop-blur-sm transition-all duration-300;
+  @apply hover:bg-white/30 focus:outline-none focus:ring-2 focus:ring-white/50;
+  @apply drop-shadow-lg;
+  min-height: 44px; /* Touch-friendly */
+  min-width: 44px;
+}
+
+.mobile-nav-toggle:focus {
+  @apply ring-2 ring-white/50 ring-offset-2 ring-offset-transparent;
+}
+
+.hamburger-box {
+  @apply relative h-6 w-6;
+}
+
+.hamburger-line {
+  @apply absolute left-0 h-0.5 w-6 bg-white transition-all duration-300;
+  @apply drop-shadow-sm;
+}
+
+.hamburger-line:nth-child(1) {
+  top: 4px;
+}
+
+.hamburger-line:nth-child(2) {
+  top: 11px;
+}
+
+.hamburger-line:nth-child(3) {
+  top: 18px;
+}
+
+/* Animated hamburger states */
+.mobile-nav-toggle.is-active .hamburger-line:nth-child(1) {
+  transform: rotate(45deg);
+  top: 11px;
+}
+
+.mobile-nav-toggle.is-active .hamburger-line:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-nav-toggle.is-active .hamburger-line:nth-child(3) {
+  transform: rotate(-45deg);
+  top: 11px;
+}
+
+/* Mobile menu styles */
+.navbar-nav.mobile-menu-open {
+  @apply fixed inset-x-0 top-full z-40 block h-screen;
+  @apply bg-white/98 dark:bg-gray-900/98 backdrop-blur-md;
+  @apply border-t border-gray-200/50 dark:border-gray-700/50;
+  @apply shadow-2xl;
+  @apply overflow-y-auto;
+  @apply px-4 py-6;
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile menu items */
+.mobile-menu-open .nav-link {
+  @apply text-gray-900 dark:text-white text-lg font-semibold;
+  @apply block w-full rounded-lg px-4 py-4;
+  @apply hover:bg-gray-100 dark:hover:bg-gray-800;
+  @apply transition-all duration-200;
+  @apply drop-shadow-none;
+  text-shadow: none;
+  min-height: 44px; /* Touch-friendly */
+}
+
+.mobile-menu-open .nav-item {
+  @apply mb-2;
+}
+
+/* Mobile services menu */
+.mobile-menu-open .nav-mega-menu .mega-menu {
+  @apply static block visible opacity-100 transform-none;
+  @apply w-full max-w-none p-4 mt-2;
+  @apply bg-gray-50 dark:bg-gray-800;
+}
+
+.mobile-menu-open .mega-menu-grid {
+  @apply grid-cols-1 gap-3;
+}
+
+.mobile-menu-open .mega-menu-item {
+  @apply p-3;
+}
+
+/* Prevent body scroll when mobile menu is open */
+body.mobile-menu-open {
+  @apply overflow-hidden;
+}
+
+/* Screen reader only text */
+.sr-only {
+  @apply absolute h-px w-px overflow-hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Accessibility enhancements */
+.mega-menu-visible {
+  @apply visible opacity-100;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Focus indicators */
+.nav-link:focus,
+.nav-dropdown-link:focus,
+.mega-menu-item:focus {
+  @apply outline-none ring-2 ring-blue-500/50 ring-offset-2;
+}
+
+/* Touch-friendly targets */
+@media (max-width: 1023px) {
+  .nav-link,
+  .nav-dropdown-link,
+  .mega-menu-item {
+    min-height: 44px;
+    min-width: 44px;
+    @apply flex items-center;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .hamburger-line,
+  .mega-menu,
+  .nav-link,
+  .mobile-nav-toggle {
+    transition: none;
+  }
+  
+  .navbar-nav.mobile-menu-open {
+    animation: none;
   }
 }

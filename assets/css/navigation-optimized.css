@@ -1,0 +1,341 @@
+/* Optimized Navigation Styles for Better Readability */
+
+/* Header Base Styles - Enhanced for readability */
+.header {
+  @apply bg-white/10 dark:bg-gray-900/10 py-4 backdrop-blur-md;
+  @apply border-b border-white/20 dark:border-gray-800/20;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Header when scrolled - Enhanced solid background */
+.header.header-scrolled {
+  @apply bg-white/98 dark:bg-gray-900/98 py-3 shadow-xl;
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Header backdrop support for older browsers */
+@supports not (backdrop-filter: blur(20px)) {
+  .header {
+    @apply bg-white/90 dark:bg-gray-900/90;
+  }
+  
+  .header.header-scrolled {
+    @apply bg-white dark:bg-gray-900;
+  }
+}
+
+/* Navbar container */
+.navbar {
+  @apply relative flex flex-wrap items-center justify-between;
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+/* Enhanced navbar brand/logo */
+.navbar-brand {
+  @apply text-white dark:text-white text-xl font-bold;
+  @apply drop-shadow-lg;
+  transition: all 0.3s ease;
+}
+
+.header.header-scrolled .navbar-brand {
+  @apply text-gray-900 dark:text-white;
+  @apply drop-shadow-none;
+}
+
+/* Enhanced navbar navigation */
+.navbar-nav {
+  @apply text-center lg:text-left;
+  @apply flex flex-col lg:flex-row lg:items-center;
+}
+
+/* Enhanced nav links with better contrast */
+.nav-link {
+  @apply text-white dark:text-white block p-3 cursor-pointer font-semibold;
+  @apply transition-all duration-300 ease-in-out;
+  @apply lg:px-3 lg:py-2 lg:mx-1;
+  @apply rounded-lg lg:rounded-md;
+  @apply drop-shadow-sm;
+  @apply hover:bg-white/20 dark:hover:bg-gray-800/20;
+  @apply hover:text-white dark:hover:text-white;
+  @apply focus:outline-none focus:ring-2 focus:ring-white/50;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.header.header-scrolled .nav-link {
+  @apply text-gray-700 dark:text-gray-300;
+  @apply hover:text-gray-900 dark:hover:text-white;
+  @apply hover:bg-gray-100 dark:hover:bg-gray-800;
+  @apply drop-shadow-none;
+  text-shadow: none;
+}
+
+/* Active state for nav links */
+.nav-link.active {
+  @apply bg-white/30 dark:bg-gray-800/30;
+  @apply text-white dark:text-white;
+  @apply font-bold;
+}
+
+.header.header-scrolled .nav-link.active {
+  @apply bg-blue-100 dark:bg-blue-900/30;
+  @apply text-blue-700 dark:text-blue-300;
+}
+
+/* Enhanced dropdown styles */
+.nav-dropdown {
+  @apply mr-0 relative;
+}
+
+.nav-dropdown > svg {
+  @apply pointer-events-none transition-transform duration-200;
+}
+
+.nav-dropdown:hover > svg {
+  @apply transform rotate-180;
+}
+
+/* Enhanced dropdown list */
+.nav-dropdown-list {
+  @apply bg-white/95 dark:bg-gray-900/95 z-20 min-w-[200px] rounded-lg p-3;
+  @apply shadow-2xl border border-gray-200/50 dark:border-gray-700/50;
+  @apply hidden lg:invisible lg:absolute lg:block lg:opacity-0;
+  @apply backdrop-blur-md;
+  @apply mt-2;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-dropdown:hover .nav-dropdown-list {
+  @apply visible opacity-100;
+  transform: translateY(0);
+}
+
+.nav-dropdown-item {
+  @apply [&:not(:last-child)]:mb-1;
+}
+
+.nav-dropdown-link {
+  @apply text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400;
+  @apply block py-2 px-3 font-medium transition-all duration-200;
+  @apply rounded-md hover:bg-gray-100 dark:hover:bg-gray-800;
+  @apply focus:outline-none focus:ring-2 focus:ring-blue-500/50;
+}
+
+/* Enhanced mega menu styles */
+.nav-mega-menu {
+  @apply relative;
+}
+
+.mega-menu {
+  @apply absolute left-1/2 top-full w-screen max-w-5xl -translate-x-1/2 transform;
+  @apply bg-white/98 dark:bg-gray-900/98 border border-gray-200/50 dark:border-gray-700/50;
+  @apply rounded-xl shadow-2xl mt-3 p-8 z-50;
+  @apply invisible opacity-0 transition-all duration-300 ease-in-out;
+  @apply lg:block hidden;
+  @apply backdrop-blur-md;
+}
+
+.nav-mega-menu:hover .mega-menu {
+  @apply visible opacity-100;
+  transform: translateY(0) translateX(-50%);
+}
+
+.mega-menu-content {
+  @apply w-full;
+}
+
+.mega-menu-header {
+  @apply mb-8 text-center;
+}
+
+.mega-menu-title {
+  @apply text-3xl font-bold text-gray-900 dark:text-white mb-3;
+}
+
+.mega-menu-subtitle {
+  @apply text-gray-600 dark:text-gray-400 text-base;
+}
+
+.mega-menu-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8;
+}
+
+.mega-menu-item {
+  @apply flex items-start p-5 rounded-xl border border-gray-200/50 dark:border-gray-700/50;
+  @apply hover:border-blue-300 hover:bg-blue-50/50 dark:hover:bg-blue-900/20;
+  @apply transition-all duration-300 ease-in-out;
+  @apply hover:shadow-lg hover:-translate-y-1;
+}
+
+.mega-menu-item:hover .mega-menu-icon {
+  @apply bg-blue-600 text-white shadow-lg;
+  @apply transform scale-110;
+}
+
+.mega-menu-icon {
+  @apply flex-shrink-0 w-14 h-14 rounded-xl bg-blue-100 dark:bg-blue-900/30;
+  @apply flex items-center justify-center mr-4;
+  @apply transition-all duration-300 ease-in-out;
+}
+
+.mega-menu-item:hover .mega-menu-icon i {
+  @apply text-white;
+}
+
+.mega-menu-icon i {
+  @apply text-blue-600 dark:text-blue-400 text-xl;
+}
+
+.mega-menu-content-text {
+  @apply flex-1;
+}
+
+.mega-menu-item:hover .mega-menu-item-title {
+  @apply text-blue-700 dark:text-blue-300;
+}
+
+.mega-menu-item-title {
+  @apply font-semibold text-gray-900 dark:text-white mb-2 text-base;
+}
+
+.mega-menu-item-desc {
+  @apply text-gray-600 dark:text-gray-400 text-sm mb-3 leading-relaxed;
+}
+
+.mega-menu-keywords {
+  @apply flex flex-wrap gap-2;
+}
+
+.mega-menu-keyword {
+  @apply text-xs px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 rounded-full;
+  @apply font-medium;
+}
+
+.mega-menu-footer {
+  @apply text-center pt-6 border-t border-gray-200/50 dark:border-gray-700/50;
+}
+
+.mega-menu-cta {
+  @apply inline-flex items-center text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300;
+  @apply font-semibold text-base transition-all duration-200;
+  @apply hover:transform hover:translate-x-1;
+}
+
+/* Enhanced mobile navigation */
+@media (max-width: 1023px) {
+  .nav-mega-menu .mega-menu {
+    @apply hidden;
+  }
+  
+  .nav-mega-menu .nav-dropdown-list {
+    @apply block bg-transparent border-none shadow-none;
+    @apply mt-0 ml-4;
+  }
+  
+  .nav-dropdown-link {
+    @apply text-white dark:text-white;
+    @apply hover:bg-white/20 dark:hover:bg-gray-800/20;
+  }
+}
+
+/* Enhanced navigation buttons */
+.header:not(.header-scrolled) .btn-outline-primary {
+  @apply border-white/80 text-white bg-white/10;
+  @apply hover:bg-white hover:text-gray-900;
+  @apply backdrop-blur-sm;
+  @apply shadow-lg;
+}
+
+.header.header-scrolled .btn-outline-primary {
+  @apply border-blue-600 text-blue-600;
+  @apply hover:bg-blue-600 hover:text-white;
+  @apply shadow-md;
+}
+
+/* Enhanced search and theme switcher */
+.header:not(.header-scrolled) .theme-switcher,
+.header:not(.header-scrolled) button[data-target="search-modal"] {
+  @apply text-white drop-shadow-sm;
+}
+
+.header.header-scrolled .theme-switcher,
+.header.header-scrolled button[data-target="search-modal"] {
+  @apply text-gray-700 dark:text-gray-300;
+  @apply drop-shadow-none;
+}
+
+/* Mobile menu toggle enhancement */
+#nav-toggle:checked ~ #nav-menu {
+  @apply block bg-white/95 dark:bg-gray-900/95;
+  @apply backdrop-blur-md shadow-2xl;
+  @apply border-t border-white/20 dark:border-gray-800/20;
+}
+
+/* Enhanced mobile menu items */
+#nav-toggle:checked ~ #nav-menu .nav-link {
+  @apply text-gray-900 dark:text-white;
+  @apply hover:bg-gray-100 dark:hover:bg-gray-800;
+  @apply drop-shadow-none;
+  text-shadow: none;
+}
+
+/* Smooth transitions for all interactive elements */
+.nav-link,
+.nav-dropdown-link,
+.mega-menu-item,
+.btn-outline-primary {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Focus states for accessibility */
+.nav-link:focus,
+.nav-dropdown-link:focus,
+.mega-menu-item:focus,
+.btn-outline-primary:focus {
+  @apply outline-none ring-2 ring-blue-500/50 ring-offset-2;
+}
+
+/* Enhanced scroll indicator */
+.header {
+  scroll-behavior: smooth;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .header {
+    @apply py-3;
+  }
+  
+  .navbar {
+    @apply px-3;
+  }
+  
+  .mega-menu {
+    @apply w-[95vw] left-1/2 -translate-x-1/2;
+  }
+}
+
+/* Dark mode optimizations */
+@media (prefers-color-scheme: dark) {
+  .header {
+    @apply bg-gray-900/20;
+  }
+  
+  .header.header-scrolled {
+    @apply bg-gray-900/98;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .header {
+    @apply bg-white dark:bg-gray-900;
+    backdrop-filter: none;
+  }
+  
+  .nav-link {
+    @apply text-gray-900 dark:text-white;
+    text-shadow: none;
+  }
+} 

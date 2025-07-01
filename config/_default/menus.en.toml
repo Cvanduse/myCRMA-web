@@ -10,6 +10,43 @@ weight = 1
 name = "Services"
 url = "/#services"
 weight = 2
+identifier = "services"
+
+  [[main]]
+  name = "Salesforce Implementation"
+  url = "/services/salesforce-implementation"
+  weight = 1
+  parent = "services"
+  
+  [[main]]
+  name = "Custom Development"
+  url = "/services/custom-development"
+  weight = 2
+  parent = "services"
+  
+  [[main]]
+  name = "Integration Services"
+  url = "/services/integration"
+  weight = 3
+  parent = "services"
+  
+  [[main]]
+  name = "Training & Support"
+  url = "/services/training"
+  weight = 4
+  parent = "services"
+  
+  [[main]]
+  name = "Data Migration"
+  url = "/services/data-migration"
+  weight = 5
+  parent = "services"
+  
+  [[main]]
+  name = "Optimization"
+  url = "/services/optimization"
+  weight = 6
+  parent = "services"
 
 [[main]]
 name = "About"
