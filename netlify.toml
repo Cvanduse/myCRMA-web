@@ -14,6 +14,7 @@
 
 [context.production.environment]
   HUGO_ENV = "production"
+  HUGO_ENABLEGITINFO = "true"
 
 [context.deploy-preview.environment]
   HUGO_ENV = "development"
@@ -30,6 +31,9 @@
 # Add a post-build command to print env vars (for debugging)
 [build.lifecycle]
   onPostBuild = "printenv | sort"
+
+[context.branch-deploy.environment]
+  HUGO_ENV = "production"
 
 # Force HTTPS redirects
 [[redirects]]
@@ -54,10 +58,4 @@
 [[redirects]]
   from = "/*"
   to = "/index.html"
-  status = 200
-
-[context.production.environment]
-  HUGO_ENABLEGITINFO = "true"
-
-[context.branch-deploy.environment]
-  HUGO_ENV = "production" 
+  status = 200 
