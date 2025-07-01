@@ -228,6 +228,14 @@ document.addEventListener('DOMContentLoaded', function() {
   const servicesButton = document.getElementById('services-menu-button');
   const servicesMegaMenu = document.getElementById('services-mega-menu');
   
+  console.log('Navigation initialized:', {
+    header: !!header,
+    mobileToggle: !!mobileToggle,
+    navMenu: !!navMenu,
+    servicesButton: !!servicesButton,
+    servicesMegaMenu: !!servicesMegaMenu
+  });
+  
   let isScrolled = false;
   let lastScrollY = 0;
   let scrollDirection = 'down';
@@ -273,18 +281,27 @@ document.addEventListener('DOMContentLoaded', function() {
   // Mobile navigation toggle
   function toggleMobileMenu() {
     mobileMenuOpen = !mobileMenuOpen;
-    mobileToggle.setAttribute('aria-expanded', mobileMenuOpen);
-    mobileToggle.classList.toggle('is-active', mobileMenuOpen);
-    navMenu.classList.toggle('mobile-menu-open', mobileMenuOpen);
+    
+    if (mobileToggle) {
+      mobileToggle.setAttribute('aria-expanded', mobileMenuOpen.toString());
+      mobileToggle.classList.toggle('is-active', mobileMenuOpen);
+    }
+    
+    if (navMenu) {
+      navMenu.classList.toggle('mobile-menu-open', mobileMenuOpen);
+    }
+    
     document.body.classList.toggle('mobile-menu-open', mobileMenuOpen);
     
     // Focus management
-    if (mobileMenuOpen) {
+    if (mobileMenuOpen && navMenu) {
       trapFocus(navMenu);
       // Focus first menu item
       const firstMenuItem = navMenu.querySelector('a, button');
-      if (firstMenuItem) firstMenuItem.focus();
-    } else {
+      if (firstMenuItem) {
+        setTimeout(() => firstMenuItem.focus(), 100);
+      }
+    } else if (mobileToggle) {
       mobileToggle.focus();
     }
   }
@@ -327,7 +344,17 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Event listeners
   if (mobileToggle) {
-    mobileToggle.addEventListener('click', toggleMobileMenu);
+    mobileToggle.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      toggleMobileMenu();
+    });
+    
+    mobileToggle.addEventListener('touchend', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      toggleMobileMenu();
+    });
   }
   
   if (servicesButton) {

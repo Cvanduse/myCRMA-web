@@ -1,9 +1,15 @@
+/* CSS Custom Properties */
+:root {
+  --header-height: 5rem;
+}
+
 /* Header Base Styles - Enhanced for readability at top */
 .header {
   @apply bg-black/40 dark:bg-gray-900/50 py-4 backdrop-blur-md;
   @apply border-b border-white/20 dark:border-gray-800/30;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+  height: var(--header-height);
 }
 
 /* Header when scrolled - Enhanced solid background */
@@ -66,6 +72,7 @@
 
 .navbar-nav {
   @apply text-center lg:text-left;
+  @apply hidden lg:flex; /* Hide by default on mobile, show on desktop */
 }
 
 .nav-link {
@@ -369,16 +376,26 @@
 /* Enhanced Mobile Navigation */
 .mobile-nav-toggle {
   @apply relative z-10 flex h-12 w-12 cursor-pointer items-center justify-center;
-  @apply rounded-lg border-2 border-white/30 bg-white/20;
+  @apply rounded-lg border-2 border-white/50 bg-white/30;
   @apply backdrop-blur-sm transition-all duration-300;
-  @apply hover:bg-white/30 focus:outline-none focus:ring-2 focus:ring-white/50;
+  @apply hover:bg-white/40 focus:outline-none focus:ring-2 focus:ring-white/50;
   @apply drop-shadow-lg;
+  @apply lg:hidden; /* Only show on mobile */
   min-height: 44px; /* Touch-friendly */
   min-width: 44px;
 }
 
 .mobile-nav-toggle:focus {
   @apply ring-2 ring-white/50 ring-offset-2 ring-offset-transparent;
+}
+
+/* Mobile toggle when header is scrolled */
+.header.header-scrolled .mobile-nav-toggle {
+  @apply border-gray-400 bg-gray-100 text-gray-900;
+}
+
+.header.header-scrolled .hamburger-line {
+  @apply bg-gray-900;
 }
 
 .hamburger-box {
@@ -419,12 +436,14 @@
 
 /* Mobile menu styles */
 .navbar-nav.mobile-menu-open {
-  @apply fixed inset-x-0 top-full z-40 block h-screen;
+  @apply fixed inset-x-0 z-40 block;
   @apply bg-white/98 dark:bg-gray-900/98 backdrop-blur-md;
   @apply border-t border-gray-200/50 dark:border-gray-700/50;
   @apply shadow-2xl;
   @apply overflow-y-auto;
   @apply px-4 py-6;
+  top: var(--header-height, 5rem); /* Position below header */
+  height: calc(100vh - var(--header-height, 5rem));
   animation: slideDown 0.3s ease-out;
 }
 
@@ -448,6 +467,11 @@
   @apply drop-shadow-none;
   text-shadow: none;
   min-height: 44px; /* Touch-friendly */
+}
+
+/* Ensure mobile menu shows with class */
+.navbar-nav.mobile-menu-open {
+  display: block !important;
 }
 
 .mobile-menu-open .nav-item {
