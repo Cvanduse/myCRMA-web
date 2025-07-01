@@ -1,5 +1,5 @@
 [build]
-  command = "hugo mod download && hugo --gc --minify"
+  command = "hugo mod get -u ./... && hugo --gc --minify"
   publish = "public"
 
 [build.environment]
@@ -26,11 +26,11 @@
   status = 301
   force = true
 
-# Handle SPA routing
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+# REMOVE THIS - it's breaking Hugo's routing
+# [[redirects]]
+#   from = "/*"
+#   to = "/index.html"
+#   status = 200
 
 [context.production.environment]
   HUGO_ENV = "production"
