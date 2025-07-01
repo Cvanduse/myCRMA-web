@@ -41,12 +41,13 @@
           {{ if eq .Identifier "services" }}
             <!-- Services Mega Menu -->
             <li class="nav-item nav-mega-menu relative" role="menuitem">
+              <!-- Desktop Services Button -->
               <button
-                class="nav-link {{ range .Children }}
+                class="nav-link hidden lg:inline-flex {{ range .Children }}
                   {{ $childURL := .URL | absLangURL }}
                   {{ $active := eq $childURL $pageURL }}
                   {{ if $active }}active{{ end }}
-                {{ end }} inline-flex items-center cursor-pointer"
+                {{ end }} items-center cursor-pointer"
                 aria-expanded="false"
                 aria-haspopup="true"
                 aria-controls="services-mega-menu"
@@ -55,6 +56,18 @@
                 <svg class="h-4 w-4 fill-current ml-1 transition-transform duration-200" viewBox="0 0 20 20" aria-hidden="true">
                   <path
                     d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                </svg>
+              </button>
+              
+              <!-- Mobile Services Toggle -->
+              <button
+                class="mobile-services-toggle lg:hidden"
+                aria-expanded="false"
+                aria-controls="mobile-services-submenu"
+                id="mobile-services-button">
+                {{ .Name }}
+                <svg class="h-4 w-4 fill-current mobile-services-arrow" viewBox="0 0 20 20" aria-hidden="true">
+                  <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
                 </svg>
               </button>
               <div class="mega-menu lg:hover:visible lg:hover:opacity-100" 
@@ -99,6 +112,41 @@
                     </a>
                   </div>
                 </div>
+              </div>
+              
+              <!-- Mobile Services Submenu -->
+              <div class="mobile-services-submenu lg:hidden" 
+                   id="mobile-services-submenu" 
+                   role="menu" 
+                   aria-labelledby="mobile-services-button">
+                {{ $services := site.GetPage "sections/services" }}
+                {{ range $index, $service := $services.Params.services }}
+                  {{ $child := index .Children $index }}
+                  {{ if $child }}
+                    <a href="{{ $child.URL | relLangURL }}" 
+                       class="mobile-service-item" 
+                       role="menuitem">
+                      <div class="mobile-service-icon">
+                        <i class="fas fa-{{ if eq $service.title "Salesforce Implementation" }}cloud{{ else if eq $service.title "Custom Development" }}code{{ else if eq $service.title "Integration Services" }}plug{{ else if eq $service.title "Training & Support" }}graduation-cap{{ else if eq $service.title "Data Migration" }}database{{ else }}cog{{ end }} text-sm"></i>
+                      </div>
+                      <div class="mobile-service-content">
+                        <div class="mobile-service-title">{{ $child.Name }}</div>
+                        <div class="mobile-service-desc">{{ $service.description | truncate 60 }}</div>
+                      </div>
+                    </a>
+                  {{ end }}
+                {{ end }}
+                
+                <!-- Mobile View All Services Link -->
+                <a href="/#services" class="mobile-service-item border-t border-gray-200 dark:border-gray-600 mt-2 pt-3">
+                  <div class="mobile-service-icon bg-blue-500 text-white">
+                    <i class="fas fa-arrow-right text-sm"></i>
+                  </div>
+                  <div class="mobile-service-content">
+                    <div class="mobile-service-title text-blue-600 dark:text-blue-400">View All Services</div>
+                    <div class="mobile-service-desc">See our complete service offerings</div>
+                  </div>
+                </a>
               </div>
             </li>
           {{ else }}
@@ -227,13 +275,17 @@ document.addEventListener('DOMContentLoaded', function() {
   const navMenu = document.getElementById('nav-menu');
   const servicesButton = document.getElementById('services-menu-button');
   const servicesMegaMenu = document.getElementById('services-mega-menu');
+  const mobileServicesButton = document.getElementById('mobile-services-button');
+  const mobileServicesSubmenu = document.getElementById('mobile-services-submenu');
   
   console.log('Navigation initialized:', {
     header: !!header,
     mobileToggle: !!mobileToggle,
     navMenu: !!navMenu,
     servicesButton: !!servicesButton,
-    servicesMegaMenu: !!servicesMegaMenu
+    servicesMegaMenu: !!servicesMegaMenu,
+    mobileServicesButton: !!mobileServicesButton,
+    mobileServicesSubmenu: !!mobileServicesSubmenu
   });
   
   let isScrolled = false;
@@ -306,6 +358,22 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
   
+  // Mobile services submenu toggle
+  function toggleMobileServicesMenu() {
+    if (!mobileServicesButton || !mobileServicesSubmenu) return;
+    
+    const isOpen = mobileServicesButton.getAttribute('aria-expanded') === 'true';
+    const newState = !isOpen;
+    
+    mobileServicesButton.setAttribute('aria-expanded', newState.toString());
+    
+    if (newState) {
+      mobileServicesSubmenu.classList.add('show');
+    } else {
+      mobileServicesSubmenu.classList.remove('show');
+    }
+  }
+  
   // Services mega menu toggle
   function toggleServicesMenu(show) {
     if (!servicesButton || !servicesMegaMenu) return;
@@ -357,6 +425,22 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
   
+  // Mobile services button event listener
+  if (mobileServicesButton) {
+    mobileServicesButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      toggleMobileServicesMenu();
+    });
+    
+    mobileServicesButton.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggleMobileServicesMenu();
+      }
+    });
+  }
+  
   if (servicesButton) {
     // Desktop hover
     servicesButton.parentElement.addEventListener('mouseenter', () => {
@@ -392,6 +476,10 @@ document.addEventListener('DOMContentLoaded', function() {
       if (servicesButton && servicesButton.getAttribute('aria-expanded') === 'true') {
         toggleServicesMenu(false);
         servicesButton.focus();
+      }
+      if (mobileServicesButton && mobileServicesButton.getAttribute('aria-expanded') === 'true') {
+        toggleMobileServicesMenu();
+        mobileServicesButton.focus();
       }
     }
   });
