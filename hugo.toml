@@ -1,5 +1,5 @@
 ######################## default configuration ####################
-baseURL = "http://mycrmadvisors.com"
+baseURL = "http://mycrmadvisor.com"
 title = "MyCRMA Website"
 # theme = "hugoplate"
 timeZone = "America/New_York"
