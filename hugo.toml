@@ -1,5 +1,5 @@
 ######################## default configuration ####################
-baseURL = "http://mycrmadvisor.com"
+baseURL = "http://mycrmadvisor.netlify.app"
 title = "MyCRMA Website"
 # theme = "hugoplate"
 timeZone = "America/New_York"
