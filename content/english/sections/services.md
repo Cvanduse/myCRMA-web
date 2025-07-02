@@ -4,8 +4,8 @@ description: "Transform your business with our comprehensive Salesforce solution
 label: "Services"
 enable: true
 services:
-  - title: "Salesforce Implementation"
-    description: "Expert guidance through your Salesforce journey, from strategic planning to seamless deployment"
+  - title: "CRM Implementation"
+    description: "We partner with you to architect and implement your Salesforce solution that aligns to your business goals and ready for immediate impact."
     image: "/images/service-salesforce.svg"
     link: "#"
     keywords: ["Consulting", "Deployment", "Best Practices"]
@@ -31,7 +31,7 @@ services:
       </svg>
 
   - title: "Custom Development"
-    description: "Tailored solutions and custom applications to meet your unique business requirements"
+    description: "We collaborate with your organization to architect tailored solutions and custom applications that meet your unique needs and enhance business performance."
     image: "/images/service-development.svg"
     link: "#"
     keywords: ["APIs", "Automation", "Custom Apps"]
@@ -55,7 +55,7 @@ services:
       </svg>
 
   - title: "Integration Services"
-    description: "Seamlessly connect Salesforce with your existing systems and third-party applications"
+    description: "Empower your organization with seamless integrations between Salesforce, your existing systems, and third-party applications."
     image: "/images/service-integration.svg"
     link: "#"
     keywords: ["Data Sync", "Middleware", "APIs"]
@@ -79,7 +79,7 @@ services:
       </svg>
 
   - title: "Training & Support"
-    description: "Comprehensive training programs and 24/7 support to maximize your team's productivity"
+    description: "We support your team with training and post-deployment assistance, fostering platform utilization, increasing user engagement leading to success."
     image: "/images/service-training.svg"
     link: "#"
     keywords: ["User Training", "Documentation", "Helpdesk"]
@@ -103,7 +103,7 @@ services:
       </svg>
 
   - title: "Data Migration"
-    description: "Secure and efficient transfer of your critical business data to Salesforce platform"
+    description: "We securely migrate your critical business data to Salesforce with efficiency, accuracy, and complete integrity."
     image: "/images/service-migration.svg"
     link: "#"
     keywords: ["ETL", "Secure Transfer", "Validation"]
@@ -128,7 +128,7 @@ services:
       </svg>
 
   - title: "Optimization"
-    description: "Continuous improvement of your Salesforce implementation for maximum efficiency"
+    description: "We partner with you to optimize your existing Salesforce org, enhancing performance, streamlining processes, and driving user adoption."
     image: "/images/service-optimization.svg"
     link: "#"
     keywords: ["Performance", "Reporting", "Automation"]

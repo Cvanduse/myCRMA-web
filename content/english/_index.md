@@ -9,10 +9,6 @@ banner:
       label: "Get Started For Free"
       link: "/contact"
       style: "primary"
-    - enable: true
-      label: "Contact Us"
-      link: "/contact"
-      style: "secondary"
 
 # Features
 features:
