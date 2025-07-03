@@ -110,9 +110,20 @@
       </div>
       
       <!-- Scroll Indicator -->
-      <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-30 animate-bounce">
-        <div class="w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center">
-          <div class="w-1 h-3 bg-gray-400 rounded-full mt-2 animate-pulse"></div>
+      <div class="custom-scroll-indicator absolute bottom-8 left-1/2 transform -translate-x-1/2 z-30 w-full max-w-2xl px-4">
+        <div class="scroll-indicator-bar flex items-center justify-between w-full">
+          <span class="scroll-indicator-text text-gray-300 text-lg font-light">Scroll down</span>
+          <span class="scroll-indicator-line flex-1 mx-4 h-px bg-gray-400 opacity-30"></span>
+          <span class="scroll-indicator-mouse flex items-center justify-center">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="8" y="4" width="16" height="24" rx="8" stroke="#fff" stroke-width="2" fill="none"/>
+              <rect x="15" y="10" width="2" height="6" rx="1" fill="#fff">
+                <animate attributeName="y" values="10;14;10" dur="1.2s" repeatCount="indefinite" />
+              </rect>
+            </svg>
+          </span>
+          <span class="scroll-indicator-line flex-1 mx-4 h-px bg-gray-400 opacity-30"></span>
+          <span class="scroll-indicator-text text-gray-300 text-lg font-light">to learn more</span>
         </div>
       </div>
     </section>

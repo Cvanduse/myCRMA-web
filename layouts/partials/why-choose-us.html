@@ -42,36 +42,7 @@
           </div>
         </div>
         
-        <!-- Bottom CTA Section -->
-        <div class="bottom-cta">
-          <h3>Ready to Transform Your Business?</h3>
-          <p>Join hundreds of companies that have revolutionized their operations with our CRM expertise.</p>
-          <div class="cta-buttons">
-            <a href="#contact" class="btn btn-primary">
-              Start Your Project
-              <span>→</span>
-            </a>
-            <a href="#services" class="btn btn-secondary">
-              View Services
-            </a>
-          </div>
-          
-          <!-- Trust Badges -->
-          <div class="trust-badges">
-            <div class="trust-item">
-              <div class="trust-number">500+</div>
-              <div class="trust-label">Projects Completed</div>
-            </div>
-            <div class="trust-item">
-              <div class="trust-number">98%</div>
-              <div class="trust-label">Client Satisfaction</div>
-            </div>
-            <div class="trust-item">
-              <div class="trust-number">15+</div>
-              <div class="trust-label">Years Experience</div>
-            </div>
-          </div>
-        </div>
+
       </div>
     </section>
 
@@ -83,8 +54,6 @@
         const container = document.querySelector('.container');
         
         if (sectionHeader && container) {
-          console.log('Section header found, setting up enhanced sticky detection...');
-          
           // Create a sentinel element to detect when sticky should activate
           const sentinel = document.createElement('div');
           sentinel.style.position = 'absolute';
@@ -100,11 +69,9 @@
               if (entry.isIntersecting) {
                 sectionHeader.classList.remove('sticky-active');
                 sectionHeader.classList.remove('is-sticky');
-                console.log('Section header is no longer sticky');
               } else {
                 sectionHeader.classList.add('sticky-active');
                 sectionHeader.classList.add('is-sticky');
-                console.log('Section header is now sticky!');
               }
             });
           }, {
@@ -113,45 +80,6 @@
           });
           
           sentinelObserver.observe(sentinel);
-          
-          // Add visual indicator for debugging (only in development)
-          if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-            const debugBadge = document.createElement('div');
-            debugBadge.style.cssText = `
-              position: fixed;
-              top: 20px;
-              right: 20px;
-              background: #111827;
-              color: white;
-              padding: 8px 12px;
-              border-radius: 6px;
-              font-size: 12px;
-              font-family: monospace;
-              z-index: 1000;
-              opacity: 0.8;
-            `;
-            debugBadge.textContent = 'Sticky: Inactive';
-            document.body.appendChild(debugBadge);
-            
-            // Update debug badge
-            const updateDebugBadge = () => {
-              const rect = sectionHeader.getBoundingClientRect();
-              const isSticky = rect.top <= 120;
-              debugBadge.textContent = `Sticky: ${isSticky ? 'Active' : 'Inactive'} (Top: ${Math.round(rect.top)}px)`;
-              debugBadge.style.background = isSticky ? '#059669' : '#111827';
-            };
-            
-            window.addEventListener('scroll', updateDebugBadge);
-            updateDebugBadge();
-          }
-          
-          // Also add scroll listener for debugging
-          window.addEventListener('scroll', function() {
-            const rect = sectionHeader.getBoundingClientRect();
-            console.log('Header position:', rect.top, 'px from top');
-          });
-        } else {
-          console.log('Section header or container not found!');
         }
 
         // Use Intersection Observer for better performance
@@ -178,7 +106,7 @@
         chooseUsItems.forEach(item => {
           item.addEventListener('click', function() {
             // Optional: Add click interaction here
-            console.log('Choose Us clicked:', this.querySelector('.choose-us-title').textContent);
+            // console.log('Choose Us clicked:', this.querySelector('.choose-us-title').textContent);
           });
         });
 
@@ -198,33 +126,7 @@
           });
         }
 
-        // Optimize button hover effects
-        const buttons = document.querySelectorAll('.btn');
-        buttons.forEach(button => {
-          if (button.classList.contains('btn-primary')) {
-            button.addEventListener('mouseenter', function() {
-              this.style.background = '#000';
-              this.style.transform = 'translateY(-2px)';
-              this.style.boxShadow = '0 10px 30px rgba(0,0,0,0.15)';
-            });
-            
-            button.addEventListener('mouseleave', function() {
-              this.style.background = '#111827';
-              this.style.transform = 'translateY(0)';
-              this.style.boxShadow = 'none';
-            });
-          } else if (button.classList.contains('btn-secondary')) {
-            button.addEventListener('mouseenter', function() {
-              this.style.borderColor = '#111827';
-              this.style.background = '#f9fafb';
-            });
-            
-            button.addEventListener('mouseleave', function() {
-              this.style.borderColor = '#e5e7eb';
-              this.style.background = 'transparent';
-            });
-          }
-        });
+
       });
     </script>
   {{ end }}

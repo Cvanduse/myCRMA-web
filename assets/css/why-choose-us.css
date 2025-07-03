@@ -40,9 +40,6 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
   border: 2px solid transparent;
-  /* Debug styles to make it more visible */
-  border: 3px solid #ff0000 !important;
-  background: rgba(255, 255, 255, 0.98) !important;
 }
 
 .advantage-section .section-header:hover {
@@ -53,7 +50,7 @@
 .advantage-section .section-header.is-sticky {
   background: rgba(255, 255, 255, 0.98) !important;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-  border: 3px solid #00ff00 !important;
+  border: 1px solid rgba(0, 0, 0, 0.05);
   transform: scale(1.02);
 }
 
@@ -76,7 +73,6 @@
   background: rgba(255, 255, 255, 0.98) !important;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
   transform: translateY(30px) scale(1.02);
-  border: 3px solid #0000ff !important;
 }
 
 .section-label {
@@ -182,7 +178,6 @@
 .choose-us-icon {
   width: 56px;
   height: 56px;
-  background: #f3f4f6;
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -193,7 +188,6 @@
 }
 
 .choose-us-item:hover .choose-us-icon {
-  background: #111827;
   transform: scale(1.05);
 }
 
@@ -251,100 +245,7 @@
   height: 40px;
 }
 
-/* Bottom CTA Section */
-.bottom-cta {
-  margin-top: 120px;
-  text-align: center;
-  padding: 80px;
-  background: #f9fafb;
-  border-radius: 20px;
-  opacity: 0;
-  transform: translateY(30px);
-  animation: fadeInUp 0.8s ease-out 0.6s forwards;
-}
 
-.bottom-cta h3 {
-  font-size: 36px;
-  font-weight: 700;
-  margin-bottom: 16px;
-  color: #111827;
-}
-
-.bottom-cta p {
-  font-size: 18px;
-  color: #6b7280;
-  margin-bottom: 32px;
-}
-
-.cta-buttons {
-  display: flex;
-  gap: 16px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.btn {
-  padding: 16px 32px;
-  font-size: 16px;
-  font-weight: 500;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  will-change: transform, background, box-shadow, border-color;
-}
-
-.btn-primary {
-  background: #111827;
-  color: white;
-  border: 2px solid #111827;
-}
-
-.btn-primary:hover {
-  background: #000;
-  transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-}
-
-.btn-secondary {
-  background: transparent;
-  color: #111827;
-  border: 2px solid #e5e7eb;
-}
-
-.btn-secondary:hover {
-  border-color: #111827;
-  background: #f9fafb;
-}
-
-/* Trust Badges */
-.trust-badges {
-  display: flex;
-  justify-content: center;
-  gap: 60px;
-  margin-top: 40px;
-  padding-top: 40px;
-  border-top: 1px solid #e5e7eb;
-  flex-wrap: wrap;
-}
-
-.trust-item {
-  text-align: center;
-}
-
-.trust-number {
-  font-size: 32px;
-  font-weight: 700;
-  color: #111827;
-  margin-bottom: 4px;
-}
-
-.trust-label {
-  font-size: 14px;
-  color: #6b7280;
-}
 
 /* Animations */
 @keyframes fadeInUp {
@@ -410,13 +311,7 @@
     display: none;
   }
   
-  .trust-badges {
-    gap: 40px;
-  }
-  
-  .bottom-cta {
-    padding: 60px 40px;
-  }
+
 }
 
 @media (max-width: 640px) {
@@ -450,33 +345,7 @@
     font-size: 20px;
   }
   
-  .bottom-cta {
-    padding: 40px 20px;
-    margin-top: 80px;
-  }
-  
-  .bottom-cta h3 {
-    font-size: 28px;
-  }
-  
-  .cta-buttons {
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .btn {
-    width: 100%;
-    max-width: 280px;
-    justify-content: center;
-  }
-  
-  .trust-badges {
-    gap: 30px;
-  }
-  
-  .trust-number {
-    font-size: 28px;
-  }
+
 }
 
 /* Performance optimizations */
@@ -484,9 +353,7 @@
   .choose-us-item,
   .choose-us-icon,
   .section-header,
-  .bottom-cta,
-  .header-cta,
-  .btn {
+  .header-cta {
     transition: none;
     animation: none;
   }
@@ -528,35 +395,13 @@
   }
   
   .choose-us-icon {
-    background: #374151;
+    /* background: #374151; */
   }
   
   .choose-us-item:hover .choose-us-icon {
-    background: #f9fafb;
+    /* background: #f9fafb; */
     color: #111827;
   }
   
-  .bottom-cta {
-    background: #1f2937;
-  }
-  
-  .bottom-cta h3 {
-    color: #f9fafb;
-  }
-  
-  .bottom-cta p {
-    color: #9ca3af;
-  }
-  
-  .trust-badges {
-    border-top-color: #374151;
-  }
-  
-  .trust-number {
-    color: #f9fafb;
-  }
-  
-  .trust-label {
-    color: #9ca3af;
-  }
+
 } 

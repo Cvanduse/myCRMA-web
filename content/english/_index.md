@@ -2,6 +2,8 @@
 # Banner
 banner:
   title: "Transform Your Business with Expert CRM Solutions"
+  subtitle: "Your CRM, Supercharged"
+  content: "Partner with certified Salesforce experts to unlock new growth, efficiency, and customer satisfaction. We deliver measurable results through strategic CRM implementation and optimization."
   background_image: "/images/banner.png"
   overlay_image: "/images/service-1.png"
   buttons:
