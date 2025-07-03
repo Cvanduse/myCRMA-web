@@ -2,17 +2,8 @@
 (function () {
   "use strict";
 
-  // Dropdown Menu Toggler For Mobile
-  // ----------------------------------------
-  const dropdownMenuToggler = document.querySelectorAll(
-    ".nav-dropdown > .nav-link",
-  );
-
-  dropdownMenuToggler.forEach((toggler) => {
-    toggler?.addEventListener("click", (e) => {
-      e.target.closest(".nav-item").classList.toggle("active");
-    });
-  });
+  // Navigation functionality is handled in header.html for better organization
+  // and to avoid conflicts with the enhanced navigation system
 
   // Testimonial Slider
   // ----------------------------------------
@@ -163,22 +154,64 @@
     document.head.appendChild(style);
   })();
 
-  // Floating Brands Interaction
+  // Sticky Progress Indicator
   (function() {
-    const floatingBrands = document.querySelectorAll('.floating-brand');
+    const progressBar = document.getElementById('progress-bar');
+    const progressIndicator = document.getElementById('progress-indicator');
     
-    floatingBrands.forEach(brand => {
-      brand.addEventListener('mouseenter', function() {
-        this.style.transform = 'translateY(-5px) scale(1.1)';
-        this.style.opacity = '0.2';
-      });
+    if (!progressBar || !progressIndicator) return;
+    
+    function updateProgress() {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = (scrollTop / docHeight) * 100;
       
-      brand.addEventListener('mouseleave', function() {
-        this.style.transform = '';
-        this.style.opacity = '';
-      });
-    });
+      // Update progress bar width
+      progressBar.style.width = Math.min(scrollPercent, 100) + '%';
+      
+      // Add subtle opacity change based on scroll position
+      if (scrollPercent > 0) {
+        progressIndicator.style.opacity = '1';
+      } else {
+        progressIndicator.style.opacity = '0.9';
+      }
+      
+      // Add pulse effect when there's significant progress
+      if (scrollPercent > 10) {
+        progressBar.classList.add('progress-active');
+      } else {
+        progressBar.classList.remove('progress-active');
+      }
+    }
+    
+    // Throttle scroll events for performance
+    let ticking = false;
+    function requestTick() {
+      if (!ticking) {
+        requestAnimationFrame(updateProgress);
+        ticking = true;
+      }
+    }
+    
+    function handleScroll() {
+      ticking = false;
+      requestTick();
+    }
+    
+    // Initialize progress
+    updateProgress();
+    
+    // Add scroll listener
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    
+    // Update on resize
+    window.addEventListener('resize', updateProgress, { passive: true });
+    
+    // Update on page load completion
+    window.addEventListener('load', updateProgress);
   })();
+
+  // Floating brands removed for optimal performance
 
   // Individual Why Choose Us Card Animation - DreamX Style
   (function() {

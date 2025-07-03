@@ -1,0 +1,110 @@
+/* Critical CSS - Above the fold only */
+/* Load immediately for first paint */
+
+/* Essential layout */
+body {
+  margin: 0;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #ffffff;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Critical header styles */
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 50;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+/* Essential hero section */
+.hero-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-content-reveal {
+  opacity: 1; /* Remove opacity: 0 that blocks content */
+  transform: none; /* Remove initial transform that causes layout shift */
+}
+
+/* Critical button styles */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 1rem 2rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  color: white;
+  border: none;
+}
+
+/* Critical grid layout */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -0.75rem;
+}
+
+.lg\:col-7 {
+  flex: 0 0 58.333333%;
+  max-width: 58.333333%;
+  padding: 0 0.75rem;
+}
+
+.lg\:col-5 {
+  flex: 0 0 41.666667%;
+  max-width: 41.666667%;
+  padding: 0 0.75rem;
+}
+
+/* Mobile responsive */
+@media (max-width: 1024px) {
+  .lg\:col-7,
+  .lg\:col-5 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+/* Essential typography */
+h1 {
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  margin: 0 0 1.5rem 0;
+  color: #1e293b;
+}
+
+h2 {
+  font-size: clamp(1.875rem, 4vw, 3rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 1rem 0;
+  color: #1e293b;
+}
+
+p {
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: #475569;
+  margin: 0 0 1rem 0;
+}

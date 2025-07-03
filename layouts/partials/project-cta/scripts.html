@@ -1,0 +1,227 @@
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const projectCTA = {
+    elements: {
+      processSteps: document.querySelectorAll('.process-step'),
+      geometricPattern: document.querySelector('.geometric-pattern'),
+      progressDotsHTML: document.querySelectorAll('.progress-dot'),
+      progressTimelineSVG: null,
+      bgShapes: null,
+      connectionLines: null,
+      floatingElements: null
+    },
+    
+    state: {
+      hoverTimeout: null,
+      currentHovered: null
+    },
+    
+    init() {
+      this.cacheElements();
+      this.setupObserver();
+      this.bindEvents();
+      this.setupFloatingAnimation();
+    },
+    
+    cacheElements() {
+      if (this.elements.geometricPattern) {
+        this.elements.progressTimelineSVG = this.elements.geometricPattern.querySelectorAll('.progress-timeline circle');
+        this.elements.bgShapes = this.elements.geometricPattern.querySelectorAll('.bg-shapes polygon, .bg-shapes path');
+        this.elements.connectionLines = this.elements.geometricPattern.querySelectorAll('.connection-flow path');
+        this.elements.floatingElements = this.elements.geometricPattern.querySelectorAll('.floating-elements circle');
+      }
+    },
+    
+    setupObserver() {
+      const observerOptions = {
+        threshold: 0.2,
+        rootMargin: '0px 0px -50px 0px'
+      };
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate');
+            const stepNumber = entry.target.dataset.step;
+            this.animateBackgroundForStep(stepNumber);
+          }
+        });
+      }, observerOptions);
+      
+      this.elements.processSteps.forEach((step, index) => {
+        observer.observe(step);
+        step.style.setProperty('--delay', `${index * 0.2}s`);
+      });
+    },
+    
+    bindEvents() {
+      this.elements.processSteps.forEach((step, index) => {
+        const stepCard = step.querySelector('.step-card');
+        if (!stepCard) return;
+        
+        let isHovered = false;
+        
+        stepCard.addEventListener('mouseenter', (e) => {
+          e.stopPropagation();
+          if (isHovered) return;
+          
+          isHovered = true;
+          this.state.currentHovered = index;
+          clearTimeout(this.state.hoverTimeout);
+          this.activateStep(index);
+        });
+        
+        stepCard.addEventListener('mouseleave', (e) => {
+          e.stopPropagation();
+          this.state.hoverTimeout = setTimeout(() => {
+            isHovered = false;
+            this.state.currentHovered = null;
+            this.deactivateStep(index);
+          }, 100);
+        });
+      });
+      
+      // Close on escape
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && this.state.currentHovered !== null) {
+          this.deactivateStep(this.state.currentHovered);
+        }
+      });
+    },
+    
+    activateStep(index) {
+      console.log(`Activating step ${index + 1}`);
+      
+      // Animate HTML progress dots
+      this.animateProgressDots(index, true);
+      
+      // Animate SVG timeline
+      this.animateTimeline(index, true);
+      
+      // Animate background elements
+      this.animateBackground(index, true);
+      
+      // Animate floating elements
+      this.animateFloating(index, true);
+      
+      // Animate connections
+      this.animateConnections(index, true);
+    },
+    
+    deactivateStep(index) {
+      console.log(`Deactivating step ${index + 1}`);
+      
+      // Reset all animations
+      this.animateProgressDots(index, false);
+      this.animateTimeline(index, false);
+      this.animateBackground(index, false);
+      this.animateFloating(index, false);
+      this.animateConnections(index, false);
+    },
+    
+    animateProgressDots(index, activate) {
+      this.elements.progressDotsHTML.forEach((dot, i) => {
+        if (activate && i === index) {
+          dot.classList.add('progress-indicator-active');
+          dot.style.borderWidth = '2px';
+        } else {
+          dot.classList.remove('progress-indicator-active');
+          dot.style.borderWidth = '1px';
+        }
+      });
+    },
+    
+    animateTimeline(index, activate) {
+      if (!this.elements.progressTimelineSVG[index]) return;
+      
+      const timeline = this.elements.progressTimelineSVG[index];
+      
+      if (activate) {
+        timeline.style.transform = 'scale(2)';
+        timeline.style.filter = 'drop-shadow(0 0 15px currentColor)';
+        timeline.style.opacity = '1';
+        timeline.style.animation = 'subtlePulse 1.5s ease-in-out infinite';
+      } else {
+        timeline.style.transform = 'scale(1)';
+        timeline.style.filter = 'none';
+        timeline.style.opacity = '0.8';
+        timeline.style.animation = 'none';
+      }
+    },
+    
+    animateBackground(index, activate) {
+      if (!this.elements.bgShapes[index]) return;
+      
+      const shape = this.elements.bgShapes[index];
+      
+      if (activate) {
+        shape.style.opacity = '0.4';
+        shape.style.transform = 'scale(1.2)';
+      } else {
+        shape.style.opacity = '0.15';
+        shape.style.transform = 'scale(1)';
+      }
+    },
+    
+    animateFloating(index, activate) {
+      const stepFloats = this.elements.geometricPattern.querySelectorAll(`.step-${index}-float`);
+      
+      stepFloats.forEach(element => {
+        if (activate) {
+          element.style.opacity = '0.9';
+          element.style.transform = 'scale(1.8)';
+          element.style.filter = 'drop-shadow(0 0 8px currentColor)';
+        } else {
+          element.style.opacity = '0.3';
+          element.style.transform = 'scale(1)';
+          element.style.filter = 'drop-shadow(0 1px 3px rgba(0,0,0,0.2))';
+        }
+      });
+    },
+    
+    animateConnections(index, activate) {
+      if (index === 0) return; // No previous connection
+      
+      const connection = this.elements.connectionLines[index - 1];
+      if (!connection) return;
+      
+      if (activate) {
+        connection.style.opacity = '1';
+        connection.style.strokeWidth = '5';
+      } else {
+        connection.style.opacity = index === 1 ? '0.6' : index === 2 ? '0.7' : '0.8';
+        connection.style.strokeWidth = '3';
+      }
+    },
+    
+    animateBackgroundForStep(stepNumber) {
+      const index = parseInt(stepNumber) - 1;
+      
+      if (this.elements.bgShapes[index]) {
+        this.elements.bgShapes[index].style.animation = 'pulseShape 2s ease-in-out';
+      }
+      
+      if (this.elements.connectionLines[index]) {
+        this.elements.connectionLines[index].style.animation = 'drawLine 1.5s ease-in-out';
+      }
+      
+      if (this.elements.progressTimelineSVG[index]) {
+        this.elements.progressTimelineSVG[index].style.animation = 'glowPulse 1s ease-in-out';
+      }
+    },
+    
+    setupFloatingAnimation() {
+      if (!this.elements.geometricPattern) return;
+      
+      const floatingElements = this.elements.geometricPattern.querySelectorAll('.floating-elements circle');
+      floatingElements.forEach((element, index) => {
+        element.style.animation = `float ${3 + index * 0.5}s ease-in-out infinite`;
+        element.style.animationDelay = `${index * 0.3}s`;
+      });
+    }
+  };
+  
+  // Initialize the project CTA interactions
+  projectCTA.init();
+});
+</script>

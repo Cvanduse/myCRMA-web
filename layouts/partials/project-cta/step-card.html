@@ -1,0 +1,27 @@
+<div class="step-card p-6 bg-white dark:bg-[#242424] rounded-lg text-center h-full hover:shadow-xl hover:-translate-y-2 transition-all duration-500 relative group border-2 border-transparent hover:border-blue-200 dark:hover:border-blue-800">
+  
+  <!-- Geometric Accent -->
+  {{ partial "project-cta/geometric-accent" (dict "index" .index) }}
+  
+  <!-- Step Number -->
+  <div class="step-number-container relative mb-6">
+    <div class="step-number text-5xl font-light mb-2 block text-[#1A1A1A] dark:text-white relative z-10 group-hover:scale-110 transition-transform duration-300">
+      {{ .step.number }}
+    </div>
+    <!-- Number Background Glow -->
+    <div class="absolute inset-0 flex items-center justify-center">
+      <div class="w-16 h-16 rounded-full bg-gradient-to-br from-blue-400/20 to-blue-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+    </div>
+  </div>
+  
+  <!-- Step Content -->
+  <h4 class="text-xl mb-4 text-[#1A1A1A] dark:text-white font-semibold group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
+    {{ .step.title }}
+  </h4>
+  <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+    {{ .step.description }}
+  </p>
+  
+  <!-- Progress Bar -->
+  <div class="progress-indicator absolute bottom-0 left-0 h-1 bg-gradient-to-r from-blue-400 to-blue-600 transition-all duration-500 group-hover:h-2" style="width: {{ mul (add .index 1) 25 }}%"></div>
+</div>

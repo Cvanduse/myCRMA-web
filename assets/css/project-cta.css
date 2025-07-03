@@ -144,6 +144,8 @@
   transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
   opacity: 0;
   transform: translateY(30px);
+  position: relative;
+  z-index: 5;
 }
 
 .process-step.animate {
@@ -235,7 +237,12 @@
 /* Geometric Pattern Background Styles */
 .geometric-pattern-bg {
   pointer-events: none;
-  z-index: 1;
+  z-index: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
 .geometric-pattern {
@@ -244,7 +251,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  opacity: 0.8;
+  opacity: 1;
 }
 
 /* Background shapes transitions */
@@ -253,6 +260,7 @@
   transition: all 0.3s ease;
   transform-origin: center;
   filter: drop-shadow(0 2px 8px rgba(0,0,0,0.1));
+  opacity: 0.3;
 }
 
 /* Connection flow animations */
@@ -260,17 +268,36 @@
   stroke-dasharray: 300;
   stroke-dashoffset: 300;
   transition: stroke-dashoffset 1.5s ease;
+  opacity: 0.8;
 }
 
-/* Progress indicators */
-.progress-indicators circle {
+
+
+/* Active progress dot animation */
+.progress-dot.progress-indicator-active {
+  transform: translate(-50%, 0) scale(1.5) !important;
+  box-shadow: 0 0 8px currentColor, 0 3px 12px rgba(0,0,0,0.2) !important;
+  opacity: 1 !important;
+  animation: subtlePulse 2s ease-in-out infinite !important;
+  border: 1px solid #FFFFFF !important;
+  z-index: 30 !important;
+}
+
+/* Progress dot base styles */
+.progress-dot {
+  cursor: pointer;
   transition: all 0.3s ease;
-  transform-origin: center;
+}
+
+.progress-dot:hover {
+  transform: translate(-50%, 0) scale(1.1);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  opacity: 1;
 }
 
 /* Floating elements animation */
 .floating-elements circle {
-  opacity: 0.3;
+  opacity: 0.5;
   transition: all 0.3s ease;
   filter: drop-shadow(0 1px 3px rgba(0,0,0,0.2));
 }
@@ -280,6 +307,7 @@
   backdrop-filter: blur(10px);
   position: relative;
   overflow: hidden;
+  z-index: 10;
 }
 
 .step-card::before {
@@ -369,6 +397,17 @@
   }
 }
 
+@keyframes subtlePulse {
+  0%, 100% {
+    box-shadow: 0 0 8px currentColor, 0 3px 12px rgba(0,0,0,0.2);
+    opacity: 1;
+  }
+  50% {
+    box-shadow: 0 0 12px currentColor, 0 4px 16px rgba(0,0,0,0.25);
+    opacity: 0.9;
+  }
+}
+
 @keyframes float {
   0%, 100% {
     transform: translateY(0px) rotate(0deg);
@@ -421,9 +460,7 @@
   stroke: url(#progressGradientDark);
 }
 
-.dark .geometric-pattern .progress-indicators circle {
-  fill: #60a5fa;
-}
+
 
 .dark .geometric-pattern .floating-elements circle {
   fill: #93c5fd;

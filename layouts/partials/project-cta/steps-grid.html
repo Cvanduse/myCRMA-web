@@ -1,0 +1,18 @@
+<div class="mt-16">
+  <div class="row justify-center">
+    {{ range $index, $step := .Params.steps }}
+      <div class="md:col-3 mb-8 process-step relative" data-step="{{ add $index 1 }}">
+        <!-- Step Card -->
+        {{ partial "project-cta/step-card" (dict "step" $step "index" $index) }}
+        
+        <!-- Progress Dot Below Card -->
+        {{ partial "project-cta/progress-dot" (dict "index" $index) }}
+        
+        <!-- Connection Line -->
+        {{ if ne $index 3 }}
+          {{ partial "project-cta/connection-line" (dict "index" $index) }}
+        {{ end }}
+      </div>
+    {{ end }}
+  </div>
+</div>

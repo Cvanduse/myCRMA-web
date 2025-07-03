@@ -42,10 +42,13 @@
       href="{{ .link | relURL }}"
       {{ .attributes | safeHTMLAttr }} />
   {{ else }}
-    {{ if not .lazy }}
-      {{ $styles = $styles | append (resources.Get .link) }}
-    {{ else }}
-      {{ $stylesLazy = $stylesLazy | append (resources.Get .link) }}
+    {{ $resource := resources.Get .link }}
+    {{ if $resource }}
+      {{ if not .lazy }}
+        {{ $styles = $styles | append $resource }}
+      {{ else }}
+        {{ $stylesLazy = $stylesLazy | append $resource }}
+      {{ end }}
     {{ end }}
   {{ end }}
 {{ end }}
@@ -55,9 +58,13 @@
 {{ $tailwindCSS := $mainCSS | css.TailwindCSS $tailwindOpts }}
 
 {{ $styles = $styles | append $tailwindCSS }}
-{{ $styles = $styles | resources.Concat "css/style.css" }}
+{{ if gt (len $styles) 0 }}
+  {{ $styles = $styles | resources.Concat "css/style.css" }}
+{{ end }}
 
-{{ $stylesLazy = $stylesLazy | resources.Concat "css/style-lazy.css" }}
+{{ if gt (len $stylesLazy) 0 }}
+  {{ $stylesLazy = $stylesLazy | resources.Concat "css/style-lazy.css" }}
+{{ end }}
 
 {{ if hugo.IsProduction }}
   {{ $styles = $styles | minify | fingerprint }}
@@ -66,17 +73,21 @@
 
 
 <!-- link main style -->
+{{ if $styles }}
 <link
   href="{{ $styles.RelPermalink }}"
-  integrity="{{ $styles.Data.Integrity }}"
+  {{ if hugo.IsProduction }}integrity="{{ $styles.Data.Integrity }}"{{ end }}
   rel="stylesheet" />
+{{ end }}
 
 <!-- link lazy style -->
+{{ if $stylesLazy }}
 <link
   defer
   async
   rel="stylesheet"
   href="{{ $stylesLazy.RelPermalink }}"
-  integrity="{{ $stylesLazy.Data.Integrity }}"
+  {{ if hugo.IsProduction }}integrity="{{ $stylesLazy.Data.Integrity }}"{{ end }}
   media="print"
   onload="this.media='all'; this.onload=null;" />
+{{ end }}

@@ -1,0 +1,8 @@
+<!-- Progress dot below card -->
+<div class="progress-dot absolute -bottom-8 left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full transition-all duration-400 border border-white shadow-md opacity-80 z-20 
+  {{ if eq .index 0 }}bg-blue-500
+  {{ else if eq .index 1 }}bg-blue-600
+  {{ else if eq .index 2 }}bg-blue-700
+  {{ else }}bg-blue-800{{ end }}" 
+  data-step="{{ .index }}">
+</div>

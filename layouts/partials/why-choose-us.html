@@ -1,32 +1,231 @@
 {{ with site.GetPage "sections/why-choose-us" }}
   {{ if .Params.enable }}
-    <section class="why-choose-us-section section dreamx-advantages" style="padding-top: 64px; padding-bottom: 64px; background: #fff;">
+    <section class="advantage-section">
       <div class="container">
-        <div class="dreamx-whychooseus-flex" style="display: flex; align-items: flex-start; gap: 48px;">
-          <!-- Left: Cards -->
-          <div class="dreamx-whychooseus-left" style="flex: 1 1 60%; min-width: 340px;">
-            <h2 class="dreamx-advantages-title" style="font-size:2.5rem; font-weight:800; margin-bottom:0.7rem;">{{ .Params.title | default "Why Choose Us" }}</h2>
-            <p class="dreamx-advantages-desc" style="font-size:1.25rem; color:#444; max-width:600px; margin:0 0 2.5rem 0;">{{ .Params.description }}</p>
-            <div class="dreamx-advantages-grid dreamx-whychooseus-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(2, 1fr); gap: 32px;">
-              {{ range $i, $f := first 6 .Params.features }}
-                <div class="dreamx-adv-card dreamx-whychooseus-card{{ if or (eq $i 0) (eq $i 2) (eq $i 4) }} dreamx-purple{{ else }} dreamx-gray{{ end }}">
-                  <div class="dreamx-adv-title">{{ $f.title }}</div>
-                  {{ if $f.description }}<div class="dreamx-adv-desc">{{ $f.description }}</div>{{ end }}
-                  <div class="dreamx-adv-num-circle">{{ printf "%02d" (add $i 1) }}</div>
-                </div>
-              {{ end }}
-            </div>
+        <div class="content-wrapper">
+          
+          <!-- Left Column - Sticky Header -->
+          <div class="section-header">
+            <span class="section-label">{{ .Params.label | default "Benefits" }}</span>
+            <h2 class="section-title">{{ .Params.title | default "Transform Your CRM Into a Revenue Engine" }}</h2>
+            <p class="section-subtitle">{{ .Params.description | default "Partner with certified experts who deliver measurable results through strategic CRM implementation and optimization." }}</p>
+            <a href="#contact" class="header-cta">
+              Get Started
+              <span>→</span>
+            </a>
           </div>
-          <!-- Right: Illustration -->
-          <div class="dreamx-whychooseus-right" style="flex: 1 1 40%; min-width: 320px; display: flex; align-items: center; justify-content: center;">
-            {{ if .Params.image }}
-              <img src="{{ .Params.image }}" alt="Why Choose Us Illustration" style="max-width: 100%; height: auto;">
-            {{ else }}
-              <img src="/images/why-choose-us.svg" alt="Why Choose Us Illustration" style="max-width: 100%; height: auto;">
+          
+          <!-- Right Column - Choose Us List -->
+          <div class="choose-us-list">
+            {{ range $index, $feature := first 6 .Params.features }}
+              <div class="choose-us-item">
+                <div class="choose-us-content">
+                  <div class="choose-us-icon">
+                    {{ if $feature.icon }}
+                      <i class="{{ $feature.icon }}"></i>
+                    {{ else }}
+                      {{ $icons := slice "🚀" "💼" "📈" "🏭" "🔒" "🤝" }}
+                      {{ index $icons $index }}
+                    {{ end }}
+                  </div>
+                  <div class="choose-us-text">
+                    <h3 class="choose-us-title">{{ $feature.title }}</h3>
+                    <p class="choose-us-description">{{ $feature.description }}</p>
+                  </div>
+                  <div class="choose-us-metric">
+                    {{ $metrics := slice "12 weeks avg" "10+ platforms" "300% ROI" "20+ industries" "100% secure" "95% retention" }}
+                    {{ index $metrics $index }}
+                  </div>
+                </div>
+              </div>
             {{ end }}
+          </div>
+        </div>
+        
+        <!-- Bottom CTA Section -->
+        <div class="bottom-cta">
+          <h3>Ready to Transform Your Business?</h3>
+          <p>Join hundreds of companies that have revolutionized their operations with our CRM expertise.</p>
+          <div class="cta-buttons">
+            <a href="#contact" class="btn btn-primary">
+              Start Your Project
+              <span>→</span>
+            </a>
+            <a href="#services" class="btn btn-secondary">
+              View Services
+            </a>
+          </div>
+          
+          <!-- Trust Badges -->
+          <div class="trust-badges">
+            <div class="trust-item">
+              <div class="trust-number">500+</div>
+              <div class="trust-label">Projects Completed</div>
+            </div>
+            <div class="trust-item">
+              <div class="trust-number">98%</div>
+              <div class="trust-label">Client Satisfaction</div>
+            </div>
+            <div class="trust-item">
+              <div class="trust-number">15+</div>
+              <div class="trust-label">Years Experience</div>
+            </div>
           </div>
         </div>
       </div>
     </section>
+
+    <script>
+      // Performance-optimized intersection observer for scroll animations
+      document.addEventListener('DOMContentLoaded', function() {
+        // Enhanced sticky header detection
+        const sectionHeader = document.querySelector('.section-header');
+        const container = document.querySelector('.container');
+        
+        if (sectionHeader && container) {
+          console.log('Section header found, setting up enhanced sticky detection...');
+          
+          // Create a sentinel element to detect when sticky should activate
+          const sentinel = document.createElement('div');
+          sentinel.style.position = 'absolute';
+          sentinel.style.top = '120px';
+          sentinel.style.left = '0';
+          sentinel.style.width = '1px';
+          sentinel.style.height = '1px';
+          sentinel.style.pointerEvents = 'none';
+          container.appendChild(sentinel);
+          
+          const sentinelObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                sectionHeader.classList.remove('sticky-active');
+                sectionHeader.classList.remove('is-sticky');
+                console.log('Section header is no longer sticky');
+              } else {
+                sectionHeader.classList.add('sticky-active');
+                sectionHeader.classList.add('is-sticky');
+                console.log('Section header is now sticky!');
+              }
+            });
+          }, {
+            threshold: 0,
+            rootMargin: '-120px 0px 0px 0px'
+          });
+          
+          sentinelObserver.observe(sentinel);
+          
+          // Add visual indicator for debugging (only in development)
+          if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+            const debugBadge = document.createElement('div');
+            debugBadge.style.cssText = `
+              position: fixed;
+              top: 20px;
+              right: 20px;
+              background: #111827;
+              color: white;
+              padding: 8px 12px;
+              border-radius: 6px;
+              font-size: 12px;
+              font-family: monospace;
+              z-index: 1000;
+              opacity: 0.8;
+            `;
+            debugBadge.textContent = 'Sticky: Inactive';
+            document.body.appendChild(debugBadge);
+            
+            // Update debug badge
+            const updateDebugBadge = () => {
+              const rect = sectionHeader.getBoundingClientRect();
+              const isSticky = rect.top <= 120;
+              debugBadge.textContent = `Sticky: ${isSticky ? 'Active' : 'Inactive'} (Top: ${Math.round(rect.top)}px)`;
+              debugBadge.style.background = isSticky ? '#059669' : '#111827';
+            };
+            
+            window.addEventListener('scroll', updateDebugBadge);
+            updateDebugBadge();
+          }
+          
+          // Also add scroll listener for debugging
+          window.addEventListener('scroll', function() {
+            const rect = sectionHeader.getBoundingClientRect();
+            console.log('Header position:', rect.top, 'px from top');
+          });
+        } else {
+          console.log('Section header or container not found!');
+        }
+
+        // Use Intersection Observer for better performance
+        const observerOptions = {
+          threshold: 0.1,
+          rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              // Unobserve after animation to improve performance
+              observer.unobserve(entry.target);
+            }
+          });
+        }, observerOptions);
+
+        // Observe all choose-us items
+        const chooseUsItems = document.querySelectorAll('.choose-us-item');
+        chooseUsItems.forEach(item => observer.observe(item));
+
+        // Add hover interaction feedback with performance optimization
+        chooseUsItems.forEach(item => {
+          item.addEventListener('click', function() {
+            // Optional: Add click interaction here
+            console.log('Choose Us clicked:', this.querySelector('.choose-us-title').textContent);
+          });
+        });
+
+        // Optimize header CTA hover effects
+        const headerCta = document.querySelector('.header-cta');
+        if (headerCta) {
+          headerCta.addEventListener('mouseenter', function() {
+            this.style.background = '#000';
+            this.style.transform = 'translateY(-2px)';
+            this.style.boxShadow = '0 10px 30px rgba(0,0,0,0.15)';
+          });
+          
+          headerCta.addEventListener('mouseleave', function() {
+            this.style.background = '#111827';
+            this.style.transform = 'translateY(0)';
+            this.style.boxShadow = 'none';
+          });
+        }
+
+        // Optimize button hover effects
+        const buttons = document.querySelectorAll('.btn');
+        buttons.forEach(button => {
+          if (button.classList.contains('btn-primary')) {
+            button.addEventListener('mouseenter', function() {
+              this.style.background = '#000';
+              this.style.transform = 'translateY(-2px)';
+              this.style.boxShadow = '0 10px 30px rgba(0,0,0,0.15)';
+            });
+            
+            button.addEventListener('mouseleave', function() {
+              this.style.background = '#111827';
+              this.style.transform = 'translateY(0)';
+              this.style.boxShadow = 'none';
+            });
+          } else if (button.classList.contains('btn-secondary')) {
+            button.addEventListener('mouseenter', function() {
+              this.style.borderColor = '#111827';
+              this.style.background = '#f9fafb';
+            });
+            
+            button.addEventListener('mouseleave', function() {
+              this.style.borderColor = '#e5e7eb';
+              this.style.background = 'transparent';
+            });
+          }
+        });
+      });
+    </script>
   {{ end }}
 {{ end }} 

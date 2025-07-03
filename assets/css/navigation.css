@@ -3,28 +3,185 @@
   --header-height: 5rem;
 }
 
-/* Header Base Styles - Enhanced for readability at top */
+/* Sticky Progress Indicator */
+.progress-indicator {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.15);
+  z-index: 9999;
+  backdrop-filter: blur(8px);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #3b82f6, #1d4ed8, #3b82f6);
+  background-size: 200% 100%;
+  width: 0%;
+  transition: width 0.15s ease-out;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 12px rgba(59, 130, 246, 0.5);
+  border-radius: 0 2px 2px 0;
+}
+
+.progress-bar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+  animation: progressShimmer 1.5s ease-in-out infinite;
+}
+
+@keyframes progressShimmer {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+@keyframes progressPulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scaleY(1.1);
+  }
+}
+
+.progress-bar.progress-active {
+  animation: progressPulse 2s ease-in-out infinite;
+}
+
+/* Dark mode progress indicator */
+.dark .progress-indicator {
+  background: rgba(15, 23, 42, 0.9);
+  border-bottom: 2px solid rgba(59, 130, 246, 0.2);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.dark .progress-bar {
+  background: linear-gradient(90deg, #60a5fa, #3b82f6, #60a5fa);
+  background-size: 200% 100%;
+  box-shadow: 0 0 15px rgba(96, 165, 250, 0.6);
+}
+
+/* Hover effects for better interactivity */
+.progress-indicator:hover {
+  height: 8px;
+  transition: height 0.2s ease-out;
+}
+
+.progress-indicator:hover .progress-bar {
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.7);
+  transition: box-shadow 0.2s ease-out;
+}
+
+.dark .progress-indicator:hover .progress-bar {
+  box-shadow: 0 0 20px rgba(96, 165, 250, 0.8);
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .progress-bar {
+    transition: width 0.05s ease-out;
+  }
+  
+  .progress-bar::before {
+    animation: none;
+  }
+  
+  .progress-bar.progress-active {
+    animation: none;
+  }
+  
+  .progress-indicator:hover {
+    height: 6px;
+    transition: none;
+  }
+}
+
+/*
+ * CONTRAST IMPROVEMENTS FOR NAVIGATION
+ * 
+ * These enhancements address potential contrast issues when the navigation
+ * appears over light or busy hero/banner backgrounds:
+ * 
+ * 1. Enhanced Background Gradient:
+ *    - More opaque at top (0.85) for better text contrast
+ *    - Gradually becomes more transparent toward bottom
+ *    - Uses rgba(24, 24, 27, ...) for better contrast than pure black
+ * 
+ * 2. Improved Text Shadows:
+ *    - Multiple layered shadows for maximum readability
+ *    - Higher opacity values (0.95, 0.9, 1.0) for better contrast
+ *    - Applied to both nav links and brand/logo
+ * 
+ * 3. Enhanced Drop Shadows:
+ *    - Stronger shadows on logo images
+ *    - Multiple shadow layers for better definition
+ * 
+ * 4. Fallback Support:
+ *    - Higher opacity backgrounds for browsers without backdrop-filter
+ *    - Ensures readability across all devices and browsers
+ */
+
+/* Header Base Styles - Opaque at top, transitioning to white */
 .header {
-  @apply bg-black/40 dark:bg-gray-900/50 py-4 backdrop-blur-md;
-  @apply border-b border-white/20 dark:border-gray-800/30;
+  /* Start with solid dark background at top */
+  background: rgba(24, 24, 27, 1);
+  backdrop-filter: blur(16px);
+  @apply py-4;
+  @apply border-b border-white/30 dark:border-gray-800/40;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
   height: var(--header-height);
 }
 
-/* Header when scrolled - Enhanced solid background */
+/* Dark mode header */
+.dark .header {
+  background: rgba(15, 23, 42, 1);
+  backdrop-filter: blur(16px);
+}
+
+/* Header when scrolled - Gradually becomes white */
 .header.header-scrolled {
-  @apply bg-white/98 dark:bg-gray-900/98 py-3 shadow-xl;
+  background: rgba(255, 255, 255, 0.98);
   backdrop-filter: blur(20px);
+  @apply py-3 shadow-xl;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Dark mode when scrolled */
+.dark .header.header-scrolled {
+  background: rgba(17, 24, 39, 0.98);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* Header transitioning state for smooth scroll-up effect */
 .header.header-transitioning {
-  @apply bg-black/30 dark:bg-gray-900/40 py-4;
+  background: rgba(24, 24, 27, 0.8);
   backdrop-filter: blur(16px);
+  @apply py-4;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Dark mode transitioning */
+.dark .header.header-transitioning {
+  background: rgba(15, 23, 42, 0.8);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 /* Scroll direction states */
@@ -39,15 +196,18 @@
 /* Header backdrop support for older browsers */
 @supports not (backdrop-filter: blur(20px)) {
   .header {
-    @apply bg-black/60 dark:bg-gray-900/70;
+    background: rgba(24, 24, 27, 1);
+    @apply dark:bg-gray-900;
   }
   
   .header.header-scrolled {
-    @apply bg-white dark:bg-gray-900;
+    background: rgba(255, 255, 255, 0.98);
+    @apply dark:bg-gray-900;
   }
   
   .header.header-transitioning {
-    @apply bg-black/50 dark:bg-gray-900/60;
+    background: rgba(24, 24, 27, 0.8);
+    @apply dark:bg-gray-900/85;
   }
 }
 
@@ -59,14 +219,30 @@
 
 .navbar-brand {
   @apply text-white dark:text-white text-xl font-bold;
-  @apply drop-shadow-xl;
   transition: all 0.3s ease;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+  /* Enhanced text shadow for better contrast */
+  text-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.95),
+    0 1px 2px rgba(0, 0, 0, 0.9),
+    0 0 1px rgba(0, 0, 0, 1);
   font-weight: 800;
   letter-spacing: 0.025em;
+  
   image {
-    @apply max-h-full max-w-full drop-shadow-xl;
-    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.8));
+    @apply max-h-full max-w-full;
+    /* Enhanced drop shadow for logo */
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.95)) 
+            drop-shadow(0 1px 2px rgba(0, 0, 0, 0.9));
+  }
+}
+
+/* Brand when scrolled - dark text on white background */
+.header.header-scrolled .navbar-brand {
+  @apply text-gray-900 dark:text-white;
+  text-shadow: none;
+  
+  image {
+    filter: none;
   }
 }
 
@@ -80,23 +256,53 @@
   @apply transition-all duration-300 ease-in-out;
   @apply lg:px-4 lg:py-3 lg:mx-1;
   @apply rounded-lg lg:rounded-md;
-  @apply drop-shadow-lg;
   @apply focus:outline-none focus:ring-2 focus:ring-white/50;
   
   /* Enhanced text styling for better readability */
   color: #ffffff;
   font-weight: 800;
   letter-spacing: 0.025em;
-  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.9), 0 1px 2px rgba(0, 0, 0, 0.8);
+  /* Enhanced text shadow for better contrast against light backgrounds */
+  text-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.95),
+    0 1px 2px rgba(0, 0, 0, 0.9),
+    0 0 1px rgba(0, 0, 0, 1);
   
   /* Hover states */
-  @apply hover:bg-white/30;
+  @apply hover:bg-white/20;
 }
 
 .nav-link:hover {
   color: #ffffff;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
+  /* Enhanced hover text shadow for better contrast */
+  text-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.95),
+    0 1px 2px rgba(0, 0, 0, 0.9),
+    0 0 1px rgba(0, 0, 0, 1);
   transform: translateY(-1px);
+}
+
+/* Navigation links when scrolled - dark text on white background */
+.header.header-scrolled .nav-link {
+  color: #1f2937; /* gray-800 */
+  text-shadow: none;
+  @apply hover:bg-gray-100;
+}
+
+.header.header-scrolled .nav-link:hover {
+  color: #111827; /* gray-900 */
+  text-shadow: none;
+  transform: translateY(-1px);
+}
+
+/* Dark mode navigation links when scrolled */
+.dark .header.header-scrolled .nav-link {
+  color: #f9fafb; /* gray-50 */
+  @apply hover:bg-gray-800;
+}
+
+.dark .header.header-scrolled .nav-link:hover {
+  color: #ffffff;
 }
 
 /* Active link states */

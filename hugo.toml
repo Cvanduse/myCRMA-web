@@ -28,10 +28,8 @@ shortname = 'themefisher-template'
 [pagination]
 disableAliases = false
 pagerSize = 10
-path = 'page'
 
 ############################# Build ##############################
-[build]
 [build.buildStats]
 enable = true
 [[build.cachebusters]]
@@ -116,6 +114,9 @@ lazy = true
 [[params.plugins.css]]
 link = "plugins/font-awesome/v6/icons.css"
 lazy = true
+[[params.plugins.css]]
+link = "css/why-choose-us.css"
+lazy = false
 
 # JS Plugins
 [[params.plugins.js]]

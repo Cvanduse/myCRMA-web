@@ -283,10 +283,7 @@
     font-size: 1.25rem;
   }
   
-  /* Reduce particle count on mobile for performance */
-  .particle:nth-child(n+6) {
-    display: none;
-  }
+  /* Particle system removed for performance */
   
   /* Smaller parallax elements on mobile */
   .parallax-circle-1 {
@@ -389,70 +386,7 @@
   }
 }
 
-/* Phase 3: Particle System & Parallax Effects */
-.hero-particles {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 3;
-  pointer-events: none;
-  overflow: hidden;
-  border-radius: 0 0 2rem 2rem;
-}
-
-.particle {
-  position: absolute;
-  width: 4px;
-  height: 4px;
-  background: rgba(59, 130, 246, 0.3);
-  border-radius: 50%;
-  animation: particleFloat 20s linear infinite;
-}
-
-.particle:nth-child(2n) {
-  width: 2px;
-  height: 2px;
-  background: rgba(59, 130, 246, 0.2);
-  animation-duration: 25s;
-  animation-delay: -5s;
-}
-
-.particle:nth-child(3n) {
-  width: 3px;
-  height: 3px;
-  background: rgba(59, 130, 246, 0.15);
-  animation-duration: 30s;
-  animation-delay: -10s;
-}
-
-.particle:nth-child(4n) {
-  width: 1px;
-  height: 1px;
-  background: rgba(59, 130, 246, 0.4);
-  animation-duration: 15s;
-  animation-delay: -3s;
-}
-
-@keyframes particleFloat {
-  0% {
-    transform: translateY(100vh) translateX(0) scale(0);
-    opacity: 0;
-  }
-  10% {
-    opacity: 1;
-    transform: translateY(90vh) translateX(0) scale(1);
-  }
-  90% {
-    opacity: 1;
-    transform: translateY(-10vh) translateX(var(--random-x, 0)) scale(1);
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(-20vh) translateX(var(--random-x, 0)) scale(0);
-  }
-}
+/* Phase 3: Parallax Effects (Particle system removed for performance) */
 
 /* Parallax Elements */
 .hero-parallax-element {
@@ -591,8 +525,7 @@
     scroll-behavior: auto !important;
   }
   
-  /* Hide particle system entirely for reduced motion */
-  .hero-particles,
+  /* Hide connectivity lines for reduced motion */
   .hero-connectivity {
     display: none;
   }
@@ -686,22 +619,7 @@
     color: #64748b;
   }
   
-  /* Dark mode particles */
-  .particle {
-    background: rgba(96, 165, 250, 0.4);
-  }
-  
-  .particle:nth-child(2n) {
-    background: rgba(96, 165, 250, 0.3);
-  }
-  
-  .particle:nth-child(3n) {
-    background: rgba(96, 165, 250, 0.25);
-  }
-  
-  .particle:nth-child(4n) {
-    background: rgba(96, 165, 250, 0.5);
-  }
+  /* Particle system removed for performance */
   
   /* Dark mode parallax elements */
   .hero-parallax-element {
@@ -758,12 +676,10 @@
 }
 
 /* Performance Optimization Classes */
-.hero-section:not(.hero-visible) .hero-particles,
 .hero-section:not(.hero-visible) .hero-connectivity {
   animation-play-state: paused;
 }
 
-.hero-section.hero-visible .hero-particles,
 .hero-section.hero-visible .hero-connectivity {
   animation-play-state: running;
 }
@@ -773,9 +689,7 @@
   contain: layout style paint;
 }
 
-.hero-particles {
-  contain: strict;
-}
+/* Particle system removed for performance */
 
 .hero-parallax-element {
   contain: layout style paint;
@@ -817,84 +731,7 @@
   }
 }
 
-/* Floating Logo/Brand Elements */
-.hero-floating-brands {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  z-index: 5;
-  pointer-events: none;
-}
-
-.floating-brand {
-  position: absolute;
-  opacity: 0.1;
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: #3b82f6;
-  animation: brandFloat 15s ease-in-out infinite;
-  background: rgba(59, 130, 246, 0.05);
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-  backdrop-filter: blur(5px);
-}
-
-.floating-brand:nth-child(1) {
-  top: 15%;
-  left: 10%;
-  animation-delay: 0s;
-  animation-duration: 18s;
-}
-
-.floating-brand:nth-child(2) {
-  top: 25%;
-  right: 15%;
-  animation-delay: -3s;
-  animation-duration: 22s;
-}
-
-.floating-brand:nth-child(3) {
-  top: 45%;
-  left: 5%;
-  animation-delay: -6s;
-  animation-duration: 20s;
-}
-
-.floating-brand:nth-child(4) {
-  top: 65%;
-  right: 20%;
-  animation-delay: -9s;
-  animation-duration: 16s;
-}
-
-.floating-brand:nth-child(5) {
-  top: 75%;
-  left: 70%;
-  animation-delay: -12s;
-  animation-duration: 24s;
-}
-
-@keyframes brandFloat {
-  0%, 100% {
-    transform: translateY(0px) translateX(0px) rotate(0deg);
-    opacity: 0.05;
-  }
-  25% {
-    transform: translateY(-20px) translateX(10px) rotate(2deg);
-    opacity: 0.1;
-  }
-  50% {
-    transform: translateY(-10px) translateX(-15px) rotate(-1deg);
-    opacity: 0.08;
-  }
-  75% {
-    transform: translateY(-30px) translateX(5px) rotate(1deg);
-    opacity: 0.12;
-  }
-}
+/* Floating brands removed for optimal performance */
 
 /* Enhanced Hover Effects for CTAs */
 .hero-section .side-cta {
@@ -1024,10 +861,7 @@
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
-  .floating-brand {
-    font-size: 1rem;
-    padding: 0.3rem 0.8rem;
-  }
+  /* Floating brands removed for optimal performance */
   
   .hero-section .side-cta:hover {
     transform: translateY(-4px) scale(1.01);
@@ -1039,7 +873,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-floating-brands,
   .hero-mesh-overlay {
     display: none;
   }

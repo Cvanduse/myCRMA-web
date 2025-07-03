@@ -1,0 +1,18 @@
+{{ partial "mind-marquee" . }}
+
+<div class="row items-center justify-between mb-20">
+  <div class="lg:col-6">
+    <h2 class="text-[5rem] font-light leading-tight text-[#1A1A1A] dark:text-white">
+      {{ .Params.title | markdownify }}
+    </h2>
+  </div>
+  
+  <div class="lg:col-4 text-right">
+    {{ $link := .Params.button.link | default "/contact" }}
+    <a href="{{ $link }}" 
+       class="inline-flex items-center px-8 py-4 text-lg border border-[#1A1A1A] dark:border-white text-[#1A1A1A] dark:text-white rounded-full hover:bg-[#1A1A1A] hover:text-white dark:hover:bg-white dark:hover:text-[#1A1A1A] transition-colors">
+      {{ .Params.button.text | default "Let's Talk" }}
+      <span class="ml-4">→</span>
+    </a>
+  </div>
+</div>

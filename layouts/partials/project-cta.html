@@ -23,59 +23,53 @@
             </filter>
           </defs>
           
-          <!-- Background geometric shapes -->
-          <g class="bg-shapes" opacity="0.15">
-            <!-- Card 01 Area - Triangle -->
-            <polygon points="100,150 200,350 0,350" fill="#3B82F6"/>
+          <!-- Background geometric shapes positioned behind step cards -->
+          <g class="bg-shapes" opacity="0.4">
+            <!-- Card 01 Area - Triangle (repositioned to align with step cards) -->
+            <polygon points="150,500 250,650 50,650" fill="#3B82F6"/>
             <!-- Card 02 Area - Hexagon -->
-            <polygon points="400,120 450,150 450,210 400,240 350,210 350,150" fill="#1D4ED8"/>
+            <polygon points="400,480 450,510 450,570 400,600 350,570 350,510" fill="#1D4ED8"/>
             <!-- Card 03 Area - Diamond -->
-            <polygon points="700,140 750,190 700,240 650,190" fill="#1E40AF"/>
+            <polygon points="650,500 700,550 650,600 600,550" fill="#1E40AF"/>
             <!-- Card 04 Area - Circle segments -->
-            <path d="M 950 160 A 50 50 0 0 1 1050 160 L 1000 210 Z" fill="#1E3A8A"/>
+            <path d="M 900 520 A 50 50 0 0 1 1000 520 L 950 570 Z" fill="#1E3A8A"/>
           </g>
           
-          <!-- Progressive connection flow -->
+          <!-- Progressive connection flow aligned with step cards -->
           <g class="connection-flow">
             <!-- Step 01 to 02 -->
-            <path d="M 250 250 Q 325 200 400 250" stroke="url(#progressGradient)" stroke-width="3" fill="none" opacity="0.6"/>
+            <path d="M 300 550 Q 350 530 400 550" stroke="url(#progressGradient)" stroke-width="3" fill="none" opacity="0.6"/>
             <!-- Step 02 to 03 -->
-            <path d="M 500 250 Q 575 200 650 250" stroke="url(#progressGradient)" stroke-width="3" fill="none" opacity="0.7"/>
+            <path d="M 500 550 Q 550 530 600 550" stroke="url(#progressGradient)" stroke-width="3" fill="none" opacity="0.7"/>
             <!-- Step 03 to 04 -->
-            <path d="M 750 250 Q 825 200 900 250" stroke="url(#progressGradient)" stroke-width="3" fill="none" opacity="0.8"/>
+            <path d="M 750 550 Q 800 530 850 550" stroke="url(#progressGradient)" stroke-width="3" fill="none" opacity="0.8"/>
           </g>
           
-          <!-- Floating elements for depth -->
-          <g class="floating-elements" opacity="0.3">
+          <!-- Floating elements positioned around step cards -->
+          <g class="floating-elements" opacity="0.6">
             <!-- Step 01 floating elements -->
-            <circle cx="120" cy="120" r="4" fill="#3B82F6" class="step-0-float"/>
-            <circle cx="180" cy="160" r="2.5" fill="#60A5FA" class="step-0-float"/>
+            <circle cx="120" cy="480" r="4" fill="#3B82F6" class="step-0-float"/>
+            <circle cx="180" cy="520" r="2.5" fill="#60A5FA" class="step-0-float"/>
             
             <!-- Step 02 floating elements -->
-            <circle cx="380" cy="110" r="3.5" fill="#1D4ED8" class="step-1-float"/>
-            <circle cx="420" cy="150" r="2" fill="#3B82F6" class="step-1-float"/>
+            <circle cx="320" cy="470" r="3.5" fill="#1D4ED8" class="step-1-float"/>
+            <circle cx="480" cy="510" r="2" fill="#3B82F6" class="step-1-float"/>
             
             <!-- Step 03 floating elements -->
-            <circle cx="680" cy="105" r="3" fill="#1E40AF" class="step-2-float"/>
-            <circle cx="720" cy="145" r="2.5" fill="#1D4ED8" class="step-2-float"/>
+            <circle cx="580" cy="465" r="3" fill="#1E40AF" class="step-2-float"/>
+            <circle cx="720" cy="505" r="2.5" fill="#1D4ED8" class="step-2-float"/>
             
             <!-- Step 04 floating elements -->
-            <circle cx="980" cy="115" r="4" fill="#1E3A8A" class="step-3-float"/>
-            <circle cx="1020" cy="155" r="2.5" fill="#1E40AF" class="step-3-float"/>
+            <circle cx="820" cy="475" r="4" fill="#1E3A8A" class="step-3-float"/>
+            <circle cx="980" cy="515" r="2.5" fill="#1E40AF" class="step-3-float"/>
             
             <!-- Connection dots between steps -->
-            <circle cx="325" cy="200" r="1.5" fill="#60A5FA" class="connection-dot"/>
-            <circle cx="575" cy="190" r="1.5" fill="#3B82F6" class="connection-dot"/>
-            <circle cx="825" cy="185" r="1.5" fill="#1D4ED8" class="connection-dot"/>
+            <circle cx="350" cy="540" r="1.5" fill="#60A5FA" class="connection-dot"/>
+            <circle cx="575" cy="535" r="1.5" fill="#3B82F6" class="connection-dot"/>
+            <circle cx="785" cy="540" r="1.5" fill="#1D4ED8" class="connection-dot"/>
           </g>
           
-          <!-- Progress indicators -->
-          <g class="progress-indicators">
-            <circle cx="200" cy="350" r="8" fill="#3B82F6" opacity="0.8"/>
-            <circle cx="450" cy="350" r="8" fill="#1D4ED8" opacity="0.8"/>
-            <circle cx="700" cy="350" r="8" fill="#1E40AF" opacity="0.8"/>
-            <circle cx="950" cy="350" r="8" fill="#1E3A8A" opacity="0.8"/>
-          </g>
+
         </svg>
       </div>
       
@@ -146,6 +140,9 @@
                   <!-- Progress indicator -->
                   <div class="progress-indicator absolute bottom-0 left-0 h-1 bg-gradient-to-r from-blue-400 to-blue-600 transition-all duration-500 group-hover:h-2" style="width: {{ mul (add $index 1) 25 }}%"></div>
                 </div>
+                
+                <!-- Progress dot below card -->
+                <div class="progress-dot absolute -bottom-8 left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full transition-all duration-400 {{ if eq $index 0 }}bg-blue-500{{ else if eq $index 1 }}bg-blue-600{{ else if eq $index 2 }}bg-blue-700{{ else }}bg-blue-800{{ end }} border border-white shadow-md opacity-80 z-20" data-step="{{ $index }}"></div>
               </div>
             {{ end }}
           </div>
@@ -188,7 +185,6 @@
         function animateBackgroundForStep(stepNumber) {
           const bgShapes = document.querySelectorAll('.bg-shapes polygon, .bg-shapes path');
           const connectionFlow = document.querySelectorAll('.connection-flow path');
-          const progressIndicators = document.querySelectorAll('.progress-indicators circle');
           
           // Animate background shape for current step
           if (bgShapes[stepNumber - 1]) {
@@ -198,11 +194,6 @@
           // Animate connection line to next step
           if (connectionFlow[stepNumber - 1]) {
             connectionFlow[stepNumber - 1].style.animation = 'drawLine 1.5s ease-in-out';
-          }
-          
-          // Highlight progress indicator
-          if (progressIndicators[stepNumber - 1]) {
-            progressIndicators[stepNumber - 1].style.animation = 'glowPulse 1s ease-in-out';
           }
         }
         
@@ -216,24 +207,45 @@
         }
         
         // Enhanced hover effects for step cards
+        let hoverTimeout;
         processSteps.forEach((step, index) => {
           const stepCard = step.querySelector('.step-card');
+          let isHovered = false;
           
-          stepCard.addEventListener('mouseenter', function() {
+          stepCard.addEventListener('mouseenter', function(e) {
+            e.stopPropagation();
+            if (isHovered) return;
+            isHovered = true;
+            clearTimeout(hoverTimeout);
             console.log(`Hovering over step ${index + 1}`);
             // Highlight corresponding background elements
             const bgShapes = geometricPattern.querySelectorAll('.bg-shapes polygon, .bg-shapes path');
-            const progressIndicators = geometricPattern.querySelectorAll('.progress-indicators circle');
+            const progressDotsHTML = document.querySelectorAll('.progress-dot'); // HTML dots below cards
             const connectionLines = geometricPattern.querySelectorAll('.connection-flow path');
             const floatingElements = geometricPattern.querySelectorAll('.floating-elements circle');
             
             console.log('Found elements:', {
               bgShapes: bgShapes.length,
-              progressIndicators: progressIndicators.length,
+              progressDotsHTML: progressDotsHTML.length,
               connectionLines: connectionLines.length,
               floatingElements: floatingElements.length,
               targetIndex: index
             });
+            
+            // Animate HTML progress dots below cards
+            progressDotsHTML.forEach((indicator, i) => {
+              if (i === index) {
+                indicator.style.borderColor = '#FFFFFF';
+                indicator.style.borderWidth = '2px';
+                indicator.classList.add('progress-indicator-active');
+              } else {
+                indicator.style.borderColor = '#FFFFFF';
+                indicator.style.borderWidth = '1px';
+                indicator.classList.remove('progress-indicator-active');
+              }
+            });
+            
+
             
             // Highlight the corresponding background shape
             if (bgShapes[index]) {
@@ -242,15 +254,7 @@
               bgShapes[index].style.transition = 'all 0.3s ease';
             }
             
-            // Highlight the progress indicator with enhanced animation
-            if (progressIndicators[index]) {
-              progressIndicators[index].style.transform = 'scale(2.5)';
-              progressIndicators[index].style.filter = 'drop-shadow(0 0 20px currentColor) drop-shadow(0 0 40px currentColor)';
-              progressIndicators[index].style.opacity = '1';
-              progressIndicators[index].style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
-              progressIndicators[index].style.animation = 'pulseGlow 1.5s ease-in-out infinite';
-              console.log(`Animating progress indicator ${index + 1}`);
-            }
+            // This section is now handled above with separate HTML and SVG indicators
             
             // Highlight connection line leading to this step
             if (connectionLines[index - 1] && index > 0) {
@@ -275,12 +279,17 @@
             stepCard.style.borderColor = 'rgb(59 130 246)';
           });
           
-          stepCard.addEventListener('mouseleave', function() {
-            // Reset all background elements
-            const bgShapes = geometricPattern.querySelectorAll('.bg-shapes polygon, .bg-shapes path');
-            const progressIndicators = geometricPattern.querySelectorAll('.progress-indicators circle');
-            const connectionLines = geometricPattern.querySelectorAll('.connection-flow path');
-            const floatingElements = geometricPattern.querySelectorAll('.floating-elements circle');
+          stepCard.addEventListener('mouseleave', function(e) {
+            e.stopPropagation();
+            
+            // Delay the reset to prevent flickering
+            hoverTimeout = setTimeout(() => {
+              isHovered = false;
+              // Reset all background elements
+              const bgShapes = geometricPattern.querySelectorAll('.bg-shapes polygon, .bg-shapes path');
+              const progressDotsHTML = document.querySelectorAll('.progress-dot');
+              const connectionLines = geometricPattern.querySelectorAll('.connection-flow path');
+              const floatingElements = geometricPattern.querySelectorAll('.floating-elements circle');
             
             // Reset background shape
             if (bgShapes[index]) {
@@ -288,14 +297,14 @@
               bgShapes[index].style.transform = 'scale(1)';
             }
             
-            // Reset progress indicator
-            if (progressIndicators[index]) {
-              progressIndicators[index].style.transform = 'scale(1)';
-              progressIndicators[index].style.filter = 'none';
-              progressIndicators[index].style.opacity = '0.8';
-              progressIndicators[index].style.animation = 'none';
-              console.log(`Reset progress indicator ${index + 1}`);
-            }
+              // Reset HTML progress dots
+              progressDotsHTML.forEach((indicator, i) => {
+                indicator.classList.remove('progress-indicator-active');
+                indicator.style.borderColor = '#FFFFFF';
+                indicator.style.borderWidth = '1px';
+              });
+              
+
             
             // Reset connection line
             if (connectionLines[index - 1] && index > 0) {
@@ -303,22 +312,23 @@
               connectionLines[index - 1].style.strokeWidth = '3';
             }
             
-            // Reset floating elements for this specific step
-            const stepFloatingElements = geometricPattern.querySelectorAll(`.step-${index}-float`);
-            stepFloatingElements.forEach(element => {
-              if (element) {
-                element.style.opacity = '0.3';
-                element.style.transform = 'scale(1)';
-                element.style.filter = 'drop-shadow(0 1px 3px rgba(0,0,0,0.2))';
-              }
-            });
+              // Reset floating elements for this specific step
+              const stepFloatingElements = geometricPattern.querySelectorAll(`.step-${index}-float`);
+              stepFloatingElements.forEach(element => {
+                if (element) {
+                  element.style.opacity = '0.3';
+                  element.style.transform = 'scale(1)';
+                  element.style.filter = 'drop-shadow(0 1px 3px rgba(0,0,0,0.2))';
+                }
+              });
             
-            // Reset step card glow
-            stepCard.style.boxShadow = '';
-            stepCard.style.borderColor = 'transparent';
+              // Reset step card glow
+              stepCard.style.boxShadow = '';
+              stepCard.style.borderColor = 'transparent';
+            }, 100); // 100ms delay to prevent flicker
           });
         });
       });
     </script>
   {{ end }}
-{{ end }} 
+{{ end }}
