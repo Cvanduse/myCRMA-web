@@ -1144,3 +1144,39 @@
   letter-spacing: 0.5px;
   line-height: 1.2em;
 }
+
+/* Utility for deep charcoal text */
+.text-charcoal {
+  color: var(--color-charcoal) !important;
+}
+
+/* Apply charcoal to body text, small UI labels, and icon strokes */
+body, .body-text, .ui-label, .icon-stroke {
+  color: var(--color-charcoal);
+}
+
+/* Example: override for small UI labels */
+.ui-label {
+  font-size: 0.95rem;
+  color: var(--color-charcoal);
+  letter-spacing: 0.01em;
+}
+
+/* Example: icon stroke */
+.icon-stroke, .icon-stroke svg {
+  stroke: var(--color-charcoal);
+  color: var(--color-charcoal);
+}
+
+/* Subtle geometric pattern for neutral backgrounds */
+.bg-geometric-pattern {
+  position: relative;
+  background-color: var(--color-body);
+  /* SVG pattern as a background image, very low opacity */
+  background-image: url('data:image/svg+xml;utf8,<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" width="40" height="40" fill="none"/><g opacity="0.06"><path d="M0 20h40M20 0v40" stroke="%232C2E33" stroke-width="1.5"/></g></svg>');
+  background-repeat: repeat;
+  background-size: 40px 40px;
+  z-index: 0;
+}
+
+/* Example: to layer pattern over a section, add .bg-geometric-pattern to the section or container */
