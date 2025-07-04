@@ -1,17 +1,17 @@
 {{ with site.GetPage "sections/project-cta" }}
   {{ if .Params.enable }}
-    <section class="section bg-[#F5F5F5] dark:bg-[#1A1A1A] py-8 relative overflow-hidden">
+    <section class="section py-8 relative overflow-hidden" style="background-color: var(--color-light-gray);">
       <!-- Geometric Pattern Background -->
       <div class="absolute inset-0 geometric-pattern-bg">
         <svg class="geometric-pattern" width="100%" height="100%" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
           <!-- Progressive Connection Lines -->
           <defs>
             <linearGradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:0.3" />
-              <stop offset="25%" style="stop-color:#1D4ED8;stop-opacity:0.4" />
-              <stop offset="50%" style="stop-color:#1E40AF;stop-opacity:0.5" />
-              <stop offset="75%" style="stop-color:#1E3A8A;stop-opacity:0.6" />
-              <stop offset="100%" style="stop-color:#1E293B;stop-opacity:0.7" />
+              <stop offset="0%" style="stop-color:#4B6587;stop-opacity:0.3" />
+              <stop offset="25%" style="stop-color:#4B6587;stop-opacity:0.4" />
+              <stop offset="50%" style="stop-color:#FFB84D;stop-opacity:0.5" />
+              <stop offset="75%" style="stop-color:#FFB84D;stop-opacity:0.6" />
+              <stop offset="100%" style="stop-color:#4B6587;stop-opacity:0.7" />
             </linearGradient>
             
             <filter id="glow">
@@ -26,13 +26,13 @@
           <!-- Background geometric shapes positioned behind step cards -->
           <g class="bg-shapes" opacity="0.4">
             <!-- Card 01 Area - Triangle (repositioned to align with step cards) -->
-            <polygon points="150,500 250,650 50,650" fill="#3B82F6"/>
+            <polygon points="150,500 250,650 50,650" fill="#4B6587"/>
             <!-- Card 02 Area - Hexagon -->
-            <polygon points="400,480 450,510 450,570 400,600 350,570 350,510" fill="#1D4ED8"/>
+            <polygon points="400,480 450,510 450,570 400,600 350,570 350,510" fill="#4B6587"/>
             <!-- Card 03 Area - Diamond -->
-            <polygon points="650,500 700,550 650,600 600,550" fill="#1E40AF"/>
+            <polygon points="650,500 700,550 650,600 600,550" fill="#FFB84D"/>
             <!-- Card 04 Area - Circle segments -->
-            <path d="M 900 520 A 50 50 0 0 1 1000 520 L 950 570 Z" fill="#1E3A8A"/>
+            <path d="M 900 520 A 50 50 0 0 1 1000 520 L 950 570 Z" fill="#FFB84D"/>
           </g>
           
           <!-- Progressive connection flow aligned with step cards -->
@@ -48,25 +48,25 @@
           <!-- Floating elements positioned around step cards -->
           <g class="floating-elements" opacity="0.6">
             <!-- Step 01 floating elements -->
-            <circle cx="120" cy="480" r="4" fill="#3B82F6" class="step-0-float"/>
-            <circle cx="180" cy="520" r="2.5" fill="#60A5FA" class="step-0-float"/>
+            <circle cx="120" cy="480" r="4" fill="#4B6587" class="step-0-float"/>
+            <circle cx="180" cy="520" r="2.5" fill="#4B6587" class="step-0-float"/>
             
             <!-- Step 02 floating elements -->
-            <circle cx="320" cy="470" r="3.5" fill="#1D4ED8" class="step-1-float"/>
-            <circle cx="480" cy="510" r="2" fill="#3B82F6" class="step-1-float"/>
+            <circle cx="320" cy="470" r="3.5" fill="#4B6587" class="step-1-float"/>
+            <circle cx="480" cy="510" r="2" fill="#4B6587" class="step-1-float"/>
             
             <!-- Step 03 floating elements -->
-            <circle cx="580" cy="465" r="3" fill="#1E40AF" class="step-2-float"/>
-            <circle cx="720" cy="505" r="2.5" fill="#1D4ED8" class="step-2-float"/>
+            <circle cx="580" cy="465" r="3" fill="#FFB84D" class="step-2-float"/>
+            <circle cx="720" cy="505" r="2.5" fill="#FFB84D" class="step-2-float"/>
             
             <!-- Step 04 floating elements -->
-            <circle cx="820" cy="475" r="4" fill="#1E3A8A" class="step-3-float"/>
-            <circle cx="980" cy="515" r="2.5" fill="#1E40AF" class="step-3-float"/>
+            <circle cx="820" cy="475" r="4" fill="#FFB84D" class="step-3-float"/>
+            <circle cx="980" cy="515" r="2.5" fill="#FFB84D" class="step-3-float"/>
             
             <!-- Connection dots between steps -->
-            <circle cx="350" cy="540" r="1.5" fill="#60A5FA" class="connection-dot"/>
-            <circle cx="575" cy="535" r="1.5" fill="#3B82F6" class="connection-dot"/>
-            <circle cx="785" cy="540" r="1.5" fill="#1D4ED8" class="connection-dot"/>
+            <circle cx="350" cy="540" r="1.5" fill="#4B6587" class="connection-dot"/>
+            <circle cx="575" cy="535" r="1.5" fill="#4B6587" class="connection-dot"/>
+            <circle cx="785" cy="540" r="1.5" fill="#FFB84D" class="connection-dot"/>
           </g>
           
 
@@ -77,14 +77,17 @@
         {{ partial "mind-marquee" . }}
         <div class="row items-center justify-between mb-20">
           <div class="lg:col-6">
-            <h2 class="text-[5rem] font-light leading-tight text-[#1A1A1A] dark:text-white">
+            <h2 class="text-[5rem] font-light leading-tight dark:text-white" style="color: var(--color-slate-blue);">
               {{ .Params.title | markdownify }}
             </h2>
           </div>
           <div class="lg:col-4 text-right">
             {{ $link := .Params.button.link | default "/contact" }}
             <a href="{{ $link }}" 
-               class="inline-flex items-center px-8 py-4 text-lg border border-[#1A1A1A] dark:border-white text-[#1A1A1A] dark:text-white rounded-full hover:bg-[#1A1A1A] hover:text-white dark:hover:bg-white dark:hover:text-[#1A1A1A] transition-colors">
+               class="inline-flex items-center px-8 py-4 text-lg border rounded-full transition-colors"
+               style="border-color: var(--color-slate-blue); color: var(--color-slate-blue);"
+               onmouseover="this.style.backgroundColor='var(--color-slate-blue)'; this.style.color='var(--color-off-white)';"
+               onmouseout="this.style.backgroundColor='transparent'; this.style.color='var(--color-slate-blue)';">
               {{ .Params.button.text | default "Let's Talk" }}
               <span class="ml-4">→</span>
             </a>
@@ -96,53 +99,58 @@
               <div class="md:col-3 mb-8 process-step relative" data-step="{{ add $index 1 }}">
                 <!-- Step connector line (hidden on first and last) -->
                 {{ if ne $index 3 }}
-                  <div class="step-connector absolute top-1/2 -right-4 w-8 h-0.5 bg-gradient-to-r from-blue-400 to-blue-600 opacity-30 hidden md:block z-20"></div>
+                  <div class="step-connector absolute top-1/2 -right-4 w-8 h-0.5 opacity-30 hidden md:block z-20" style="background: linear-gradient(to right, var(--color-slate-blue), var(--color-warm-amber));"></div>
                 {{ end }}
                 
-                <div class="step-card p-6 bg-white dark:bg-[#242424] rounded-lg text-center h-full hover:shadow-xl hover:-translate-y-2 transition-all duration-500 relative group border-2 border-transparent hover:border-blue-200 dark:hover:border-blue-800">
+                <div class="step-card p-6 dark:bg-darkmode-light rounded-lg text-center h-full hover:shadow-xl hover:-translate-y-2 transition-all duration-500 relative group border-2 border-transparent" 
+                     style="background-color: var(--color-off-white);"
+                     onmouseover="this.style.borderColor='var(--color-slate-blue)';"
+                     onmouseout="this.style.borderColor='transparent';">
                   <!-- Card geometric accent -->
                   <div class="geometric-accent absolute top-0 right-0 w-16 h-16 opacity-10">
                     {{ if eq $index 0 }}
                       <!-- Triangle for step 01 -->
                       <svg viewBox="0 0 64 64" class="w-full h-full">
-                        <polygon points="32,8 56,48 8,48" fill="currentColor" class="text-blue-500"/>
+                        <polygon points="32,8 56,48 8,48" fill="currentColor" style="color: var(--color-slate-blue);"/>
                       </svg>
                     {{ else if eq $index 1 }}
                       <!-- Hexagon for step 02 -->
                       <svg viewBox="0 0 64 64" class="w-full h-full">
-                        <polygon points="32,8 48,20 48,44 32,56 16,44 16,20" fill="currentColor" class="text-blue-600"/>
+                        <polygon points="32,8 48,20 48,44 32,56 16,44 16,20" fill="currentColor" style="color: var(--color-slate-blue);"/>
                       </svg>
                     {{ else if eq $index 2 }}
                       <!-- Diamond for step 03 -->
                       <svg viewBox="0 0 64 64" class="w-full h-full">
-                        <polygon points="32,8 56,32 32,56 8,32" fill="currentColor" class="text-blue-700"/>
+                        <polygon points="32,8 56,32 32,56 8,32" fill="currentColor" style="color: var(--color-warm-amber);"/>
                       </svg>
                     {{ else }}
                       <!-- Circle for step 04 -->
                       <svg viewBox="0 0 64 64" class="w-full h-full">
-                        <circle cx="32" cy="32" r="24" fill="currentColor" class="text-blue-800"/>
+                        <circle cx="32" cy="32" r="24" fill="currentColor" style="color: var(--color-warm-amber);"/>
                       </svg>
                     {{ end }}
                   </div>
                   
                   <!-- Step number with enhanced styling -->
                   <div class="step-number-container relative mb-6">
-                    <div class="step-number text-5xl font-light mb-2 block text-[#1A1A1A] dark:text-white relative z-10 group-hover:scale-110 transition-transform duration-300">{{ $step.number }}</div>
+                    <div class="step-number text-5xl font-light mb-2 block dark:text-white relative z-10 group-hover:scale-110 transition-transform duration-300" style="color: var(--color-slate-blue);">{{ $step.number }}</div>
                     <!-- Number background glow -->
                     <div class="absolute inset-0 flex items-center justify-center">
-                      <div class="w-16 h-16 rounded-full bg-gradient-to-br from-blue-400/20 to-blue-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      <div class="w-16 h-16 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" style="background: linear-gradient(to bottom right, rgba(75, 101, 135, 0.2), rgba(255, 184, 77, 0.2));"></div>
                     </div>
                   </div>
                   
-                  <h4 class="text-xl mb-4 text-[#1A1A1A] dark:text-white font-semibold group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">{{ $step.title }}</h4>
-                  <p class="text-gray-600 dark:text-gray-300 leading-relaxed">{{ $step.description }}</p>
+                  <h4 class="text-xl mb-4 dark:text-white font-semibold transition-colors duration-300" style="color: var(--color-slate-blue);">{{ $step.title }}</h4>
+                  <p class="leading-relaxed" style="color: var(--color-charcoal);">{{ $step.description }}</p>
                   
                   <!-- Progress indicator -->
-                  <div class="progress-indicator absolute bottom-0 left-0 h-1 bg-gradient-to-r from-blue-400 to-blue-600 transition-all duration-500 group-hover:h-2" style="width: {{ mul (add $index 1) 25 }}%"></div>
+                  <div class="progress-indicator absolute bottom-0 left-0 h-1 transition-all duration-500 group-hover:h-2" style="width: {{ mul (add $index 1) 25 }}%; background: linear-gradient(to right, var(--color-slate-blue), var(--color-warm-amber));"></div>
                 </div>
                 
                 <!-- Progress dot below card -->
-                <div class="progress-dot absolute -bottom-8 left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full transition-all duration-400 {{ if eq $index 0 }}bg-blue-500{{ else if eq $index 1 }}bg-blue-600{{ else if eq $index 2 }}bg-blue-700{{ else }}bg-blue-800{{ end }} border border-white shadow-md opacity-80 z-20" data-step="{{ $index }}"></div>
+                <div class="progress-dot absolute -bottom-8 left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full transition-all duration-400 border shadow-md opacity-80 z-20" 
+                     style="background-color: {{ if or (eq $index 0) (eq $index 1) }}var(--color-slate-blue){{ else }}var(--color-warm-amber){{ end }}; border-color: var(--color-off-white);" 
+                     data-step="{{ $index }}"></div>
               </div>
             {{ end }}
           </div>
@@ -275,8 +283,8 @@
             });
             
             // Add glow effect to step card
-            stepCard.style.boxShadow = '0 20px 40px rgba(59, 130, 246, 0.3)';
-            stepCard.style.borderColor = 'rgb(59 130 246)';
+            stepCard.style.boxShadow = '0 20px 40px rgba(75, 101, 135, 0.3)';
+            stepCard.style.borderColor = 'rgb(75 101 135)';
           });
           
           stepCard.addEventListener('mouseleave', function(e) {

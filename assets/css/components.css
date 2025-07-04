@@ -30,32 +30,85 @@
   @apply h-5 w-5;
 }
 
+/* tab */
+.tab-nav {
+  @apply border-b border-border dark:border-darkmode-border;
+}
+
+.tab-nav-item {
+  @apply cursor-pointer border-b-[3px] border-transparent py-2 text-lg opacity-80;
+}
+
+.tab-nav-item.active {
+  @apply border-b-[3px] border-dark opacity-100 dark:border-darkmode-primary;
+}
+
+.tab-content-panel {
+  @apply pt-4;
+}
+
+.tab-content-panel.active {
+  @apply block;
+}
+
+/* notice */
+.notice {
+  @apply mb-6 rounded-lg border px-8 py-6;
+}
+
+.notice.note {
+  background: var(--color-slate-blue);
+  color: var(--color-off-white);
+}
+
+.notice.tip {
+  @apply border-green-300 bg-green-50;
+}
+
+.notice.info {
+  @apply border-blue-300 bg-blue-50;
+}
+
+.notice.warning {
+  @apply border-yellow-300 bg-yellow-50;
+}
+
 /* content style */
 .content {
-  @apply prose max-w-none;
-  @apply prose-headings:mb-[.3em] prose-headings:mt-[.6em];
-  color: #C8C6C6;
-  @apply prose-headings:text-[#4B6587];
-  @apply prose-h1:text-h1-sm md:prose-h1:text-h1;
-  @apply prose-h2:text-h2-sm md:prose-h2:text-h2;
-  @apply prose-h3:text-h3-sm md:prose-h3:text-h3;
-  @apply prose-p:text-[#C8C6C6];
-  @apply prose-a:text-[#4B6587] prose-a:[&.btn]:no-underline;
-  @apply prose-img:max-w-full prose-img:rounded;
-  @apply prose-strong:text-[#4B6587];
-  @apply prose-hr:border-[#C8C6C6];
-  @apply prose-pre:rounded-lg prose-pre:bg-[#F0E5CF];
-  @apply prose-code:text-[#4B6587];
-  @apply prose-li:text-[#C8C6C6];
-  @apply prose-blockquote:rounded-lg prose-blockquote:border prose-blockquote:border-l-[10px] prose-blockquote:border-[#FFB84D] prose-blockquote:bg-[#F0E5CF] prose-blockquote:px-8 prose-blockquote:py-10 prose-blockquote:font-secondary prose-blockquote:text-2xl prose-blockquote:not-italic prose-blockquote:text-[#4B6587];
-  @apply prose-table:relative prose-table:overflow-hidden prose-table:rounded-lg prose-table:before:absolute prose-table:before:left-0 prose-table:before:top-0 prose-table:before:h-full prose-table:before:w-full prose-table:before:rounded-[inherit] prose-table:before:border prose-table:before:border-[#C8C6C6] prose-table:before:content-[""];
-  @apply prose-thead:border-[#C8C6C6] prose-thead:bg-[#F0E5CF];
-  @apply prose-th:relative prose-th:z-10 prose-th:px-4 prose-th:py-[18px] prose-th:text-[#4B6587];
-  @apply prose-tr:border-[#C8C6C6];
-  @apply prose-td:relative prose-td:z-10 prose-td:px-3 prose-td:py-[18px];
-  font-family: var(--font-primary);
-  font-weight: 400;
+  color: var(--color-mid-gray);
+  @apply prose-headings:text-[var(--color-slate-blue)];
+  @apply prose-headings:mb-4 prose-headings:mt-6;
+  @apply prose-p:text-[var(--color-mid-gray)];
+  @apply prose-a:text-[var(--color-slate-blue)] prose-a:[&.btn]:no-underline;
+  @apply prose-hr:border-border prose-hr:dark:border-darkmode-border;
+  @apply prose-strong:text-[var(--color-slate-blue)];
+  @apply prose-hr:border-[var(--color-mid-gray)];
+  @apply prose-pre:rounded-lg prose-pre:bg-[var(--color-cream-beige)];
+  @apply prose-code:text-[var(--color-slate-blue)];
+  @apply prose-li:text-[var(--color-mid-gray)];
+  @apply prose-blockquote:rounded-lg prose-blockquote:border prose-blockquote:border-l-[10px] prose-blockquote:border-[var(--color-warm-amber)] prose-blockquote:bg-[var(--color-cream-beige)] prose-blockquote:px-8 prose-blockquote:py-10 prose-blockquote:font-secondary prose-blockquote:text-2xl prose-blockquote:not-italic prose-blockquote:text-[var(--color-slate-blue)];
+  @apply prose-table:overflow-hidden prose-table:rounded-lg prose-table:before:bg-light prose-table:before:dark:bg-darkmode-light prose-table:before:border prose-table:before:border-[var(--color-mid-gray)] prose-table:before:content-[""];
+  @apply prose-thead:border-[var(--color-mid-gray)] prose-thead:bg-[var(--color-cream-beige)];
+  @apply prose-th:relative prose-th:z-10 prose-th:px-4 prose-th:py-[18px] prose-th:text-[var(--color-slate-blue)];
+  @apply prose-tr:border-[var(--color-mid-gray)];
+  @apply prose-td:relative prose-td:z-10 prose-td:px-4 prose-td:py-[18px];
 }
+
+.content * {
+  @apply dark:prose-headings:text-darkmode-light;
+  @apply dark:prose-hr:border-darkmode-border;
+  @apply dark:prose-p:text-darkmode-light;
+  @apply dark:prose-li:text-darkmode-light;
+  @apply dark:prose-strong:text-darkmode-light;
+  @apply dark:prose-a:text-darkmode-primary;
+  @apply dark:prose-blockquote:text-darkmode-light;
+  @apply dark:prose-blockquote:bg-darkmode-light;
+  @apply dark:prose-code:text-darkmode-light;
+  @apply dark:prose-th:text-darkmode-light;
+  @apply dark:prose-td:text-darkmode-light;
+}
+
+/* content style end */
 
 .content h1, .content h2, .content h3, .content h4, .content h5, .content h6 {
   font-family: var(--font-headline);

@@ -1136,13 +1136,22 @@
   }
 }
 
-/* Branding override for section-title */
-.section-title {
-  color: var(--color-primary) !important;
-  font-family: var(--font-headline);
-  font-weight: var(--font-headline-weight);
-  letter-spacing: 0.5px;
-  line-height: 1.2em;
+/* Branding override for section-title - Enforce brand color over any gradients */
+.section-title,
+h2.section-title,
+.section-header h2,
+.section-header .section-title {
+  color: var(--color-slate-blue) !important;
+  font-family: var(--font-headline) !important;
+  font-weight: var(--font-headline-weight) !important;
+  letter-spacing: 0.5px !important;
+  line-height: 1.2em !important;
+  background: none !important;
+  background-image: none !important;
+  -webkit-background-clip: initial !important;
+  -webkit-text-fill-color: initial !important;
+  background-clip: initial !important;
+  text-fill-color: initial !important;
 }
 
 /* Utility for deep charcoal text */

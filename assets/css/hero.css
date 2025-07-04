@@ -1,6 +1,6 @@
 /* Hero Section Styles - Updated for new brand palette */
 .hero-section {
-  background: linear-gradient(-45deg, var(--color-light), var(--color-body), #F0E5CF, #F7F6F2, #EEAEAA, #F7F6F2);
+  background: linear-gradient(-45deg, var(--color-cream-beige), var(--color-off-white), var(--color-light-gray), var(--color-off-white));
   background-size: 600% 600%;
   position: relative;
   border-radius: 0 0 2rem 2rem;
@@ -37,14 +37,15 @@
 }
 
 .hero-section h1 {
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  color: var(--color-primary);
+  text-shadow: 0 2px 4px rgba(44, 46, 51, 0.1);
+  color: var(--color-slate-blue);
   font-weight: 700;
+  font-family: var(--font-headline);
 }
 
 .hero-section .text-blue-300,
 .hero-section .text-blue-700 {
-  color: #FFB84D;
+  color: var(--color-warm-amber);
   text-shadow: none;
   font-weight: 500;
 }
@@ -52,7 +53,7 @@
 .hero-section .text-gray-200,
 .hero-section .text-gray-400,
 .hero-section .text-gray-700 {
-  color: var(--color-text);
+  color: var(--color-charcoal);
   text-shadow: none;
   font-weight: 400;
 }
@@ -63,50 +64,54 @@
   -webkit-backdrop-filter: blur(20px);
   box-shadow: 0 25px 50px -12px rgba(75,101,135,0.15);
   transition: all 0.3s ease;
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--color-mid-gray);
   background: rgba(247,246,242,0.9);
-  color: var(--color-primary);
+  color: var(--color-slate-blue);
 }
 
 .hero-section .side-cta:hover {
   transform: translateY(-5px);
   box-shadow: 0 35px 60px -12px rgba(75,101,135,0.2);
-  border-color: var(--color-primary);
+  border-color: var(--color-slate-blue);
   background: rgba(247,246,242,0.95);
 }
 
 .hero-section .side-cta h3 {
-  color: var(--color-primary);
+  color: var(--color-slate-blue);
   font-weight: 700;
+  font-family: var(--font-headline);
 }
 
 .hero-section .side-cta p {
-  color: var(--color-text);
+  color: var(--color-charcoal);
 }
 
 .hero-section .side-cta .text-gray-200 {
-  color: var(--color-text);
+  color: var(--color-charcoal);
 }
 
 .hero-section .side-cta .text-gray-300 {
-  color: #64748b;
+  color: var(--color-charcoal);
+  opacity: 0.8;
 }
 
 .hero-section .side-cta .text-gray-400 {
-  color: #94a3b8;
+  color: var(--color-charcoal);
+  opacity: 0.7;
 }
 
 .hero-section .side-cta .text-blue-300 {
-  color: #FFB84D;
+  color: var(--color-warm-amber);
 }
 
 .hero-section .side-cta .btn-primary {
-  background: linear-gradient(135deg, #FFB84D 0%, #F0E5CF 100%);
+  background: linear-gradient(135deg, var(--color-warm-amber) 0%, var(--color-cream-beige) 100%);
   border: none;
   box-shadow: 0 8px 25px rgba(255,184,77,0.3);
   transition: all 0.3s ease;
   border-radius: 1rem;
-  color: var(--color-primary);
+  color: var(--color-off-white);
+  font-family: var(--font-headline);
 }
 
 .hero-section .side-cta .btn-primary:hover {
@@ -116,12 +121,13 @@
 
 /* Button Styles */
 .hero-section .btn-primary {
-  background: linear-gradient(135deg, #FFB84D 0%, #F0E5CF 100%);
+  background: linear-gradient(135deg, var(--color-warm-amber) 0%, var(--color-cream-beige) 100%);
   border: none;
   box-shadow: 0 8px 25px rgba(255,184,77,0.3);
   transition: all 0.3s ease;
   border-radius: 1rem;
-  color: var(--color-primary);
+  color: var(--color-off-white);
+  font-family: var(--font-headline);
 }
 
 .hero-section .btn-primary:hover {

@@ -1,5 +1,8 @@
 .btn {
   @apply inline-block rounded border border-transparent px-5 py-2 font-semibold capitalize transition;
+  font-family: var(--font-headline);
+  font-weight: var(--font-headline-weight);
+  letter-spacing: 0.5px;
 }
 
 .btn-sm {
@@ -8,22 +11,44 @@
 
 .btn-primary {
   @apply border-none;
-  background: #FFB84D;
-  color: #4B6587;
+  background: var(--color-warm-amber);
+  color: var(--color-off-white);
+  box-shadow: 0 4px 12px rgba(255, 184, 77, 0.3);
+  transition: all 0.3s ease;
 }
 
 .btn-primary:hover {
-  background: #e6a53a;
-  color: #4B6587;
+  background: rgba(255, 184, 77, 0.9);
+  color: var(--color-off-white);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(255, 184, 77, 0.4);
 }
 
 .btn-outline-primary {
-  border: 2px solid #4B6587;
-  color: #4B6587;
+  border: 2px solid var(--color-slate-blue);
+  color: var(--color-slate-blue);
   background: transparent;
+  transition: all 0.3s ease;
 }
 
 .btn-outline-primary:hover {
-  background: #FFB84D;
-  color: #4B6587;
+  background: var(--color-warm-amber);
+  color: var(--color-off-white);
+  border-color: var(--color-warm-amber);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 184, 77, 0.3);
+}
+
+.btn-secondary {
+  background: var(--color-light-gray);
+  color: var(--color-charcoal);
+  border: 1px solid var(--color-mid-gray);
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background: var(--color-mid-gray);
+  color: var(--color-charcoal);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(200, 198, 198, 0.3);
 }

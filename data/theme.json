@@ -5,9 +5,17 @@
         "primary": "#4B6587",
         "body": "#F7F6F2",
         "border": "#C8C6C6",
-        "light": "#F0E5CF",
+        "light": "#EAEAEA",
         "dark": "#4B6587",
-        "charcoal": "#2C2E33"
+        "charcoal": "#2C2E33",
+        "cream_beige": "#F0E5CF",
+        "off_white": "#F7F6F2",
+        "light_gray": "#EAEAEA",
+        "mid_gray": "#C8C6C6",
+        "slate_blue": "#4B6587",
+        "warm_amber": "#FFB84D",
+        "success_teal": "#4DB8A6",
+        "error_coral": "#E06666"
       },
       "text_color": {
         "text": "#C8C6C6",
@@ -22,7 +30,15 @@
         "border": "#C8C6C6",
         "light": "#4B6587",
         "dark": "#F7F6F2",
-        "charcoal": "#2C2E33"
+        "charcoal": "#2C2E33",
+        "cream_beige": "#F0E5CF",
+        "off_white": "#F7F6F2",
+        "light_gray": "#EAEAEA",
+        "mid_gray": "#C8C6C6",
+        "slate_blue": "#4B6587",
+        "warm_amber": "#FFB84D",
+        "success_teal": "#4DB8A6",
+        "error_coral": "#E06666"
       },
       "text_color": {
         "text": "#F7F6F2",
@@ -33,15 +49,15 @@
   },
   "fonts": {
     "font_family": {
-      "primary": "'Source Sans Pro', 'Source Sans Pro Light', Arial, sans-serif",
+      "primary": "'Inter', 'Inter Variable', Arial, sans-serif",
       "primary_type": "sans-serif",
-      "secondary": "'Inter', Arial, sans-serif",
+      "secondary": "'Inter', 'Inter Variable', Arial, sans-serif",
       "secondary_type": "sans-serif",
-      "headline": "'Inter', Arial, sans-serif",
+      "headline": "'Inter', 'Inter Variable', Arial, sans-serif",
       "headline_weight": "700",
-      "nav": "'IBM Plex Sans', Arial, sans-serif",
-      "nav_weight": "400",
-      "quote": "'Inter', Arial, sans-serif",
+      "nav": "'Inter', 'Inter Variable', Arial, sans-serif",
+      "nav_weight": "600",
+      "quote": "'Inter', 'Inter Variable', Arial, sans-serif",
       "quote_weight": "600"
     },
     "font_size": {
