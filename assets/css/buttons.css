@@ -7,9 +7,23 @@
 }
 
 .btn-primary {
-  @apply border-primary bg-primary dark:border-darkmode-primary dark:text-text-dark text-white dark:bg-darkmode-primary;
+  @apply border-none;
+  background: #FFB84D;
+  color: #4B6587;
+}
+
+.btn-primary:hover {
+  background: #e6a53a;
+  color: #4B6587;
 }
 
 .btn-outline-primary {
-  @apply border-dark text-text-dark hover:bg-dark dark:hover:text-text-dark bg-transparent hover:text-white dark:border-darkmode-primary dark:text-white dark:hover:bg-darkmode-primary;
+  border: 2px solid #4B6587;
+  color: #4B6587;
+  background: transparent;
+}
+
+.btn-outline-primary:hover {
+  background: #FFB84D;
+  color: #4B6587;
 }

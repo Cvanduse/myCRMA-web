@@ -367,41 +367,31 @@
 /* Dark mode support */
 @media (prefers-color-scheme: dark) {
   .advantage-section {
-    background: #111827;
+    background: var(--color-primary);
   }
-  
   .section-title {
-    color: #f9fafb;
+    color: var(--color-text-light);
   }
-  
   .section-subtitle {
-    color: #9ca3af;
+    color: #FFB84D;
   }
-  
   .choose-us-title {
-    color: #f9fafb;
+    color: var(--color-text-light);
   }
-  
   .choose-us-description {
-    color: #9ca3af;
+    color: var(--color-border);
   }
-  
   .choose-us-metric {
-    color: #f9fafb;
+    color: #FFB84D;
   }
-  
   .choose-us-item {
-    border-bottom-color: #374151;
+    border-bottom-color: var(--color-border);
   }
-  
   .choose-us-icon {
-    /* background: #374151; */
+    /* background: var(--color-border); */
   }
-  
   .choose-us-item:hover .choose-us-icon {
-    /* background: #f9fafb; */
-    color: #111827;
+    /* background: var(--color-text-light); */
+    color: var(--color-primary);
   }
-  
-
 } 

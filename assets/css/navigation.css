@@ -19,7 +19,7 @@
 
 .progress-bar {
   height: 100%;
-  background: linear-gradient(90deg, #3b82f6, #1d4ed8, #3b82f6);
+  background: linear-gradient(90deg, #FFB84D, #4B6587, #FFB84D);
   background-size: 200% 100%;
   width: 0%;
   transition: width 0.15s ease-out;
@@ -140,7 +140,7 @@
 /* Header Base Styles - Opaque at top, transitioning to white */
 .header {
   /* Start with solid dark background at top */
-  background: rgba(24, 24, 27, 1);
+  background: var(--color-primary);
   backdrop-filter: blur(16px);
   @apply py-4;
   @apply border-b border-white/30 dark:border-gray-800/40;
@@ -157,7 +157,7 @@
 
 /* Header when scrolled - Gradually becomes white */
 .header.header-scrolled {
-  background: rgba(255, 255, 255, 0.98);
+  background: var(--color-body);
   backdrop-filter: blur(20px);
   @apply py-3 shadow-xl;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
@@ -171,7 +171,7 @@
 
 /* Header transitioning state for smooth scroll-up effect */
 .header.header-transitioning {
-  background: rgba(24, 24, 27, 0.8);
+  background: rgba(75,101,135,0.8);
   backdrop-filter: blur(16px);
   @apply py-4;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);

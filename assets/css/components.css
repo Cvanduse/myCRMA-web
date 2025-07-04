@@ -20,7 +20,11 @@
   @apply inline-block;
 }
 .social-icons li a {
-  @apply flex h-9 w-9 items-center justify-center rounded-sm bg-primary text-center leading-9 text-white dark:bg-darkmode-primary dark:text-text-dark;
+  @apply flex h-9 w-9 items-center justify-center rounded-sm;
+  background: #4B6587;
+  color: #F7F6F2;
+  font-family: var(--font-nav);
+  font-weight: var(--font-nav-weight);
 }
 .social-icons li a svg {
   @apply h-5 w-5;
@@ -29,22 +33,40 @@
 /* content style */
 .content {
   @apply prose max-w-none;
-  @apply prose-headings:mb-[.3em] prose-headings:mt-[.6em] prose-headings:text-text-dark dark:prose-headings:text-darkmode-text-dark;
+  @apply prose-headings:mb-[.3em] prose-headings:mt-[.6em];
+  color: #C8C6C6;
+  @apply prose-headings:text-[#4B6587];
   @apply prose-h1:text-h1-sm md:prose-h1:text-h1;
   @apply prose-h2:text-h2-sm md:prose-h2:text-h2;
   @apply prose-h3:text-h3-sm md:prose-h3:text-h3;
-  @apply prose-p:text-base prose-p:text-text dark:prose-p:text-darkmode-text;
-  @apply prose-a:text-text prose-a:[&.btn]:no-underline  dark:prose-a:text-darkmode-text;
+  @apply prose-p:text-[#C8C6C6];
+  @apply prose-a:text-[#4B6587] prose-a:[&.btn]:no-underline;
   @apply prose-img:max-w-full prose-img:rounded;
-  @apply prose-strong:text-text-dark dark:prose-strong:text-darkmode-text;
-  @apply prose-hr:border-border dark:prose-hr:border-darkmode-border;
-  @apply prose-pre:rounded-lg prose-pre:bg-light dark:prose-pre:bg-darkmode-light;
-  @apply prose-code:text-darkmode-text-dark;
-  @apply prose-li:text-text dark:prose-li:text-darkmode-text;
-  @apply prose-blockquote:rounded-lg prose-blockquote:border prose-blockquote:border-l-[10px] prose-blockquote:border-primary prose-blockquote:bg-light prose-blockquote:px-8 prose-blockquote:py-10 prose-blockquote:font-secondary prose-blockquote:text-2xl prose-blockquote:not-italic prose-blockquote:text-text-dark dark:prose-blockquote:border-darkmode-primary dark:prose-blockquote:bg-darkmode-light dark:prose-blockquote:text-darkmode-text-light;
-  @apply prose-table:relative prose-table:overflow-hidden prose-table:rounded-lg prose-table:before:absolute prose-table:before:left-0 prose-table:before:top-0 prose-table:before:h-full prose-table:before:w-full prose-table:before:rounded-[inherit] prose-table:before:border prose-table:before:border-border prose-table:before:content-[""] dark:prose-table:before:border-darkmode-border;
-  @apply prose-thead:border-border prose-thead:bg-light dark:prose-thead:border-darkmode-border dark:prose-thead:bg-darkmode-light;
-  @apply prose-th:relative prose-th:z-10 prose-th:px-4 prose-th:py-[18px] prose-th:text-text-dark dark:prose-th:text-darkmode-text;
-  @apply prose-tr:border-border dark:prose-tr:border-darkmode-border;
-  @apply prose-td:relative prose-td:z-10 prose-td:px-3 prose-td:py-[18px] dark:prose-td:text-darkmode-text;
+  @apply prose-strong:text-[#4B6587];
+  @apply prose-hr:border-[#C8C6C6];
+  @apply prose-pre:rounded-lg prose-pre:bg-[#F0E5CF];
+  @apply prose-code:text-[#4B6587];
+  @apply prose-li:text-[#C8C6C6];
+  @apply prose-blockquote:rounded-lg prose-blockquote:border prose-blockquote:border-l-[10px] prose-blockquote:border-[#FFB84D] prose-blockquote:bg-[#F0E5CF] prose-blockquote:px-8 prose-blockquote:py-10 prose-blockquote:font-secondary prose-blockquote:text-2xl prose-blockquote:not-italic prose-blockquote:text-[#4B6587];
+  @apply prose-table:relative prose-table:overflow-hidden prose-table:rounded-lg prose-table:before:absolute prose-table:before:left-0 prose-table:before:top-0 prose-table:before:h-full prose-table:before:w-full prose-table:before:rounded-[inherit] prose-table:before:border prose-table:before:border-[#C8C6C6] prose-table:before:content-[""];
+  @apply prose-thead:border-[#C8C6C6] prose-thead:bg-[#F0E5CF];
+  @apply prose-th:relative prose-th:z-10 prose-th:px-4 prose-th:py-[18px] prose-th:text-[#4B6587];
+  @apply prose-tr:border-[#C8C6C6];
+  @apply prose-td:relative prose-td:z-10 prose-td:px-3 prose-td:py-[18px];
+  font-family: var(--font-primary);
+  font-weight: 400;
+}
+
+.content h1, .content h2, .content h3, .content h4, .content h5, .content h6 {
+  font-family: var(--font-headline);
+  font-weight: var(--font-headline-weight);
+  letter-spacing: 0.5px;
+  line-height: 1.2em;
+}
+
+.content blockquote {
+  font-family: var(--font-quote);
+  font-weight: var(--font-quote-weight);
+  letter-spacing: 0.3px;
+  line-height: 1.3em;
 }

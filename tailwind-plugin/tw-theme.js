@@ -11,12 +11,18 @@ const findFont = (fontStr) =>
 
 // Set font families dynamically, filtering out 'type' keys
 const fontFamilies = Object.entries(themeConfig.fonts.font_family)
-  .filter(([key]) => !key.includes("type"))
+  .filter(([key]) => !key.includes('type') && !key.includes('weight'))
   .reduce((acc, [key, font]) => {
-    acc[key] =
-      `${findFont(font)}, ${themeConfig.fonts.font_family[`${key}_type`] || "sans-serif"}`;
+    acc[key] = `${font}, ${themeConfig.fonts.font_family[`${key}_type`] || 'sans-serif'}`;
     return acc;
   }, {});
+
+// Add font weights for roles
+const fontWeights = {
+  headline: themeConfig.fonts.font_family.headline_weight || '700',
+  nav: themeConfig.fonts.font_family.nav_weight || '500',
+  quote: themeConfig.fonts.font_family.quote_weight || '600',
+};
 
 const defaultColorGroups = [
   { colors: themeConfig.colors.default.theme_color, prefix: "" },
@@ -72,6 +78,10 @@ Object.entries(fontSizes).forEach(([key, value]) => {
 });
 Object.entries(fontFamilies).forEach(([key, font]) => {
   fontVars[`--font-${key}`] = font;
+});
+// Add font weight variables
+Object.entries(fontWeights).forEach(([key, weight]) => {
+  fontVars[`--font-${key}-weight`] = weight;
 });
 
 const baseVars = { ...fontVars, ...defaultVars };
