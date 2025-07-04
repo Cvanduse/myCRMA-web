@@ -711,7 +711,7 @@
   left: 50%;
   width: 100vw;
   margin-left: -50vw;
-  background: var(--color-border);
+  background: #EAEAEA; /* Light gray - same as project-cta section */
   overflow: hidden;
   padding: 0;
   margin-right: 0;

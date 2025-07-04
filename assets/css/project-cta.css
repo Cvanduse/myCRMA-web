@@ -51,7 +51,7 @@
 
 .project-step-card {
   padding: 24px;
-  background: white;
+  background: var(--color-off-white);
   border-radius: 8px;
   text-align: center;
   height: 100%;

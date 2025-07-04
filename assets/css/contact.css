@@ -2,7 +2,7 @@
 
 /* Hero Section */
 .terra-hero {
-  background: #ffffff;
+  background: var(--color-off-white);
   padding: 80px 0 60px 0;
   text-align: center;
   border-bottom: 1px solid #f0f0f0;
@@ -90,7 +90,7 @@
 .terra-form-container {
   max-width: 800px;
   margin: 0 auto;
-  background: #ffffff;
+  background: var(--color-off-white);
   border-radius: 24px;
   padding: 3rem;
   box-shadow: 0 4px 24px rgba(0,0,0,0.08);
@@ -196,7 +196,7 @@
   border-radius: 12px;
   font-size: 1rem;
   font-family: inherit;
-  background: #ffffff;
+  background: var(--color-off-white);
   color: #2c3e50;
   transition: all 0.3s ease;
 }
@@ -265,7 +265,7 @@
 
 /* Alternative Contact Methods */
 .terra-alternatives {
-  background: #ffffff;
+  background: var(--color-off-white);
   padding: 80px 0;
 }
 
@@ -355,7 +355,7 @@
 }
 
 .terra-badge {
-  background: #ffffff;
+  background: var(--color-off-white);
   border: 2px solid #e9ecef;
   border-radius: 8px;
   padding: 0.75rem 1.5rem;
