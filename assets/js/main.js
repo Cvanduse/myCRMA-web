@@ -553,4 +553,21 @@
     document.head.appendChild(style);
   })();
 
+  // Scroll to Top Button
+  (function() {
+    const scrollBtn = document.getElementById('scrollToTopBtn');
+    if (!scrollBtn) return;
+    function toggleScrollBtn() {
+      if (window.scrollY > 200) {
+        scrollBtn.classList.add('show');
+      } else {
+        scrollBtn.classList.remove('show');
+      }
+    }
+    window.addEventListener('scroll', toggleScrollBtn, { passive: true });
+    scrollBtn.addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  })();
+
 })();

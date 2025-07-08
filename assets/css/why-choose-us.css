@@ -40,7 +40,7 @@
   font-size: 20px;
   font-weight: 400;
   line-height: 1.6;
-  margin-bottom: 40px; /* Increased from 32px for better button separation */
+  margin-bottom: 56px; /* Increased from 40px for more button separation */
   letter-spacing: 0px;
   max-width: 480px; /* Limit line length for better readability */
 }

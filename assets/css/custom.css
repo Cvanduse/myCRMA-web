@@ -5,8 +5,9 @@
 
 /* Modern Footer Styles */
 .footer-modern {
-  background: var(--color-dark); /* Slate Blue */
-  color: var(--color-text-light); /* Off-White */
+  background: var(--color-slate-blue); /* Slate Blue */
+  color: var(--color-off-white); /* Off-White */
+  padding-top: 32px; /* Additional top padding */
 }
 .footer-grid {
   display: grid;
@@ -22,13 +23,13 @@
   gap: 32px;
 }
 .footer-card {
-  background: var(--color-light); /* Cream Beige */
+  background: var(--color-cream-beige); /* Cream Beige */
   border-radius: 8px;
   padding: 28px 24px;
   margin-bottom: 8px;
 }
 .footer-card-title {
-  color: var(--color-primary); /* Slate Blue */
+  color: var(--color-slate-blue); /* Slate Blue for contrast on cream beige */
   font-size: 1.1rem;
   font-weight: 500;
   margin-bottom: 10px;
@@ -37,14 +38,14 @@
   font-size: 1.3rem;
   font-weight: 500;
   margin-bottom: 18px;
-  color: var(--color-dark); /* Slate Blue */
+  color: var(--color-charcoal); /* Charcoal for contrast on cream beige */
 }
 .footer-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: #FFB84D; /* Warm Amber */
-  color: var(--color-primary); /* Slate Blue */
+  background: var(--color-warm-amber); /* Warm Amber */
+  color: var(--color-off-white); /* Off-White text on amber */
   padding: 12px 28px;
   border-radius: 10px;
   font-size: 1.25rem;
@@ -65,16 +66,16 @@
   box-sizing: content-box;
 }
 .footer-btn:hover {
-  background: #e6a53a; /* Amber darken ~5% */
+  background: rgba(255, 184, 77, 0.9); /* Amber with slight transparency */
 }
 .linkedin-btn {
-  background: #FFB84D;
+  background: var(--color-warm-amber);
 }
 .linkedin-btn:hover {
-  background: #e6a53a;
+  background: rgba(255, 184, 77, 0.9);
 }
 .footer-menu-title {
-  color: var(--color-primary);
+  color: var(--color-off-white);
   font-size: 1.1rem;
   font-weight: 500;
   margin-bottom: 10px;
@@ -88,14 +89,14 @@
   margin-bottom: 12px;
 }
 .footer-menu a {
-  color: var(--color-text-light);
+  color: var(--color-off-white);
   font-size: 1.3rem;
   font-weight: 500;
   text-decoration: none;
   transition: color 0.2s;
 }
 .footer-menu a:hover {
-  color: #FFB84D;
+  color: var(--color-warm-amber);
 }
 .footer-social {
   list-style: none;
@@ -106,18 +107,18 @@
   margin-bottom: 12px;
 }
 .footer-social a {
-  color: var(--color-primary);
+  color: var(--color-off-white);
   font-size: 1.1rem;
   text-decoration: none;
   transition: color 0.2s;
 }
 .footer-social a:hover {
-  color: #FFB84D;
+  color: var(--color-warm-amber);
 }
 .footer-copyright,
 .footer-designed {
   font-size: 0.95rem;
-  color: var(--color-border);
+  color: var(--color-mid-gray);
   margin-top: 24px;
 }
 @media (max-width: 900px) {
@@ -1189,3 +1190,54 @@ body, .body-text, .ui-label, .icon-stroke {
 }
 
 /* Example: to layer pattern over a section, add .bg-geometric-pattern to the section or container */
+
+/* Scroll to Top Button - Brand Compliant */
+.scroll-to-top {
+  position: fixed;
+  right: 2.5rem;
+  bottom: 2.5rem;
+  z-index: 1000;
+  background: #F7F6F2;
+  border: 2.5px solid #4B6587;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(44,46,51,0.10);
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: box-shadow 0.2s, border-color 0.2s, background 0.2s, transform 0.2s;
+  opacity: 0;
+  pointer-events: none;
+}
+.scroll-to-top svg {
+  display: block;
+}
+.scroll-to-top:focus {
+  outline: 2px solid #FFB84D;
+  outline-offset: 2px;
+  border-color: #FFB84D;
+}
+.scroll-to-top:hover {
+  border-color: #FFB84D;
+  box-shadow: 0 8px 32px rgba(255,184,77,0.15);
+  background: #FFF8ED;
+  transform: translateY(-4px) scale(1.05);
+}
+.scroll-to-top.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+@media (max-width: 700px) {
+  .scroll-to-top {
+    right: 1rem;
+    bottom: 1rem;
+    width: 48px;
+    height: 48px;
+  }
+  .scroll-to-top svg {
+    width: 36px;
+    height: 36px;
+  }
+}

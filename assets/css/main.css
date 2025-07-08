@@ -30,6 +30,7 @@
 @import "modal.css";
 @import "notice.css";
 @import "services.css";
+@import "services-page.css";
 @import "project-cta.css";
 @import "why-choose-us.css";
 @import "faq.css";
@@ -42,7 +43,7 @@
 
 /* Logo Marquee Styles */
 .logo-marquee {
-  background: #f8f9fa;
+  background: var(--color-light-gray);
   width: 100vw;
   margin-left: calc(-50vw + 50%);
   overflow: hidden;

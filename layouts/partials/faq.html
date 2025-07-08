@@ -5,17 +5,20 @@
         <div class="faq-2col-grid" style="display: flex; flex-wrap: wrap; gap: 48px; align-items: flex-start;">
           <!-- Left: FAQ Accordion -->
           <div class="faq-col-left" style="flex: 2 1 400px; min-width: 320px;">
-            <div class="faq-badge">
-              <span class="faq-badge-icon">
-                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="14" cy="14" r="14" fill="#4ADE80"/>
-                  <path d="M14 8V20" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
-                  <path d="M8 14H20" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
-                </svg>
-              </span>
-              <span class="faq-badge-text">Questions Answered</span>
+            <div class="faq-header">
+              <div class="faq-badge">
+                <span class="faq-badge-icon">
+                  <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="14" cy="14" r="14" fill="#4ADE80"/>
+                    <path d="M14 8V20" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+                    <path d="M8 14H20" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+                  </svg>
+                </span>
+                <span class="faq-badge-text">Questions Answered</span>
+              </div>
+              <h2 class="faq-title big">Smart decisions start<br>with clear answers</h2>
+              <p class="faq-subtitle" style="font-size: 1.25rem; color: var(--color-charcoal); margin-bottom: 32px; line-height: 1.6; font-weight: 400; max-width: 600px; text-align: left; margin-top: 16px;">Every CRM journey starts with questions. We've compiled clear answers about how we work, what to expect, and why clients choose us as their CRM partner.</p>
             </div>
-            <h2 class="faq-title big">Smart decisions start<br>with clear answers</h2>
             <div class="faq-list modern-faq" id="faq-accordion">
               {{ range $i, $faq := .Params.faqs }}
                 <div class="faq-item" id="faq-item-{{ $i }}">
@@ -42,15 +45,15 @@
             <div class="footer-card" style="align-items: center; text-align: center; display: flex; flex-direction: column;">
               <img src="/images/avatar.png" alt="Intro Call" style="width: 56px; height: 56px; border-radius: 50%; object-fit: cover; margin-bottom: 0.8rem; border: 3px solid #fff; box-shadow: 0 1px 4px rgba(0,0,0,0.08);">
               <div class="footer-card-title" style="margin-bottom: 0.5rem;">Book a Quick Intro Call</div>
-              <div class="footer-card-text" style="font-size: 1.05rem; margin-bottom: 0.7rem;">Let's talk about your project or questions—no pressure, just a quick intro call.</div>
+              <div class="footer-card-text" style="font-size: 1.05rem; margin-bottom: 0.7rem;">Need trusted CRM advice? Schedule a brief consultation with experts who've solved challenges like yours.</div>
               <a href="/contact" class="footer-btn linkedin-btn" style="width: 100%; max-width: 220px; margin: 0 auto 0.7rem auto;">Book a Call</a>
               <div style="font-size: 0.95rem; margin-bottom: 0.1rem;">Prefer email?</div>
-              <a href="mailto:hello@wdesigna.com" style="color: #0077b5; font-weight: 500; text-decoration: underline; font-size: 0.98rem;">hello@wdesigna.com</a>
+              <a href="mailto:hello@mycrmadvisors.com" style="color: #0077b5; font-weight: 500; text-decoration: underline; font-size: 0.98rem;">hello@mycrmadvisors.com</a>
             </div>
             <!-- Insights in Your Inbox Card -->
             <div class="footer-card" style="text-align: left;">
               <div class="footer-card-title" style="margin-bottom: 0.4rem;">Insights in Your Inbox</div>
-              <div class="footer-card-text" style="font-size: 1.05rem; margin-bottom: 0.7rem;">Join our newsletter for smarter business moves.</div>
+              <div class="footer-card-text" style="font-size: 1.05rem; margin-bottom: 0.7rem;">Stay ahead with proven CRM strategies and insights delivered straight to your inbox.</div>
               <form action="#" method="post" style="display: flex; gap: 0.3rem; align-items: center;">
                 <input type="email" name="email" placeholder="me@company.com" required style="flex: 1 1 auto; border-radius: 1.2rem; border: 1.5px solid #5b7bb2; padding: 0.6rem 1rem; font-size: 0.98rem; margin-right: 0.2rem; background: #fff; color: #1a2233;">
                 <button type="submit" class="footer-btn linkedin-btn" style="padding: 0.6rem 1.1rem; min-width: 0; min-height: 0; font-size: 1rem; border-radius: 1.2rem;">→</button>

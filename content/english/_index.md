@@ -15,7 +15,7 @@ banner:
 # Features
 features:
   - title: "Your Experts Across Salesforce Sales, Service, and More"
-    image: "/images/whats-included.png"
+    image: "/images/mycrma-wheel.png"
     content: "We are certified Salesforce experts specializing in Sales Cloud, Service Cloud, and custom CRM solutions. Our team delivers comprehensive implementation, optimization, and training services to transform your business operations."
     bulletpoints:
       - "Salesforce Sales Cloud Implementation & Optimization"
