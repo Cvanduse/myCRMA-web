@@ -2,7 +2,7 @@
 title: "Transform Your CRM Into a Revenue Engine"
 description: "Partner with certified experts who deliver measurable results through strategic CRM implementation and optimization."
 enable: true
-label: "Benefits"
+label: "Why Choose Us?"
 features:
   - title: "Rapid Implementation"
     description: "Deploy your CRM 50% faster than industry average with our proven methodology, ensuring zero business disruption during the transition."
