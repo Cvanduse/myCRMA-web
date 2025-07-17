@@ -9,5 +9,5 @@ stats:
     label: "Certifications"
   - number: "100%"
     label: "Happy Clients"
-description: "We craft memorable <b>brands</b>, design and develop stunning <b>websites</b>, optimize your presence through strategic <b>SEO</b>, and amplify your impact with results-driven <b>digital marketing</b>."
+description: "At MyCRMA, a <b>Salesforce Consulting Partner</b>, we specialize in helping businesses scale smarter. From strategy to implementation, we guide organizations across industries through a seamless <b>Salesforce journey</b>—driving transformation, growth, and long-term success."
 --- 
