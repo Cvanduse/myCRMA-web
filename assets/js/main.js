@@ -51,10 +51,10 @@
   // Enhanced Dynamic Hero Title Rotator (Gynger-style)
   (function() {
     const animatedTitles = [
-      "Expert CRM Solutions",
-      "Salesforce Certified Partners",
-      "Your Growth Partner",
-      "ROI-Driven Results"
+      "Trusted Experts",
+      "Salesforce Partners",
+      "CRM Consultants",
+      "Data-Driven Results"
     ];
     let idx = 0;
     const el = document.getElementById('dynamic-hero-animated');
