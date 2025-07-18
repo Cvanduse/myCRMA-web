@@ -1,70 +1,53 @@
 {{ define "main" }}
   <!-- Hero Banner -->
   {{ with .Params.banner }}
-    <section class="hero-section relative min-h-screen flex items-center justify-center overflow-hidden">
-      <!-- Floating brands removed for optimal performance -->
-
-      <!-- Mesh Overlay -->
-      <div class="hero-mesh-overlay"></div>
-
-      <!-- Phase 3: Parallax Elements -->
-      <div class="hero-parallax-element parallax-circle-1"></div>
-      <div class="hero-parallax-element parallax-circle-2"></div>
-      <div class="hero-parallax-element parallax-circle-3"></div>
-
-      <!-- Phase 3: Connectivity Lines -->
-      <div class="hero-connectivity">
-        <div class="connectivity-line line-1" style="--line-rotation: 25deg;"></div>
-        <div class="connectivity-line line-2" style="--line-rotation: -15deg;"></div>
-        <div class="connectivity-line line-3" style="--line-rotation: 45deg;"></div>
-      </div>
-
-      <!-- Content Container -->
-      <div class="container relative z-30 py-8 md:py-14">
-        <div class="row items-center">
-          <!-- Main Content - Left Side -->
-          <div class="lg:col-7 md:col-8">
-            {{ if .subtitle }}
-              <p class="text-xl md:text-2xl font-semibold mb-4 text-blue-700 hero-content-reveal">
-                {{ .subtitle | markdownify }}
-              </p>
-            {{ end }}
-            
-            <h1 class="mb-6 text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight text-gray-900 hero-content-reveal">
-              Transform Your Business with<br><span id="dynamic-hero-animated">Expert CRM Solutions</span>
-            </h1>
-            
-            {{ if .content }}
-              <p class="mb-10 text-lg md:text-xl text-gray-700 max-w-2xl leading-relaxed hero-content-reveal">
-              {{ .content | markdownify }}
-            </p>
-            {{ end }}
-            
-            {{ if .buttons }}
-              <div class="flex flex-wrap gap-4">
-                {{ range .buttons }}
-              {{ if .enable }}
-                    {{ $btnClass := "btn btn-primary text-lg px-8 py-4 shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2" }}
-                    {{ if ne .style "primary" }}
-                      {{ $btnClass = "btn btn-outline-primary text-lg px-8 py-4 shadow focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2" }}
-                    {{ end }}
-                <a
-                      class="{{ $btnClass }}"
-                  href="{{ .link | absURL }}"
-                  {{ if strings.HasPrefix .link `http` }}
-                    target="_blank" rel="noopener"
-                  {{ end }}>
-                  {{ .label }}
-                  <i class="fa fa-arrow-right pl-2"></i>
-                </a>
+    <section class="hero-enhanced">
+      <!-- Far Background Layer -->
+      <div class="blob-far blob-far-1"></div>
+      
+      <!-- Mid-ground Layer -->
+      <div class="blob-mid blob-mid-1"></div>
+      <div class="blob-mid blob-mid-2"></div>
+      
+      <!-- Near Layer -->
+      <div class="blob-near blob-near-1"></div>
+      <div class="blob-near blob-near-2"></div>
+      
+      <!-- Accent Elements -->
+      <div class="accent accent-1"></div>
+      
+      <!-- Hero Content -->
+      <div class="hero-content">
+        <div class="container relative z-30 py-8 md:py-14">
+          <div class="row items-center">
+            <!-- Main Content - Left Side -->
+            <div class="lg:col-7 md:col-8">
+              {{ if .subtitle }}
+                <p class="text-xl md:text-2xl font-semibold mb-4 text-blue-700 hero-content-reveal">
+                  {{ .subtitle | markdownify }}
+                </p>
               {{ end }}
-            {{ end }}
-          </div>
-            {{ else if .button }}
-              {{ with .button }}
+              
+              <h1 class="mb-6 text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight text-gray-900 hero-content-reveal">
+                Transform Your Business with<br><span id="dynamic-hero-animated">Expert CRM Solutions</span>
+              </h1>
+              
+              {{ if .content }}
+                <p class="mb-10 text-lg md:text-xl text-gray-700 max-w-2xl leading-relaxed hero-content-reveal">
+                {{ .content | markdownify }}
+              </p>
+              {{ end }}
+              
+              {{ if .buttons }}
+                <div class="flex flex-wrap gap-4">
+                  {{ range .buttons }}
                 {{ if .enable }}
+                      {{ $btnClass := "btn btn-primary text-lg px-8 py-4 shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2" }}
+                      {{ if ne .style "primary" }}
+                        {{ $btnClass = "btn btn-outline-primary text-lg px-8 py-4 shadow focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2" }}
+                      {{ end }}
                   <a
-                    class="btn btn-primary text-lg px-8 py-4 shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2"
+                        class="{{ $btnClass }}"
                     href="{{ .link | absURL }}"
                     {{ if strings.HasPrefix .link `http` }}
                       target="_blank" rel="noopener"
@@ -74,35 +57,49 @@
                   </a>
                 {{ end }}
               {{ end }}
-            {{ end }}
-          </div>
-          
-          <!-- Side CTA - Right Side -->
-          <div class="lg:col-5 md:col-4 mt-12 md:mt-0">
-            <div class="side-cta bg-off-white rounded-2xl p-8 border border-gray-200 shadow-xl">
-              <div class="text-center">
-                <h3 class="text-2xl md:text-3xl font-extrabold mb-4 text-gray-900">Ready to Get Started?</h3>
-                <p class="text-gray-700 mb-6">Our expert advisors will assess your goals, identify your CRM opportunities, and provide clear next steps to streamline processes and scale smarter.</p>
-                
-                <!-- CTA Stats -->
-                <div class="grid grid-cols-2 gap-4 mb-6">
-                  <div class="text-center">
-                    <div class="text-2xl font-bold text-blue-700">30min</div>
-                                          <div class="text-sm text-gray-500">Complimentary Consultation</div>
+            </div>
+              {{ else if .button }}
+                {{ with .button }}
+                  {{ if .enable }}
+                    <a
+                      class="btn btn-primary text-lg px-8 py-4 shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2"
+                      href="{{ .link | absURL }}"
+                      {{ if strings.HasPrefix .link `http` }}
+                        target="_blank" rel="noopener"
+                      {{ end }}>
+                      {{ .label }}
+                      <i class="fa fa-arrow-right pl-2"></i>
+                    </a>
+                  {{ end }}
+                {{ end }}
+              {{ end }}
+            </div>
+            
+            <!-- Side CTA - Right Side -->
+            <div class="lg:col-5 md:col-4 mt-12 md:mt-0">
+              <div class="side-cta bg-off-white rounded-2xl p-8 border border-gray-200 shadow-xl">
+                <div class="text-center">
+                  <h3 class="text-2xl md:text-3xl font-extrabold mb-4 text-gray-900">Ready to Get Started?</h3>
+                  <p class="text-gray-700 mb-6">Our expert advisors will assess your goals, identify your CRM opportunities, and provide clear next steps to streamline processes and scale smarter.</p>
+                  
+                  <!-- CTA Stats -->
+                  <div class="grid grid-cols-2 gap-4 mb-6">
+                    <div class="text-center">
+                      <div class="text-2xl font-bold text-blue-700">30min</div>
+                                            <div class="text-sm text-gray-500">Complimentary Consultation</div>
+                    </div>
+                    <div class="text-center">
+                      <div class="text-2xl font-bold text-blue-700">100%</div>
+                      <div class="text-sm text-gray-500">Custom Solution</div>
+                    </div>
                   </div>
-                  <div class="text-center">
-                    <div class="text-2xl font-bold text-blue-700">100%</div>
-                    <div class="text-sm text-gray-500">Custom Solution</div>
-                  </div>
+                  
+                  <!-- CTA Button -->
+                  <a href="/contact" class="btn btn-primary w-full text-lg py-4 mb-4 shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2">
+                    Schedule Your Discovery Call
+                    <i class="fa fa-calendar pl-2"></i>
+                  </a>
                 </div>
-                
-                <!-- CTA Button -->
-                <a href="/contact" class="btn btn-primary w-full text-lg py-4 mb-4 shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2">
-                  Schedule Your Discovery Call
-                  <i class="fa fa-calendar pl-2"></i>
-                </a>
-                
-                <p class="text-xs text-gray-400">No commitment required • Expert advice</p>
               </div>
             </div>
           </div>
@@ -112,18 +109,18 @@
       <!-- Scroll Indicator -->
       <div class="custom-scroll-indicator absolute bottom-8 left-1/2 transform -translate-x-1/2 z-30 w-full max-w-2xl px-4">
         <div class="scroll-indicator-bar flex items-center justify-between w-full">
-          <span class="scroll-indicator-text text-gray-300 text-lg font-light">Scroll down</span>
+          <span class="scroll-indicator-text text-gray-600 text-lg font-light">Scroll down</span>
           <span class="scroll-indicator-line flex-1 mx-4 h-px bg-gray-400 opacity-30"></span>
           <span class="scroll-indicator-mouse flex items-center justify-center">
             <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="8" y="4" width="16" height="24" rx="8" stroke="#fff" stroke-width="2" fill="none"/>
-              <rect x="15" y="10" width="2" height="6" rx="1" fill="#fff">
+              <rect x="8" y="4" width="16" height="24" rx="8" stroke="#6B7280" stroke-width="2" fill="none"/>
+              <rect x="15" y="10" width="2" height="6" rx="1" fill="#6B7280">
                 <animate attributeName="y" values="10;14;10" dur="1.2s" repeatCount="indefinite" />
               </rect>
             </svg>
           </span>
           <span class="scroll-indicator-line flex-1 mx-4 h-px bg-gray-400 opacity-30"></span>
-          <span class="scroll-indicator-text text-gray-300 text-lg font-light">to learn more</span>
+          <span class="scroll-indicator-text text-gray-600 text-lg font-light">to learn more</span>
         </div>
       </div>
     </section>

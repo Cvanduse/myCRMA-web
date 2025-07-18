@@ -1,30 +1,30 @@
 ---
-title: "Transform Your CRM Into a Revenue Engine"
-description: "Partner with certified experts who deliver measurable results through strategic CRM implementation and optimization."
+title: "Flexible Engagement Models"
+description: "We offer flexible engagement models to fit your needs and budget"
 enable: true
 label: "Why Choose Us?"
 features:
-  - title: "Rapid Implementation"
-    description: "Deploy your CRM 50% faster than industry average with our proven methodology, ensuring zero business disruption during the transition."
-    icon: "fa fa-rocket"
+  - title: "Fixed-Bid Projects"
+    description: "Ideal for well-defined scopes—one clear deliverable and predictable cost."
+    icon: "fa fa-check-circle"
   
-  - title: "Vendor-Neutral Expertise"
-    description: "Certified across Salesforce, Microsoft Dynamics, HubSpot, and more. We recommend the perfect fit for your needs, not what pays us the most."
-    icon: "fa fa-certificate"
+  - title: "Time & Materials"
+    description: "Best for evolving requirements—transparent hourly rates and only pay for the time spent."
+    icon: "fa fa-clock"
   
-  - title: "Guaranteed ROI"
-    description: "Average 300% return on investment within 18 months. We deliver measurable results through data-driven strategies and continuous optimization."
+  - title: "Outcome-Based"
+    description: "Aligned to your success metrics—fees tied to achieving agreed-upon milestones and ROI targets."
     icon: "fa fa-chart-line"
   
-  - title: "Industry Specialization"
-    description: "Deep expertise across manufacturing, healthcare, finance, and 17 other industries. We speak your language and understand your unique challenges."
-    icon: "fa fa-industry"
+  - title: "Statement of Work"
+    description: "Before we begin, we'll work together to draft a detailed Statement of Work and provide a clear budget range so you can plan with confidence."
+    icon: "fa fa-file-contract"
   
-  - title: "Enterprise Security"
-    description: "Bank-grade security implementation with SOC 2, HIPAA, and GDPR compliance. Your data remains protected with our zero-breach track record."
-    icon: "fa fa-shield-alt"
+  - title: "Clear Budget Range"
+    description: "Transparent pricing with no hidden costs. We provide clear budget ranges upfront so you can plan with confidence."
+    icon: "fa fa-dollar-sign"
   
-  - title: "Lifetime Partnership"
-    description: "We don't disappear after go-live. Enjoy continuous support, training, and optimization to ensure your long-term success and growth."
+  - title: "Confidence Planning"
+    description: "Our detailed planning process ensures you have complete visibility into costs, timelines, and deliverables before we begin."
     icon: "fa fa-handshake"
 --- 
