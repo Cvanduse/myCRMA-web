@@ -37,6 +37,34 @@
   @apply text-white dark:text-white text-xl font-bold;
   @apply drop-shadow-lg;
   transition: all 0.3s ease;
+  position: relative;
+}
+
+/* Default logo (white) for blue header */
+.navbar-brand .logo-default {
+  opacity: 1 !important;
+  transition: opacity 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+/* Color logo for white header */
+.navbar-brand .logo-scrolled {
+  opacity: 0 !important;
+  transition: opacity 0.3s ease;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+
+/* When header is scrolled, show color logo */
+.header.header-scrolled .navbar-brand .logo-default {
+  opacity: 0 !important;
+}
+
+.header.header-scrolled .navbar-brand .logo-scrolled {
+  opacity: 1 !important;
 }
 
 .header.header-scrolled .navbar-brand {
