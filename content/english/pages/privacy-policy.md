@@ -1,10 +1,9 @@
 ---
-title: "Privacy"
-# meta title
-meta_title: ""
-# meta description
-description: "This is meta description"
-# save as draft
+title: "Privacy Policy - MyCRMA"
+meta_title: "Privacy Policy - MyCRMA CRM Consulting Services"
+description: "Learn about how MyCRMA collects, uses, and protects your personal information. Our privacy policy ensures transparency and security in all our CRM consulting services."
+keywords: ["Privacy Policy", "Data Protection", "MyCRMA Privacy", "CRM Consulting Privacy"]
+author: "MyCRMA"
 draft: false
 ---
 

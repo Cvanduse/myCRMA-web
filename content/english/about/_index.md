@@ -1,7 +1,9 @@
 ---
-title: "Hey, I am John Doe!"
-meta_title: "About"
-description: "this is meta description"
+title: "About MyCRMA - Certified Salesforce Consultants"
+meta_title: "About MyCRMA - Expert CRM Consulting Team"
+description: "Meet our certified Salesforce consultants with years of experience in CRM implementation, optimization, and business transformation. Learn about our mission to deliver measurable ROI and exceptional customer success."
+keywords: ["Salesforce Consultants", "CRM Experts", "About MyCRMA", "Certified Salesforce Partners"]
+author: "MyCRMA"
 image: "/images/avatar.png"
 draft: false
 ---

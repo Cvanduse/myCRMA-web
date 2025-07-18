@@ -1,4 +1,11 @@
 ---
+title: "MyCRMA - Expert CRM Consulting & Salesforce Solutions"
+meta_title: "MyCRMA - Transform Your Business with Expert CRM Solutions"
+description: "Partner with certified Salesforce experts to unlock new growth, efficiency, and customer satisfaction. We deliver measurable results through strategic CRM implementation and optimization. Get 300% average ROI and 24/7 support."
+keywords: ["CRM Consulting", "Salesforce Experts", "CRM Implementation", "Business Transformation", "Sales Cloud", "Service Cloud"]
+author: "MyCRMA"
+image: "/images/og-image.png"
+
 # Banner
 banner:
   title: "Transform Your Business with Expert CRM Solutions"

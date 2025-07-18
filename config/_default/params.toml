@@ -11,7 +11,7 @@ logo_height = "32px"
 # if logo_webp set false, will not generate WEBP version of logo | default is true
 logo_webp = true
 # logo text will only show when logo is missing.
-logo_text = "Hugoplate"
+logo_text = "MyCRMA"
 # navbar fixed to top
 navbar_fixed = true
 # theme-mode
@@ -27,7 +27,7 @@ google_adsense = ""     # example: ca-pub-xxxxxxxxxxxxxxxx
 # custom script on header, example: custom_script= "<script>console.log(\"Hello World\")</script>"
 custom_script = ""
 # copyright
-copyright = ""
+copyright = "© 2024 MyCRMA. All rights reserved."
 
 
 
@@ -64,10 +64,10 @@ content = "You must replace the **baseURL** in **hugo.toml** file when deploying
 # seo meta data for OpenGraph / Twitter Card
 # seo module: https://github.com/gethugothemes/hugo-modules/tree/master/seo-tools/basic-seo
 [metadata]
-keywords = ["Boilerplate", "Hugo"]
-description = "Hugo & Tailwindcss Starter"
-author = "zeon.studio"
-twitter = "zeon_studio"
+keywords = ["CRM", "Salesforce", "Business Consulting", "CRM Implementation", "Sales Cloud", "Service Cloud", "CRM Optimization", "Business Transformation"]
+description = "Transform your business with expert CRM solutions. Certified Salesforce consultants specializing in Sales Cloud, Service Cloud, and custom CRM development. Get measurable ROI and 24/7 support."
+author = "MyCRMA"
+twitter = "mycrmadvisor"
 image = "images/og-image.png"
 
 

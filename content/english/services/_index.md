@@ -1,6 +1,10 @@
 ---
-title: "Our Services"
-description: "Comprehensive Salesforce solutions to transform your business operations and drive growth"
+title: "CRM Services - Salesforce Implementation & Consulting"
+meta_title: "MyCRMA Services - CRM Implementation, Custom Development & Optimization"
+description: "Comprehensive Salesforce solutions including CRM implementation, custom development, integration services, training & support, data migration, and optimization. Transform your business with expert consulting."
+keywords: ["CRM Services", "Salesforce Implementation", "Custom Development", "CRM Integration", "Data Migration", "CRM Optimization"]
+author: "MyCRMA"
+image: "/images/service-1.png"
 layout: "services"
 enable: true
 ---
