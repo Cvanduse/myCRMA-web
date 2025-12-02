@@ -9,15 +9,15 @@
               <div class="faq-badge">
                 <span class="faq-badge-icon">
                   <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="14" cy="14" r="14" fill="#4ADE80"/>
-                    <path d="M14 8V20" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
-                    <path d="M8 14H20" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+                    <circle cx="14" cy="14" r="14" fill="var(--color-warm-amber)" fill-opacity="0.2"/>
+                    <path d="M14 8V20" stroke="var(--color-warm-amber)" stroke-width="2.2" stroke-linecap="round"/>
+                    <path d="M8 14H20" stroke="var(--color-warm-amber)" stroke-width="2.2" stroke-linecap="round"/>
                   </svg>
                 </span>
                 <span class="faq-badge-text">Questions Answered</span>
               </div>
               <h2 class="faq-title big">Smart decisions start<br>with clear answers</h2>
-              <p class="faq-subtitle" style="font-size: 1.25rem; color: var(--color-charcoal); margin-bottom: 32px; line-height: 1.6; font-weight: 400; max-width: 600px; text-align: left; margin-top: 16px;">Every CRM journey starts with questions. We've compiled clear answers about how we work, what to expect, and why clients choose us as their CRM partner.</p>
+              <p class="faq-subtitle">Every CRM journey starts with questions. We've compiled clear answers about how we work, what to expect, and why clients choose us as their CRM partner.</p>
             </div>
             <div class="faq-list modern-faq" id="faq-accordion">
               {{ range $i, $faq := .Params.faqs }}
@@ -26,8 +26,8 @@
                     <span class="faq-q-text">{{ $faq.question }}</span>
                     <span class="faq-toggle-icon" aria-hidden="true">
                       <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="14" y="6" width="4" height="20" rx="2" fill="#5b3df6"/>
-                        <rect x="6" y="14" width="20" height="4" rx="2" fill="#5b3df6"/>
+                        <rect x="14" y="6" width="4" height="20" rx="2" class="icon-rect"/>
+                        <rect x="6" y="14" width="20" height="4" rx="2" class="icon-rect"/>
                       </svg>
                     </span>
                   </button>
@@ -40,28 +40,119 @@
           </div>
 
           <!-- Right: Cards -->
-          <div class="faq-col-right" style="flex: 1 1 320px; min-width: 260px; display: flex; flex-direction: column; gap: 24px;">
+          <div class="faq-col-right">
             <!-- Book a Quick Intro Call Card -->
-            <div class="footer-card" style="align-items: center; text-align: center; display: flex; flex-direction: column;">
-              <img src="/images/avatar.png" alt="Intro Call" style="width: 56px; height: 56px; border-radius: 50%; object-fit: cover; margin-bottom: 0.8rem; border: 3px solid #fff; box-shadow: 0 1px 4px rgba(0,0,0,0.08);">
-              <div class="footer-card-title" style="margin-bottom: 0.5rem;">Book a Quick Intro Call</div>
-              <div class="footer-card-text" style="font-size: 1.05rem; margin-bottom: 0.7rem;">Need trusted CRM advice? Schedule a brief consultation with experts who've solved challenges like yours.</div>
-              <a href="/contact" class="footer-btn linkedin-btn" style="width: 100%; max-width: 220px; margin: 0 auto 0.7rem auto;">Book a Call</a>
-              <div style="font-size: 0.95rem; margin-bottom: 0.1rem;">Prefer email?</div>
-              <a href="mailto:hello@mycrmadvisors.com" style="color: #0077b5; font-weight: 500; text-decoration: underline; font-size: 0.98rem;">hello@mycrmadvisors.com</a>
+            <div class="faq-sidebar-card center-content">
+              <div class="avatar-wrapper">
+                <img src="/images/avatar.png" alt="Intro Call" class="faq-avatar">
+              </div>
+              <div class="footer-card-title">Book a Quick Intro Call</div>
+              <div class="footer-card-text">Need trusted CRM advice? Schedule a brief consultation with experts who've solved challenges like yours.</div>
+              <a href="/contact" class="btn-faq-primary">Book a Call</a>
+              
+              <div class="email-text">Prefer email?</div>
+              <div class="email-action-row">
+                <a href="mailto:hello@mycrmadvisors.com" id="faq-email-link" class="email-link">hello@mycrmadvisors.com</a>
+                <button 
+                  id="faq-copy-email-btn" 
+                  class="email-copy-btn" 
+                  aria-label="Copy email address"
+                  title="Copy email">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5.5 4.5V2.5C5.5 1.94772 5.94772 1.5 6.5 1.5H13.5C14.0523 1.5 14.5 1.94772 14.5 2.5V9.5C14.5 10.0523 14.0523 10.5 13.5 10.5H11.5M5.5 4.5H2.5C1.94772 4.5 1.5 4.94772 1.5 5.5V13.5C1.5 14.0523 1.94772 14.5 2.5 14.5H10.5C11.0523 14.5 11.5 14.0523 11.5 13.5V10.5M5.5 4.5C5.5 4.94772 5.94772 5.5 6.5 5.5H10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+                <span id="faq-copy-feedback" class="email-copy-feedback">Copied!</span>
+              </div>
             </div>
+
             <!-- Insights in Your Inbox Card -->
-            <div class="footer-card" style="text-align: left;">
-              <div class="footer-card-title" style="margin-bottom: 0.4rem;">Insights in Your Inbox</div>
-              <div class="footer-card-text" style="font-size: 1.05rem; margin-bottom: 0.7rem;">Stay ahead with proven CRM strategies and insights delivered straight to your inbox.</div>
-              <form action="#" method="post" style="display: flex; gap: 0.3rem; align-items: center;">
-                <input type="email" name="email" placeholder="me@company.com" required style="flex: 1 1 auto; border-radius: 1.2rem; border: 1.5px solid #5b7bb2; padding: 0.6rem 1rem; font-size: 0.98rem; margin-right: 0.2rem; background: #fff; color: #1a2233;">
-                <button type="submit" class="footer-btn linkedin-btn" style="padding: 0.6rem 1.1rem; min-width: 0; min-height: 0; font-size: 1rem; border-radius: 1.2rem;">→</button>
+            <div class="faq-sidebar-card">
+              <div class="footer-card-title">Insights in Your Inbox</div>
+              <div class="footer-card-text">Stay ahead with proven CRM strategies and insights delivered straight to your inbox.</div>
+              <form action="#" method="post" class="faq-newsletter-form">
+                <input type="email" name="email" placeholder="me@company.com" required class="faq-input">
+                <button type="submit" class="btn-faq-icon">→</button>
               </form>
             </div>
           </div>
         </div>
       </div>
     </section>
+    
+    <!-- Email Copy Functionality -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const copyBtn = document.getElementById('faq-copy-email-btn');
+        const emailLink = document.getElementById('faq-email-link');
+        const feedback = document.getElementById('faq-copy-feedback');
+        const email = 'hello@mycrmadvisors.com';
+        
+        if (copyBtn && emailLink && feedback) {
+          copyBtn.addEventListener('click', async function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            try {
+              // Use the Clipboard API
+              await navigator.clipboard.writeText(email);
+              
+              // Show feedback
+              feedback.style.display = 'inline-block';
+              copyBtn.style.color = '#4ADE80';
+              
+              // Reset after 2 seconds
+              setTimeout(function() {
+                feedback.style.display = 'none';
+                copyBtn.style.color = '#0077b5';
+              }, 2000);
+            } catch (err) {
+              // Fallback for older browsers
+              const textArea = document.createElement('textarea');
+              textArea.value = email;
+              textArea.style.position = 'fixed';
+              textArea.style.opacity = '0';
+              document.body.appendChild(textArea);
+              textArea.select();
+              
+              try {
+                document.execCommand('copy');
+                feedback.style.display = 'inline-block';
+                feedback.textContent = 'Copied!';
+                copyBtn.style.color = '#4ADE80';
+                
+                setTimeout(function() {
+                  feedback.style.display = 'none';
+                  copyBtn.style.color = '#0077b5';
+                }, 2000);
+              } catch (fallbackErr) {
+                feedback.style.display = 'inline-block';
+                feedback.textContent = 'Failed';
+                feedback.style.color = '#E06666';
+                
+                setTimeout(function() {
+                  feedback.style.display = 'none';
+                }, 2000);
+              }
+              
+              document.body.removeChild(textArea);
+            }
+          });
+          
+          // Add hover effect
+          copyBtn.addEventListener('mouseenter', function() {
+            if (copyBtn.style.color !== '#4ADE80') {
+              copyBtn.style.color = '#005a8a';
+            }
+          });
+          
+          copyBtn.addEventListener('mouseleave', function() {
+            if (copyBtn.style.color !== '#4ADE80') {
+              copyBtn.style.color = '#0077b5';
+            }
+          });
+        }
+      });
+    </script>
   {{ end }}
 {{ end }} 

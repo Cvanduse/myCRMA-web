@@ -14,7 +14,7 @@ banner:
   background_image: "/images/banner.png"
   overlay_image: "/images/service-1.png"
   buttons:
-    - enable: true
+    - enable: false
       label: "Get Started For Free"
       link: "/contact"
       style: "primary"
@@ -22,7 +22,7 @@ banner:
 # Features
 features:
   - title: "Your Experts Across Salesforce Sales, Service, and More"
-    image: "/images/mycrma-wheel.png"
+    image: "ecosystem-orbit"
     content: "We are certified Salesforce experts specializing in Sales Cloud, Service Cloud, and custom CRM solutions. Our team delivers comprehensive implementation, optimization, and training services to transform your business operations."
     bulletpoints:
       - "Salesforce Sales Cloud Implementation & Optimization"

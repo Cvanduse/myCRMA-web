@@ -147,29 +147,228 @@
   }
 }
 
-/* FAQ Badge Styles */
+/* FAQ Badge Styles - Brand Aligned */
 .faq-badge {
   display: inline-flex;
   align-items: center;
-  background: var(--color-success-teal);
-  background: rgba(77, 184, 166, 0.1);
+  background: rgba(255, 159, 67, 0.15); /* Warm Amber tint */
+  border: 1px solid rgba(255, 159, 67, 0.3);
   border-radius: 2rem;
-  padding: 0.3rem 1.1rem 0.3rem 0.5rem;
-  font-size: 1.1rem;
+  padding: 0.5rem 1.2rem 0.5rem 0.6rem;
+  font-size: 1rem;
   font-weight: 600;
-  margin-bottom: 1.2rem;
-  box-shadow: 0 2px 8px rgba(77, 184, 166, 0.1);
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 8px rgba(255, 159, 67, 0.1);
 }
 
 .faq-badge-icon {
   display: flex;
   align-items: center;
-  margin-right: 0.6rem;
+  margin-right: 0.8rem;
 }
 
 .faq-badge-text {
+  color: var(--color-warm-amber);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Toggle Icons */
+.icon-rect {
+  fill: var(--color-slate-blue);
+  transition: fill 0.3s ease;
+}
+
+.modern-faq .faq-item.open .icon-rect {
+  fill: #ffffff;
+}
+
+/* Layout & Columns */
+.faq-col-right {
+  flex: 1 1 320px;
+  min-width: 260px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Right Sidebar Cards */
+.faq-sidebar-card {
+  background: #ffffff;
+  border: 1px solid var(--color-light-gray);
+  border-radius: 24px;
+  padding: 30px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.faq-sidebar-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  border-color: var(--color-warm-amber);
+}
+
+.faq-sidebar-card.center-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Avatar */
+.avatar-wrapper {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.faq-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #ffffff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.avatar-wrapper::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  width: 14px;
+  height: 14px;
+  background: var(--color-success-teal);
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+}
+
+/* Card Text */
+.footer-card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-slate-blue);
+  margin-bottom: 0.5rem;
+  font-family: var(--font-headline);
+}
+
+.footer-card-text {
+  font-size: 1rem;
+  color: var(--color-charcoal);
+  margin-bottom: 1.2rem;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+/* Buttons */
+.btn-faq-primary {
+  background: var(--color-warm-amber);
+  color: #ffffff;
+  padding: 12px 28px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  width: 100%;
+  max-width: 220px;
+  margin-bottom: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(255, 159, 67, 0.3);
+}
+
+.btn-faq-primary:hover {
+  background: #e68a00;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(255, 159, 67, 0.4);
+}
+
+/* Email Section */
+.email-text {
+  font-size: 0.9rem;
+  color: var(--color-slate-blue);
+  opacity: 0.8;
+  margin-bottom: 0.25rem;
+}
+
+.email-action-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--color-off-white);
+  padding: 6px 12px;
+  border-radius: 8px;
+}
+
+.email-link {
+  color: var(--color-slate-blue);
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+}
+
+.email-copy-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-warm-amber);
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s;
+}
+
+.email-copy-btn:hover {
+  color: var(--color-slate-blue);
+}
+
+.email-copy-feedback {
+  display: none;
   color: var(--color-success-teal);
-  font-weight: 500;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+/* Newsletter Form */
+.faq-newsletter-form {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}
+
+.faq-input {
+  flex: 1;
+  border: 1px solid var(--color-light-gray);
+  border-radius: 12px;
+  padding: 10px 16px;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.3s;
+  color: var(--color-charcoal);
+}
+
+.faq-input:focus {
+  border-color: var(--color-slate-blue);
+}
+
+.btn-faq-icon {
+  background: var(--color-slate-blue);
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-faq-icon:hover {
+  background: var(--color-warm-amber);
+  transform: translateX(2px);
 }
 
 .faq-title.big {

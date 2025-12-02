@@ -40,6 +40,8 @@
       aria-label="Main menu">
       {{ $currentPage := . }}
       {{ range site.Menus.main }}
+        {{ $hideItems := slice "Home" "Services" "About" "Contact" }}
+        {{ if not (in $hideItems .Name) }}
         {{ $menuURL := .URL | absLangURL }}
         {{ $pageURL:= $currentPage.Permalink | absLangURL }}
         {{ $active := eq $menuURL $pageURL }}
@@ -226,6 +228,7 @@
             >
           </li>
         {{ end }}
+        {{ end }}
       {{ end }}
       {{ if site.Params.navigation_button.enable }}
         <li class="mt-4 inline-block lg:hidden" role="none">
@@ -259,7 +262,7 @@
 
       {{ partial "components/language-switcher" (dict "Context" . "Class" "mr-5 pl-2 py-1 dark:bg-darkmode-light rounded") }}
       {{ if site.Params.theme_switcher }}
-        {{ partial "components/theme-switcher" (dict "Class" "mr-5") }}
+      {{ partial "components/theme-switcher" (dict "Class" "mr-5") }}
       {{ end }}
 
 

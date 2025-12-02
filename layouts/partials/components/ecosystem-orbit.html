@@ -1,0 +1,329 @@
+<div class="ecosystem-hub-container" role="img" aria-label="Interactive graphic showing MyCRMA ecosystem connections">
+  
+  <!-- Background Graphics (SVG) -->
+  <svg class="hub-background" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <linearGradient id="pulse-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" style="stop-color:var(--color-warm-amber);stop-opacity:0" />
+        <stop offset="50%" style="stop-color:var(--color-warm-amber);stop-opacity:0.5" />
+        <stop offset="100%" style="stop-color:var(--color-warm-amber);stop-opacity:0" />
+      </linearGradient>
+    </defs>
+
+    <!-- Center Glow -->
+    <circle cx="300" cy="300" r="80" fill="url(#pulse-grad)" opacity="0.2">
+      <animate attributeName="r" values="80;100;80" dur="4s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.2;0.1;0.2" dur="4s" repeatCount="indefinite" />
+    </circle>
+
+    <!-- Inner Track (Salesforce) -->
+    <circle cx="300" cy="300" r="160" fill="none" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="4 4" />
+    <!-- Rotating Ring on Inner Track -->
+    <circle cx="300" cy="300" r="160" fill="none" stroke="var(--color-slate-blue)" stroke-width="2" stroke-dasharray="20 985" stroke-linecap="round" opacity="0.5">
+      <animateTransform attributeName="transform" type="rotate" from="0 300 300" to="360 300 300" dur="20s" repeatCount="indefinite" />
+    </circle>
+    <!-- Data Particle Inner -->
+    <circle cx="300" cy="140" r="3" fill="var(--color-slate-blue)">
+      <animateTransform attributeName="transform" type="rotate" from="0 300 300" to="360 300 300" dur="8s" repeatCount="indefinite" />
+    </circle>
+
+    <!-- Outer Track (Integrations) -->
+    <circle cx="300" cy="300" r="240" fill="none" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="4 4" />
+    <!-- Rotating Ring on Outer Track (Reverse) -->
+    <circle cx="300" cy="300" r="240" fill="none" stroke="var(--color-warm-amber)" stroke-width="2" stroke-dasharray="40 1460" stroke-linecap="round" opacity="0.5">
+      <animateTransform attributeName="transform" type="rotate" from="360 300 300" to="0 300 300" dur="30s" repeatCount="indefinite" />
+    </circle>
+    <!-- Data Particle Outer -->
+    <circle cx="300" cy="60" r="3" fill="var(--color-warm-amber)">
+      <animateTransform attributeName="transform" type="rotate" from="360 300 300" to="0 300 300" dur="12s" repeatCount="indefinite" />
+    </circle>
+  </svg>
+
+  <!-- Active Connector Line (Moved behind center) -->
+  <div class="hub-connector"></div>
+
+  <!-- Center Content -->
+  <div class="hub-center">
+    <div class="hub-logo">
+      <span class="brand-my">My</span><span class="brand-crma">CRMA</span>
+    </div>
+    <div class="hub-info">
+      <i class="hub-icon"></i>
+      <span class="hub-label"></span>
+    </div>
+  </div>
+
+  <!-- Ecosystem Items (Positioned Statically) -->
+  <div class="hub-items">
+    
+    <!-- INNER RING (Radius ~160px) -->
+    <!-- Sales -->
+    <div class="hub-item cloud-style" style="--angle: 270deg; --radius: 160px; --color: #4b93e7; --delay: 0.1s;" 
+         data-label="Sales Cloud" data-icon="fa-solid fa-chart-line" tabindex="0" role="button" aria-label="Sales Cloud">
+      <i class="fa-solid fa-chart-line"></i>
+    </div>
+    <!-- Service -->
+    <div class="hub-item cloud-style" style="--angle: 330deg; --radius: 160px; --color: #9b59b6; --delay: 0.2s;" 
+         data-label="Service Cloud" data-icon="fa-solid fa-headset" tabindex="0" role="button" aria-label="Service Cloud">
+      <i class="fa-solid fa-headset"></i>
+    </div>
+    <!-- Marketing -->
+    <div class="hub-item cloud-style" style="--angle: 30deg; --radius: 160px; --color: #e67e22; --delay: 0.3s;" 
+         data-label="Marketing Cloud" data-icon="fa-solid fa-bullseye" tabindex="0" role="button" aria-label="Marketing Cloud">
+      <i class="fa-solid fa-bullseye"></i>
+    </div>
+    <!-- Commerce -->
+    <div class="hub-item cloud-style" style="--angle: 90deg; --radius: 160px; --color: #2ecc71; --delay: 0.4s;" 
+         data-label="Commerce Cloud" data-icon="fa-solid fa-cart-shopping" tabindex="0" role="button" aria-label="Commerce Cloud">
+      <i class="fa-solid fa-cart-shopping"></i>
+    </div>
+    <!-- Community -->
+    <div class="hub-item cloud-style" style="--angle: 150deg; --radius: 160px; --color: #f1c40f; --delay: 0.5s;" 
+         data-label="Experience Cloud" data-icon="fa-solid fa-users" tabindex="0" role="button" aria-label="Experience Cloud">
+      <i class="fa-solid fa-users"></i>
+    </div>
+    <!-- Industries -->
+    <div class="hub-item cloud-style" style="--angle: 210deg; --radius: 160px; --color: #34495e; --delay: 0.6s;" 
+         data-label="Industries Cloud" data-icon="fa-solid fa-industry" tabindex="0" role="button" aria-label="Industries Cloud">
+      <i class="fa-solid fa-industry"></i>
+    </div>
+
+    <!-- OUTER RING (Radius ~240px) -->
+    <!-- Outlook -->
+    <div class="hub-item circle-style" style="--angle: 270deg; --radius: 240px; --color: #0078d4; --delay: 0.7s;" 
+         data-label="Outlook" data-icon="fa-brands fa-microsoft" tabindex="0" role="button" aria-label="Outlook Integration">
+      <i class="fa-brands fa-microsoft"></i>
+    </div>
+    <!-- Google -->
+    <div class="hub-item circle-style" style="--angle: 342deg; --radius: 240px; --color: #db4437; --delay: 0.8s;" 
+         data-label="Google" data-icon="fa-brands fa-google" tabindex="0" role="button" aria-label="Google Integration">
+      <i class="fa-brands fa-google"></i>
+    </div>
+    <!-- DocuSign -->
+    <div class="hub-item circle-style" style="--angle: 54deg; --radius: 240px; --color: #ffc820; --delay: 0.9s;" 
+         data-label="DocuSign" data-icon="fa-solid fa-file-signature" tabindex="0" role="button" aria-label="DocuSign">
+      <i class="fa-solid fa-file-signature"></i>
+    </div>
+    <!-- Fivetran -->
+    <div class="hub-item circle-style" style="--angle: 126deg; --radius: 240px; --color: #0071eb; --delay: 1.0s;" 
+         data-label="Fivetran" data-icon="fa-solid fa-database" tabindex="0" role="button" aria-label="Fivetran">
+      <i class="fa-solid fa-database"></i>
+    </div>
+    <!-- Slack -->
+    <div class="hub-item circle-style" style="--angle: 198deg; --radius: 240px; --color: #E01E5A; --delay: 1.1s;" 
+         data-label="Slack" data-icon="fa-brands fa-slack" tabindex="0" role="button" aria-label="Slack">
+      <i class="fa-brands fa-slack"></i>
+    </div>
+
+  </div>
+</div>
+
+<style>
+  /* --- Layout --- */
+  .ecosystem-hub-container {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    aspect-ratio: 1/1;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* New Stacking Context */
+    isolation: isolate;
+  }
+
+  /* --- Background Graphics --- */
+  .hub-background {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  /* --- Subtle Connector Line (Replaces Laser Beam) --- */
+  .hub-connector {
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 240px; /* Radius to outer ring */
+    height: 1px;
+    background: var(--active-color, #ccc);
+    transform-origin: left center;
+    transform: rotate(var(--active-angle, 0deg));
+    opacity: 0;
+    z-index: 2; /* Above background, below items (z-5) */
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .ecosystem-hub-container.active .hub-connector {
+    opacity: 0.4; /* Subtle visibility */
+  }
+
+  /* --- Center Hub --- */
+  .hub-center {
+    position: relative;
+    z-index: 10;
+    width: 140px; height: 140px;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 50%;
+    box-shadow: 
+      0 10px 40px rgba(0,0,0,0.08),
+      inset 0 0 20px rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  .hub-logo {
+    font-size: 1.5rem; font-weight: 800;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  .brand-my { color: var(--color-charcoal); }
+  .brand-crma { color: var(--color-slate-blue); }
+
+  .hub-info {
+    position: absolute;
+    opacity: 0;
+    display: flex; flex-direction: column; align-items: center;
+    transform: scale(0.8);
+    transition: all 0.3s ease;
+  }
+
+  .hub-info .hub-icon { font-size: 2.2rem; margin-bottom: 8px; color: var(--color-slate-blue); text-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+  .hub-info .hub-label { font-size: 1rem; font-weight: 700; color: var(--color-charcoal); }
+
+  /* State: Active (Hovering an Item) */
+  .hub-center.active { 
+    transform: scale(1.15); 
+    box-shadow: 0 20px 60px rgba(0,0,0,0.15); 
+    border-color: var(--active-color, #ddd); 
+    background: rgba(255, 255, 255, 0.95);
+  }
+  .hub-center.active .hub-logo { opacity: 0; transform: scale(0.5); }
+  .hub-center.active .hub-info { opacity: 1; transform: scale(1); }
+
+  /* --- Hub Items --- */
+  .hub-item {
+    position: absolute;
+    /* Key to positioning: Center + Rotate + Translate Out + Un-rotate */
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%) rotate(var(--angle)) translate(var(--radius)) rotate(calc(-1 * var(--angle)));
+    
+    display: flex; align-items: center; justify-content: center;
+    background: white;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    z-index: 5;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    outline: none;
+    
+    /* Entrance Animation */
+    opacity: 0;
+    animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards, floatItem 6s ease-in-out infinite;
+    animation-delay: var(--delay), calc(var(--delay) + 0.6s); /* Run popIn then float */
+  }
+
+  .hub-item:focus {
+    box-shadow: 0 0 0 3px var(--color-slate-blue), 0 4px 12px rgba(0,0,0,0.15);
+  }
+
+  /* Style 1: Salesforce Clouds (Filled Circles) */
+  .hub-item.cloud-style {
+    width: 64px; height: 64px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--color), color-mix(in srgb, var(--color), black 10%));
+    color: white;
+    font-size: 1.5rem;
+    border: 4px solid white;
+  }
+
+  /* Style 2: Integrations (Outlined Circles) */
+  .hub-item.circle-style {
+    width: 50px; height: 50px;
+    border-radius: 50%;
+    background: white;
+    color: var(--color);
+    border: 2px solid rgba(0,0,0,0.05);
+    font-size: 1.2rem;
+  }
+
+  /* Hover Effects */
+  .hub-item:hover, .hub-item:focus {
+    transform: translate(-50%, -50%) rotate(var(--angle)) translate(var(--radius)) rotate(calc(-1 * var(--angle))) scale(1.25);
+    z-index: 20;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+  }
+
+  .hub-item.circle-style:hover, .hub-item.circle-style:focus {
+    border-color: var(--color);
+    background: var(--color);
+    color: white;
+  }
+
+  /* --- Animations --- */
+  @keyframes popIn {
+    from { opacity: 0; transform: translate(-50%, -50%) rotate(var(--angle)) translate(0px) rotate(calc(-1 * var(--angle))) scale(0); }
+    to { opacity: 1; transform: translate(-50%, -50%) rotate(var(--angle)) translate(var(--radius)) rotate(calc(-1 * var(--angle))) scale(1); }
+  }
+
+  @keyframes floatItem {
+    0%, 100% { margin-top: 0px; }
+    50% { margin-top: -8px; }
+  }
+
+  /* --- Mobile Responsive --- */
+  @media (max-width: 640px) {
+    .ecosystem-hub-container { transform: scale(0.65); margin: -50px 0; }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const container = document.querySelector('.ecosystem-hub-container');
+    const hubCenter = container.querySelector('.hub-center');
+    const hubIcon = hubCenter.querySelector('.hub-icon');
+    const hubLabel = hubCenter.querySelector('.hub-label');
+    const items = container.querySelectorAll('.hub-item');
+
+    function activateItem(item) {
+      const color = item.style.getPropertyValue('--color');
+      const angle = item.style.getPropertyValue('--angle'); 
+      const label = item.dataset.label;
+      const iconClass = item.dataset.icon;
+
+      // Update Container Props for Beam
+      container.style.setProperty('--active-color', color);
+      container.style.setProperty('--active-angle', angle);
+      
+      // Activate states
+      container.classList.add('active');
+      hubCenter.classList.add('active');
+      hubCenter.style.setProperty('--active-color', color);
+      
+      // Update Content
+      hubLabel.textContent = label;
+      hubLabel.style.color = color;
+      hubIcon.className = `hub-icon ${iconClass}`;
+      hubIcon.style.color = color;
+    }
+
+    function deactivateItem() {
+      container.classList.remove('active');
+      hubCenter.classList.remove('active');
+    }
+
+    items.forEach(item => {
+      // Mouse events
+      item.addEventListener('mouseenter', () => activateItem(item));
+      item.addEventListener('mouseleave', deactivateItem);
+      
+      // Keyboard events
+      item.addEventListener('focus', () => activateItem(item));
+      item.addEventListener('blur', deactivateItem);
+    });
+  });
+</script>

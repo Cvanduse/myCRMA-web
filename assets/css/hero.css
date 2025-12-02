@@ -13,16 +13,23 @@
   padding-top: 4rem;
   display: flex;
   align-items: center;
+  overflow: hidden;
 }
 
-/* Tech Grid Pattern - Represents Data/CRM Structure */
+/* Tech Grid Pattern - Animated & "Alive" */
 .tech-grid-pattern {
   background-image: 
-    linear-gradient(rgba(75, 101, 135, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(75, 101, 135, 0.05) 1px, transparent 1px);
-  background-size: 40px 40px;
-  mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
-  -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+    linear-gradient(rgba(75, 101, 135, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(75, 101, 135, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  mask-image: radial-gradient(circle at 50% 50%, black 40%, transparent 90%);
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, black 40%, transparent 90%);
+  animation: gridPulse 15s ease-in-out infinite alternate;
+}
+
+@keyframes gridPulse {
+  0% { opacity: 0.6; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1.02); }
 }
 
 /* Strategy Path - Represents Guidance/Roadmap */
@@ -34,71 +41,68 @@
   height: 100%;
   pointer-events: none;
   z-index: 2;
-  background-image: url('data:image/svg+xml;utf8,<svg width="100%" height="100%" viewBox="0 0 1440 800" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M-100 600 C 200 600, 400 400, 720 400 C 1040 400, 1240 200, 1540 200" stroke="%23FFB84D" stroke-width="3" stroke-dasharray="10 10" opacity="0.4" fill="none"/></svg>');
+  background-image: url('data:image/svg+xml;utf8,<svg width="100%" height="100%" viewBox="0 0 1440 800" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M-100 600 C 200 600, 400 400, 720 400 C 1040 400, 1240 200, 1540 200" stroke="%23FFB84D" stroke-width="2" stroke-dasharray="8 8" opacity="0.3" fill="none"/></svg>');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
 }
 
-/* Geometric Shapes */
+/* Geometric Shapes - Enhanced with Depth & Blur */
 .hero-shape {
   position: absolute;
   z-index: 1;
   pointer-events: none;
+  mix-blend-mode: multiply;
 }
 
-/* Shape 1: The "Cloud" - Top Right
-   Represents the Salesforce Cloud Platform
-*/
+/* Shape 1: The "Cloud" - Top Right */
 .hero-shape-cloud {
-  top: -10%;
-  right: -5%;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(75, 101, 135, 0.08) 0%, transparent 70%);
+  top: -15%;
+  right: -10%;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle at center, rgba(75, 101, 135, 0.12) 0%, rgba(75, 101, 135, 0.02) 60%, transparent 80%);
   border-radius: 50%;
-  filter: blur(40px);
-  animation: pulse-cloud 10s infinite ease-in-out;
+  filter: blur(60px);
+  animation: float-cloud 20s infinite ease-in-out;
 }
 
-/* Shape 2: The "Data Block" - Bottom Left
-   Represents structured data, stability, analytics
-*/
+/* Shape 2: The "Data Block" - Bottom Left */
 .hero-shape-data {
-  bottom: 10%;
+  bottom: 5%;
   left: -5%;
-  width: 300px;
-  height: 300px;
-  background: linear-gradient(135deg, rgba(255, 184, 77, 0.15), rgba(255, 184, 77, 0.05));
-  border-radius: 40px;
+  width: 400px;
+  height: 400px;
+  background: linear-gradient(135deg, rgba(255, 184, 77, 0.12), rgba(255, 184, 77, 0.02));
+  border-radius: 60px;
   transform: rotate(15deg);
-  backdrop-filter: blur(5px);
-  border: 1px solid rgba(255, 184, 77, 0.1);
-  animation: float-data 15s infinite ease-in-out;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 184, 77, 0.05);
+  animation: float-data 18s infinite ease-in-out reverse;
 }
 
-/* Shape 3: The "Connection" - Mid Right
-   Represents integration and flow
-*/
+/* Shape 3: The "Connection" - Mid Right */
 .hero-shape-connect {
-  top: 40%;
-  right: 10%;
-  width: 150px;
-  height: 150px;
-  border: 2px dashed rgba(75, 101, 135, 0.15);
+  top: 35%;
+  right: 15%;
+  width: 200px;
+  height: 200px;
+  border: 2px dashed rgba(75, 101, 135, 0.1);
   border-radius: 50%;
-  animation: rotate-connect 20s infinite linear;
+  animation: rotate-connect 30s infinite linear;
 }
 
 /* Animations */
-@keyframes pulse-cloud {
-  0%, 100% { transform: scale(1); opacity: 0.8; }
-  50% { transform: scale(1.1); opacity: 1; }
+@keyframes float-cloud {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-20px, 20px) scale(1.05); }
 }
 
 @keyframes float-data {
   0%, 100% { transform: translateY(0) rotate(15deg); }
-  50% { transform: translateY(-20px) rotate(18deg); }
+  50% { transform: translateY(-30px) rotate(18deg); }
 }
 
 @keyframes rotate-connect {
@@ -113,12 +117,93 @@
   width: 100%;
 }
 
-/* Side CTA (Original) */
+/* Text Reveal Animation */
+.hero-content-reveal {
+  animation: slideUpFade 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.hero-content-reveal:nth-child(1) { animation-delay: 0.1s; }
+.hero-content-reveal:nth-child(2) { animation-delay: 0.2s; }
+.hero-content-reveal:nth-child(3) { animation-delay: 0.3s; } /* Headline */
+.hero-content-reveal:nth-child(4) { animation-delay: 0.4s; } /* Desc */
+.hero-content-reveal:nth-child(5) { animation-delay: 0.5s; } /* Buttons */
+
+@keyframes slideUpFade {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Dynamic Text Gradient */
+#dynamic-hero-animated {
+  background: linear-gradient(120deg, var(--color-slate-blue), var(--color-warm-amber));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+  font-weight: 800;
+}
+
+/* Premium Side CTA Card - Glassmorphism */
 .side-cta {
-  background: rgba(255, 255, 255, 0.95) !important;
-  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.7) !important;
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 
+    0 20px 40px rgba(75, 101, 135, 0.08),
+    0 1px 3px rgba(0,0,0,0.05) !important;
+  border-radius: 24px;
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.side-cta:hover {
+  transform: translateY(-5px);
+  box-shadow: 
+    0 30px 60px rgba(75, 101, 135, 0.12),
+    0 1px 3px rgba(0,0,0,0.05) !important;
+}
+
+/* Card Inner Glow */
+.side-cta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 100%);
+  pointer-events: none;
+}
+
+/* Trusted Badge */
+.trusted-badge {
+  display: inline-flex;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(8px);
+  color: var(--color-slate-blue);
+  padding: 0.5rem 1.25rem;
+  border-radius: 100px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  margin-bottom: 1.5rem;
   border: 1px solid rgba(75, 101, 135, 0.15);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.08) !important;
+  box-shadow: 0 4px 12px rgba(75, 101, 135, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.trusted-badge:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(75, 101, 135, 0.1);
+}
+
+.trusted-badge i {
+  color: var(--color-warm-amber);
+  margin-right: 0.5rem;
 }
 
 /* Buttons */
@@ -127,13 +212,31 @@
   color: var(--color-charcoal);
   border: none;
   font-weight: 700;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  position: relative;
+  overflow: hidden;
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(255, 184, 77, 0.3);
-  background-color: #ffc56e; /* slightly lighter amber */
+  box-shadow: 0 10px 25px rgba(255, 184, 77, 0.4);
+  background-color: #ffc56e; 
+}
+
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.5s ease;
+}
+
+.btn-primary:hover::after {
+  transform: translateX(100%);
 }
 
 .btn-outline-primary {
@@ -141,31 +244,17 @@
   color: var(--color-slate-blue);
   background: transparent;
   font-weight: 600;
+  transition: all 0.3s ease;
 }
 
 .btn-outline-primary:hover {
   background: var(--color-slate-blue);
   color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(75, 101, 135, 0.2);
 }
 
-/* Trusted Badge in Headline */
-.trusted-badge {
-  display: inline-flex;
-  align-items: center;
-  background-color: rgba(75, 101, 135, 0.1);
-  color: var(--color-slate-blue);
-  padding: 0.5rem 1rem;
-  border-radius: 2rem;
-  font-weight: 600;
-  font-size: 0.875rem;
-  margin-bottom: 1.5rem;
-  border: 1px solid rgba(75, 101, 135, 0.2);
-}
-
-.trusted-badge i {
-  color: var(--color-warm-amber);
-  margin-right: 0.5rem;
-}
+/* Strategy Flow Connector - Removed */
 
 /* Responsive */
 @media (max-width: 768px) {
@@ -178,15 +267,29 @@
     width: 300px;
     height: 300px;
     right: -20%;
+    top: -10%;
   }
   
   .hero-shape-data {
-    width: 150px;
-    height: 150px;
-    bottom: 5%;
+    width: 200px;
+    height: 200px;
+    bottom: 10%;
+    left: -10%;
   }
   
   .hero-shape-connect {
     display: none;
+  }
+  
+  .side-cta {
+    margin-top: 3rem;
+  }
+  
+  #dynamic-hero-animated {
+    display: block; /* Break line on mobile if needed */
+  }
+
+  .strategy-flow-connector {
+    display: none; /* Hide on mobile to avoid clutter */
   }
 }

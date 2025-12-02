@@ -1241,3 +1241,114 @@ body, .body-text, .ui-label, .icon-stroke {
     height: 36px;
   }
 }
+
+/* Feature Checklist - Prominent Checkmarks */
+.feature-checklist {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.feature-checklist li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  padding-left: 0;
+}
+
+.feature-check-icon {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  margin-top: 0.125rem;
+  position: relative;
+  animation: checkPop 0.3s ease-out;
+  filter: drop-shadow(0 2px 4px rgba(255, 184, 77, 0.3));
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.feature-checklist li:hover .feature-check-icon {
+  transform: scale(1.15);
+  filter: drop-shadow(0 4px 8px rgba(255, 184, 77, 0.5));
+}
+
+.feature-check-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.feature-check-icon circle {
+  transition: fill 0.2s ease;
+}
+
+.feature-checklist li:hover .feature-check-icon circle {
+  fill: #ffa733; /* Slightly darker amber on hover */
+}
+
+.feature-check-text {
+  flex: 1;
+  line-height: 1.6;
+  color: var(--color-charcoal);
+  font-size: 1rem;
+}
+
+@keyframes checkPop {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Stagger animation for checklist items */
+.feature-checklist li:nth-child(1) .feature-check-icon {
+  animation-delay: 0.05s;
+}
+
+.feature-checklist li:nth-child(2) .feature-check-icon {
+  animation-delay: 0.1s;
+}
+
+.feature-checklist li:nth-child(3) .feature-check-icon {
+  animation-delay: 0.15s;
+}
+
+.feature-checklist li:nth-child(4) .feature-check-icon {
+  animation-delay: 0.2s;
+}
+
+.feature-checklist li:nth-child(5) .feature-check-icon {
+  animation-delay: 0.25s;
+}
+
+.feature-checklist li:nth-child(6) .feature-check-icon {
+  animation-delay: 0.3s;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .feature-check-icon {
+    width: 22px;
+    height: 22px;
+  }
+  
+  .feature-checklist li {
+    gap: 0.625rem;
+    margin-bottom: 0.875rem;
+  }
+  
+  .feature-check-text {
+    font-size: 0.95rem;
+  }
+}

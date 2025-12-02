@@ -4,15 +4,27 @@
       <!-- Animated Background -->
       <div class="animated-bg"></div>
       
-      <div class="container">
-        <div class="section-header">
+      <!-- Full Width Interactive Arrow Bar -->
+      <div class="interactive-arrow-bar">
+        <div class="arrow-grid-bg" id="arrow-grid" aria-hidden="true"></div>
+        <div class="glass-overlay-title">
           <h2>{{ .Title | markdownify }}</h2>
-          <p>{{ .Params.description | markdownify }}</p>
+        </div>
+      </div>
+
+      <div class="container">
+        
+        <!-- Header Wrapper -->
+        <div class="services-header-wrapper">
+          <!-- Static Description (Outside/Below) -->
+          <div class="static-description">
+            <p>{{ .Params.description | markdownify }}</p>
+          </div>
         </div>
 
         <div class="services-grid">
-          {{ range .Params.services }}
-            <div class="service-card" data-service="{{ .title | urlize }}">
+          {{ range $index, $element := .Params.services }}
+            <div class="service-card {{ if ge $index 3 }}hidden-service{{ end }}" data-service="{{ .title | urlize }}" style="{{ if ge $index 3 }}display: none;{{ end }}">
               <div class="service-icon-container">
                 <div class="icon-bg-animation"></div>
                 {{ if .icon_svg }}
@@ -47,7 +59,7 @@
               {{ end }}
 
               <div class="learn-more">
-                <div class="learn-more-toggle" onclick="toggleLearnMore(this)">
+                <div class="learn-more-toggle" role="button" aria-expanded="false" tabindex="0" onclick="toggleLearnMore(this)" onkeydown="if(event.key === 'Enter' || event.key === ' ') { toggleLearnMore(this); event.preventDefault(); }">
                   <span>Learn More</span>
                   <svg class="arrow" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M7 10l5 5 5-5z"/>
@@ -67,13 +79,27 @@
             </div>
           {{ end }}
         </div>
+
+        <div class="services-expand-container">
+          <!-- Static Arrow Grid Background -->
+          <div class="static-arrow-grid" id="static-arrow-grid" aria-hidden="true"></div>
+
+          <div class="expand-connector"></div>
+          <button id="toggle-services-btn" class="btn-expand-services" onclick="toggleServices()">
+            <span class="btn-text">View Additional Services</span>
+            <span class="btn-icon">
+              <i class="fa fa-plus"></i>
+            </span>
+          </button>
+        </div>
+
       </div>
 
       <style>
         /* Enhanced Services Section Styles */
         .services-section-enhanced {
           position: relative;
-          background: var(--color-off-white);
+          background: var(--color-off-white); /* Match section background */
           color: var(--color-charcoal);
           overflow: hidden;
           padding: 40px 0 80px 0;
@@ -118,26 +144,93 @@
           z-index: 1;
         }
 
-        /* Section Header */
-        .section-header {
+        /* --- New Header Layout --- */
+        .services-header-wrapper {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          margin-bottom: 60px;
+        }
+
+        /* 1. Interactive Bar */
+        .interactive-arrow-bar {
+          position: relative;
+          width: 100%;
+          height: 200px; /* Increased height for full-width impact */
+          overflow: hidden;
+          background: transparent; 
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-bottom: 40px; /* Space below the bar */
+        }
+
+        .arrow-grid-bg {
+          position: absolute;
+          top: 0; left: 0; width: 100%; height: 100%;
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+          grid-template-rows: repeat(auto-fill, minmax(40px, 1fr));
+          gap: 0;
+          z-index: 1;
+          pointer-events: none;
+        }
+
+        .arrow-cell {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          height: 100%;
+        }
+
+        .arrow-icon {
+          width: 10px;
+          height: 10px;
+          /* Amber arrows */
+          border-right: 2px solid var(--color-warm-amber);
+          border-bottom: 2px solid var(--color-warm-amber);
+          transform-origin: center;
+          transform: rotate(45deg); 
+          opacity: 0.8;
+          /* Removed transition for immediate mouse tracking */
+        }
+
+        .glass-overlay-title {
+          position: relative;
+          z-index: 10;
+          /* Stronger Glass effect for legibility over arrows */
+          background: rgba(255, 255, 255, 0.85);
+          backdrop-filter: blur(8px);
+          -webkit-backdrop-filter: blur(8px);
+          padding: 15px 50px;
+          border-radius: 50px;
+          border: 1px solid rgba(255, 255, 255, 0.5);
+          box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+
+        .glass-overlay-title h2 {
+          font-size: 2.5rem;
+          font-weight: 800;
+          margin: 0;
+          color: var(--color-slate-blue); /* Brand Blue Text */
+          font-family: var(--font-headline);
           text-align: center;
-          margin-bottom: 80px;
+        }
+
+        /* 2. Static Description (Below Bar) */
+        .static-description {
+          text-align: center;
+          max-width: 700px;
+          margin: 0 auto;
           animation: fadeInUp 0.8s ease-out;
         }
 
-        .section-header h2 {
-          font-size: 3.5rem;
-          font-weight: 700;
-          margin-bottom: 20px;
-          color: var(--color-slate-blue);
-          font-family: var(--font-headline);
-        }
-
-        .section-header p {
+        .static-description p {
           font-size: 1.25rem;
-          color: var(--color-slate-blue);
-          max-width: 600px;
-          margin: 0 auto;
+          line-height: 1.6;
+          color: var(--color-charcoal);
+          font-weight: 500;
         }
 
         /* Service Cards Grid */
@@ -161,6 +254,17 @@
           animation: fadeInUp 0.8s ease-out forwards;
           opacity: 0;
           box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        /* Show initial cards and ensure animation works */
+        .service-card:not(.hidden-service) {
+            opacity: 0; /* Start hidden for animation */
+        }
+        
+        /* Styles for hidden services when revealed */
+        .service-card.revealed {
+            display: block !important;
+            animation: fadeInUp 0.6s ease-out forwards;
         }
 
         .service-card:nth-child(1) { animation-delay: 0.1s; --service-color: var(--color-slate-blue); }
@@ -413,13 +517,108 @@
           transition: left 0.3s ease;
         }
 
-        .service-cta:hover::before {
+        .service-cta::after {
           left: 100%;
         }
 
         .service-cta:hover {
           transform: translateX(5px);
           box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Expand Services Button Styles */
+        .services-expand-container {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          margin-top: 40px;
+          position: relative;
+          z-index: 10;
+          width: 100%;
+          padding: 60px 0;
+          overflow: hidden;
+        }
+
+        .static-arrow-grid {
+          position: absolute;
+          top: 0; left: 0; width: 100%; height: 100%;
+          display: grid;
+          z-index: -1;
+          pointer-events: none;
+        }
+
+        .static-arrow-grid .arrow-cell {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .static-arrow-grid .arrow-icon {
+          width: 10px;
+          height: 10px;
+          border-right: 2px solid var(--color-warm-amber);
+          border-bottom: 2px solid var(--color-warm-amber);
+          transform: rotate(45deg); /* Point down */
+          opacity: 0.25; /* Subtle background */
+        }
+
+        .expand-connector {
+          width: 2px;
+          height: 40px;
+          background: repeating-linear-gradient(
+            to bottom,
+            var(--color-slate-blue),
+            var(--color-slate-blue) 4px,
+            transparent 4px,
+            transparent 8px
+          );
+          opacity: 0.3;
+          margin-bottom: 20px;
+        }
+
+        .btn-expand-services {
+          background: rgba(255, 255, 255, 0.8);
+          backdrop-filter: blur(10px);
+          border: 1px solid var(--color-slate-blue);
+          color: var(--color-slate-blue);
+          padding: 12px 32px;
+          border-radius: 50px;
+          font-size: 1.1rem;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+          outline: none;
+        }
+
+        .btn-expand-services:hover {
+          background: var(--color-slate-blue);
+          color: #ffffff;
+          transform: translateY(-2px);
+          box-shadow: 0 8px 25px rgba(75, 101, 135, 0.25);
+        }
+
+        .btn-expand-services .btn-icon {
+          background: var(--color-warm-amber);
+          color: var(--color-charcoal);
+          width: 24px;
+          height: 24px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 0.8rem;
+          transition: transform 0.3s ease;
+        }
+
+        .btn-expand-services:hover .btn-icon {
+          transform: rotate(90deg);
+          background: #ffffff;
+          color: var(--color-slate-blue);
         }
 
         /* Animations */
@@ -452,9 +651,191 @@
 
       <script>
         function toggleLearnMore(element) {
+          const isExpanded = element.getAttribute('aria-expanded') === 'true';
+          element.setAttribute('aria-expanded', !isExpanded);
+          
           element.classList.toggle('active');
           const content = element.nextElementSibling;
           content.classList.toggle('active');
+        }
+
+        function toggleServices() {
+          const hiddenServices = document.querySelectorAll('.hidden-service');
+          const btn = document.getElementById('toggle-services-btn');
+          const btnText = btn.querySelector('.btn-text');
+          const btnIcon = btn.querySelector('.btn-icon i');
+          
+          // Check if services are currently visible (by checking the first one)
+          const isHidden = hiddenServices[0].style.display === 'none';
+
+          hiddenServices.forEach(service => {
+            if (isHidden) {
+              service.classList.add('revealed');
+              service.style.display = 'block';
+              // Add small stagger effect for reveal
+              setTimeout(() => {
+                  service.style.opacity = '1';
+              }, 50);
+            } else {
+              service.classList.remove('revealed');
+              service.style.display = 'none';
+              service.style.opacity = '0';
+            }
+          });
+
+          if (isHidden) {
+            btnText.textContent = 'Show Less';
+            btnIcon.className = 'fa fa-minus';
+          } else {
+            btnText.textContent = 'View Additional Services';
+            btnIcon.className = 'fa fa-plus';
+             // Smooth scroll back to services top if closing
+             document.getElementById('services').scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+
+        // --- Interactive Arrow Grid Logic ---
+        function initArrowGrid() {
+          const arrowGrid = document.getElementById('arrow-grid');
+          const container = document.querySelector('.interactive-arrow-bar');
+          
+          if (!arrowGrid || !container) return;
+          
+          // Dynamic grid calculation for perfect density
+          function createArrows() {
+            arrowGrid.innerHTML = '';
+            const size = 40; // px size of grid cell
+            const cols = Math.ceil(container.offsetWidth / size);
+            const rows = Math.ceil(container.offsetHeight / size);
+            const totalArrows = cols * rows;
+            
+            arrowGrid.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
+            
+            for (let i = 0; i < totalArrows; i++) {
+              const cell = document.createElement('div');
+              cell.className = 'arrow-cell';
+              const arrow = document.createElement('div');
+              arrow.className = 'arrow-icon';
+              cell.appendChild(arrow);
+              arrowGrid.appendChild(cell);
+            }
+          }
+
+          // Initial creation
+          createArrows();
+          
+          // Re-create on resize (debounced)
+          let resizeTimeout;
+          window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(createArrows, 200);
+          });
+
+          const getArrows = () => container.querySelectorAll('.arrow-icon');
+          let isRunning = false;
+          let mouseX = 0, mouseY = 0;
+          let isHovering = false;
+
+          // Animation Loop
+          function animate() {
+            if (!isRunning) return;
+            
+            const arrows = getArrows();
+            
+            arrows.forEach(arrow => {
+              // Skip if this is a static arrow (safety check)
+              if (arrow.classList.contains('static-arrow')) return;
+
+              const rect = arrow.getBoundingClientRect();
+              const arrowCenterX = rect.left + rect.width / 2;
+              const arrowCenterY = rect.top + rect.height / 2;
+              
+              // Angle calculation
+              const deltaX = mouseX - arrowCenterX;
+              const deltaY = mouseY - arrowCenterY;
+              const angleRad = Math.atan2(deltaY, deltaX);
+              const angleDeg = angleRad * (180 / Math.PI);
+              
+              // Distance calculation for "Spotlight Effect"
+              const dist = Math.hypot(deltaX, deltaY);
+              const maxDist = 400; // Range of effect
+              const proximity = Math.max(0, 1 - dist / maxDist);
+              
+              // Apply styles: Rotate + Scale/Opacity based on proximity
+              const scale = 1 + (proximity * 0.3); // Slight scale up
+              const opacity = 0.3 + (proximity * 0.7); // Fade out when far
+              
+              // -45deg adjustment for arrow icon orientation
+              arrow.style.transform = `rotate(${angleDeg - 45}deg) scale(${scale})`;
+              arrow.style.opacity = isHovering ? opacity : 0.3;
+            });
+            
+            isRunning = false; 
+          }
+
+          // Event Listeners
+          container.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            isHovering = true;
+            
+            if (!isRunning) {
+              isRunning = true;
+              window.requestAnimationFrame(animate);
+            }
+          });
+
+          container.addEventListener('mouseleave', () => {
+             isHovering = false;
+             // Optional: Reset arrows or leave them as last position
+             // Let's trigger one last animation frame to reset opacities
+             if (!isRunning) {
+              isRunning = true;
+              window.requestAnimationFrame(animate);
+            }
+          });
+        }
+
+        // Run initialization
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', initArrowGrid);
+          document.addEventListener('DOMContentLoaded', initStaticArrows);
+        } else {
+          initArrowGrid();
+          initStaticArrows();
+        }
+
+        // --- Static Arrow Grid Logic (Bottom) ---
+        function initStaticArrows() {
+          const grid = document.getElementById('static-arrow-grid');
+          if (!grid) return;
+
+          function createStaticArrows() {
+            grid.innerHTML = '';
+            const size = 60; // Larger spacing for static grid
+            const cols = Math.ceil(grid.offsetWidth / size);
+            const rows = Math.ceil(grid.offsetHeight / size);
+            const totalArrows = cols * rows;
+            
+            grid.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
+            
+            for (let i = 0; i < totalArrows; i++) {
+              const cell = document.createElement('div');
+              cell.className = 'arrow-cell';
+              const arrow = document.createElement('div');
+              arrow.className = 'arrow-icon static-arrow';
+              cell.appendChild(arrow);
+              grid.appendChild(cell);
+            }
+          }
+
+          createStaticArrows();
+          
+          let resizeTimeout;
+          window.addEventListener('resize', () => {
+             clearTimeout(resizeTimeout);
+             resizeTimeout = setTimeout(createStaticArrows, 200);
+          });
         }
 
         // Add intersection observer for scroll animations
@@ -466,18 +847,19 @@
         const observer = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
             if (entry.isIntersecting) {
-              entry.target.style.animationPlayState = 'running';
+              // Only animate if it's visible (not hidden by toggle)
+              if (entry.target.style.display !== 'none') {
+                  entry.target.style.animationPlayState = 'running';
+              }
             }
           });
         }, observerOptions);
 
-        document.addEventListener('DOMContentLoaded', function() {
-          document.querySelectorAll('.service-card').forEach(card => {
-            card.style.animationPlayState = 'paused';
-            observer.observe(card);
-          });
+        document.querySelectorAll('.service-card').forEach(card => {
+          card.style.animationPlayState = 'paused';
+          observer.observe(card);
         });
       </script>
     </section>
   {{ end }}
-{{ end }} 
+{{ end }}
