@@ -1,5 +1,5 @@
 {{ $stats := site.GetPage "sections/stats" }}
-<section class="stats-section py-12 bg-gray-50">
+<section class="stats-section py-12 bg-off-white">
   <div class="container mx-auto px-4">
     <!-- Mobile Layout: Stack everything vertically -->
     <div class="md:hidden">
@@ -7,14 +7,14 @@
       <div class="grid grid-cols-2 gap-6 mb-8">
         {{ range $stats.Params.stats }}
           <div class="text-center stat-item">
-            <div class="text-3xl font-bold text-gray-900 countup" data-target="{{ .number }}">0</div>
-            <div class="text-sm text-gray-600 mt-2 leading-tight">{{ .label }}</div>
+            <div class="text-3xl font-bold text-slate-blue countup" data-target="{{ .number }}">0</div>
+            <div class="text-sm text-charcoal mt-2 leading-tight">{{ .label }}</div>
           </div>
         {{ end }}
       </div>
       <!-- Description for Mobile -->
       <div class="text-center">
-        <div class="desc-text text-base text-gray-700 max-w-sm mx-auto" style="line-height:1.6">{{ $stats.Params.description | safeHTML }}</div>
+        <div class="desc-text text-base text-charcoal max-w-sm mx-auto" style="line-height:1.6">{{ $stats.Params.description | safeHTML }}</div>
       </div>
     </div>
     
@@ -23,13 +23,13 @@
       <div class="flex flex-1 flex-row stats-row gap-8 lg:gap-12 justify-center lg:justify-start">
         {{ range $stats.Params.stats }}
           <div class="text-center stat-item">
-            <div class="text-4xl lg:text-5xl font-bold text-gray-900 countup" data-target="{{ .number }}">0</div>
-            <div class="text-lg text-gray-600 mt-2">{{ .label }}</div>
+            <div class="text-4xl lg:text-5xl font-bold text-slate-blue countup" data-target="{{ .number }}">0</div>
+            <div class="text-lg text-charcoal mt-2">{{ .label }}</div>
           </div>
         {{ end }}
       </div>
       <div class="stats-description flex-1 text-left lg:pl-12">
-        <div class="desc-text text-lg text-gray-700 max-w-xl" style="line-height:1.6">{{ $stats.Params.description | safeHTML }}</div>
+        <div class="desc-text text-lg text-charcoal max-w-xl" style="line-height:1.6">{{ $stats.Params.description | safeHTML }}</div>
       </div>
     </div>
   </div>

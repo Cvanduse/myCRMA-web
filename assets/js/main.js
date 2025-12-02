@@ -51,6 +51,7 @@
   // Enhanced Dynamic Hero Title Rotator (Gynger-style)
   (function() {
     const animatedTitles = [
+      "Salesforce Consulting Experts",
       "Trusted Experts",
       "Salesforce Partners",
       "CRM Consultants",

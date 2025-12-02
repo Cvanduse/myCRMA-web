@@ -1,4 +1,21 @@
 {{ $src := .Src }}
 {{ $alt := .Alt | default "Image" }}
 {{ $class := .Class | default "w-full h-auto rounded-xl shadow" }}
-<img src="{{$src}}" alt="{{$alt}}" class="{{$class}}" loading="lazy" /> 
+{{ $width := .Width }}
+{{ $height := .Height }}
+{{ $priority := .Priority | default "auto" }}
+{{ $loading := cond (eq $priority "high") "eager" "lazy" }}
+{{ $fetchpriority := cond (eq $priority "high") "high" "auto" }}
+{{ $srcset := .Srcset }}
+{{ $sizes := .Sizes }}
+<img
+  src="{{ $src }}"
+  alt="{{ $alt }}"
+  class="{{ $class }}"
+  loading="{{ $loading }}"
+  fetchpriority="{{ $fetchpriority }}"
+  {{ with $width }}width="{{ . }}"{{ end }}
+  {{ with $height }}height="{{ . }}"{{ end }}
+  {{ with $srcset }}srcset="{{ . }}"{{ end }}
+  {{ with $sizes }}sizes="{{ . }}"{{ end }}
+/> 

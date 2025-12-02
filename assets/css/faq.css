@@ -119,6 +119,34 @@
   color: var(--color-charcoal);
 }
 
+/* FAQ Answer Content Styling - Clear bullets and line breaks */
+.faq-answer-content {
+  color: var(--color-charcoal);
+  line-height: 1.75;
+  font-size: 1.08rem;
+  word-wrap: break-word;
+}
+
+/* Ensure line breaks are properly displayed */
+.faq-answer-content br {
+  display: block;
+  margin: 0.75em 0;
+  content: "";
+}
+
+/* Style bullet points (•) for better readability */
+.faq-answer-content {
+  /* Ensure bullets are visible and properly spaced */
+}
+
+/* Make sure text with bullets has proper indentation on mobile */
+@media (max-width: 768px) {
+  .faq-answer-content {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+}
+
 /* FAQ Badge Styles */
 .faq-badge {
   display: inline-flex;

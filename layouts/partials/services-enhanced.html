@@ -73,8 +73,8 @@
         /* Enhanced Services Section Styles */
         .services-section-enhanced {
           position: relative;
-          background: #ffffff;
-          color: #1f2937;
+          background: var(--color-off-white);
+          color: var(--color-charcoal);
           overflow: hidden;
           padding: 40px 0 80px 0;
         }
@@ -86,7 +86,7 @@
           left: 0;
           width: 100%;
           height: 100%;
-          background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+          background: linear-gradient(135deg, var(--color-off-white) 0%, var(--color-light-gray) 100%);
           z-index: -2;
         }
 
@@ -135,7 +135,7 @@
 
         .section-header p {
           font-size: 1.25rem;
-          color: #64748b;
+          color: var(--color-slate-blue);
           max-width: 600px;
           margin: 0 auto;
         }
@@ -150,8 +150,8 @@
 
         /* Service Card */
         .service-card {
-          background: #f8fafc;
-          border: 1px solid #e2e8f0;
+          background: var(--color-off-white);
+          border: 1px solid var(--color-light-gray);
           border-radius: 24px;
           padding: 40px;
           position: relative;
@@ -163,12 +163,12 @@
           box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
         }
 
-        .service-card:nth-child(1) { animation-delay: 0.1s; --service-color: #7850ff; }
-        .service-card:nth-child(2) { animation-delay: 0.2s; --service-color: #ff5080; }
-        .service-card:nth-child(3) { animation-delay: 0.3s; --service-color: #50c8ff; }
-        .service-card:nth-child(4) { animation-delay: 0.4s; --service-color: #50ff80; }
-        .service-card:nth-child(5) { animation-delay: 0.5s; --service-color: #ff8050; }
-        .service-card:nth-child(6) { animation-delay: 0.6s; --service-color: #c850ff; }
+        .service-card:nth-child(1) { animation-delay: 0.1s; --service-color: var(--color-slate-blue); }
+        .service-card:nth-child(2) { animation-delay: 0.2s; --service-color: var(--color-warm-amber); }
+        .service-card:nth-child(3) { animation-delay: 0.3s; --service-color: var(--color-success-teal); }
+        .service-card:nth-child(4) { animation-delay: 0.4s; --service-color: var(--color-error-coral); }
+        .service-card:nth-child(5) { animation-delay: 0.5s; --service-color: var(--color-slate-blue); }
+        .service-card:nth-child(6) { animation-delay: 0.6s; --service-color: var(--color-warm-amber); }
 
         .service-card::before {
           content: '';
@@ -189,7 +189,7 @@
           background: #ffffff;
           box-shadow: 
             0 20px 40px rgba(0, 0, 0, 0.15),
-            0 0 60px rgba(120, 80, 255, 0.1);
+            0 0 60px rgba(75, 101, 135, 0.1);
         }
 
         .service-card:hover::before {
@@ -242,32 +242,32 @@
           font-size: 1.75rem;
           font-weight: 600;
           margin-bottom: 15px;
-          color: #1f2937;
+          color: var(--color-charcoal);
         }
 
         .service-description {
-          color: #64748b;
+          color: var(--color-slate-blue);
           margin-bottom: 25px;
           line-height: 1.7;
           transition: color 0.3s ease;
         }
 
         .service-card:hover .service-description {
-          color: #475569;
+          color: var(--color-charcoal);
         }
 
         /* Pricing Badge */
         .pricing-badge {
           display: inline-flex;
           align-items: center;
-          background: #f1f5f9;
-          border: 1px solid #e2e8f0;
+          background: var(--color-off-white);
+          border: 1px solid var(--color-light-gray);
           border-radius: 12px;
           padding: 8px 16px;
           margin-bottom: 20px;
           font-size: 0.875rem;
           transition: all 0.3s ease;
-          color: #64748b;
+          color: var(--color-slate-blue);
         }
 
         .pricing-badge .price {
@@ -301,7 +301,7 @@
 
         .metric {
           background: #ffffff;
-          border: 1px solid #e2e8f0;
+          border: 1px solid var(--color-light-gray);
           border-radius: 12px;
           padding: 12px;
           text-align: center;
@@ -317,7 +317,7 @@
 
         .metric-label {
           font-size: 0.75rem;
-          color: #64748b;
+          color: var(--color-slate-blue);
           text-transform: uppercase;
           letter-spacing: 0.5px;
         }
@@ -326,7 +326,7 @@
         .learn-more {
           margin-top: 30px;
           padding-top: 25px;
-          border-top: 1px solid #e2e8f0;
+          border-top: 1px solid var(--color-light-gray);
         }
 
         .learn-more-toggle {
@@ -340,7 +340,7 @@
         }
 
         .learn-more-toggle:hover {
-          color: #1f2937;
+          color: var(--color-charcoal);
         }
 
         .arrow {
@@ -374,7 +374,7 @@
           padding: 8px 0;
           padding-left: 30px;
           position: relative;
-          color: #475569;
+          color: var(--color-slate-blue);
         }
 
         .feature-list li::before {

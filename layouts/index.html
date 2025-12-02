@@ -1,20 +1,16 @@
 {{ define "main" }}
   <!-- Hero Banner -->
   {{ with .Params.banner }}
-    <section class="hero-enhanced">
-      <!-- Far Background Layer -->
-      <div class="blob-far blob-far-1"></div>
+    <section class="hero-enhanced relative w-full overflow-hidden">
+      <!-- Tech Grid Background -->
+      <div class="absolute inset-0 tech-grid-pattern"></div>
+      <!-- Strategy Path Background -->
+      <div class="hero-strategy-path"></div>
       
-      <!-- Mid-ground Layer -->
-      <div class="blob-mid blob-mid-1"></div>
-      <div class="blob-mid blob-mid-2"></div>
-      
-      <!-- Near Layer -->
-      <div class="blob-near blob-near-1"></div>
-      <div class="blob-near blob-near-2"></div>
-      
-      <!-- Accent Elements -->
-      <div class="accent accent-1"></div>
+      <!-- Geometric Shapes representing Salesforce Ecosystem -->
+      <div class="hero-shape hero-shape-cloud"></div> <!-- Sales/Service Cloud -->
+      <div class="hero-shape hero-shape-data"></div> <!-- Data/Analytics -->
+      <div class="hero-shape hero-shape-connect"></div> <!-- Integration -->
       
       <!-- Hero Content -->
       <div class="hero-content">
@@ -22,24 +18,29 @@
           <div class="row items-center">
             <!-- Main Content - Left Side -->
             <div class="lg:col-7 md:col-8">
+              
+              <div class="trusted-badge hero-content-reveal">
+                <i class="fa-solid fa-award"></i> Salesforce Consulting Partner
+              </div>
+
               {{ if .subtitle }}
-                <p class="text-xl md:text-2xl font-semibold mb-4 hero-content-reveal" style="color: #FFB84D;">
+                <p class="text-xl md:text-2xl font-semibold mb-4 hero-content-reveal text-slate-blue opacity-90">
                   {{ .subtitle | markdownify }}
                 </p>
               {{ end }}
               
-              <h1 class="mb-6 text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight hero-content-reveal" style="color: #2C2E33;">
-                Transform Your Business with<br><span id="dynamic-hero-animated">Expert CRM Solutions</span>
+              <h1 class="mb-6 text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight hero-content-reveal text-charcoal">
+                Transform Your Business with<br><span id="dynamic-hero-animated">Expert CRM Advisors</span>
               </h1>
               
               {{ if .content }}
-                <p class="mb-10 text-lg md:text-xl text-gray-700 max-w-2xl leading-relaxed hero-content-reveal">
+                <p class="mb-10 text-lg md:text-xl text-gray-600 max-w-2xl leading-relaxed hero-content-reveal">
                 {{ .content | markdownify }}
               </p>
               {{ end }}
               
               {{ if .buttons }}
-                <div class="flex flex-wrap gap-4">
+                <div class="flex flex-wrap gap-4 hero-content-reveal">
                   {{ range .buttons }}
                 {{ if .enable }}
                       {{ $btnClass := "btn btn-primary text-lg px-8 py-4 shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2" }}
@@ -85,11 +86,11 @@
                   <!-- CTA Stats -->
                   <div class="grid grid-cols-2 gap-4 mb-6">
                     <div class="text-center">
-                      <div class="text-2xl font-bold" style="color: #FFB84D;">30min</div>
+                      <div class="text-2xl font-bold text-warm-amber">30min</div>
                                             <div class="text-sm text-gray-500">Complimentary Consultation</div>
                     </div>
                     <div class="text-center">
-                      <div class="text-2xl font-bold" style="color: #FFB84D;">100%</div>
+                      <div class="text-2xl font-bold text-warm-amber">100%</div>
                       <div class="text-sm text-gray-500">Custom Solution</div>
                     </div>
                   </div>
@@ -106,8 +107,8 @@
         </div>
       </div>
       
-      <!-- Scroll Indicator -->
-      <div class="custom-scroll-indicator absolute bottom-8 left-1/2 transform -translate-x-1/2 z-30 w-full max-w-2xl px-4">
+      <!-- Scroll Indicator - Mobile Only -->
+      <div class="custom-scroll-indicator absolute bottom-8 left-1/2 transform -translate-x-1/2 z-30 w-full max-w-2xl px-4 lg:hidden">
         <div class="scroll-indicator-bar flex items-center justify-between w-full">
           <span class="scroll-indicator-text text-gray-600 text-lg font-light">Scroll down</span>
           <span class="scroll-indicator-line flex-1 mx-4 h-px bg-gray-400 opacity-30"></span>
@@ -126,38 +127,6 @@
     </section>
   {{ end }}
   <!-- /Hero Banner -->
-
-  <!-- Logo Marquee -->
-  <section class="logo-marquee py-8 bg-gray-50 w-full">
-    <div class="marquee overflow-x-auto whitespace-nowrap flex items-center py-2" aria-label="Client logos">
-      <div class="flex items-center animate-marquee gap-12 min-w-max" id="marquee-content">
-        <div class="logo-placeholder h-12 flex items-center justify-center px-4 bg-blue-100 text-blue-700 font-bold rounded-lg text-sm">TechCorp</div>
-        <div class="logo-placeholder h-12 flex items-center justify-center px-4 bg-green-100 text-green-700 font-bold rounded-lg text-sm">InnovateLab</div>
-        <div class="logo-placeholder h-12 flex items-center justify-center px-4 bg-purple-100 text-purple-700 font-bold rounded-lg text-sm">DataFlow</div>
-        <div class="logo-placeholder h-12 flex items-center justify-center px-4 bg-orange-100 text-orange-700 font-bold rounded-lg text-sm">CloudSync</div>
-        <div class="logo-placeholder h-12 flex items-center justify-center px-4 bg-red-100 text-red-700 font-bold rounded-lg text-sm">SmartBiz</div>
-        <div class="logo-placeholder h-12 flex items-center justify-center px-4 bg-indigo-100 text-indigo-700 font-bold rounded-lg text-sm">FutureTech</div>
-        <div class="logo-placeholder h-12 flex items-center justify-center px-4 bg-teal-100 text-teal-700 font-bold rounded-lg text-sm">DigitalEdge</div>
-        <div class="logo-placeholder h-12 flex items-center justify-center px-4 bg-pink-100 text-pink-700 font-bold rounded-lg text-sm">NextGen</div>
-        <!-- Duplicate logos for seamless loop -->
-        <div class="logo-placeholder h-12 flex items-center justify-center px-4 bg-blue-100 text-blue-700 font-bold rounded-lg text-sm">TechCorp</div>
-        <div class="logo-placeholder h-12 flex items-center justify-center px-4 bg-green-100 text-green-700 font-bold rounded-lg text-sm">InnovateLab</div>
-        <div class="logo-placeholder h-12 flex items-center justify-center px-4 bg-purple-100 text-purple-700 font-bold rounded-lg text-sm">DataFlow</div>
-        <div class="logo-placeholder h-12 flex items-center justify-center px-4 bg-orange-100 text-orange-700 font-bold rounded-lg text-sm">CloudSync</div>
-        <div class="logo-placeholder h-12 flex items-center justify-center px-4 bg-red-100 text-red-700 font-bold rounded-lg text-sm">SmartBiz</div>
-        <div class="logo-placeholder h-12 flex items-center justify-center px-4 bg-indigo-100 text-indigo-700 font-bold rounded-lg text-sm">FutureTech</div>
-        <div class="logo-placeholder h-12 flex items-center justify-center px-4 bg-teal-100 text-teal-700 font-bold rounded-lg text-sm">DigitalEdge</div>
-        <div class="logo-placeholder h-12 flex items-center justify-center px-4 bg-pink-100 text-pink-700 font-bold rounded-lg text-sm">NextGen</div>
-      </div>
-    </div>
-    <!-- Pause/Play Button -->
-    <button class="marquee-control" id="marquee-control" aria-label="Pause marquee">
-      <i class="fa fa-pause" id="marquee-icon"></i>
-    </button>
-  </section>
-  <!-- /Logo Marquee -->
-
-  {{ partial "terra-header.html" . }}
 
   <!-- Stats -->
   {{ partial "stats" . }}

@@ -4,7 +4,7 @@ enable: true
 description: "Frequently Asked Questions"
 faqs:
   - question: "1. What industries and clouds do you specialize in?"
-    answer: "We bring deep, hands-on expertise in Salesforce's core clouds—Financial Services Cloud, Sales Cloud, and Service Cloud—tailored to your industry needs. Whether you're a global wealth-management firm, a high-volume call center, or an emerging non-profit, our team has successfully delivered scalable solutions that align with your unique processes and regulatory requirements."
+    answer: "We bring deep, hands-on expertise in Salesforce's core clouds—Financial Services Cloud, Sales Cloud, and Service Cloud—tailored to your industry needs.<br><br>Whether you're a global wealth-management firm, a high-volume call center, or an emerging non-profit, our team has successfully delivered scalable solutions that align with your unique processes and regulatory requirements."
   - question: "2. How is your pricing structured and what investment should I plan?"
     answer: "We offer flexible engagement models to fit your needs and budget:<br><br>• Fixed-Bid Projects: Ideal for well-defined scopes—one clear deliverable and predictable cost.<br>• Time & Materials: Best for evolving requirements—transparent hourly rates and only pay for the time spent.<br>• Outcome-Based: Aligned to your success metrics—fees tied to achieving agreed-upon milestones and ROI targets.<br><br>Before we begin, we'll work together to draft a detailed Statement of Work and provide a clear budget range so you can plan with confidence."
   - question: "3. Do you offer ongoing managed services and support after go-live?"

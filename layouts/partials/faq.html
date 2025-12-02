@@ -32,7 +32,7 @@
                     </span>
                   </button>
                   <div class="faq-answer" id="faq-answer-{{ $i }}" role="region" aria-labelledby="faq-question-{{ $i }}">
-                    <p>{{ $faq.answer }}</p>
+                    <div class="faq-answer-content">{{ $faq.answer | safeHTML }}</div>
                   </div>
                 </div>
               {{ end }}
