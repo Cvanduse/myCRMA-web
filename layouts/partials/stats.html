@@ -35,48 +35,85 @@
   </div>
 </section>
 <script>
-// Count up animation for stats
-function animateCountUp(el, target) {
-  let start = 0;
-  let end = parseInt(target.replace(/[^\d]/g, ''));
-  let isPercent = target.includes('%');
-  let isPlus = target.includes('+');
-  let duration = 1500;
-  let startTime = null;
-  function step(timestamp) {
-    if (!startTime) startTime = timestamp;
-    let progress = Math.min((timestamp - startTime) / duration, 1);
-    let value = Math.floor(progress * (end - start) + start);
-    el.textContent = value + (isPercent ? '%' : '') + (isPlus ? '+' : '');
-    if (progress < 1) {
-      requestAnimationFrame(step);
-    } else {
-      el.textContent = target;
+// Count up animation for stats - prevent duplicate runs
+(function() {
+  let hasRun = false;
+  
+  function animateCountUp(el, target) {
+    // Skip if already animated
+    if (el.dataset.animated === 'true') return;
+    el.dataset.animated = 'true';
+    
+    let start = 0;
+    let end = parseInt(target.replace(/[^\d]/g, ''));
+    let isPercent = target.includes('%');
+    let isPlus = target.includes('+');
+    let duration = 1500;
+    let startTime = null;
+    
+    function step(timestamp) {
+      if (!startTime) startTime = timestamp;
+      let progress = Math.min((timestamp - startTime) / duration, 1);
+      let value = Math.floor(progress * (end - start) + start);
+      el.textContent = value + (isPercent ? '%' : '') + (isPlus ? '+' : '');
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      } else {
+        el.textContent = target;
+      }
+    }
+    requestAnimationFrame(step);
+  }
+  
+  function runCountUps() {
+    if (hasRun) return;
+    hasRun = true;
+    
+    // Only animate visible countup elements (respects responsive classes)
+    document.querySelectorAll('.countup').forEach(function(el) {
+      // Check if element is visible (not hidden by responsive classes)
+      const style = window.getComputedStyle(el);
+      if (style.display !== 'none' && style.visibility !== 'hidden' && style.opacity !== '0') {
+        animateCountUp(el, el.getAttribute('data-target'));
+      }
+    });
+  }
+  
+  // Check if section is already visible on load
+  function checkInitialVisibility() {
+    var statsSection = document.querySelector('.stats-section');
+    if (statsSection) {
+      const rect = statsSection.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        runCountUps();
+        return;
+      }
+    }
+    
+    // Otherwise, wait for scroll
+    function onVisible(element, callback) {
+      function checkVisibility() {
+        const rect = element.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+          callback();
+          window.removeEventListener('scroll', checkVisibility);
+          window.removeEventListener('resize', checkVisibility);
+        }
+      }
+      window.addEventListener('scroll', checkVisibility);
+      window.addEventListener('resize', checkVisibility);
+      checkVisibility();
+    }
+    
+    if (statsSection) {
+      onVisible(statsSection, runCountUps);
     }
   }
-  requestAnimationFrame(step);
-}
-function runCountUps() {
-  document.querySelectorAll('.countup').forEach(function(el) {
-    animateCountUp(el, el.getAttribute('data-target'));
-  });
-}
-// Only run when section is in viewport
-function onVisible(element, callback) {
-  function checkVisibility() {
-    const rect = element.getBoundingClientRect();
-    if (rect.top < window.innerHeight && rect.bottom > 0) {
-      callback();
-      window.removeEventListener('scroll', checkVisibility);
-    }
+  
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', checkInitialVisibility);
+  } else {
+    checkInitialVisibility();
   }
-  window.addEventListener('scroll', checkVisibility);
-  checkVisibility();
-}
-document.addEventListener('DOMContentLoaded', function() {
-  var statsSection = document.querySelector('.stats-section');
-  if (statsSection) {
-    onVisible(statsSection, runCountUps);
-  }
-});
+})();
 </script> 
