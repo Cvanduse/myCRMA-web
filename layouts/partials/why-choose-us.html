@@ -9,10 +9,10 @@
             <span class="section-label">{{ .Params.label | default "Benefits" }}</span>
             <h2 class="section-title">{{ .Params.title | default "Transform Your CRM Into a Revenue Engine" }}</h2>
             <p class="section-subtitle">{{ .Params.description | default "Partner with certified experts who deliver measurable results through strategic CRM implementation and optimization." }}</p>
-            <a href="#contact" class="header-cta">
+            <!-- <a href="#contact" class="header-cta">
               Get Started
               <span>→</span>
-            </a>
+            </a> -->
           </div>
           
           <!-- Right Column - Choose Us List -->
@@ -110,8 +110,8 @@
           });
         });
 
-        // Optimize header CTA hover effects
-        const headerCta = document.querySelector('.header-cta');
+        // Optimize header CTA hover effects - Disabled since button is hidden
+        {{/* const headerCta = document.querySelector('.header-cta');
         if (headerCta) {
           headerCta.addEventListener('mouseenter', function() {
             this.style.background = '#000';
@@ -124,7 +124,7 @@
             this.style.transform = 'translateY(0)';
             this.style.boxShadow = 'none';
           });
-        }
+        } */}}
 
 
       });
