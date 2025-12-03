@@ -62,7 +62,7 @@ Our custom development team creates powerful solutions that extend Salesforce's 
 - **Starting at**: $8,000
 - **Timeline**: 2-6 weeks
 - **Efficiency Gain**: 40% average time savings
-- **Projects Completed**: 500+ custom applications
+- **Projects Completed**: 25+ custom applications
 
 ---
 
@@ -91,8 +91,8 @@ We specialize in creating seamless connections between Salesforce and your busin
 
 - **Starting at**: $5,000
 - **Timeline**: 1-4 weeks
-- **Integrations Built**: 100+ successful connections
-- **Uptime**: 99.9% reliability guarantee
+- **Integrations Built**: 50+ successful connections
+- **Faster Access**: 72% reliability guarantee
 
 ---
 
@@ -155,7 +155,7 @@ Our proven data migration methodology ensures a smooth transition:
 - **Starting at**: $4,000
 - **Timeline**: 1-3 weeks
 - **Data Loss**: 0% data loss guarantee
-- **Records Migrated**: 10M+ records successfully transferred
+- **Records Migrated**: 1M+ records successfully transferred
 
 ---
 

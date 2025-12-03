@@ -1,6 +1,6 @@
 ---
 title: "Our Services"
-description: "Transform your business with our comprehensive Salesforce solutions"
+description: "Transform your business with our comprehensive Salesforce solutions. From new Sales and Service Cloud implementations to custom development, integrations, data migration, training, and ongoing optimization, we design every engagement around your goals, processes, and tech stack. Whether you're a financial institution, mortgage lender, non-profit, or telecom/call center organization, our team helps you scale smarter with a CRM that's easier to manage today and ready for tomorrow."
 label: "Services"
 enable: true
 services:
@@ -41,7 +41,7 @@ services:
     metrics:
       - value: "40%"
         label: "Time Saved"
-      - value: "500+"
+      - value: "25+"
         label: "Apps Built"
     features:
       - "Lightning Web Components"
@@ -63,10 +63,10 @@ services:
       price: "From $5,000"
       duration: "1-4 weeks"
     metrics:
-      - value: "100+"
+      - value: "50+"
         label: "Integrations"
-      - value: "99.9%"
-        label: "Uptime"
+      - value: "72%"
+        label: "Faster Access"
     features:
       - "ERP system integration"
       - "Marketing automation sync"
@@ -113,7 +113,7 @@ services:
     metrics:
       - value: "0%"
         label: "Data Loss"
-      - value: "10M+"
+      - value: "1M+"
         label: "Records Migrated"
     features:
       - "Data quality assessment"
