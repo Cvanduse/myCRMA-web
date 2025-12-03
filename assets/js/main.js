@@ -51,8 +51,8 @@
   // Enhanced Dynamic Hero Title Rotator (Gynger-style)
   (function() {
     const animatedTitles = [
-      "Salesforce Consulting Experts",
-      "Trusted Experts",
+      "Salesforce Experts",
+      "Trusted Advisors",
       "Salesforce Partners",
       "CRM Consultants",
       "Data-Driven Results"
@@ -61,21 +61,53 @@
     const el = document.getElementById('dynamic-hero-animated');
     if (!el) return;
     
-    function setTitle(idx) {
-      el.classList.remove('dynamic-hero-animate');
-      // Add a slight delay before changing text for smoother transition
-      setTimeout(() => {
-        el.textContent = animatedTitles[idx];
-        void el.offsetWidth;
-        el.classList.add('dynamic-hero-animate');
-      }, 100);
+    let isTransitioning = false;
+    let intervalId = null;
+    
+    function setTitle(newIdx, skipAnimation = false) {
+      // Prevent overlapping transitions
+      if (isTransitioning && !skipAnimation) return;
+      
+      if (!skipAnimation) {
+        isTransitioning = true;
+        
+        // Fade out current text using CSS transition
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(-10px)';
+        
+        // After fade out completes, change text and fade in
+        setTimeout(() => {
+          el.textContent = animatedTitles[newIdx];
+          // Force reflow to ensure text change is rendered
+          void el.offsetWidth;
+          
+          // Fade in new text
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0)';
+          
+          // Reset flag after transition completes
+          setTimeout(() => {
+            isTransitioning = false;
+          }, 350); // Slightly longer than transition duration
+        }, 300); // Wait for fade out to complete
+      } else {
+        // Set initial text without animation
+        el.textContent = animatedTitles[newIdx];
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0)';
+      }
     }
     
-    setTitle(idx);
-    setInterval(() => {
-      idx = (idx + 1) % animatedTitles.length;
-      setTitle(idx);
-    }, 4000); // Slightly slower for better readability
+    // Set initial title without animation
+    setTitle(idx, true);
+    
+    // Start rotation after initial delay
+    setTimeout(() => {
+      intervalId = setInterval(() => {
+        idx = (idx + 1) % animatedTitles.length;
+        setTitle(idx);
+      }, 8000); // Change every 6 seconds
+    }, 3000); // Wait 2 seconds before first rotation
   })();
 
   // Gynger-Style Scroll-Triggered Reveals

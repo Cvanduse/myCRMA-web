@@ -127,15 +127,15 @@
 }
 
 /* Dynamic Hero Title Animation */
-@keyframes fadeInOut {
-  0% { opacity: 0; }
-  10% { opacity: 1; }
-  90% { opacity: 1; }
-  100% { opacity: 0; }
+#dynamic-hero-animated {
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 .dynamic-hero-animate {
-  animation: fadeInOut 3s linear;
-  transition: opacity 0.5s;
+  animation: fadeIn 0.6s ease-out forwards;
 }
 
 /* Navbar hover highlight */
