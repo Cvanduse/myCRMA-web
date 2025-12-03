@@ -55,7 +55,7 @@ weight = 3
 
 [[main]]
 name = "Contact"
-url = "/contact/"
+url = "https://cal.com/mycrmadvisors/"
 weight = 4
 
 

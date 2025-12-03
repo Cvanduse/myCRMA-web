@@ -16,7 +16,7 @@ banner:
   buttons:
     - enable: false
       label: "Get Started For Free"
-      link: "/contact"
+      link: "https://cal.com/mycrmadvisors/"
       style: "primary"
 
 # Features
@@ -48,6 +48,6 @@ features:
     button:
       enable: true
       label: "See Case Studies"
-      link: "/contact"
+      link: "https://cal.com/mycrmadvisors/"
     enable: false
 ---

@@ -8,7 +8,7 @@
   </div>
   
   <div class="lg:col-4 text-right">
-    {{ $link := .Params.button.link | default "/contact" }}
+    {{ $link := .Params.button.link | default "https://cal.com/mycrmadvisors/" }}
     <a href="{{ $link }}" 
        class="inline-flex items-center px-8 py-4 text-lg border border-[#1A1A1A] dark:border-white text-[#1A1A1A] dark:text-white rounded-full hover:bg-[#1A1A1A] hover:text-white dark:hover:bg-white dark:hover:text-[#1A1A1A] transition-colors">
       {{ .Params.button.text | default "Let's Talk" }}

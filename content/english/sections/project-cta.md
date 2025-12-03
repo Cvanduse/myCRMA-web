@@ -6,7 +6,7 @@ subtitle: "Expert strategies. Seamless execution. Measurable results. Let's buil
 enable: true
 button:
   text: "Let's Talk"
-  link: "/contact"
+  link: "https://cal.com/mycrmadvisors/"
 steps:
   - number: "01"
     title: "Discovery & Planning"
