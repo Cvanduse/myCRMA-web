@@ -1,30 +1,30 @@
 ---
-title: "Flexible Engagement Models"
-description: "We offer flexible engagement models to fit your needs and budget"
+title: "Your trusted Salesforce consulting partner"
+description: "Choosing the right Salesforce partner isn't just about getting features live—it's about building a CRM foundation that actually supports how your organization works, grows, and serves. By choosing MyCRMA your result is a Salesforce org that's easier to run today and ready for where your organization is going next."
 enable: true
 label: "Why Choose Us?"
 features:
-  - title: "Fixed-Bid Projects"
-    description: "Ideal for well-defined scopes—one clear deliverable and predictable cost."
+  - title: "Salesforce-First, Strategy-Led"
+    description: "We don't just turn on Sales or Service Cloud. We start with your goals, operating model, and KPIs, then design Salesforce around the way you sell, serve, and report."
     icon: "fa fa-check-circle"
   
-  - title: "Time & Materials"
-    description: "Best for evolving requirements—transparent hourly rates and only pay for the time spent."
+  - title: "From Roadmap to Rollout (and Beyond)"
+    description: "Our team guides you from CRM strategy and architecture through configuration, integrations, data migration, testing, and user enablement—so you're supported at every step."
     icon: "fa fa-clock"
   
-  - title: "Outcome-Based"
-    description: "Aligned to your success metrics—fees tied to achieving agreed-upon milestones and ROI targets."
+  - title: "Deep Focus in Financial Services, Non-Profits, Mortgage & Telecom"
+    description: "We understand regulated data, complex approval paths, customer journeys, and  operations—and build Salesforce to support your business and those realities."
     icon: "fa fa-chart-line"
   
-  - title: "Statement of Work"
-    description: "Before we begin, we'll work together to draft a detailed Statement of Work and provide a clear budget range so you can plan with confidence."
+  - title: "Flow-Driven, Admin-Friendly Architecture"
+    description: "We favor scalable, declarative solutions where possible, so your internal team can manage and extend Salesforce without relying on constant heavy development."
     icon: "fa fa-file-contract"
   
-  - title: "Clear Budget Range"
-    description: "Transparent pricing with no hidden costs. We provide clear budget ranges upfront so you can plan with confidence."
+  - title: "Transparent Pricing & Flexible Engagement Models"
+    description: "Fixed-bid projects, time & materials, or outcome-based engagements—we'll help you choose the model that fits your risk profile, budget, and roadmap."
     icon: "fa fa-dollar-sign"
   
-  - title: "Confidence Planning"
-    description: "Our detailed planning process ensures you have complete visibility into costs, timelines, and deliverables before we begin."
+  - title: "A Long-Term Advisor, Not a One-Off Project Team"
+    description: "We stay engaged after go-live with optimization, training, and advisory support—helping your CRM adapt as your organization, regulations, and customer expectations evolve."
     icon: "fa fa-handshake"
 --- 

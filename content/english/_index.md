@@ -10,7 +10,7 @@ image: "/images/og-image.png"
 banner:
   title: "Transform Your Business with Expert CRM Solutions"
   subtitle: "Your CRM, Supercharged"
-  content: "Partner with certified Salesforce experts to unlock new growth, efficiency, and customer satisfaction. We deliver measurable results through strategic CRM implementation and optimization."
+  content: "Partner with certified Salesforce experts to scale smarter—unlocking new growth, efficiency, and customer satisfaction. We design and deliver Salesforce solutions that streamline operations, simplify workflows, and drive measurable results. From roadmap to rollout, we act as your strategic CRM advisor, turning Salesforce from a tangled system into a clear, future-ready growth engine."
   background_image: "/images/banner.png"
   overlay_image: "/images/service-1.png"
   buttons:
@@ -23,14 +23,13 @@ banner:
 features:
   - title: "Your Experts Across Salesforce Sales, Service, and More"
     image: "ecosystem-orbit"
-    content: "We are certified Salesforce experts specializing in Sales Cloud, Service Cloud, and custom CRM solutions. Our team delivers comprehensive implementation, optimization, and training services to transform your business operations."
+    content: "We are certified Salesforce consultants specializing in Sales Cloud, Service Cloud, and custom CRM solutions. Our team delivers comprehensive implementation, optimization, and training services that transform how your teams sell, serve, and support customers."
     bulletpoints:
-      - "Salesforce Sales Cloud Implementation & Optimization"
-      - "Service Cloud Setup & Customization"
-      - "Custom CRM Development & Integration"
-      - "User Training & Adoption Programs"
-      - "Ongoing Support & Maintenance"
-      - "**Certified Salesforce Consultants** with proven track record"
+      - "Salesforce Sales Cloud implementation & optimization"
+      - "Service Cloud setup, customization, and case management design"
+      - "Custom CRM development & integrations with your existing stack"
+      - "User training & adoption programs tailored to each team"
+      - "Ongoing admin, enhancement, and support services"
     button:
       enable: false
       label: "Get Started Now"

@@ -1,7 +1,7 @@
 ---
 title: "Our Results"
 stats:
-  - number: "99+"
+  - number: "20+"
     label: "Completed Projects"
   - number: "12+"
     label: "Years of Experience"
@@ -9,5 +9,5 @@ stats:
     label: "Certifications"
   - number: "100%"
     label: "Client Satisfaction"
-description: "At MyCRMA, a <b>Salesforce Consulting Partner</b>, we specialize in helping businesses scale smarter. From strategy to implementation, we guide organizations across industries through a seamless <b>Salesforce journey</b>—driving transformation, growth, and long-term success."
+description: "At MyCRMAdvisors, a <b>Salesforce Advisory Partner</b>, we specialize in helping businesses scale smarter. From strategy to implementation, we guide organizations across industries through a seamless <b>Salesforce journey</b>—driving transformation, growth, and long-term success."
 --- 

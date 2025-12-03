@@ -26,9 +26,12 @@
     <div class="footer-col">
       <ul class="footer-menu">
         {{ range site.Menus.main }}
+          {{ $hideItems := slice "Home" "Services" "About" "Contact" }}
+          {{ if not (in $hideItems .Name) }}
           <li><a href="{{ .URL | relLangURL }}">{{ .Name }}</a></li>
           {{ end }}
-        </ul>
+        {{ end }}
+      </ul>
       <div class="footer-copyright">
         © {{ now.Year }} MyCRMA. All Rights Reserved.
       </div>
