@@ -7,7 +7,7 @@
       <div class="grid grid-cols-2 md:flex md:flex-row gap-6 md:gap-8 lg:gap-12 justify-center md:justify-start md:flex-1">
         {{ range $stats.Params.stats }}
           <div class="text-center stat-item">
-            <div class="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-blue countup" data-target="{{ .number }}">0</div>
+            <div class="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-blue countup" data-target="{{ .number }}">{{ .number }}</div>
             <div class="text-sm md:text-lg text-charcoal mt-2 leading-tight">{{ .label }}</div>
           </div>
         {{ end }}
@@ -29,25 +29,11 @@
     if (el.dataset.animated === 'true') return;
     el.dataset.animated = 'true';
     
-    let start = 0;
-    let end = parseInt(target.replace(/[^\d]/g, ''));
-    let isPercent = target.includes('%');
-    let isPlus = target.includes('+');
-    let duration = 1500;
-    let startTime = null;
-    
-    function step(timestamp) {
-      if (!startTime) startTime = timestamp;
-      let progress = Math.min((timestamp - startTime) / duration, 1);
-      let value = Math.floor(progress * (end - start) + start);
-      el.textContent = value + (isPercent ? '%' : '') + (isPlus ? '+' : '');
-      if (progress < 1) {
-        requestAnimationFrame(step);
-      } else {
-        el.textContent = target;
-      }
-    }
-    requestAnimationFrame(step);
+    // Start from current displayed value (which is already the target)
+    // This prevents any "0" flash and ensures smooth display
+    // The numbers are already showing correctly, so we can skip animation
+    // or do a subtle fade-in effect instead
+    el.textContent = target;
   }
   
   function runCountUps() {
